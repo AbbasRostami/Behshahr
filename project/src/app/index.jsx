@@ -5,7 +5,7 @@ import './App.css'
 import { Header } from '../components/common/Header'
 import { loginAPI } from '../core/services/api/auth'
 
-const  App = () =>  {
+const  App = async () =>  {
   const [count, setCount] = useState(0)
 
   const loginUser = async () => {
