@@ -1,10 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 
+const Routes = createBrowserRouter([{}]);
 
-const Routes = createBrowserRouter([
-    {
-      
-    },
-  ]);
-  
-  export { Routes };
+export { Routes };
