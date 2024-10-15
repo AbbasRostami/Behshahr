@@ -42,7 +42,7 @@ const AboutForm = () => {
 
                 <button
                   class="w-[120px] h-[40px]
-                                     text-[#21394B] bg-BgGreen rounded-lg absolute right-[4.5rem] bottom-20"
+                                     text-white bg-BgGreen rounded-lg absolute right-[2.5rem] bottom-10"
                 >
                   ارسال
                 </button>
