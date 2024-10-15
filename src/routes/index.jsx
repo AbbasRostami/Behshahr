@@ -4,7 +4,7 @@ import App from "../app";
 import { Landing } from "../screens/Landing";
 
 
-const Routes = createBrowserRouter([
+const RoutesApp = createBrowserRouter([
     
     
       {
@@ -19,4 +19,4 @@ const Routes = createBrowserRouter([
     
       ]);
   
-  export default Routes
+  export default RoutesApp
