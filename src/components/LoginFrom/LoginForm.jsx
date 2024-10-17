@@ -14,7 +14,7 @@ import React from 'react'
 const LoginForm = () => {
   return (
     <div>
-      abbas
+       
     </div>
   )
 }
