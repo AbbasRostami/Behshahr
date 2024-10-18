@@ -1,17 +1,18 @@
-import React from 'react'
-import line from "../assets/line.svg"
-import newsPic from "../assets/newsPick.svg"
-import dislike from "../assets/dislike.svg"
-import favorite from "../assets/favo.svg"
-import like from "../assets/coursesLike.svg"
-import profileimg from "../assets/profileimg.svg"
-import starRating from "../assets/star.svg"
+import React from 'react';
+
+import like from "./../../assets/coursesLike.svg";
+import dislike from "./../../assets/dislike.svg";
+import favorite from "./../../assets/favo.svg";
+import line from "./../../assets/line.svg";
+import newsPic from "./../../assets/newsPick.svg";
+import profileimg from "./../../assets/profileimg.svg";
+import starRating from './../../assets/svg/Landing/StarRating.svg'
 
 // import Swiper core and required modules
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 const ArticlesListUnder = () => {
   return (
@@ -367,4 +368,4 @@ const ArticlesListUnder = () => {
   )
 }
 
-export { ArticlesListUnder }
+export { ArticlesListUnder };
