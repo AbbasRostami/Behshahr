@@ -1,41 +1,32 @@
-import { useState, useEffect } from "react";
-// import reactLogo from './assets/react.svg'
-import viteLogo from "/vite.svg";
-import "./App.css";
-import "../index.css";
-import { Field, Form, Formik } from "formik";
-import { Header } from "../components/common/Header";
-import { loginAPI } from "../core/services/api/auth";
-import LoginForm from "../components/LoginFrom/LoginForm";
-import { ArticlesList } from "../components/NewsArticlesForm/ArticlesList";
-import searching from "../assets/search.svg";
-import filter from "../assets/filter.svg";
-import arrowUnder from "../assets/arrowUnder.svg";
-import { ArticlesListUnder } from "../components/NewsArticlesForm/articlesListUnder";
+import React from 'react'
+import { ArticlesList } from './ArticlesList';
+import { ArticlesListUnder } from './articlesListUnder';
 
-const App = () => {
-  const [count, setCount] = useState(0);
+const NewsArticles = () => {
 
-  const loginUser = async () => {
-    const userObj = {
-      phoneOrGmail: "masg1377@gmail.com",
-      password: "123456",
-      rememberMe: true,
+    const [count, setCount] = useState(0);
+
+    const loginUser = async () => {
+      const userObj = {
+        phoneOrGmail: "masg1377@gmail.com",
+        password: "123456",
+        rememberMe: true,
+      };
+  
+      const user = await loginAPI(userObj);
+  
+      console.log(user);
     };
+  
+    useEffect(() => {
+      loginUser();
+    }, []);
 
-    const user = await loginAPI(userObj);
-
-    console.log(user);
-  };
-
-  useEffect(() => {
-    loginUser();
-  }, []);
 
   return (
-    <>
-      {/* <LoginForm /> */}
-      <h1 className="text-[#22445D] bg-white-500 mt-10 items-center text-3xl py-8">
+    <div>
+       {/* <LoginForm /> */}
+       <h1 className="text-[#22445D] bg-white-500 mt-10 items-center text-3xl py-8">
         لیست اخبار و مقالات
       </h1>
       <div className=" flex mt-8 bg-[#FBF6F6] py-5 rounded-3xl ">
@@ -91,7 +82,8 @@ const App = () => {
           <h1 className="text-[#22445D] text-[17px]  leading-[2rem]">ساختن دنیایی بهتر.یک دوره در یک زمان</h1>
           <ArticlesListUnder />
     </>
-  );
-};
+    </div>
+  )
+}
 
-export default App;
+export { NewsArticles }
