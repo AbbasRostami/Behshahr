@@ -1,16 +1,12 @@
-import React from 'react'
-import { AboutForm } from '../../components/AboutForm'
-
+import React from "react";
+import { AboutForm } from "../../components/AboutForm";
 
 const AboutUs = () => {
   return (
     <>
-    
-    <AboutForm />
-        
-    
+      <AboutForm />
     </>
-  )
-}
+  );
+};
 
-export { AboutUs }
+export { AboutUs };

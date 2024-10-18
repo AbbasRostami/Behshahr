@@ -1,4 +1,3 @@
-import { Landing } from "../screens/Landing";
 import "./App.css";
 import { RouterProvider } from "react-router-dom";
 import RoutesApp from "./../routes"

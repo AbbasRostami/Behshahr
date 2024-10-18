@@ -3,6 +3,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import { Header } from "./../common/Header"
+import { Footer } from "./../common/Footer"
 
 import newsPic from "./../../assets/svg/ArticlesDetails/newPic.svg";
 import like from "./../../assets/svg/ArticlesDetails/like.svg";
@@ -18,14 +20,16 @@ import undo from "./../../assets/svg/ArticlesDetails/undo.svg";
 import eye from "./../../assets/svg/ArticlesDetails/eye.svg";
 import calendar from "./../../assets/svg/ArticlesDetails/calendar.svg";
 import key from "./../../assets/svg/ArticlesDetails/key.svg";
+import { HeaderUserlogin } from "../common/HeaderUserLogin";
 
 
 const ArticlesDetailsForm = () => {
   return (
     
 <>
-      <div className="bg-[#FBF6F6] rounded-2xl w-[94%] m-auto">
-        <div className="flex justify-center">
+        <HeaderUserlogin />
+      <div className="bg-[#FBF6F6] rounded-2xl w-[94%] m-auto mt-16">
+        <div className="flex justify-center items">
           <img className="w-[70%]" src={articlePic} alt="" />
         </div>
 
@@ -658,6 +662,8 @@ const ArticlesDetailsForm = () => {
           مشاهده مقالات بیشتر
         </button>
       </div>
+
+      <Footer />
     </>
 
   )

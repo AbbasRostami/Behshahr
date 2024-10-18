@@ -1,6 +1,6 @@
 import React from "react";
-import { Header } from "../common/Header";
-import { Footer } from "../common/Footer/Footer";
+import { Header } from "./../common/Header";
+import { Footer } from "./../common/Footer";
 import { Formik, Field, Form } from "formik";
 import Email from "./../../assets/svg/aboutUs/IconEmail.svg";
 import Phone from "./../../assets/svg/aboutUs/IconPhone.svg";

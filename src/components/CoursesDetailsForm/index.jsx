@@ -3,7 +3,7 @@ import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Formik, Field, Form } from "formik";
 
 import articlePic2 from "./../../assets/svg/ArticlesDetails/artilclePic2.svg";
 import like from "./../../assets/svg/ArticlesDetails/like.svg";
@@ -16,10 +16,16 @@ import mrSmith from "./../../assets/svg/ArticlesDetails/mrSmith.svg";
 import profileimg from "./../../assets/svg/ArticlesDetails/profileimg.svg";
 import starRating from "./../../assets/svg/ArticlesDetails/StarRating.svg";
 import courses1 from "./../../assets/svg/ArticlesDetails/courses1.svg";
+import { Footer } from "../common/Footer";
+import { HeaderUserlogin } from "./../common/HeaderUserLogin"
+
 
 
 const CoursesDetailsForm = () => {
   return (
+    <>
+    <HeaderUserlogin />
+
     <div className="flex justify-center gap-[15px] ml-[3.5rem]">
       <div className="bg-[#FBF6F6] rounded-2xl w-[18rem] h-[54.7rem]">
         <div className="w-[15.7rem] h-[13rem] bg-[#ffff] rounded-2xl absolute left-[4.7rem] top-[1rem]">
@@ -639,6 +645,12 @@ const CoursesDetailsForm = () => {
         </div>
       </div>
     </div>
+
+
+
+    
+    <Footer />
+    </>
   )
 }
 

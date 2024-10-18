@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header } from '../../components/common/Header'
+import { Header } from './../../components/common/Header'
 import { TopDescription } from '../../components/LandingHolder/Top-Description'
 import { OurServices } from '../../components/LandingHolder/OurServices'
 import { Statistics } from '../../components/LandingHolder/Statistics'
@@ -8,11 +8,11 @@ import { Courses } from '../../components/LandingHolder/Courses'
 import { Professionals } from '../../components/LandingHolder/Professionals'
 import { NewsArticles } from '../../components/LandingHolder/News-articles'
 import { Suggestions } from '../../components/LandingHolder/Suggestions'
-import { Footer } from '../../components/common/Footer/Footer'
+import { Footer } from '../../components/common/Footer'
 
 const Landing = () => {
   return (
-    <div>
+    <>
         
         <Header />
         <TopDescription />
@@ -25,9 +25,8 @@ const Landing = () => {
         <Suggestions />
         <Footer />
 
-
-    </div>
+    </>
   )
 }
 
-export {Landing}
+export { Landing }
