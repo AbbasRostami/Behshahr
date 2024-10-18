@@ -13,10 +13,10 @@ const Header = () => {
     </div>
 
     <div class="flex justify-between items-center ">
-      <span class="cursor-pointer" >درباره ما</span>
-      <span class="ml-10 cursor-pointer">مقالات</span>
-      <span class="mx-10 cursor-pointer">دوره ها</span>
-     <div class="bg-[#5f5d5d57] w-24 text-center rounded-lg text-[#158B68] cursor-pointer items-center p-1">صفحه اصلی </div>
+      <span class="hover:bg-[#9e969657] hover:text-[#158B68] w-24 text-center rounded-lg cursor-pointer items-center p-1" >درباره ما</span>
+      <span class="hover:bg-[#9e969657] hover:text-[#158B68] w-24 text-center rounded-lg cursor-pointer items-center p-1">مقالات</span>
+      <span class="hover:bg-[#9e969657] hover:text-[#158B68] w-24 text-center rounded-lg cursor-pointer items-center p-1">دوره ها</span>
+      <span class="hover:bg-[#9e969657] hover:text-[#158B68] w-24 text-center rounded-lg cursor-pointer items-center p-1">صفحه اصلی </span>
     </div>
 
     <div class="flex justify-center items-center">
