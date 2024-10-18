@@ -4,10 +4,11 @@ import logoSite from "./../../../assets/svg/Landing/logoSite.svg"
 import serach from "./../../../assets/svg/Landing/search.svg"
 import topProfile from "./../../../assets/svg/Landing/topProfile.svg"
 import topIcon from "./../../../assets/svg/Landing/topicon.svg"
+import { Link } from 'react-router-dom'
 
 const HeaderUserlogin = () => {
   return (
-    <div className="bg-emerald-300/85 ">
+    <div className="bg-gradient-to-br from-emerald-300/65 from-15% to-white ">
     <div className="flex justify-between items-center container  mx-auto px-20 h-20">
     <div className="flex ">
     
@@ -17,11 +18,11 @@ const HeaderUserlogin = () => {
       <div className="absolute left-[12rem] top-3"><img className="h-[3rem] w-[2rem]" src={serach} alt="" /></div>
     </div>
 
-    <div className="flex justify-between items-center ">
-      <span className="cursor-pointer" >درباره ما</span>
-      <span className="ml-10 cursor-pointer">مقالات</span>
-      <span className="mx-10 cursor-pointer">دوره ها</span>
-     <div className="bg-[#5f5d5d57] w-24 text-center rounded-lg text-[#158B68] cursor-pointer items-center p-1">صفحه اصلی </div>
+    <div class="flex justify-between items-center ">
+      <Link to='/about'> <span class="hover:bg-[#9e969657] hover:text-[#158B68] w-24 text-center rounded-lg cursor-pointer items-center p-1" >درباره ما</span></Link>
+      <Link to='/news-articles'> <span class="hover:bg-[#9e969657] hover:text-[#158B68] mx-4 w-24 text-center rounded-lg cursor-pointer items-center p-1">مقالات</span></Link>
+      <Link to=''> <span class="hover:bg-[#9e969657] hover:text-[#158B68] mr-4 w-24 text-center rounded-lg cursor-pointer items-center p-1">دوره ها</span></Link> 
+      <Link to='/'> <span class="hover:bg-[#9e969657] hover:text-[#158B68] w-24 text-center rounded-lg cursor-pointer items-center p-1">صفحه اصلی </span></Link>
     </div>
 
     <div className="flex justify-center items-center">
