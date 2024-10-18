@@ -6,6 +6,8 @@ import { CoursesDetails } from "../screens/CoursesDetails";
 import { ArticlesDetails } from "../screens/ArticlesDetails";
 import { RegisterForm } from "../components/RegisterForm";
 import { NewsArticles } from "../screens/NewsArticles";
+import { NotFound } from "../components/NotFound";
+import { Login } from "../screens/Login";
 
 
 const RoutesApp = createBrowserRouter([
@@ -14,6 +16,10 @@ const RoutesApp = createBrowserRouter([
       {
         path:'/',
         element: <Landing />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
       {
         path:'/about',
@@ -34,6 +40,10 @@ const RoutesApp = createBrowserRouter([
       {
         path:'/news-articles',
         element: <NewsArticles />,
+      },
+      {
+        path:'/login',
+        element: <Login />,
       },
       
     
