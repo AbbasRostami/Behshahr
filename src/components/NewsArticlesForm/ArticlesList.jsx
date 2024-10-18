@@ -1,11 +1,11 @@
-import courses1 from "../assets/courses1.svg";
-import like from "../assets/coursesLike.svg";
-import dislike from "../assets/dislike.svg";
-import favorite from "../assets/favo.svg";
-import star from "../assets/star.svg";
-import profileimg from "../assets/profileimg.svg";
-import line from "../assets/line.svg";
-import newsPic from "../assets/newsPick.svg"
+import courses1 from "./../../assets/courses1.svg";
+import like from "./../../assets/coursesLike.svg";
+import dislike from "./../../assets/dislike.svg";
+import favorite from "./../../assets/favo.svg";
+import star from "./../../assets/star.svg";
+import profileimg from "./../../assets/profileimg.svg";
+import line from "./../../assets/line.svg";
+import newsPic from "./../../assets/newsPick.svg"
 
 const ArticlesList = () => {
   return (
