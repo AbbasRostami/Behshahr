@@ -8,6 +8,7 @@ import { RegisterForm } from "../components/RegisterForm";
 import { NewsArticles } from "../screens/NewsArticles";
 import { NotFound } from "../components/NotFound";
 import { Login } from "../screens/Login";
+import { ForgetPassword } from "../screens/ForgetPassword";
 
 
 const RoutesApp = createBrowserRouter([
@@ -45,7 +46,10 @@ const RoutesApp = createBrowserRouter([
         path:'/login',
         element: <Login />,
       },
-      
+      {
+        path:'/forget-password',
+        element: <ForgetPassword />,
+      },
     
       ]);
   
