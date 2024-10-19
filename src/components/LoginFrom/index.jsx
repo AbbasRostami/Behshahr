@@ -73,11 +73,11 @@ const LoginForm = () => {
         </Formik>
 
        
-
+      <Link to='/'>
         <button className="ml-7 w-[22rem] h-[3.4rem] border-solid border-[1.7px] border-[#158B68] rounded-xl mt-[0.7rem] bg-[#fff] ">
           بازگشت به صفحه اصلی
         </button>
-  
+        </Link>
       
       </div>
     </div>

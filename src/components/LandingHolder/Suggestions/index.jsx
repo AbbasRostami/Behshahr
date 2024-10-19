@@ -23,7 +23,7 @@ const Suggestions = () => {
             
                 <Formik>
                    <Form >
-                                <div className=' flex flex-col items-center h-[18rem] relative'> 
+                                <div className=' flex flex-col items-end h-full'> 
 
                                     <Field className="bg-[#FBF6F6] rtl placeholder-TextGray h-[50px] w-[500px] border-solid border-2 border-TextGreen rounded-md "
                                         placeholder="  نام و نام خانواگی"
@@ -37,11 +37,15 @@ const Suggestions = () => {
 
                                     <Field className="bg-[#FBF6F6] rtl placeholder-TextGray items-start h-[110px] w-[500px] border-solid border-2 border-TextGreen rounded-md "
                                         placeholder="  متن..."
+                                        rows="2"
+                 as="textarea"
                                     >
                                     </Field>
 
+
+
                                     <button class="w-[100px] h-[40px]
-                                     text-[#21394B] bg-BgGreen rounded-lg absolute right-0 bottom-0">ارسال</button>
+                                    //  text-[#21394B] bg-BgGreen rounded-lg mt-8">ارسال</button>
 
                                 </div>
                    </Form>

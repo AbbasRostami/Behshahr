@@ -45,7 +45,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <img className="mt-8 pl-16" src={LineFooter} alt="" />
+        <img className="mt-8 pl-40" src={LineFooter} alt="" />
 
         <div className="flex justify-around items-center mt-4">
           <div className="flex justify-center items-center mr-96">

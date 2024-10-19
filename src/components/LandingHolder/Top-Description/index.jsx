@@ -3,7 +3,7 @@ import topLogo from "./../../../assets/svg/Landing/toplogo.svg"
 
 const TopDescription = () => {
   return (
-    <div class="bg-gradient-to-br from-emerald-300/85 from-35% to-white">
+    <div class="bg-gradient-to-r from-green-300 to-gray-50">
 
         <div class="container mx-auto flex items-center ">
             
