@@ -13,7 +13,7 @@ import { Footer } from '../../components/common/Footer'
 const Landing = () => {
   return (
     <>
-        
+        <div className='dark:bg-slate-900'>
         <Header />
         <TopDescription />
         <OurServices />
@@ -24,7 +24,7 @@ const Landing = () => {
         <NewsArticles />
         <Suggestions />
         <Footer />
-
+        </div>
     </>
   )
 }

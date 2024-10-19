@@ -9,7 +9,7 @@ import Address from "./../../assets/svg/aboutUs/IconAddress.svg";
 const AboutForm = () => {
   return (
     <>
-    <div className="from-emerald-300/85 from-35% to-white">
+    <div className="from-emerald-300/85 from-35% to-white ">
       <Header />
       </div>
       <div className="flex justify-around items-center px-28">

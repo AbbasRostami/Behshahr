@@ -7,7 +7,7 @@ const Suggestions = () => {
   return (
    <>
    
-   <div class="text-center leading-10 mt-24">
+   <div class="text-center leading-10 mt-24 dark:text-white">
         <p class="text-[35px] font-xl">پیشنهادات و انتقادات</p>
         <p class="leading-10 mt-3">نظرات خود را با ما درمیان بگذارید</p>
     </div>
@@ -45,7 +45,7 @@ const Suggestions = () => {
 
 
                                     <button class="w-[100px] h-[40px]
-                                    //  text-[#21394B] bg-BgGreen rounded-lg mt-8">ارسال</button>
+                                    //  text-[#21394B] bg-BgGreen dark:bg-gray-800 dark:text-white rounded-lg mt-8">ارسال</button>
 
                                 </div>
                    </Form>
