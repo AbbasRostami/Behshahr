@@ -12,7 +12,7 @@ const Professionals = () => {
 <div className='flex justify-center items-center relative bg-gradient-to-br from-emerald-300/75 from-35% to-white h-[600px] mt-16 '>
 
 
-    <div class=" absolute top-[2rem] left-[40rem] text-center ">
+    <div class=" absolute top-[2rem] left-[45rem] text-center items-center">
         <p class="text-[35px] font-bold text-TextGray">حرفه ای های ما</p>
         <p class="leading-10 text-TextGray">ساختن دنیایی بهتر، یک دوره در یک زمان</p>
     </div>
