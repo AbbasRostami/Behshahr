@@ -113,12 +113,7 @@ const LoginForm = () => {
               type="text"
               name="password"
             />
-            <Field
-              className="h-[2px] w-[2px]"
-              type="checkbox"
-              name="rememberMe"
-              placeholder="مرا به خاطر بسپار"
-            />
+
             <button
               className="w-[22rem] h-[3.4rem] bg-[#158B68] rounded-xl mt-[4.2rem] ml-7 text-[#ffff]"
               type="submit"  onClick={()=>setShow(!show)}
@@ -131,16 +126,17 @@ const LoginForm = () => {
        <Link to='/'> <button className="w-[22rem] h-[3.4rem] border-solid border-[1.7px] border-[#158B68] rounded-xl mt-[0.7rem] bg-[#fff] ml-7">
           بازگشت به صفحه اصلی
         </button></Link>
-        <h4 className="text-xs text-[#22445D] absolute left-[51rem] top-[32rem] cursor-pointer">
+        <h4 className="text-xs text-[#22445D] absolute left-[58rem] top-[32rem] cursor-pointer">
           {" "}
           فراموشی رمز
         </h4>
-        <Link to='/register'><h3 className="text-xs text-[#22445D] absolute left-[63rem] top-[32rem] cursor-pointer">
+        <Link to='/register'><h3 className="text-xs text-[#22445D] absolute left-[67rem] top-[32rem] cursor-pointer">
           یک حساب کاربری ایجاد کنید
         </h3></Link>
-        <h2 className="text-[12px] text-[#22445D] absolute right-[26.5rem] top-[20.2rem] cursor-pointer">
+        <h2 className="text-[12px] text-[#22445D] absolute right-[30.5rem] top-[20.2rem] cursor-pointer">
           مرا به خاطر بسپار
         </h2>
+        
       </div>
     </div>
 
