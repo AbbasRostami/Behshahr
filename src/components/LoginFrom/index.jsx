@@ -135,9 +135,9 @@ const LoginForm = () => {
           {" "}
           فراموشی رمز
         </h4>
-        <h3 className="text-xs text-[#22445D] absolute left-[63rem] top-[32rem] cursor-pointer">
+        <Link to='/register'><h3 className="text-xs text-[#22445D] absolute left-[63rem] top-[32rem] cursor-pointer">
           یک حساب کاربری ایجاد کنید
-        </h3>
+        </h3></Link>
         <h2 className="text-[12px] text-[#22445D] absolute right-[26.5rem] top-[20.2rem] cursor-pointer">
           مرا به خاطر بسپار
         </h2>

@@ -9,7 +9,8 @@ const Header = () => {
   <div class="bg-emerald-300/85">
     <div class="flex justify-between items-center container mx-auto px-20 h-20">
     <div class="flex justify-center items-center">
-    <button class="text-[#22445D] bg-[#00DF9D] rounded-lg cursor-pointer p-2">ورود / ثبت نام</button>
+    
+    <Link to='/login'><button class="text-[#22445D] bg-[#00DF9D] rounded-lg cursor-pointer p-2">ورود / ثبت نام</button></Link>
       <div class=""><img src={seachIcon} alt="" /></div>
     </div>
 
