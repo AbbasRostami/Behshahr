@@ -6,11 +6,11 @@ import login2Pick from "../../assets/login2Pic.svg";
 import home from "../../assets/home.svg";
 import loginPick from "../../assets/loginPick.svg";
 import { useState } from 'react';
+import { loginAPI } from '../../core/api/auth';
 
 
 const LoginForm = () => {
 
-    const loginHandler = () => {
         const loginHandler = async (values) => {
           console.log(values);
       
@@ -21,7 +21,7 @@ const LoginForm = () => {
         };
       
         
-    }
+    
 
     const [show, setShow] = useState(false);
   return (
