@@ -5,7 +5,6 @@ import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Field, Form, Formik } from "formik";
 
-import { Footer } from "../common/Footer";
 import articlePic3 from "./../../assets/articlePic33.svg";
 import articlePic2 from "./../../assets/svg/ArticlesDetails/artilclePic2.svg";
 import courses1 from "./../../assets/svg/ArticlesDetails/courses1.svg";
@@ -17,20 +16,20 @@ import line from "./../../assets/svg/ArticlesDetails/line.svg";
 import mrSmith from "./../../assets/svg/ArticlesDetails/mrSmith.svg";
 import profileimg from "./../../assets/svg/ArticlesDetails/profileimg.svg";
 import starRating from "./../../assets/svg/ArticlesDetails/StarRating.svg";
-import { HeaderUserlogin } from "./../common/HeaderUserLogin";
+
 
 
 
 const CoursesDetailsForm = () => {
   return (
     <>
-    <HeaderUserlogin />
+    
     
 
     <div className="flex flex-row-reverse px-16 py-[70px] gap-5">
 
     <div>
-        <div className="min-h-screen bg-[#FBF6F6] rounded-md flex justify-center p-6 rtl">
+        <div className="min-h-screen bg-[#FBF6F6] dark:bg-gray-800 rounded-md flex justify-center p-6 rtl">
       <div className="flex flex-col w-full min-w-[300px]  gap-6">
         <div className=" flex-col rounded-md flex items-center justify-center p-6 ">
           <img
@@ -42,23 +41,23 @@ const CoursesDetailsForm = () => {
 
         <div className="flex flex-col rounded-md gap-6">
           <div>
-            <div className="bg-white p-6 rounded-md gap-5 shadow-md flex flex-col justify-between">
+            <div className="bg-white p-6 dark:text-white dark:bg-gray-700 rounded-md gap-5 shadow-md flex flex-col justify-between">
               <div className="flex flex-row">
                 <h1 className="font-bold text-lg w-full">عنوان دوره</h1>
 
                 <div className="flex flex-row-reverse gap-4 w-full">
-                  <button className="text-gray-500 hover:text-green-500">
+                  <button className="text-gray-500  hover:text-green-500">
                     <img src={like} />
                   </button>
-                  <button className="text-gray-500 hover:text-red-500">
+                  <button className="text-gray-500  hover:text-red-500">
                     <img src={dislike} />
                   </button>
-                  <button className="text-gray-500 hover:text-yellow-500">
+                  <button className="text-gray-500  hover:text-yellow-500">
                     <img src={starRating} />
                   </button>
                 </div>
               </div>
-              <div className="text-gray-700 ">
+              <div className="text-gray-700 dark:text-white ">
               لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود. تکه های لاتین متن نشان می دهد که یک پروژه در حال توسعه است. لورم ایپسوم فقط برای توسعه دهندگان وب نیست. طراحان گرافیک نیز از آن با نرم افزارهای مختلفی مانند فوتوشاپ استفاده می کنند. لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود. تکه های لاتین متن نشان می دهد که یک پروژه در حال توسعه است. لورم ایپسوم فقط برای توسعه دهندگان وب نیست. طراحان گرافیک نیز از آن با نرم افزارهای مختلفی مانند فوتوشاپ استفاده می کنند.
 
 لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود. تکه های لاتین متن نشان می دهد که یک پروژه در حال توسعه است. لورم ایپسوم فقط برای توسعه دهندگان وب نیست. طراحان گرافیک نیز از آن با نرم افزارهای مختلفی مانند فوتوشاپ استفاده می کنند.
@@ -66,7 +65,7 @@ const CoursesDetailsForm = () => {
             </div>
           </div>
 
-          <div className="bg-white p-6 flex-col rounded-md shadow-md">
+          <div className="bg-white dark:bg-gray-700 dark:text-white p-6 flex-col rounded-md shadow-md">
             <h2 className="font-bold text-lg mb-4">ویدیوهای دوره</h2>
             <div className=" flex-col rounded-md flex items-center justify-center p-6 ">
               <img
@@ -82,12 +81,12 @@ const CoursesDetailsForm = () => {
               </div>
 
               <div className="flex justify-between items-center border-b pb-3 gap-20">
-                <li className="border-b pb-3">ویدیو دوم  : آشنایی با جاوا اسکریپت</li>
+                <li className=" pb-3">ویدیو دوم  : آشنایی با جاوا اسکریپت</li>
                 <img className="pl-6" src={download} />
               </div>
 
               <div className="flex justify-between items-center border-b pb-3 gap-20">
-                <li className="border-b pb-3">ویدیو دوم  : آشنایی با جاوا اسکریپت</li>
+                <li className=" pb-3">ویدیو دوم  : آشنایی با جاوا اسکریپت</li>
                 <img className="pl-6" src={download} />
               </div>
 
@@ -95,7 +94,7 @@ const CoursesDetailsForm = () => {
             </ul>
           </div>
 
-          <div className="bg-white p-6 flex-col rounded-md shadow-md">
+          <div className="bg-white dark:bg-gray-700 p-6 flex-col rounded-md shadow-md">
           <Formik
         initialValues={{ title: '', text: '' }}
         onSubmit={(values) => {
@@ -103,17 +102,17 @@ const CoursesDetailsForm = () => {
         }}
       >
         {() => (
-          <Form className="flex flex-col gap-4">
+          <Form className="flex flex-col gap-4 ">
             <div className="flex  rounded-md ">
             <button
                 type="button"
-                className="w-1/2 py-2 border border-[#A4F6DE] rounded-r-lg text-center "
+                className="w-1/2 py-2 border border-[#A4F6DE] rounded-r-lg text-center dark:text-white "
               >
                 نظرات کاربران
               </button>
               <button
                 type="button"
-                className="w-1/2 h-16 py-2 text-center rounded-l-lg bg-[#A4F6DE]"
+                className="w-1/2 h-16 py-2 text-center rounded-l-lg bg-[#A4F6DE] dark:bg-gray-800 dark:text-white "
               >
                 ثبت نظر
               </button>
@@ -137,7 +136,7 @@ const CoursesDetailsForm = () => {
 
             <button
               type="submit"
-              className="py-5 text-xl bg-BgGreen text-black rounded-md"
+              className="py-5 text-xl bg-BgGreen dark:bg-gray-800 dark:text-white text-black rounded-md"
             >
               ثبت کردن
             </button>
@@ -153,10 +152,10 @@ const CoursesDetailsForm = () => {
       
 
         <div>
-        <div className="min-h-screen w-full bg-[#FBF6F6] rounded-md flex justify-center p-6 rtl">
+        <div className="min-h-screen w-full bg-[#FBF6F6] dark:bg-gray-800 rounded-md flex justify-center p-6 rtl">
       <div className="flex flex-col w-full min-w-64 gap-6">
         {" "}
-        <div className="flex flex-col bg-white p-4 gap-2 rounded-md  text-[#12926C]">
+        <div className="flex flex-col bg-white  dark:bg-gray-700 dark:text-white p-4 gap-2 rounded-md  text-[#12926C]">
           <p>مدرس دوره : استاد </p>
           <p>هزینه تمام دوره : 3.000.000 </p>
           <p>تکنولوژی دوره : نام تکنولوژی </p>
@@ -164,23 +163,23 @@ const CoursesDetailsForm = () => {
           <p>ظرفیت دوره : 50 نفر</p>
           <p>وضعیت دوره : شروع ثبت نام</p> 
         </div>
-        <div className="bg-white p-4 space-y-2 rounded-md  text-[#12926C]">
+        <div className="bg-white  dark:bg-gray-700 dark:text-white p-4 space-y-2 rounded-md  text-[#12926C]">
           <p>مدت زمان :</p>
           <p>تعداد ویدیوها :</p>
           <p>تعداد نظرات :</p>
           <p>امتیاز دوره : 4.5</p>
         </div>
-        <div className="bg-white p-4 space-y-2 rounded-md  text-[#12926C]">
+        <div className="bg-white  dark:bg-gray-700 dark:text-white p-4 space-y-2 rounded-md  text-[#12926C]">
           <p>تاریخ بروزرسانی :</p>
           <p>شروع دوره :</p>
           <p>پایان دوره :</p>
         </div>
         <div className="md:col-span-2">
-          <button className="w-full bg-[#5BE1B9] text-black py-3 rounded-md shadow-lg text-center">
+          <button className="w-full bg-[#5BE1B9] dark:bg-gray-500 dark:text-white text-black py-3 rounded-md shadow-lg text-center">
             رزرو دوره
           </button>
         </div>
-        <div className="bg-white rounded-md  flex items-center gap-4  p-4">
+        <div className="bg-white  dark:bg-gray-700 dark:text-white rounded-md  flex items-center gap-4  p-4">
           <div className="space-y-4">
             <h3 className="pr-16">درباره استاد</h3>
             <div className="flex flex-row gap-3 pr-6">
@@ -191,9 +190,9 @@ const CoursesDetailsForm = () => {
                 />
               </div>
 
-              <h3 className="text-lg text-[#8C9F9A] pt-1">جان اسمیت</h3>
+              <h3 className="text-lg text-gray-700 dark:text-white pt-1">جان اسمیت</h3>
             </div>
-            <p className="text-xs text-[#6D6767]">
+            <p className="text-xs text-[#6D6767] dark:text-white">
               لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط
               توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود .
             </p>
@@ -522,7 +521,7 @@ const CoursesDetailsForm = () => {
     </Swiper>
 
 
-    <Footer />
+    
     </>
   )
 }
