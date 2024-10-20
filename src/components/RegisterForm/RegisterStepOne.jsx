@@ -9,17 +9,18 @@ import registerStepOne from "../../assets/registerStepOne.svg"
 import registerStepTwo from "../../assets/registerStepTwo.svg"
 import registerStepThree from "../../assets/registerStepThree.svg"
 import { useState } from 'react';
+import { RegisterApi } from '../../core/api/register';
 
 
 
 const RegisterStepOne = () => {
 
-        const loginHandler = async (values) => {
+        const registerHandler = async (values) => {
           console.log(values);
       
           const body = values;
       
-          const response = await loginAPI(body);
+          const response = await RegisterApi(body);
           console.log(response);
         };
       
@@ -30,7 +31,7 @@ const RegisterStepOne = () => {
   return (
     <>
 
-
+{/* 
 {show ? 
 
 <div className="flex  m-auto h-[32rem] w-[50rem] mt-[5rem] ">
@@ -154,7 +155,7 @@ const RegisterStepOne = () => {
       </div>
     </div>
 
-&&
+&& */}
 
 
 <div className="flex  m-auto h-[32rem] w-[50rem] mt-[5rem] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)]">
@@ -169,8 +170,8 @@ const RegisterStepOne = () => {
           ثبت نام 
         </h2>
         <Formik
-          onSubmit={loginHandler}
-          initialValues={{ phoneOrGmail: "", password: "", rememberMe: true }}
+          onSubmit={registerHandler}
+          initialValues={{ phoneOrGmail: "",  rememberMe: true }}
         >
           <Form>
             <Field
@@ -207,7 +208,7 @@ const RegisterStepOne = () => {
 
 
 
-}
+
        
 
 
