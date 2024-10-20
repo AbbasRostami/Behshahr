@@ -34,13 +34,13 @@ const LoginForm = () => {
 
 
 
-<div className="flex  m-auto h-[32rem] w-[50rem] mt-[5rem]">
-      <div onClick={()=>setShow(!show)} className="bg-[#A4F6DE] relative left-[1px] w-[25rem] rounded-l-lg">
+<div className="flex  m-auto h-[32rem] w-[50rem] mt-[5rem] ">
+      <div onClick={()=>setShow(!show)} className="bg-[#A4F6DE] relative left-[1px] w-[25rem] rounded-l-lg ">
         <img className="m-auto h-[31rem]" src={login2Pick} alt="" />
       </div>
       
 
-      <div className="w-[25rem] bg-[#eeeaea] rounded-r-lg">
+      <div className="w-[25rem] bg-[#eeeaea] rounded-r-lg shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] ">
         <img src={home} alt="" />
         <h2 className="text-right mr-6 text-[#22445D] mt-[2.5rem] text-[23px]">
           ورود به سیستم
@@ -85,13 +85,13 @@ const LoginForm = () => {
 : 
 
 
-<div className="flex  m-auto h-[32rem] w-[50rem] mt-[5rem] ">
+<div className="flex  m-auto h-[32rem] w-[50rem] mt-[5rem] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)]">
       <div className="bg-[#A4F6DE] relative left-[1px] w-[25rem] rounded-l-lg ">
         <img className="m-auto h-[31rem]" src={loginPick} alt="" />
       </div>
       
 
-      <div className="w-[25rem] bg-[#eeeaea] rounded-r-lg ">
+      <div className="w-[25rem] bg-[#eeeaea] rounded-r-lg shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] ">
         <img src={home} alt="" />
         <h2 className="text-right mr-6 text-[#22445D] mt-[1.5rem] text-[23px]">
           ورود به سیستم

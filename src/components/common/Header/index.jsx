@@ -24,8 +24,8 @@ const Header = () => {
     </div>
 
     <div class="flex justify-center items-center dark:text-white">
-      <span class="cursor-pointer">آکادمی اچ وان</span>
-      <div ><img class="h-10" src={logoLanding} alt=""/></div>
+    <Link to='/'><span class="cursor-pointer">آکادمی اچ وان</span></Link>
+    <Link to='/'><img class="h-10 cursor-pointer" src={logoLanding} alt=""/></Link>
     </div>
  
 </div>

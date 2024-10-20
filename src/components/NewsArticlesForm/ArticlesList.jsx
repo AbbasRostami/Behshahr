@@ -12,7 +12,7 @@ const ArticlesList = () => {
     <>
 
           <div className="flex justify-around items-center w-[22rem] ">
-            <div className="  flex justify-around items-center rounded-3xl ">
+            <div className="flex justify-around items-center rounded-3xl ">
               <div className="relative h-[540px] w-[370px] text-center rounded-[1.5rem] mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen ">
                 <div>
                   <img

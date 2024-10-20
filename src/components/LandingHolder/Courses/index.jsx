@@ -13,6 +13,8 @@ import like from "./../../../assets/svg/Landing/CoursesLike.svg"
 import profileimg from "./../../../assets/svg/Landing/ProfileImage.svg"
 import starRating from "./../../../assets/svg/Landing/StarRating.svg"
 import line from "./../../../assets/svg/Landing/Line.svg"
+
+
 const Courses = () => {
   return (
     <>
@@ -334,6 +336,9 @@ const Courses = () => {
 
             </div>
         </SwiperSlide>
+
+
+
     </Swiper>
 
       <div className='flex justify-center items-center mt-2 '>
