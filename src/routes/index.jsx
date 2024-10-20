@@ -9,6 +9,7 @@ import { NewsArticles } from "../screens/NewsArticles";
 import { NotFound } from "../components/NotFound";
 import { Login } from "../screens/Login";
 import { ForgetPassword } from "../screens/ForgetPassword";
+import { RegisterStepOne } from "../components/RegisterForm/RegisterStepOne";
 
 
 const RoutesApp = createBrowserRouter([
@@ -49,6 +50,10 @@ const RoutesApp = createBrowserRouter([
       {
         path:'/forget-password',
         element: <ForgetPassword />,
+      },
+      {
+        path:'/register-StepOne',
+        element: <RegisterStepOne />,
       },
     
       ]);
