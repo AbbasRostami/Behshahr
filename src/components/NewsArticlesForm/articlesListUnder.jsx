@@ -20,7 +20,7 @@ const ArticlesListUnder = () => {
     
     
     
-     <div class="text-center leading-10 mt-14">
+    <div class="text-center leading-10 mt-14 dark:text-white">
         <p class="text-[35px] font-bold">اخبار و مقالات</p>
         <p class="leading-10">ساختن دنیایی بهتر، یک دوره در یک زمان</p>
     </div>
@@ -35,7 +35,7 @@ const ArticlesListUnder = () => {
 
             <div className="  flex justify-around items-center rounded-3xl ">
 
-      <div className='relative h-[540px] w-[370px] text-center rounded-[1.5rem] mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen '>
+      <div className='relative h-[540px] w-[370px] text-center rounded-[1.5rem] mt-11 dark:bg-gray-800 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen '>
   
           <div>
             <img className='p-0 object-cover h-full w-full' src={newsPic} alt="" />
@@ -56,9 +56,9 @@ const ArticlesListUnder = () => {
                   
         </div>
 
-              <p className='rtl mt-3 text-[#1A1E21] text-xl rtl text-right px-5'>آشنایی با برنامه نویسی با وردپرس</p>
+              <p className='rtl mt-3 text-[#1A1E21] text-xl rtl text-right px-5 dark:text-white'>آشنایی با برنامه نویسی با وردپرس</p>
 
-        <div className='flex justify-between items-center mt-5 px-5'>
+        <div className='flex justify-between items-center mt-5 px-5 dark:text-white'>
 
           <div className='flex justify-center items-center '>
             <img src={starRating} alt="" />
@@ -72,12 +72,12 @@ const ArticlesListUnder = () => {
 
         </div>
 
-          <p className='rtl mt-5 px-5 leading-5 text-[#6D6767] text-xs text-right'> لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.  </p>
+          <p className='rtl mt-5 px-5 leading-5 text-[#6D6767] text-xs text-right dark:text-white'> لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.  </p>
 
                 <img className='mt-5 px-5' src={line} alt="" />
 
 
-          <p className='text-base  text-[#807A7A] mt-1'>مشاهده جزئیات</p>
+          <p className='text-base  text-[#807A7A] mt-1 dark:text-white'>مشاهده جزئیات</p>
 
 
 </div>
@@ -88,7 +88,7 @@ const ArticlesListUnder = () => {
 
             <div className="  flex justify-around items-center rounded-3xl ">
 
-<div className='relative h-[540px] w-[370px] text-center rounded-[1.5rem] mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen '>
+<div className='relative h-[540px] w-[370px] text-center rounded-[1.5rem] mt-11 dark:bg-gray-800 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen '>
 
     <div>
       <img className='p-0 object-cover h-full w-full' src={newsPic} alt="" />
@@ -109,9 +109,9 @@ const ArticlesListUnder = () => {
             
   </div>
 
-        <p className='rtl mt-3 text-[#1A1E21] text-xl rtl text-right px-5'>آشنایی با برنامه نویسی با وردپرس</p>
+        <p className='rtl mt-3 text-[#1A1E21] text-xl rtl text-right px-5 dark:text-white'>آشنایی با برنامه نویسی با وردپرس</p>
 
-  <div className='flex justify-between items-center mt-5 px-5'>
+  <div className='flex justify-between items-center mt-5 px-5 dark:text-white'>
 
     <div className='flex justify-center items-center '>
       <img src={starRating} alt="" />
@@ -125,12 +125,12 @@ const ArticlesListUnder = () => {
 
   </div>
 
-    <p className='rtl mt-5 px-5 leading-5 text-[#6D6767] text-xs text-right'> لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.  </p>
+    <p className='rtl mt-5 px-5 leading-5 text-[#6D6767] text-xs text-right dark:text-white'> لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.  </p>
 
           <img className='mt-5 px-5' src={line} alt="" />
 
 
-    <p className='text-base  text-[#807A7A] mt-1'>مشاهده جزئیات</p>
+    <p className='text-base  text-[#807A7A] mt-1 dark:text-white'>مشاهده جزئیات</p>
 
 
 </div>
@@ -140,7 +140,7 @@ const ArticlesListUnder = () => {
 
              <div className="  flex justify-around items-center rounded-3xl ">
 
-<div className='relative h-[540px] w-[370px] text-center rounded-[1.5rem] mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen '>
+<div className='relative h-[540px] w-[370px] text-center rounded-[1.5rem] mt-11 dark:bg-gray-800 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen '>
 
     <div>
       <img className='p-0 object-cover h-full w-full' src={newsPic} alt="" />
@@ -161,9 +161,9 @@ const ArticlesListUnder = () => {
             
   </div>
 
-        <p className='rtl mt-3 text-[#1A1E21] text-xl rtl text-right px-5'>آشنایی با برنامه نویسی با وردپرس</p>
+        <p className='rtl mt-3 text-[#1A1E21] text-xl rtl text-right px-5 dark:text-white'>آشنایی با برنامه نویسی با وردپرس</p>
 
-  <div className='flex justify-between items-center mt-5 px-5'>
+  <div className='flex justify-between items-center mt-5 px-5 dark:text-white'>
 
     <div className='flex justify-center items-center '>
       <img src={starRating} alt="" />
@@ -177,12 +177,12 @@ const ArticlesListUnder = () => {
 
   </div>
 
-    <p className='rtl mt-5 px-5 leading-5 text-[#6D6767] text-xs text-right'> لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.  </p>
+    <p className='rtl mt-5 px-5 leading-5 text-[#6D6767] text-xs text-right dark:text-white'> لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.  </p>
 
           <img className='mt-5 px-5' src={line} alt="" />
 
 
-    <p className='text-base  text-[#807A7A] mt-1'>مشاهده جزئیات</p>
+    <p className='text-base  text-[#807A7A] mt-1 dark:text-white'>مشاهده جزئیات</p>
 
 
 </div>
@@ -200,7 +200,7 @@ const ArticlesListUnder = () => {
 
             <div className="  flex justify-around items-center rounded-3xl ">
 
-      <div className='relative h-[540px] w-[370px] text-center rounded-[1.5rem] mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen '>
+      <div className='relative h-[540px] w-[370px] text-center rounded-[1.5rem] mt-11 dark:bg-gray-800 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen '>
   
           <div>
             <img className='p-0 object-cover h-full w-full' src={newsPic} alt="" />
@@ -221,9 +221,9 @@ const ArticlesListUnder = () => {
                   
         </div>
 
-              <p className='rtl mt-3 text-[#1A1E21] text-xl rtl text-right px-5'>آشنایی با برنامه نویسی با وردپرس</p>
+              <p className='rtl mt-3 text-[#1A1E21] text-xl rtl text-right px-5 dark:text-white'>آشنایی با برنامه نویسی با وردپرس</p>
 
-        <div className='flex justify-between items-center mt-5 px-5'>
+        <div className='flex justify-between items-center mt-5 px-5 dark:text-white'>
 
           <div className='flex justify-center items-center '>
             <img src={starRating} alt="" />
@@ -237,12 +237,12 @@ const ArticlesListUnder = () => {
 
         </div>
 
-          <p className='rtl mt-5 px-5 leading-5 text-[#6D6767] text-xs text-right'> لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.  </p>
+          <p className='rtl mt-5 px-5 leading-5 text-[#6D6767] text-xs text-right dark:text-white'> لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.  </p>
 
                 <img className='mt-5 px-5' src={line} alt="" />
 
 
-          <p className='text-base  text-[#807A7A] mt-1'>مشاهده جزئیات</p>
+          <p className='text-base  text-[#807A7A] mt-1 dark:text-white'>مشاهده جزئیات</p>
 
 
 </div>
@@ -253,7 +253,7 @@ const ArticlesListUnder = () => {
 
             <div className="  flex justify-around items-center rounded-3xl ">
 
-<div className='relative h-[540px] w-[370px] text-center rounded-[1.5rem] mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen '>
+<div className='relative h-[540px] w-[370px] text-center rounded-[1.5rem] mt-11 dark:bg-gray-800 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen '>
 
     <div>
       <img className='p-0 object-cover h-full w-full' src={newsPic} alt="" />
@@ -274,9 +274,9 @@ const ArticlesListUnder = () => {
             
   </div>
 
-        <p className='rtl mt-3 text-[#1A1E21] text-xl rtl text-right px-5'>آشنایی با برنامه نویسی با وردپرس</p>
+        <p className='rtl mt-3 text-[#1A1E21] text-xl rtl text-right px-5 dark:text-white'>آشنایی با برنامه نویسی با وردپرس</p>
 
-  <div className='flex justify-between items-center mt-5 px-5'>
+  <div className='flex justify-between items-center mt-5 px-5 dark:text-white'>
 
     <div className='flex justify-center items-center '>
       <img src={starRating} alt="" />
@@ -290,12 +290,12 @@ const ArticlesListUnder = () => {
 
   </div>
 
-    <p className='rtl mt-5 px-5 leading-5 text-[#6D6767] text-xs text-right'> لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.  </p>
+    <p className='rtl mt-5 px-5 leading-5 text-[#6D6767] text-xs text-right dark:text-white'> لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.  </p>
 
           <img className='mt-5 px-5' src={line} alt="" />
 
 
-    <p className='text-base  text-[#807A7A] mt-1'>مشاهده جزئیات</p>
+    <p className='text-base  text-[#807A7A] mt-1 dark:text-white'>مشاهده جزئیات</p>
 
 
 </div>
@@ -305,7 +305,7 @@ const ArticlesListUnder = () => {
 
              <div className="  flex justify-around items-center rounded-3xl ">
 
-<div className='relative h-[540px] w-[370px] text-center rounded-[1.5rem] mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen '>
+<div className='relative h-[540px] w-[370px] text-center rounded-[1.5rem] mt-11 dark:bg-gray-800 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen '>
 
     <div>
       <img className='p-0 object-cover h-full w-full' src={newsPic} alt="" />
@@ -326,9 +326,9 @@ const ArticlesListUnder = () => {
             
   </div>
 
-        <p className='rtl mt-3 text-[#1A1E21] text-xl rtl text-right px-5'>آشنایی با برنامه نویسی با وردپرس</p>
+        <p className='rtl mt-3 text-[#1A1E21] text-xl rtl text-right px-5 dark:text-white'>آشنایی با برنامه نویسی با وردپرس</p>
 
-  <div className='flex justify-between items-center mt-5 px-5'>
+  <div className='flex justify-between items-center mt-5 px-5 dark:text-white'>
 
     <div className='flex justify-center items-center '>
       <img src={starRating} alt="" />
@@ -342,12 +342,12 @@ const ArticlesListUnder = () => {
 
   </div>
 
-    <p className='rtl mt-5 px-5 leading-5 text-[#6D6767] text-xs text-right'> لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.  </p>
+    <p className='rtl mt-5 px-5 leading-5 text-[#6D6767] text-xs text-right dark:text-white'> لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.  </p>
 
           <img className='mt-5 px-5' src={line} alt="" />
 
 
-    <p className='text-base  text-[#807A7A] mt-1'>مشاهده جزئیات</p>
+    <p className='text-base  text-[#807A7A] mt-1 dark:text-white'>مشاهده جزئیات</p>
 
 
 </div>
@@ -359,8 +359,8 @@ const ArticlesListUnder = () => {
           
 </Swiper>
 
-    <div className='flex justify-center items-center mt-2'>
-           <button class="w-[220px] h-[60px] text-white bg-[#12926C] rounded-full ">مشاهده مقالات بیشتر</button>
+    <div className='flex justify-center items-center mt-2 '>
+           <button class="w-[220px] h-[60px] text-white bg-[#12926C] rounded-full dark:bg-gray-800">مشاهده مقالات بیشتر</button>
       </div>
     
     
