@@ -1,14 +1,14 @@
-import http from "../interceptor";
+// import http from "../interceptor";
 
-export const ForgetPasswordApi = async (user2) => {
-    try {
-        const response2 = await http.post("/Sign/ForgetPassword", user2);
+// export const ForgetPasswordApi = async (body) => {
+//     try {
+//         const response = await http.post(`/Sign/ForgetPassword`, body);
 
-        return response2;
+//         return response;
         
-    } catch (error) {
-        return false;
-    }
-    console.log(user2);
+//     } catch (error) {
+//         return false;
+//     }
     
-} 
+// } 
+

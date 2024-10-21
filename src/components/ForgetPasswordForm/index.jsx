@@ -3,6 +3,10 @@ import forgetPassword  from './../../assets/forgetPassword.svg'
 import forgetPassword2 from './../../assets/forgetPassword2.svg'
 import home from './../../assets/home.svg'
 import { Field, Form, Formik } from "formik";
+import { ForgetPasswordApi } from '../../core/api/resetPassword';
+import { postResetPassword } from '../../core/api/resetPassword';
+import { getResetPass } from '../../core/api/resetPassword';
+import { useEffect  } from 'react';
 
 
 const ForgetPasswordForm = () => {
@@ -12,18 +16,32 @@ const ForgetPasswordForm = () => {
 
     const body = values;
 
-    const response = await loginAPI(body);
+    const response = await ForgetPasswordApi(body);
     console.log(response);
   };
-
-  const forgetnHandler2 = async (values) => {
+  const resetnHandler = async (values) => {
     console.log(values);
 
     const body = values;
 
-    const response = await loginAPI(body);
+    const response = await postResetPassword(body);
     console.log(response);
   };
+
+  const [password, setPasword] = useState([]);
+  
+
+  const getResetPassApi = async () => {
+    const response = await getResetPass();
+    console.log(response);
+    if (response) {
+      setPasword(response);
+    }
+  };
+  useEffect(() => {
+    getResetPassApi();
+  }, []);
+
 
   const [show, setShow] = useState(false)
 
@@ -48,21 +66,21 @@ const ForgetPasswordForm = () => {
     ورود به سیستم
   </h2>
   <Formik
-    onSubmit={forgetnHandler2}
-    initialValues={{ phoneOrGmail: "", password: "", rememberMe: true }}
+    onSubmit={resetnHandler}
+    initialValues={{ phoneOrPass: "", phoneOrPassword: "", rememberMe: true }}
   >
     <Form>
       <Field
         placeholder="رمز  عبور       "
         className="border-solid border-2 ml-5 border-[#158B68] text-right rounded-xl  text-[#ABA7A7] w-[22rem] h-[3rem] mt-[1.6rem] "
         type="text"
-        name="phoneOrGmail"
+        name="phoneOrPass"
       />
           <Field
         placeholder="تکرار رمز  عبور         "
         className="border-solid border-2 ml-5 border-[#158B68] text-right rounded-xl  text-[#ABA7A7] w-[22rem] h-[3rem] mt-[1.6rem] "
         type="text"
-        name="phoneOrGmail"
+        name="phoneOrPassword"
       />
     
  
@@ -93,7 +111,7 @@ const ForgetPasswordForm = () => {
         </h2>
         <Formik
           onSubmit={forgetnHandler}
-          initialValues={{ phoneOrGmail: "", password: "", rememberMe: true }}
+          initialValues={{ phoneOrGmail: "", rememberMe: true }}
         >
           <Form>
             <Field
