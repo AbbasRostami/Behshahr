@@ -17,7 +17,7 @@ const StepTwo = () => {
 
     // const body = values;
 
-    const response = await PostRegisterApi2(body);
+    const response = await verifyMessage(body);
     console.log(response);
   };
 

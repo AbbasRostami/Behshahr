@@ -16,15 +16,9 @@ const StepThree = () => {
 
   //   const body = values;
 
-<<<<<<< HEAD
   //   const response3 = await PostRegisterApi3(body);
   //   console.log(response3);
   // };
-=======
-    const response = await PostRegisterApi3(body);
-    console.log(response);
-  };
->>>>>>> 614b8a3927c75c2033520fb0b578958f0a96aa37
 
 
   return (
