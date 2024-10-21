@@ -1,8 +1,8 @@
 import http from "../interceptor";
 
-export const PostRegisterApi = async (body) => {
+export const SendVerifyMessage = async (body) => {
     try {
-        const response = await http.post(`/Sign/SendVerifyMessage`, body);
+        const response = await http.post("/Sign/SendVerifyMessage", body);
 
         return response;
         
@@ -11,22 +11,21 @@ export const PostRegisterApi = async (body) => {
     }
     
 } 
-export const PostRegisterApi2 = async (body) => {
+export const verifyMessage = async (body) => {
     try {
-        const response2 = await http.post(`/Sign/VerifyMessage`, body);
-
-        return response2;
-        
+        const response = await http.post("/Sign/VerifyMessage", body)
+        return response
     } catch (error) {
-        return false;
+        return false
     }
-    
 } 
-export const PostRegisterApi3 = async (body) => {
-    try {
-        const response3 = await http.post(`/Sign/Register`, body);
 
-        return response3;
+
+export const finalregister = async (body) => {
+    try {
+        const response = await http.post(`/Sign/Register`, body);
+
+        return response;
         
     } catch (error) {
         return false;

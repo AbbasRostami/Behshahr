@@ -1,24 +1,36 @@
 import React from 'react'
 import registerStepTwo from "../../assets/registerStepTwo.svg"
-import { useState } from 'react';
 import home from "../../assets/home.svg";
 import { Field, Formik, Form } from "formik";
-import { Link } from "react-router-dom";
-import { PostRegisterApi2 } from '../../core/api/register';
+import { Link, useNavigate } from "react-router-dom";
+import { verifyMessage } from '../../core/api/register';
+
+const StepTwo = () => {
+
+  // const navigate = useNavigate()
 
 
-
-const StepTwo = ({setstep}) => {
+  
 
   const registerHandler2 = async (values) => {
-    console.log(values);
+    console.log('ارسال: ',values);
 
-    const body = values;
+    // const body = values;
 
-    const response2 = await PostRegisterApi2(body);
-    console.log(response2);
+    const userVerification = {
+      phoneNumber: "09111111111",
+      verifyCode: values.verificationCode
+  }
+    const response = await verifyMessage(userVerification);
+    console.log(response);
+
+
+    
+      // if (response.status === 200) {
+      //     navigate("/register-final")
+      // } else alert("این کاربر ثبت نام شده است")
+  
   };
-
 
   return (
     <div className="flex  m-auto h-[32rem] w-[50rem] mt-[5rem] ">
@@ -34,20 +46,20 @@ const StepTwo = ({setstep}) => {
   </h2>
   <Formik
     onSubmit={registerHandler2}
-    initialValues={{ phoneOrGmail: "", password: "", rememberMe: true }}
+    initialValues={{ verifyCode: "" }}
   >
     <Form>
       <Field
         placeholder="کد تایید    "
         className=" ml-7 border-solid border-2 border-[#158B68] text-right rounded-xl  text-[#ABA7A7] w-[22rem] h-[3rem] mt-[1.9rem] "
         type="text"
-        name="phoneOrGmail"
+        name="verifyCode"
       />
     
   
       <button
         className=" ml-7 w-[22rem] h-[3.4rem] bg-[#158B68] rounded-xl mt-[7rem] text-[#ffff]"
-        type="submit"  onClick={()=>setstep(3)}
+        type="submit"
       >
         ادامه
       </button>
