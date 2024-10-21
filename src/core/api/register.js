@@ -23,7 +23,7 @@ export const verifyMessage = async (body) => {
 
 export const finalregister = async (body) => {
     try {
-        const response = await http.post(`/Sign/Register`, body);
+        const response = await http.post("/Sign/Register", body);
 
         return response;
         

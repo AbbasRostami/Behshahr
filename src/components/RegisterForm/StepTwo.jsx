@@ -17,19 +17,8 @@ const StepTwo = () => {
 
     // const body = values;
 
-    const userVerification = {
-      phoneNumber: "09111111111",
-      verifyCode: values.verificationCode
-  }
-    const response = await verifyMessage(userVerification);
+    const response = await PostRegisterApi2(body);
     console.log(response);
-
-
-    
-      // if (response.status === 200) {
-      //     navigate("/register-final")
-      // } else alert("این کاربر ثبت نام شده است")
-  
   };
 
   return (
