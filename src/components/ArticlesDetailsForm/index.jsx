@@ -72,8 +72,12 @@ const ArticlesDetailsForm = () => {
               دهد که یک پروژه در حال توسعه است.
             </p>
           </div>
-          <div className="flex flex-row-reverse justify-between items-center">
-            <div className="flex flex-row-reverse gap-4">
+
+
+          <div className="flex justify-between items-center">
+
+            
+            <div className="flex justify-center items-center gap-4">
               <span>
                 {" "}
                 <img src={like} />
@@ -85,34 +89,44 @@ const ArticlesDetailsForm = () => {
                 <img src={starRating} />
               </span>
             </div>
-            <div className="flex flex-row gap-11 py-8">
-              <div className="flex flex-row-reverse gap-3">
-                <span className="text-[13px] text-[#126F94] w-full">
-                  نام نویسنده :{" "}
-                </span>
-                <img src={author} />
-              </div>
 
-              <div className="flex flex-row-reverse gap-3">
-                <span className="text-[13px] text-[#807A7A] w-full">1124</span>
+            <div className="flex justify-center items-center gap-11 py-8">
+              
+              
+
+              <div className="flex justify-center items-center gap-3">
+                <span className="text-[13px] text-[#807A7A] ">1124</span>
                 <img src={eye} />
               </div>
 
-              <div className="flex flex-row-reverse gap-3">
-                <span className="text-[13px] text-[#807A7A] w-full">
-                  مهر 1402
+              <div className="flex justify-center items-center gap-3">
+                <span className="text-[13px] text-[#807A7A] rtl">
+                  06 مهر 1402
                 </span>
                 <img src={calendar} />
               </div>
 
-              <div className="flex flex-row-reverse gap-3">
-                <span className="text-[13px] text-[#807A7A] w-full">
+              <div className="flex justify-center items-center gap-3">
+                <span className="text-[13px] text-[#807A7A] ">
                   کلمات کلیدی
                 </span>
                 <img src={key} />
               </div>
+
+              <div className="flex justify-center items-center gap-3">
+                <span className="text-[13px] text-[#126F94] ">
+                  نام نویسنده {" "}
+                </span>
+                <img src={author} />
+              </div>
+
             </div>
+
+            
+
+
           </div>
+          
         </div>
 
 
