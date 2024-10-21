@@ -4,10 +4,22 @@ import { useState } from 'react';
 import home from "../../assets/home.svg";
 import { Field, Formik, Form } from "formik";
 import { Link } from "react-router-dom";
+import { PostRegisterApi2 } from '../../core/api/register';
 
 
 
 const StepTwo = ({setstep}) => {
+
+  const registerHandler2 = async (values) => {
+    console.log(values);
+
+    const body = values;
+
+    const response2 = await PostRegisterApi2(body);
+    console.log(response2);
+  };
+
+
   return (
     <div className="flex  m-auto h-[32rem] w-[50rem] mt-[5rem] ">
 <div className="bg-[#A4F6DE] relative left-[1px] w-[25rem] rounded-l-lg ">
@@ -21,7 +33,7 @@ const StepTwo = ({setstep}) => {
     ثبت نام 
   </h2>
   <Formik
-    // onSubmit={loginHandler}
+    onSubmit={registerHandler2}
     initialValues={{ phoneOrGmail: "", password: "", rememberMe: true }}
   >
     <Form>

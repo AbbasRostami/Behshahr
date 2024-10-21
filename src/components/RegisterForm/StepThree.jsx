@@ -2,6 +2,7 @@ import React from 'react'
 import registerStepThree from "../../assets/registerStepThree.svg"
 import home from "../../assets/home.svg";
 import { useState } from 'react';
+import { PostRegisterApi3 } from '../../core/api/register';
 
 import { Field, Formik, Form } from "formik";
 import { Link } from "react-router-dom";
@@ -9,6 +10,17 @@ import { Link } from "react-router-dom";
 
 
 const StepThree = () => {
+
+  const registerHandler3 = async (values) => {
+    console.log(values);
+
+    const body = values;
+
+    const response3 = await PostRegisterApi3(body);
+    console.log(response3);
+  };
+
+
   return (
     <div className="flex  m-auto h-[32rem] w-[50rem] mt-[5rem] ">
 <div className="bg-[#A4F6DE] relative left-[1px] w-[25rem] rounded-l-lg ">
@@ -22,7 +34,7 @@ const StepThree = () => {
     ثبت نام 
   </h2>
   <Formik
-    // onSubmit={loginHandler}
+    onSubmit={registerHandler3}
     initialValues={{ phoneOrGmail: "", password: "", rememberMe: true }}
   >
     <Form>

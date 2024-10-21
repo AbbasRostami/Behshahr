@@ -4,9 +4,22 @@ import home from "../../assets/home.svg";
 import { Field, Formik, Form } from "formik";
 import { Link } from "react-router-dom";
 import { useState } from 'react';
+import { PostRegisterApi } from '../../core/api/register';
 
 
 const StepOne = ({setstep}) => {
+
+  
+  const registerHandler = async (values) => {
+    console.log(values);
+
+    const body = values;
+
+    const response = await PostRegisterApi(body);
+    console.log(response);
+  };
+
+
 
     
   return (
@@ -22,7 +35,7 @@ const StepOne = ({setstep}) => {
     ثبت نام 
   </h2>
   <Formik
-    // onSubmit={registerHandler}
+    onSubmit={registerHandler}
     initialValues={{ phoneOrGmail: "",  rememberMe: true }}
   >
     <Form>
@@ -36,7 +49,7 @@ const StepOne = ({setstep}) => {
           
       <button
         className="w-[22rem] h-[3.4rem] bg-[#158B68] rounded-xl mt-[7.2rem] ml-7 text-[#ffff]"
-        type="submit" onClick={()=> setstep(2)}
+        type="submit"  onClick={()=> setstep(2)}
       >
         ادامه
       </button>
