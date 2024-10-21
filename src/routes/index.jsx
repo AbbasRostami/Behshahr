@@ -15,6 +15,7 @@ import { Favorites } from "../components/MyCourses/favorites";
 import { MyComments } from "../components/MyCourses/myComments";
 import { ChangePassword } from "../components/MyCourses/changePassword";
 import { EditProfile } from "../components/MyCourses/editProfile";
+import { Dashbord } from "../components/MyCourses/dashbord";
 
 
 const RoutesApp = createBrowserRouter([
@@ -79,6 +80,10 @@ const RoutesApp = createBrowserRouter([
       {
         path: "/editProfile",
         element: <EditProfile />
+      },
+      {
+        path: "/dashbord",
+        element: <Dashbord />
       }
     
       ]);

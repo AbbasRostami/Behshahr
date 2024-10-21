@@ -14,10 +14,10 @@ const EditProfile = () => {
 
         <MainDashbord />
 
-        <div className="w-[71rem] h-[56.5rem] my-[1rem] gap-3 flex shrink justify-center border-[1px] bg-[#ffff] rounded-2xl shadow-2xl mr-[20rem]">
+        <div className="w-[71rem] h-[56.5rem] my-[1rem] gap-2 flex justify-center border-[1px] bg-[#ffff] rounded-2xl shadow-2xl mr-[10rem]">
           <div className="flex flex-col">
-            <div className="w-[17rem] h-[18rem] bg-[#FBF6F6] rounded-xl shadow-2xl border-[1px] my-[1.5rem]">
-              <div className="text-nowrap text-[#22445D] text-[8px] text-center bg-[#A4F6DE] h-[3.7rem] rounded-xl border-[1px]">
+            <div className="w-[17rem] h-[18rem] bg-[#FBF6F6] rounded-xl shadow-2xl border-[1px] my-[1.5rem] mr-[0.5rem]">
+              <div className="text-nowrap text-[#22445D] text-[8px] text-lg text-center bg-[#A4F6DE] h-[3.7rem] rounded-xl border-[1px]">
                 <h1 className="mt-[0.5rem]">عکس پروفایل</h1>
               </div>
 
@@ -27,20 +27,20 @@ const EditProfile = () => {
                 alt=""
               />
 
-              <button className="rounded-full bg-[#12926C] mx-[4rem] text-nowrap">
+              <button className="rounded-full bg-[#12926C] mx-[4rem] w-[8rem] h-[2.5rem] text-nowrap text-[#fff]">
                 ویرایش عکس
               </button>
             </div>
 
-            <div className="w-[17rem] h-[18rem] bg-[#FBF6F6] rounded-xl shadow-2xl border-[1px]">
-              <div className="text-nowrap text-[#22445D] text-[8px] text-center bg-[#A4F6DE] h-[3.7rem] rounded-xl border-[1px]">
+            <div className="w-[17rem] h-[18rem] bg-[#FBF6F6] rounded-xl shadow-2xl border-[1px] mr-[0.5rem]">
+              <div className="text-nowrap text-[#22445D] text-[8px] text-lg text-center bg-[#A4F6DE] h-[3.7rem] rounded-xl border-[1px]">
                 <h1 className="mt-[0.5rem]">امنیت</h1>
               </div>
             </div>
           </div>
 
-          <div className="w-[51rem] h-[54rem] bg-[#FBF6F6] rounded-xl shadow-2xl border-[1px] my-[1.5rem]">
-            <div className="text-nowrap text-[#22445D] text-[8px] text-center bg-[#A4F6DE] h-[3.7rem] rounded-xl border-[1px]">
+          <div className="w-[51rem] h-[54rem] bg-[#FBF6F6] rounded-xl shadow-2xl border-[1px] my-[1.5rem] ml-[1rem]">
+            <div className="text-nowrap text-[#22445D] text-[8px] text-lg text-center bg-[#A4F6DE] h-[3.7rem] rounded-xl border-[1px]">
               <h1 className="mt-[0.5rem]">مشخصات کاربر</h1>
             </div>
 
@@ -187,7 +187,7 @@ const EditProfile = () => {
               </div>
 
               <div className="w-[44.7rem] h-[3.8rem] mt-[1.6rem] mr-[3rem] text-nowrap text-center border-[2px] bg-[#158B68] rounded-lg">
-                <button className="w-[44.7rem] h-[3.8rem] text-lg bg-[#158B68]">
+                <button className="w-[44.7rem] h-[3.8rem] text-lg text-[#fff] bg-[#158B68]">
                   ثبت تغییرات
                 </button>
               </div>

@@ -124,17 +124,17 @@ const MyCourses = () => {
               <h2>پرداخت نشده</h2>
             </div>
 
-            <div className=" mx-[26rem] my-5">
-              <button className="rounded-full text-[#158B68] text-sm bg-[#BFF4E4]">
+            <div className=" mx-[26rem] my-5 flex justify-center gap-6">
+              <button className="rounded-full text-[#158B68] text-sm bg-[#BFF4E4] w-[2rem] h-[2rem]">
                 1
               </button>
-              <button className="rounded-full text-[#158B68] bg-[#FBF6F6] text-sm hover:[#BFF4E4]">
+              <button className="rounded-full text-[#158B68] bg-[#FBF6F6] text-sm">
                 2
               </button>
-              <button className="rounded-full text-[#158B68] bg-[#FBF6F6] text-sm hover:[#BFF4E4]">
+              <button className="rounded-full text-[#158B68] bg-[#FBF6F6] text-sm">
                 3
               </button>
-              <button className="rounded-full text-[#158B68] bg-[#FBF6F6] text-sm hover:[#BFF4E4]">
+              <button className="rounded-full text-[#158B68] bg-[#FBF6F6] text-sm">
                 4
               </button>
             </div>

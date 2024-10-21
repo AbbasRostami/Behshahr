@@ -21,9 +21,12 @@ const MainDashbord = () => {
         alt=""
       />
 
+      <Link to="/dashbord">
+
       <h2 className="text-[#158B68] text-xl text-nowrap top-[3rem] right-[9rem]">
         پیشخوان
       </h2>
+      </Link>
     </div>
 
     <div className="w-[3.2rem] h-[3.2rem] flex flex-nowrap gap-5 rounded-full bg-[#158B68]  mx-[4rem] my-[1.5rem]">

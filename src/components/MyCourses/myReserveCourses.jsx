@@ -16,7 +16,7 @@ const MyReserveCourses = () => {
 
         <div className="w-[70rem] h-[43rem] my-[1rem] border-[1px] bg-[#ffff] rounded-2xl shadow-2xl">
           <div className="w-[66rem] h-[40.5rem] mx-[2rem] my-[1.3rem] bg-[#FBF6F6] border-[1px] rounded-lg shadow-2xl">
-            <div className="text-nowrap text-[#22445D] text-[5px] bg-[#A4F6DE] h-[4.5rem] rounded-lg flex justify-end rtl gap-24 py-[1.5rem] px-[4rem]">
+            <div className="text-nowrap text-[#22445D] text-[5px] text-sm bg-[#A4F6DE] h-[4.5rem] rounded-lg flex justify-end rtl gap-24 py-[1.5rem] px-[4rem]">
               <h1>نام دوره</h1>
               <h1>نام استاد</h1>
               <h1>نام ترم</h1>
@@ -161,8 +161,8 @@ const MyReserveCourses = () => {
               </button>
             </div>
 
-            <div className=" mx-[26rem] my-5">
-              <button className="rounded-full text-[#158B68] text-sm bg-[#BFF4E4]">
+            <div className=" mx-[26rem] my-5 flex justify-center gap-6">
+              <button className="rounded-full text-[#158B68] text-sm bg-[#BFF4E4] w-[2rem] h-[2rem]">
                 1
               </button>
               <button className="rounded-full text-[#158B68] bg-[#FBF6F6] text-sm hover:[#BFF4E4]">

@@ -20,7 +20,7 @@ const ChangePassword = () => {
         <div className="w-[70rem] h-[43rem] my-[1rem] border-[1px] bg-[#ffff] rounded-2xl shadow-2xl">
           <div className="w-[66rem] h-[40.5rem] mx-[2rem] my-[1.3rem] bg-[#FBF6F6] border-[1px] rounded-lg shadow-2xl">
 
-            <div className="text-[#22445D] text-[7px] bg-[#A4F6DE] h-[4.5rem] rounded-lg flex justify-center py-[1.5rem]">
+            <div className="text-[#22445D] text-[7px] text-sm bg-[#A4F6DE] h-[4.5rem] rounded-lg flex justify-center py-[1.5rem]">
               <h1>تغییر رمز عبور</h1>
             </div>
 

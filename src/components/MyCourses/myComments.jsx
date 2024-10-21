@@ -26,7 +26,7 @@ const MyComments = () => {
           </div>
 
           <div className="w-[66rem] h-[35rem] mx-[2rem] my-[6.5rem] bg-[#FBF6F6] border-[1px] rounded-lg shadow-2xl">
-            <div className="text-nowrap text-[#22445D] text-[5px] bg-[#A4F6DE] h-[4.5rem] rounded-lg flex justify-end rtl gap-24 py-[1.5rem] px-[4rem]">
+            <div className="text-nowrap text-[#22445D] text-[5px] text-sm bg-[#A4F6DE] h-[4.5rem] rounded-lg flex justify-end rtl gap-24 py-[1.5rem] px-[4rem]">
               <h1>عنوان دوره</h1>
               <h1>عنوان نظر</h1>
               <h1>تعداد پاسخ</h1>
@@ -148,17 +148,17 @@ const MyComments = () => {
               </div>
             </div>
 
-            <div className=" mx-[26rem] my-5">
-              <button className="rounded-full text-[#158B68] text-sm bg-[#BFF4E4]">
+            <div className=" mx-[26rem] my-5 flex justify-center gap-6">
+              <button className="rounded-full text-[#158B68] text-sm bg-[#BFF4E4] w-[2rem] h-[2rem]">
                 1
               </button>
-              <button className="rounded-full text-[#158B68] bg-[#FBF6F6] text-sm hover:[#BFF4E4]">
+              <button className="rounded-full text-[#158B68] bg-[#FBF6F6] text-sm">
                 2
               </button>
-              <button className="rounded-full text-[#158B68] bg-[#FBF6F6] text-sm hover:[#BFF4E4]">
+              <button className="rounded-full text-[#158B68] bg-[#FBF6F6] text-sm">
                 3
               </button>
-              <button className="rounded-full text-[#158B68] bg-[#FBF6F6] text-sm hover:[#BFF4E4]">
+              <button className="rounded-full text-[#158B68] bg-[#FBF6F6] text-sm">
                 4
               </button>
             </div>
