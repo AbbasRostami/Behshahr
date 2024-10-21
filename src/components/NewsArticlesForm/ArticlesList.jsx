@@ -6,10 +6,49 @@ import star from "./../../assets/star.svg";
 import profileimg from "./../../assets/profileimg.svg";
 import line from "./../../assets/line.svg";
 import newsPic from "./../../assets/newsPick.svg"
+import { getArticlesListTop } from "../../core/api/getArticlesList";
+import { useEffect , useState } from "react";
 
 const ArticlesList = () => {
+
+  
+  const [data, setData] = useState([]);
+  
+
+  const getArticlesTop = async () => {
+    const response2 = await getArticlesListTop();
+    console.log(response2);
+    if (response2) {
+      setData(response2);
+    }
+  };
+  useEffect(() => {
+    getArticlesTop();
+  }, []);
+
+
   return (
     <>
+
+
+{/* {data?.length
+              ? data?.map((item ,index) => {
+                
+                  return (
+                    <div key={index}>
+                      <p>{item?.PageNumber}</p>
+                      <p>{item?.rowsPage}</p>
+                      <p>{item?.query}</p>
+                      <p>{item?.SortType}</p>
+                      <p>{item?.SortingCol}</p>
+                    </div>
+                    
+                  );
+                  
+                })
+                
+              : null} */}
+              
 
           <div className="flex justify-around items-center w-[22rem] ">
             <div className="flex justify-around items-center rounded-3xl ">

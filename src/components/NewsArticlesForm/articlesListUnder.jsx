@@ -7,6 +7,9 @@ import line from "./../../assets/line.svg";
 import newsPic from "./../../assets/newsPick.svg";
 import profileimg from "./../../assets/profileimg.svg";
 import starRating from './../../assets/svg/Landing/StarRating.svg'
+import { getArticlesList } from '../../core/api/getArticlesList';
+import { useEffect , useState } from "react";
+
 
 // import Swiper core and required modules
 import 'swiper/css';
@@ -15,10 +18,45 @@ import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 const ArticlesListUnder = () => {
+
+  const [data, setData] = useState([]);
+  
+
+  const getArticles = async () => {
+    const response = await getArticlesList();
+    console.log(response);
+    if (response) {
+      setData(response);
+    }
+  };
+  useEffect(() => {
+    getArticles();
+  }, []);
+
+
   return (
     <>
     
     
+{/* {data?.length
+              ? data?.map((item ,index) => {
+                
+                  return (
+                    <div key={index}>
+                      <p>{item?.PageNumber}</p>
+                      <p>{item?.rowsPage}</p>
+                      <p>{item?.query}</p>
+                      <p>{item?.SortType}</p>
+                      <p>{item?.SortingCol}</p>
+                    </div>
+                    
+                  );
+                  
+                })
+                
+              : null}
+
+     */}
     
     <div class="text-center leading-10 mt-14 dark:text-white">
         <p class="text-[35px] font-bold">اخبار و مقالات</p>
