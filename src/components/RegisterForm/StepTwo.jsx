@@ -15,8 +15,8 @@ const StepTwo = ({setstep}) => {
 
     const body = values;
 
-    const response2 = await PostRegisterApi2(body);
-    console.log(response2);
+    const response = await PostRegisterApi2(body);
+    console.log(response);
   };
 
 

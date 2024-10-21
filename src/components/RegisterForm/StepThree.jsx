@@ -16,8 +16,8 @@ const StepThree = () => {
 
     const body = values;
 
-    const response3 = await PostRegisterApi3(body);
-    console.log(response3);
+    const response = await PostRegisterApi3(body);
+    console.log(response);
   };
 
 
