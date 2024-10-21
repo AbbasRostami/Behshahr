@@ -1,15 +1,15 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 
-import counter from "../../assets/counter.svg";
-import author2 from "../../assets/author2.svg";
-import camera from "../../assets/camera.svg";
-import reserved from "../../assets/reserved.svg";
-import heart from "../../assets/heart.svg";
-import massage from "../../assets/massage.svg";
-import key2 from "../../assets/key2.svg";
-import home2 from "../../assets/home2.svg";
-import exist from "../../assets/exist.svg";
+import counter from "../../../assets/counter.svg";
+import author2 from "../../../assets/author2.svg";
+import camera from "../../../assets/camera.svg";
+import reserved from "../../../assets/reserved.svg";
+import heart from "../../../assets/heart.svg";
+import massage from "../../../assets/massage.svg";
+import key2 from "../../../assets/key2.svg";
+import home2 from "../../../assets/home2.svg";
+import exist from "../../../assets/exist.svg";
 
 const MainDashbord = () => {
   return (

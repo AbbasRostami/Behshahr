@@ -10,6 +10,11 @@ import { NotFound } from "../components/NotFound";
 import { Login } from "../screens/Login";
 import { ForgetPassword } from "../screens/ForgetPassword";
 import { MyCourses } from "../components/MyCourses/myCourses";
+import { MyReserveCourses } from "../components/MyCourses/myReserveCourses";
+import { Favorites } from "../components/MyCourses/favorites";
+import { MyComments } from "../components/MyCourses/myComments";
+import { ChangePassword } from "../components/MyCourses/changePassword";
+import { EditProfile } from "../components/MyCourses/editProfile";
 
 
 const RoutesApp = createBrowserRouter([
@@ -54,6 +59,26 @@ const RoutesApp = createBrowserRouter([
       {
         path: "/myCourses",
         element: <MyCourses />
+      },
+      {
+        path:"/myReserveCourses",
+        element: <MyReserveCourses />
+      },
+      {
+        path: "/favorites",
+        element: <Favorites />
+      },
+      {
+        path: "/myComments",
+        element: <MyComments />
+      },
+      {
+        path: "/changePassword",
+        element: <ChangePassword />
+      },
+      {
+        path: "/editProfile",
+        element: <EditProfile />
       }
     
       ]);
