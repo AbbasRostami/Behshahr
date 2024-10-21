@@ -3,12 +3,31 @@ import iconCarrier0 from "./../../../assets/svg/Landing/iconCarrier.svg"
 import iconCarrier1 from "./../../../assets/svg/Landing/iconCarrier-1.svg"
 import iconCarrier2 from "./../../../assets/svg/Landing/iconCarrier-2.svg"
 import iconCarrier3 from "./../../../assets/svg/Landing/iconCarrier-3.svg"
+import { getLandingStatistics } from '../../../core/api/landingPage'
+import { useState ,useEffect } from 'react'
 
 const Statistics = () => {
+
+    const [statistics, setStatistics] = useState([]);
+  
+
+    const getLanding = async () => {
+      const response = await getLandingStatistics();
+      console.log(response);
+      if (response) {
+        setStatistics(response);
+      }
+    };
+    useEffect(() => {
+        getLanding();
+    }, []);
+  
+
   return (
 
 
     <div className=" bg-BgGreen mx-16 flex justify-around items-center rounded-3xl  h-[230px] dark:bg-gray-800">
+
 
 
         <div className='py-5 text-center text-TextGreen dark:text-white '>
