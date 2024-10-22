@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Field, Form, Formik } from "formik";
 import { HeaderDashbord } from "../common/HeaderDashbord/HeaderDashbord";
 import { MainDashbord } from "../common/MainDashbord/mainDashbord";
@@ -7,8 +7,21 @@ import changePassword from "../../assets/changePassword.svg";
 import lock from "../../assets/lock.svg";
 import key from "../../assets/key.svg";
 import security from "../../assets/security.svg";
+import { postChengePassword } from "../../core/api/chengePassword";
 
 const ChangePassword = () => {
+
+
+  const handlerPass = async (values)=>{
+    console.log(values);
+    
+    const body = values
+
+    const response =await postChengePassword(body);
+    console.log(response);
+    
+    
+  }
   return (
     <>
       <HeaderDashbord />
@@ -30,22 +43,30 @@ const ChangePassword = () => {
               alt=""
             />
 
-            <Formik>
+            <Formik
+             onSubmit={handlerPass}
+            initialValues={{password:"" , newPass:"" ,repetPass:""}}
+            >
               <Form>
                 <Field
-                  type="text"
+                  type="text      "
+                  name="password"
                   placeholder="              رمز عبور فعلی"
-                  className="text-[#ABA7A7] text-lg bg-[#ffff] border-[2px] border-[#158B68] rounded-lg w-[29rem] h-[4rem] absolute top-[19rem] right-[30rem]"
-                ></Field>
+                  className="text-[#ABA7A7]  text-lg bg-[#ffff] border-[2px] border-[#158B68] rounded-lg w-[29rem] h-[4rem] absolute top-[19rem] right-[30rem]">
+                  
+
+                </Field>
 
                 <Field
                   type="text"
+                  name="newPass"
                   placeholder="              رمز عبور جدید"
                   className="text-[#ABA7A7] text-lg bg-[#ffff] border-[2px] border-[#158B68] rounded-lg w-[29rem] h-[4rem] absolute top-[25rem] right-[30rem]"
                 ></Field>
 
                 <Field
                   type="text"
+                  name="repetPass"
                   placeholder="              تکرار رمز عبور جدید"
                   className="text-[#ABA7A7] text-lg bg-[#ffff] border-[2px] border-[#158B68] rounded-lg w-[29rem] h-[4rem] absolute top-[30rem] right-[30rem]"
                 ></Field>
