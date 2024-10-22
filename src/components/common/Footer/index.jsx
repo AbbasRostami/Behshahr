@@ -48,7 +48,7 @@ const Footer = () => {
         <img className="mt-8 pl-40" src={LineFooter} alt="" />
 
         <div className="flex justify-around items-center mt-4">
-          <div className="flex justify-center items-center mr-96">
+          <div className="flex justify-center items-center lg:mr-96">
             <img className="dark:fill-slate-200" src={tel} alt="" />
             <img className="dark:fill-slate-200 mx-3" src={skype} alt="" />
             <img className="dark:fill-slate-200" src={facebook} alt="" />
