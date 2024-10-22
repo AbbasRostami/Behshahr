@@ -1,6 +1,5 @@
 import React from "react";
 import { ArticlesCard} from "./ArticlesCard";
-import { ArticlesListUnder } from "./articlesListUnder";
 import { useState, useEffect } from "react";
 import { Field, Form, Formik } from "formik";
 import searching from "./../../assets/search.svg";
@@ -8,6 +7,7 @@ import arrowUnder from "./../../assets/arrowUnder.svg";
 import { getArticlesListSort } from "../../core/api/getArticlesList";
 import { getArticlesListSort2 } from "../../core/api/getArticlesList";
 import { getApi } from "../../core/api/api";
+import { SliderArticles } from "../common/SliderArticles";
 
 const NewsArticlesForm = () => {
   const [sort, setSort] = useState([]);
@@ -99,7 +99,7 @@ const NewsArticlesForm = () => {
           </div>
         </div>
 
-        <ArticlesListUnder />
+        <SliderArticles />
       </div>
     </>
   );
