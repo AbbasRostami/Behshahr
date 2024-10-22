@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Field, Form, Formik } from "formik";
 import { HeaderDashbord } from "../common/HeaderDashbord/HeaderDashbord";
 import { MainDashbord } from "../common/MainDashbord/mainDashbord";
@@ -7,8 +7,22 @@ import changePassword from "../../assets/changePassword.svg";
 import security from "../../assets/security.svg";
 import lock from "../../assets/lock.svg";
 import key from "../../assets/key.svg";
+import security from "../../assets/security.svg";
+import { postChengePassword } from "../../core/api/chengePassword";
 
 const ChangePassword = () => {
+
+
+  const handlerPass = async (values)=>{
+    console.log(values);
+    
+    const body = values
+
+    const response =await postChengePassword(body);
+    console.log(response);
+    
+    
+  }
   return (
     <>
         <div className="w-[48rem] xl:w-[70rem] h-[43rem] my-[1rem] border-[1px] bg-[#ffff] rounded-2xl shadow-2xl">
@@ -24,22 +38,35 @@ const ChangePassword = () => {
               alt=""
             />
 
-            <Formik>
+            <Formik
+             onSubmit={handlerPass}
+            initialValues={{password:"" , newPass:"" ,repetPass:""}}
+            >
               <Form>
                 <Field
-                  type="text"
+                  type="text      "
+                  name="password"
                   placeholder="              رمز عبور فعلی"
+<<<<<<< HEAD
                   className="text-[#ABA7A7] text-sm xl:text-lg bg-[#ffff] border-[2px] border-[#158B68] rounded-lg w-[18rem] xl:w-[29rem] h-[3.5rem] xl:h-[4rem] absolute top-[19.5rem] xl:top-[19rem] right-[20rem] xl:right-[30rem]"
                 ></Field>
+=======
+                  className="text-[#ABA7A7]  text-lg bg-[#ffff] border-[2px] border-[#158B68] rounded-lg w-[29rem] h-[4rem] absolute top-[19rem] right-[30rem]">
+                  
+
+                </Field>
+>>>>>>> b120d3fbd27d845dcc6dc82f12fe6b8845500642
 
                 <Field
                   type="text"
+                  name="newPass"
                   placeholder="              رمز عبور جدید"
                   className="text-[#ABA7A7] text-sm xl:text-lg bg-[#ffff] border-[2px] border-[#158B68] rounded-lg w-[18rem] xl:w-[29rem] h-[3.5rem] xl:h-[4rem] absolute top-[25.5rem] xl:top-[25.5rem] right-[20rem] xl:right-[30rem]"
                 ></Field>
 
                 <Field
                   type="text"
+                  name="repetPass"
                   placeholder="              تکرار رمز عبور جدید"
                   className="text-[#ABA7A7] text-sm xl:text-lg bg-[#ffff] border-[2px] border-[#158B68] rounded-lg w-[18rem] xl:w-[29rem] h-[3.5rem] xl:h-[4rem] absolute top-[30.5rem] xl:top-[30.5rem] right-[20rem] xl:right-[30rem]"
                 ></Field>
