@@ -8,46 +8,17 @@ import line from "./../../assets/line.svg";
 import newsPic from "./../../assets/newsPick.svg"
 import { getArticlesListTop } from "../../core/api/getArticlesList";
 import { useEffect , useState } from "react";
+import { getApi } from "../../core/api/api";
 
-const ArticlesList = () => {
+const ArticlesCard = ({item}) => {
 
   
-  const [data, setData] = useState([]);
-  
-
-  const getArticlesTop = async () => {
-    const response2 = await getArticlesListTop();
-    console.log(response2);
-    if (response2) {
-      setData(response2);
-    }
-  };
-  useEffect(() => {
-    getArticlesTop();
-  }, []);
 
 
   return (
     <>
 
 
-{/* {data?.length
-              ? data?.map((item ,index) => {
-                
-                  return (
-                    <div key={index}>
-                      <p>{item?.PageNumber}</p>
-                      <p>{item?.rowsPage}</p>
-                      <p>{item?.query}</p>
-                      <p>{item?.SortType}</p>
-                      <p>{item?.SortingCol}</p>
-                    </div>
-                    
-                  );
-                  
-                })
-                
-              : null} */}
               
 
           <div className="flex justify-around items-center w-[22rem] ">
@@ -74,7 +45,7 @@ const ArticlesList = () => {
                 </div>
 
                 <p className="rtl mt-3 text-[#1A1E21] text-xl rtl text-right px-5 dark:text-white">
-                  آشنایی با برنامه نویسی با وردپرس
+                  {item?.title}
                 </p>
 
                 <div className="flex justify-between items-center mt-5 px-5 dark:text-white">
@@ -107,4 +78,4 @@ const ArticlesList = () => {
   );
 };
 
-export { ArticlesList };
+export { ArticlesCard };

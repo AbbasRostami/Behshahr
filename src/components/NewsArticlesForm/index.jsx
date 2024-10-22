@@ -1,5 +1,5 @@
 import React from "react";
-import { ArticlesList } from "./ArticlesList";
+import { ArticlesCard} from "./ArticlesCard";
 import { ArticlesListUnder } from "./articlesListUnder";
 import { useState, useEffect } from "react";
 import { Field, Form, Formik } from "formik";
@@ -7,10 +7,27 @@ import searching from "./../../assets/search.svg";
 import arrowUnder from "./../../assets/arrowUnder.svg";
 import { getArticlesListSort } from "../../core/api/getArticlesList";
 import { getArticlesListSort2 } from "../../core/api/getArticlesList";
+import { getApi } from "../../core/api/api";
 
 const NewsArticlesForm = () => {
   const [sort, setSort] = useState([]);
   const [sort2, setSort2] = useState([]);
+
+  const [cards, setCards] = useState([]);
+  
+
+  const getArticlesTop = async () => {
+    const path = `/News`;
+    const response = await getApi({path});
+    console.log(response.data?.news);
+    if (response) {
+      setCards(response.data?.news);
+    }
+  };
+  useEffect(() => {
+    getArticlesTop();
+  }, []);
+
 
   const ArticlesSort = async () => {
     const response3 = await getArticlesListSort();
@@ -72,17 +89,13 @@ const NewsArticlesForm = () => {
           </Formik>
         </div>
 
-        <div className="bg-red flex justify-evenly items-center">
-          <div className="grid grid-cols-3 grid-rows-3 gap-20">
-            <ArticlesList />
-            <ArticlesList />
-            <ArticlesList />
-            <ArticlesList />
-            <ArticlesList />
-            <ArticlesList />
-            <ArticlesList />
-            <ArticlesList />
-            <ArticlesList />
+        <div className=" flex justify-evenly items-center">
+          <div className="grid grid-cols-3  gap-20">
+            {cards.map((item ,index)=>{
+              return(<ArticlesCard item={item} />)
+            })}
+            
+      
           </div>
         </div>
 

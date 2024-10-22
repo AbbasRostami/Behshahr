@@ -1,11 +1,7 @@
 import http from "../interceptor";
 
 export const getArticlesList = async ( 
-     pageNum, 
-    rowsPage, 
-    query, 
-    sortingCol , 
-    sortType
+ 
   ) => {
     try {
         const response = await http.get(`/News?PageNumber=1&RowsOfPage=10&SortingCol=InsertDate&SortType=DESC` );
