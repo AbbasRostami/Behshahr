@@ -17,12 +17,15 @@ const LoginForm = () => {
       
           const response = await loginAPI(body);
           console.log(response);
+          
         };
       
         
     
 
     const [show, setShow] = useState(false);
+
+    
   return (
     <>
 
@@ -115,7 +118,7 @@ const LoginForm = () => {
 
             <button
               className="w-[22rem] h-[3.4rem] bg-[#158B68] rounded-xl mt-[4.2rem] ml-7 text-[#ffff]"
-              type="submit"  onClick={()=>setShow(!show)}
+              type="submit"  
             >
               تایید
             </button>

@@ -1,19 +1,55 @@
 import React from 'react'
-import { RegisterStepOne } from "./RegisterStepOne.jsx"
-import { RegisterStepTwo } from './RegisterStepTwo.jsx'
-import { RegisterStepThree } from './RegisterStepThree.jsx'
-import { Header } from "./../common/Header"
-import { Footer } from "./../common/Footer"
+import { loginAPI } from "../../core/services/api/auth";
+import login2Pick from "../../assets/login2Pic.svg";
 
-const RegisterForm = () => {
+import loginPick from "../../assets/loginPick.svg";
+
+import { useState } from 'react';
+// import { RegisterApi } from '../../core/api/register';
+import { StepOne } from './StepOne';
+import { StepTwo } from './StepTwo';
+import { StepThree } from './StepThree';
+
+
+
+
+const RegisterForm = (props) => {
+
+       
+    const [step, setstep] = useState(1)
+
+
   return (
-    <div>
-                <RegisterStepTwo />
-                <RegisterStepOne />
-                <RegisterStepThree />
-            <Footer />
-    </div>
+    <>
+
+{
+  step === 1 ? <StepOne setstep={setstep} />
+
+: step === 2 ? <StepTwo setstep={setstep} />
+
+: step=== 3 ? <StepThree />
+
+:null
+
+}
+
+
+
+
+
+
+
+
+       
+
+
+
+
+
+    
+
+    </>
   )
 }
 
-export { RegisterForm }
+export  {RegisterForm}
