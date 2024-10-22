@@ -124,7 +124,7 @@ const MyCourses = () => {
               <h2>پرداخت نشده</h2>
             </div>
 
-            <div className=" mx-[26rem] my-5 flex justify-center gap-6">
+            <div className=" mx-[26rem] my-5 flex justify-center gap-6 rounded-full">
               <button className="rounded-full text-[#158B68] text-sm bg-[#BFF4E4] w-[2rem] h-[2rem]">
                 1
               </button>

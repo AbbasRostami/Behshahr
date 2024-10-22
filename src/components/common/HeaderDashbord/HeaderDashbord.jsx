@@ -1,14 +1,14 @@
 import React from "react";
 
+import profileHeader from "../../../assets/profileHeader.svg";
 import logoSite from "../../../assets/logoSite.svg";
+import reserved2 from "../../../assets/reserved2.svg";
 import moon from "../../../assets/moon.svg";
 import pin from "../../../assets/pin.svg";
-import reserved2 from "../../../assets/reserved2.svg";
-import profileHeader from "../../../assets/profileHeader.svg";
 
 const HeaderDashbord = () => {
   return (
-    <div class="bg-[#A4F6DE] w-[73.6rem]">
+    <div class="bg-[#A4F6DE] w-[74.2rem]">
       <div class="flex justify-between items-center container mx-auto gap-5 h-20">
         
         <img className="h-[3rem]" src={profileHeader} alt="" />
