@@ -4,6 +4,7 @@ import home from "../../assets/home.svg";
 import { Field, Formik, Form } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import { SendVerifyMessage } from '../../core/api/register';
+import { toast } from 'react-toastify';
 
 
 const StepOne = () => {
@@ -21,6 +22,7 @@ const StepOne = () => {
 
     
       if (response.status === 200) {
+        toast.success('کد با موفقیت برای شما ارسال شد');
           navigate("/register-verify",{state:values})
       } else alert("این کاربر ثبت نام شده است")
   
