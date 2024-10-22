@@ -2,7 +2,7 @@ import React from 'react'
 import registerStepThree from "../../assets/registerStepThree.svg"
 import home from "../../assets/home.svg";
 import { useState } from 'react';
-// import { PostRegisterApi3 } from '../../core/api/register';
+import { finalregister } from '../../core/api/register';
 
 import { Field, Formik, Form } from "formik";
 import { Link } from "react-router-dom";
@@ -11,14 +11,17 @@ import { Link } from "react-router-dom";
 
 const StepThree = () => {
 
-  // const registerHandler3 = async (values) => {
-  //   console.log(values);
+  const registerHandler3 = async (values) => {
+    console.log(values);
 
-  //   const body = values;
+    const body = values;
 
-  //   const response3 = await PostRegisterApi3(body);
-  //   console.log(response3);
-  // };
+    const response3 = await finalregister(body);
+    console.log(response3);
+    if(response3){
+      alert("ثبت نام با موفقیت انجام شد")
+    }
+  };
 
 
   return (
@@ -34,15 +37,15 @@ const StepThree = () => {
     ثبت نام 
   </h2>
   <Formik
-    // onSubmit={registerHandler3}
-    initialValues={{ phoneOrGmail: "", password: "", rememberMe: true }}
+    onSubmit={registerHandler3}
+    initialValues={{ gmail: "", password: "", phoneNumber: "" }}
   >
     <Form>
       <Field
         placeholder="شماره همراه    "
         className=" ml-7 border-solid border-2 border-[#158B68] text-right rounded-xl  text-[#ABA7A7] w-[22rem] h-[3rem] mt-[1rem] "
         type="text"
-        name="phoneOrGmail"
+        name="phoneNumber"
       />
     
   
@@ -50,7 +53,7 @@ const StepThree = () => {
         placeholder="ایمیل کاربر    "
         className=" ml-7 border-solid border-2 border-[#158B68] text-right rounded-xl  text-[#ABA7A7] w-[22rem] h-[3rem] mt-[1rem] "
         type="text"
-        name="phoneOrGmail"
+        name="gmail"
       />
     
   
@@ -58,7 +61,7 @@ const StepThree = () => {
         placeholder="رمز عبور    "
         className=" ml-7 border-solid border-2 border-[#158B68] text-right rounded-xl  text-[#ABA7A7] w-[22rem] h-[3rem] mt-[1rem] "
         type="text"
-        name="phoneOrGmail"
+        name="password"
       />
     
   
@@ -66,7 +69,7 @@ const StepThree = () => {
         placeholder="تکرار رمز عبور    "
         className=" ml-7 border-solid border-2 border-[#158B68] text-right rounded-xl  text-[#ABA7A7] w-[22rem] h-[3rem] mt-[1rem] "
         type="text"
-        name="phoneOrGmail"
+        name="confirmPass"
       />
     <label>
       <h2 className='text-right mr-16 mb-[-1.2rem] mt-4 '> من با اتمام اظهارات موافقم </h2>

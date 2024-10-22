@@ -2,12 +2,15 @@ import React from 'react'
 import registerStepTwo from "../../assets/registerStepTwo.svg"
 import home from "../../assets/home.svg";
 import { Field, Formik, Form } from "formik";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { verifyMessage } from '../../core/api/register';
 
 const StepTwo = () => {
 
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
+  const location = useLocation()
+  console.log(location.state);
+  
 
 
   
@@ -15,10 +18,13 @@ const StepTwo = () => {
   const registerHandler2 = async (values) => {
     console.log('ارسال: ',values);
 
-    // const body = values;
+     const body = {...values,phoneNumber:location.state.phoneNumber};
 
     const response = await verifyMessage(body);
     console.log(response);
+    if (response){
+      navigate("/register-final")
+    }
   };
 
   return (

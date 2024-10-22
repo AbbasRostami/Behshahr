@@ -21,7 +21,7 @@ const StepOne = () => {
 
     
       if (response.status === 200) {
-          navigate("/register-verify")
+          navigate("/register-verify",{state:values})
       } else alert("این کاربر ثبت نام شده است")
   
   };
