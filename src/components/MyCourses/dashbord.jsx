@@ -2,11 +2,11 @@ import React from "react";
 import { HeaderDashbord } from "../common/HeaderDashbord/HeaderDashbord";
 import { MainDashbord } from "../common/MainDashbord/mainDashbord";
 
-import dashbordImg from "../../assets/dashbordImg.svg";
+import percentageDashbord from "../../assets/percentageDashbord.svg";
 import redDashbordImg from "../../assets/redDashbordImg.svg";
 import profileHeader from "../../assets/profileHeader.svg";
 import textDashbord from "../../assets/textDashbord.svg";
-import percentageDashbord from "../../assets/percentageDashbord.svg";
+import dashbordImg from "../../assets/dashbordImg.svg";
 
 const Dashbord = () => {
   return (

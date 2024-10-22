@@ -13,9 +13,9 @@ const MyCourses = () => {
         
         <MainDashbord />
 
-        <div className="w-[70rem] h-[43rem] my-[1rem] border-[1px] bg-[#ffff] rounded-2xl shadow-2xl">
-          <div className="w-[66rem] h-[40.5rem] mx-[2rem] my-[1.3rem] bg-[#FBF6F6] border-[1px] rounded-lg shadow-2xl">
-            <div className="text-nowrap text-[#22445D] text-[5px] text-sm bg-[#A4F6DE] h-[4.5rem] rounded-lg flex justify-end rtl gap-24 py-[1.5rem] px-[4rem]">
+        <div className="w-[48rem] xl:w-[70rem] h-[43rem] my-[1rem] border-[1px] bg-[#ffff] rounded-2xl shadow-2xl">
+          <div className="w-[45rem] xl:w-[66rem] h-[40.5rem] mx-[2rem] my-[1.3rem] bg-[#FBF6F6] border-[1px] rounded-lg shadow-2xl">
+            <div className="text-nowrap text-[#22445D] text-[5px] text-xs xl:text-sm bg-[#A4F6DE] h-[4.5rem] rounded-lg flex justify-end rtl gap-14 xl:gap-24 py-[1.5rem] px-[4rem]">
               <h1>نام دوره</h1>
               <h1>نام استاد</h1>
               <h1>نام ترم</h1>
@@ -24,9 +24,9 @@ const MyCourses = () => {
               <h1>وضعیت پرداخت</h1>
             </div>
             <br></br>
-            <div className="text-nowrap text-[#22445D] text-[12px] bg-[#ffff] w-[64rem] h-[3.5rem] rounded-2xl flex justify-end rtl gap-28 shadow-sm border-[1px] py-[1.2rem] px-[3rem] mx-[1rem]">
+            <div className="text-nowrap text-[#22445D] text-[12px] bg-[#ffff] w-[43rem] xl:w-[64rem] h-[3.5rem] rounded-2xl flex justify-end rtl gap-14 xl:gap-28 shadow-sm border-[1px] py-[1.2rem] px-[3rem] mx-[1rem]">
               <img
-                className="w-[4rem] h-[4rem] mx-[-4.5rem] my-[-1.2rem]"
+                className="hidden xl:inline-block w-[4rem] h-[4rem] mx-[-4.5rem] my-[-1.2rem]"
                 src={nest}
                 alt=""
               />
@@ -41,9 +41,9 @@ const MyCourses = () => {
 
             <br></br>
 
-            <div className="text-nowrap text-[#22445D] text-[12px] bg-[#ffff] w-[64rem] h-[3.5rem] rounded-2xl flex justify-end rtl gap-28 shadow-sm border-[1px] py-[1.2rem] px-[3rem] mx-[1rem]">
+            <div className="text-nowrap text-[#22445D] text-[12px] bg-[#ffff] w-[43rem] xl:w-[64rem] h-[3.5rem] rounded-2xl flex justify-end rtl gap-14 xl:gap-28 shadow-sm border-[1px] py-[1.2rem] px-[3rem] mx-[1rem]">
               <img
-                className="w-[4rem] h-[4rem] mx-[-4.5rem] my-[-1.2rem]"
+                className="hidden xl:inline-block w-[4rem] h-[4rem] mx-[-4.5rem] my-[-1.2rem]"
                 src={nest}
                 alt=""
               />
@@ -58,9 +58,9 @@ const MyCourses = () => {
 
             <br></br>
 
-            <div className="text-nowrap text-[#22445D] text-[12px] bg-[#ffff] w-[64rem] h-[3.5rem] rounded-2xl flex justify-end rtl gap-28 shadow-sm border-[1px] py-[1.2rem] px-[3rem] mx-[1rem]">
+            <div className="text-nowrap text-[#22445D] text-[12px] bg-[#ffff] w-[43rem] xl:w-[64rem] h-[3.5rem] rounded-2xl flex justify-end rtl gap-14 xl:gap-28 shadow-sm border-[1px] py-[1.2rem] px-[3rem] mx-[1rem]">
               <img
-                className="w-[4rem] h-[4rem] mx-[-4.5rem] my-[-1.2rem]"
+                className="hidden xl:inline-block w-[4rem] h-[4rem] mx-[-4.5rem] my-[-1.2rem]"
                 src={nest}
                 alt=""
               />
@@ -75,9 +75,9 @@ const MyCourses = () => {
 
             <br></br>
 
-            <div className="text-nowrap text-[#22445D] text-[12px] bg-[#ffff] w-[64rem] h-[3.5rem] rounded-2xl flex justify-end rtl gap-28 shadow-sm border-[1px] py-[1.2rem] px-[3rem] mx-[1rem]">
+            <div className="text-nowrap text-[#22445D] text-[12px] bg-[#ffff] w-[43rem] xl:w-[64rem] h-[3.5rem] rounded-2xl flex justify-end rtl gap-14 xl:gap-28 shadow-sm border-[1px] py-[1.2rem] px-[3rem] mx-[1rem]">
               <img
-                className="w-[4rem] h-[4rem] mx-[-4.5rem] my-[-1.2rem]"
+                className="hidden xl:inline-block w-[4rem] h-[4rem] mx-[-4.5rem] my-[-1.2rem]"
                 src={nest}
                 alt=""
               />
@@ -92,9 +92,9 @@ const MyCourses = () => {
 
             <br></br>
 
-            <div className="text-nowrap text-[#22445D] text-[12px] bg-[#ffff] w-[64rem] h-[3.5rem] rounded-2xl flex justify-end rtl gap-28 shadow-sm border-[1px] py-[1.2rem] px-[3rem] mx-[1rem]">
+            <div className="text-nowrap text-[#22445D] text-[12px] bg-[#ffff] w-[43rem] xl:w-[64rem] h-[3.5rem] rounded-2xl flex justify-end rtl gap-14 xl:gap-28 shadow-sm border-[1px] py-[1.2rem] px-[3rem] mx-[1rem]">
               <img
-                className="w-[4rem] h-[4rem] mx-[-4.5rem] my-[-1.2rem]"
+                className="hidden xl:inline-block w-[4rem] h-[4rem] mx-[-4.5rem] my-[-1.2rem]"
                 src={nest}
                 alt=""
               />
@@ -109,9 +109,9 @@ const MyCourses = () => {
 
             <br></br>
 
-            <div className="text-nowrap text-[#22445D] text-[12px] bg-[#ffff] w-[64rem] h-[3.5rem] rounded-2xl flex justify-end rtl gap-28 shadow-sm border-[1px] py-[1.2rem] px-[3rem] mx-[1rem]">
+            <div className="text-nowrap text-[#22445D] text-[12px] bg-[#ffff] w-[43rem] xl:w-[64rem] h-[3.5rem] rounded-2xl flex justify-end rtl gap-14 xl:gap-28 shadow-sm border-[1px] py-[1.2rem] px-[3rem] mx-[1rem]">
               <img
-                className="w-[4rem] h-[4rem] mx-[-4.5rem] my-[-1.2rem]"
+                className="hidden xl:inline-block w-[4rem] h-[4rem] mx-[-4.5rem] my-[-1.2rem]"
                 src={nest}
                 alt=""
               />
@@ -124,7 +124,7 @@ const MyCourses = () => {
               <h2>پرداخت نشده</h2>
             </div>
 
-            <div className=" mx-[26rem] my-5 flex justify-center gap-6 rounded-full">
+            <div className="mx-[26rem] my-5 flex justify-center gap-6 rounded-full">
               <button className="rounded-full text-[#158B68] text-sm bg-[#BFF4E4] w-[2rem] h-[2rem]">
                 1
               </button>
