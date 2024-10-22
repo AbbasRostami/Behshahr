@@ -8,13 +8,7 @@ import nest from "../../assets/nest.svg";
 const Favorites = () => {
   return (
     <>
-      <HeaderDashbord />
-
-      <div className="flex mx-[1rem] rtl gap-11">
-
-        <MainDashbord />
-
-        <div className="w-[48rem] xl:w-[70rem] h-[43rem] my-[1rem] border-[1px] bg-[#ffff] rounded-2xl shadow-2xl">
+        <div className="w-[48rem] xl:w-[70rem] h-[43rem] my-[1rem] border-[1px] bg-white rounded-2xl shadow-2xl">
           <div className="text-nowrap absolute top-[7rem] right-[18.5rem] xl:right-[30rem]">
             <button className="bg-[#A4F6DE] w-[21rem] xl:w-[30rem] h-[3rem] text-[#22445D] text-lg">
               دوره های مورد علاقه من
@@ -163,7 +157,6 @@ const Favorites = () => {
             </div>
           </div>
         </div>
-      </div>
     </>
   );
 };

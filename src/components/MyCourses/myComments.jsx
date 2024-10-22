@@ -8,11 +8,6 @@ import dot from "../../assets/dot.svg";
 const MyComments = () => {
   return (
     <>
-      <HeaderDashbord />
-      <div className="flex mx-[1rem] rtl gap-11">
-
-        <MainDashbord />
-
         <div className="w-[48rem] xl:w-[70rem] h-[43rem] my-[1rem] border-[1px] bg-[#ffff] rounded-2xl shadow-2xl">
 
           <div className="text-nowrap absolute top-[7rem] right-[18.5rem] xl:right-[30rem]">
@@ -164,7 +159,6 @@ const MyComments = () => {
             </div>
           </div>
         </div>
-      </div>
     </>
   );
 };

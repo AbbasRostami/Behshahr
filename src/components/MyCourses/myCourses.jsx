@@ -7,12 +7,6 @@ import nest from "../../assets/nest.svg";
 const MyCourses = () => {
   return (
     <>
-      <HeaderDashbord />
-
-      <div className="flex mx-[1rem] rtl gap-11">
-        
-        <MainDashbord />
-
         <div className="w-[48rem] xl:w-[70rem] h-[43rem] my-[1rem] border-[1px] bg-[#ffff] rounded-2xl shadow-2xl">
           <div className="w-[45rem] xl:w-[66rem] h-[40.5rem] mx-[2rem] my-[1.3rem] bg-[#FBF6F6] border-[1px] rounded-lg shadow-2xl">
             <div className="text-nowrap text-[#22445D] text-[5px] text-xs xl:text-sm bg-[#A4F6DE] h-[4.5rem] rounded-lg flex justify-end rtl gap-14 xl:gap-24 py-[1.5rem] px-[4rem]">
@@ -140,7 +134,6 @@ const MyCourses = () => {
             </div>
           </div>
         </div>
-      </div>
     </>
   );
 };

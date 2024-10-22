@@ -11,12 +11,6 @@ import key from "../../assets/key.svg";
 const ChangePassword = () => {
   return (
     <>
-      <HeaderDashbord />
-
-      <div className="flex mx-[1rem] rtl gap-11">
-
-        <MainDashbord />
-
         <div className="w-[48rem] xl:w-[70rem] h-[43rem] my-[1rem] border-[1px] bg-[#ffff] rounded-2xl shadow-2xl">
           <div className="w-[45rem] xl:w-[66rem] h-[40.5rem] mx-[2rem] my-[1.3rem] bg-[#FBF6F6] border-[1px] rounded-lg shadow-2xl">
 
@@ -73,7 +67,6 @@ const ChangePassword = () => {
             </Formik>
           </div>
         </div>
-      </div>
     </>
   );
 };

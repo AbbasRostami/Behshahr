@@ -16,76 +16,78 @@ import { MyComments } from "../components/MyCourses/myComments";
 import { ChangePassword } from "../components/MyCourses/changePassword";
 import { EditProfile } from "../components/MyCourses/editProfile";
 import { Dashbord } from "../components/MyCourses/dashbord";
+import { PanelLayout } from "../screens/layout/PanelLayout";
 
-
-const RoutesApp = createBrowserRouter([
-    
-    
-      {
-        path:'/',
-        element: <Landing />,
-      },
-      {
-        path: "*",
-        element: <NotFound />,
-      },
-      {
-        path:'/about',
-        element: <AboutUs />,
-      },
-      {
-        path:'/courses-details',
-        element: <CoursesDetails />,
-      },
-      {
-        path:'/articles-details',
-        element: <ArticlesDetails />,
-      },
-      {
-        path:'/register',
-        element: <RegisterForm />,
-      },
-      {
-        path:'/news-articles',
-        element: <NewsArticles />,
-      },
-      {
-        path:'/login',
-        element: <Login />,
-      },
-      {
-        path:'/forget-password',
-        element: <ForgetPassword />,
-      },
+export const RoutesApp = createBrowserRouter([
+  {
+    path: "/",
+    element: <Landing />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
+  },
+  {
+    path: "/about",
+    element: <AboutUs />,
+  },
+  {
+    path: "/courses-details",
+    element: <CoursesDetails />,
+  },
+  {
+    path: "/articles-details",
+    element: <ArticlesDetails />,
+  },
+  {
+    path: "/register",
+    element: <RegisterForm />,
+  },
+  {
+    path: "/news-articles",
+    element: <NewsArticles />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/forget-password",
+    element: <ForgetPassword />,
+  },
+  {
+    element: <PanelLayout />,
+    children: [
       {
         path: "/myCourses",
-        element: <MyCourses />
+        element: <MyCourses />,
       },
       {
-        path:"/myReserveCourses",
-        element: <MyReserveCourses />
+        path: "/myReserveCourses",
+        element: <MyReserveCourses />,
       },
       {
         path: "/favorites",
-        element: <Favorites />
+        element: <Favorites />,
       },
       {
         path: "/myComments",
-        element: <MyComments />
+        element: <MyComments />,
       },
       {
         path: "/changePassword",
-        element: <ChangePassword />
+        element: <ChangePassword />,
       },
       {
         path: "/editProfile",
-        element: <EditProfile />
+        element: <EditProfile />,
       },
       {
         path: "/dashbord",
-        element: <Dashbord />
-      }
-    
-      ]);
-  
-  export default RoutesApp
+        element: <Dashbord />,
+      },
+    ],
+  },
+]);
+
+// export default RoutesApp;

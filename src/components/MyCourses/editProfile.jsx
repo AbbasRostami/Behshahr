@@ -7,13 +7,6 @@ import profileHeader from "../../assets/profileHeader.svg";
 
 const EditProfile = () => {
   return (
-    <>
-      <HeaderDashbord />
-
-      <div className="flex mx-[1rem] rtl gap-11">
-
-        <MainDashbord />
-
         <div className="w-[71rem] h-[56.5rem] my-[1rem] gap-2 flex justify-center border-[1px] bg-[#ffff] rounded-2xl shadow-2xl mr-[10rem]">
           <div className="flex flex-col">
             <div className="w-[17rem] h-[18rem] bg-[#FBF6F6] rounded-xl shadow-2xl border-[1px] my-[1.5rem] mr-[0.5rem]">
@@ -194,8 +187,6 @@ const EditProfile = () => {
             </div>
           </div>
         </div>
-      </div>
-    </>
   );
 };
 

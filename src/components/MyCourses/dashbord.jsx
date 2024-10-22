@@ -11,11 +11,6 @@ import dashbordImg from "../../assets/dashbordImg.svg";
 const Dashbord = () => {
   return (
     <>
-      <HeaderDashbord />
-
-      <div className="flex mx-[1.5rem] rtl gap-11">
-        <MainDashbord />
-
         <div className="w-[70rem] h-[43rem] my-[1rem] border-[1px] bg-[#ffff] rounded-2xl shadow-2xl grid grid-col-3 grid-rows-3 gap-4">
           <div className="w-[41rem] h-[10rem] rounded-lg shadow-xl border-[1px] bg-[#FBF6F6] mx-[1.5rem] mt-[1rem]">
             <img
@@ -138,7 +133,6 @@ const Dashbord = () => {
             </div>
           </div>
         </div>
-      </div>
     </>
   );
 };
