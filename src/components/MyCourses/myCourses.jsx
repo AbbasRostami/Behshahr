@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { HeaderDashbord } from "../common/HeaderDashbord/HeaderDashbord";
 import { MainDashbord } from "../common/MainDashbord/mainDashbord";
 
 import nest from "../../assets/nest.svg";
+import { getApi } from "../../core/api/api";
 
 const MyCourses = () => {
+  const [data , setData] =useState([])
+  const getMyCourses = async()=>{
+    const path = `/SharePanel/GetMyCourses?PageNumber=1&RowsOfPage=10&SortingCol=DESC&SortType=LastUpdate&Query=`
+    const response =await getApi({path})
+    console.log(response);
+    setData(response)
+    
+  }
+  useEffect(()=>{
+    getMyCourses()
+  },[])
   return (
     <>
         <div className="w-[48rem] xl:w-[70rem] h-[43rem] my-[1rem] border-[1px] bg-[#ffff] rounded-2xl shadow-2xl">
