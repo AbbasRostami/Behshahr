@@ -19,7 +19,7 @@ const CoursesListForm = () => {
   const [data, setData] = useState([]);
 
   const GetCouresesTop = async () => {
-    const path = `/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=10&SortingCol=Active&SortType=DESC&TechCount=0`;
+    const path = `/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=9&SortingCol=Active&SortType=DESC&TechCount=0`;
     const response =await getApi({path})
     console.log(response.data.courseFilterDtos);
     setData(response.data.courseFilterDtos)
@@ -95,11 +95,16 @@ const CoursesListForm = () => {
         </div>
       </div>
 
+
+
+
       {/* Middle */}
+      
+
+      <div  className="  mt-16  mr-4 grid grid-cols-3 grid-rows-3 gap-3 items-center rounded-3xl flx h-[120rem]  w-[78rem] dark:bg-gray-800 shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)]">
 
       {data.map((item,index)=>{
         return(
-          <div  className="  mt-16  mr-4 grid grid-cols-3 grid-rows-3 gap-3 items-center rounded-3xl flx h-[120rem]  w-[78rem] dark:bg-gray-800 shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)]">
           <div className="relative p-10  h-[460px] w-[311px] ml-7 text-center rounded-md mt-11 dark:bg-gray-700 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen">
             <div className="absolute top-[-80px] left-[78px]">
               <img src={courses1} alt="" />
@@ -161,58 +166,66 @@ const CoursesListForm = () => {
               </button>
             </div>
           </div>
-        </div>
+        
         )
+        
       })}
 
-      <div className="flex relative ml-20 w-[86rem] ">
+<div className="flex ml-20 w-[86rem] ">
        
 
-        <ul className="text-[#22445D] text-right h-[39rem] flex w-[20rem] mt-16 dark:text-white dark:bg-gray-800 bg-[#FBF6F6] shadow-[10px 10px 3px rgba(0, 0, 0, 0.160784)] rounded-3xl   ">
-          <img
-            className="w-[1.5rem] h-[3rem] absolute right-[5.5rem] top-[5.4rem]"
-            src={filter2}
-            alt=""
-          />
-          <button className="absolute top-[6rem] right-[7.5rem] text-[#22445D] dark:text-white">
-            {" "}
-            فیلترها
-          </button>
+       <ul className="text-[#22445D] text-right h-[39rem] flex w-[20rem] mt-16 dark:text-white dark:bg-gray-800 bg-[#FBF6F6] shadow-[10px 10px 3px rgba(0, 0, 0, 0.160784)] rounded-3xl   ">
+         <img
+           className="w-[1.5rem] h-[3rem] absolute right-[5.5rem] top-[5.4rem]"
+           src={filter2}
+           alt=""
+         />
+         <button className="absolute top-[6rem] right-[7.5rem] text-[#22445D] dark:text-white">
+           {" "}
+           فیلترها
+         </button>
 
-          <li className="absolute right-10 top-40 ">
-            تکنولوژی
-            <img className="w-[12rem] h-[1rem]" src={line} alt="" />
-          </li>
-          <li className=" absolute right-8 top-52">
-            نوع برگذاری
-            <div className="border-solid border-[0.1px] rounded-2xl border-[#5BE1b2] h-[7rem] w-[180px] mt-4">
-              <label className=" absolute right-6 top-12" htmlFor="check">
-                حضوری
-              </label>
-              <label className="absolute right-6 top-20" htmlFor="check">
-                ان لاین
-              </label>
-              <label
-                className="text-right absolute right-4 top-28"
-                htmlFor="check"
-              >
-                حضوری-ان لاین
-              </label>
-            </div>
-          </li>
-          <li className="absolute right-[2.5rem] top-[24rem]">
-            سطح دوره
-            <img className="w-[12rem] h-[1rem]" src={line} alt="" />
-          </li>
-          <li className="absolute right-[2.5rem] top-[26.5rem]">
-            قیمت
-            <img className="w-[12rem] h-[1rem]" src={line} alt="" />
-          </li>
-          <button className="bg-[#5BE1b2] dark:bg-gray-700 h-[3rem] w-[8rem] absolute right-[7rem] top-[31rem] rounded-xl">
-            پاک کردن فیلترها{" "}
-          </button>
-        </ul>
-      </div>
+         <li className="absolute right-10 top-40 ">
+           تکنولوژی
+           <img className="w-[12rem] h-[1rem]" src={line} alt="" />
+         </li>
+         <li className=" absolute right-8 top-52">
+           نوع برگذاری
+           <div className="border-solid border-[0.1px] rounded-2xl border-[#5BE1b2] h-[7rem] w-[180px] mt-4">
+             <label className=" absolute right-6 top-12" htmlFor="check">
+               حضوری
+             </label>
+             <label className="absolute right-6 top-20" htmlFor="check">
+               ان لاین
+             </label>
+             <label
+               className="text-right absolute right-4 top-28"
+               htmlFor="check"
+             >
+               حضوری-ان لاین
+             </label>
+           </div>
+         </li>
+         <li className="absolute right-[2.5rem] top-[24rem]">
+           سطح دوره
+           <img className="w-[12rem] h-[1rem]" src={line} alt="" />
+         </li>
+         <li className="absolute right-[2.5rem] top-[26.5rem]">
+           قیمت
+           <img className="w-[12rem] h-[1rem]" src={line} alt="" />
+         </li>
+         <button className="bg-[#5BE1b2] dark:bg-gray-700 h-[3rem] w-[8rem] absolute right-[7rem] top-[31rem] rounded-xl">
+           پاک کردن فیلترها{" "}
+         </button>
+       </ul>
+
+       
+     </div>
+
+
+</div>
+
+     
 
       {/* Slider */}
 
