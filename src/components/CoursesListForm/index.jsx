@@ -169,13 +169,13 @@ const CoursesListForm = () => {
           })}
         </div>
 
-        <div className="flex flex-col items-center w-[21rem] h-[51rem]  dark:bg-gray-800 bg-[#FBF6F6]  mt-16 ml-2 rounded-3xl">
+        <div className="flex flex-col items-center w-[21rem] h-[51rem]  dark:bg-gray-800 bg-[#FBF6F6]  mt-10 ml-2 rounded-3xl">
           <img className="mt-10" src={filter2} alt="" />
 
 
 
 
-              <div className=" dark:text-white h-14 mt-5 w-[20rem]">
+              <div className="dark:text-white h-14 mt-5 w-[20rem]">
 
 
               <details open>
