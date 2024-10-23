@@ -169,13 +169,13 @@ const CoursesListForm = () => {
           })}
         </div>
 
-        <div className="flex flex-col items-center w-[21rem] h-[51rem] bg-[#FBF6F6]  mt-16 ml-2 rounded-3xl">
+        <div className="flex flex-col items-center w-[21rem] h-[51rem]  dark:bg-gray-800 bg-[#FBF6F6]  mt-16 ml-2 rounded-3xl">
           <img className="mt-10" src={filter2} alt="" />
 
 
 
 
-              <div className="h-14 mt-5 w-[20rem]">
+              <div className=" dark:text-white h-14 mt-5 w-[20rem]">
 
 
               <details open>
@@ -193,17 +193,17 @@ const CoursesListForm = () => {
                <hr class="border-2 mx-2 border-[#5BE1B9] mt-2"/>
               <div className="rtl mx-3 mt-5 w-[19rem] border-2 border-[#5BE1B9] rounded-xl">
 
-                    <label class="flex bg-gray-100 text-gray-700 px-3 pt-1 rounded-xl  hover:bg-green-200 cursor-pointer ">
+                    <label class="flex bg-gray-100 text-gray-700 px-3 pt-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
                       <input className="ml-3 size-4" type="checkbox" name="Country"/>
                       <i class="pl-2 text-md">حضوری</i>
                    </label>
 
-                   <label class="flex bg-gray-100 text-gray-700 px-3 py-1 rounded-xl  hover:bg-green-200 cursor-pointer ">
+                   <label class="flex bg-gray-100 text-gray-700 px-3 py-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
                       <input className="ml-3 size-4" type="checkbox" name="Country"/>
                       <i class="pl-2 text-md">آنلاین</i>
                    </label>
 
-                   <label class="flex bg-gray-100 text-gray-700 pb-1 px-3 rounded-xl  hover:bg-green-200 cursor-pointer ">
+                   <label class="flex bg-gray-100 text-gray-700 pb-1 px-3 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
                       <input className="ml-3 size-4" type="checkbox" name="Country"/>
                       <i class="pl-2 text-md">آنلاین - حضوری</i>
                    </label>
@@ -227,17 +227,17 @@ const CoursesListForm = () => {
                    <hr class="border-2 mx-3 border-[#5BE1B9] mt-2"/>
                   <div className="rtl mx-3 my-5 w-[19rem] border-2 border-[#5BE1B9] rounded-xl">
 
-                        <label class="flex bg-gray-100 text-gray-700 px-3 pt-1 rounded-xl  hover:bg-green-200 cursor-pointer ">
+                        <label class="flex bg-gray-100 text-gray-700 px-3 pt-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
                           <input className="ml-3 size-4" type="radio" name="Country"/>
                           <i class="pl-2 text-md">حضوری</i>
                        </label>
 
-                       <label class="flex bg-gray-100 text-gray-700 px-3 py-1 rounded-xl  hover:bg-green-200 cursor-pointer ">
+                       <label class="flex bg-gray-100 text-gray-700 px-3 py-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
                           <input className="ml-3 size-4" type="radio" name="Country"/>
                           <i class="pl-2 text-md">آنلاین</i>
                        </label>
 
-                       <label class="flex bg-gray-100 text-gray-700 pb-1 px-3 rounded-xl  hover:bg-green-200 cursor-pointer ">
+                       <label class="flex bg-gray-100 text-gray-700 pb-1 px-3 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
                           <input className="ml-3 size-4" type="radio" name="Country"/>
                           <i class="pl-2 text-md">آنلاین - حضوری</i>
                        </label>
@@ -263,17 +263,17 @@ const CoursesListForm = () => {
                    <hr class="border-2 mx-3 border-[#5BE1B9] mt-2"/>
                   <div className="rtl mx-3 mt-5 w-[19rem] border-2 border-[#5BE1B9] rounded-xl">
 
-                        <label class="flex bg-gray-100 text-gray-700 px-3 pt-1 rounded-xl  hover:bg-green-200 cursor-pointer ">
+                        <label class="flex bg-gray-100 text-gray-700 px-3 pt-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
                           <input className="ml-3 size-4" type="radio" name="Country"/>
                           <i class="pl-2 text-md">مبتدی</i>
                        </label>
 
-                       <label class="flex bg-gray-100 text-gray-700 px-3 py-1 rounded-xl  hover:bg-green-200 cursor-pointer ">
+                       <label class="flex bg-gray-100 text-gray-700 px-3 py-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
                           <input className="ml-3 size-4" type="radio" name="Country"/>
                           <i class="pl-2 text-md">پیشرفته</i>
                        </label>
 
-                       <label class="flex bg-gray-100 text-gray-700 pb-1 px-3 rounded-xl  hover:bg-green-200 cursor-pointer ">
+                       <label class="flex bg-gray-100 text-gray-700 pb-1 px-3 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
                           <input className="ml-3 size-4" type="radio" name="Country"/>
                           <i class="pl-2 text-md">فوق پیشرفته</i>
                        </label>
