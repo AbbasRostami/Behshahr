@@ -94,7 +94,7 @@ const SliderArticles = () => {
                     </div>
                   </div>
 
-                  <p className="rtl mt-5 px-5 leading-5 text-[#6D6767] text-xs text-right dark:text-white">
+                  <p className="rtl mt-5 px-5 leading-5 text-[#6D6767] truncate ... text-xs text-right dark:text-white">
                     {item?.miniDescribe}
                   </p>
 
