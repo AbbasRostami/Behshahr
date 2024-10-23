@@ -11,23 +11,26 @@ import favorite from "./../../assets/favo.svg";
 import star from "./../../assets/star.svg";
 import profileimg from "./../../assets/profileimg.svg";
 import line from "./../../assets/line.svg";
-import filter2 from "./../../assets/filter2.svg";
+import filter2 from "./../../assets/Group 242.svg";
 import { CoursesSlider } from "../common/SliderCourses";
 import { getApi } from "../../core/api/api";
+import arrow from "./../../assets/arrow.svg";
 
 const CoursesListForm = () => {
   const [data, setData] = useState([]);
+ 
 
   const GetCouresesTop = async () => {
     const path = `/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=9&SortingCol=Active&SortType=DESC&TechCount=0`;
-    const response =await getApi({path})
+    const response = await getApi({ path });
     console.log(response.data.courseFilterDtos);
-    setData(response.data.courseFilterDtos)
-    
+    setData(response.data.courseFilterDtos);
   };
-  useEffect(()=>{
-    GetCouresesTop()
-  },[])
+  useEffect(() => {
+    GetCouresesTop();
+  }, []);
+
+
 
   return (
     <>
@@ -36,8 +39,8 @@ const CoursesListForm = () => {
       </h1>
 
       {/* Top */}
-     
-      <div className=" flex justify-between items-center mt-8  bg-[#FBF6F6] dark:bg-gray-800 p-5 rounded-3xl mx-20">
+
+      <div className=" flex justify-between items-center mt-8 shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)]  bg-[#FBF6F6] dark:bg-gray-800 p-5 rounded-3xl mx-8">
         <Formik>
           <Form className="ml-10">
             <div className="relative">
@@ -95,83 +98,226 @@ const CoursesListForm = () => {
         </div>
       </div>
 
-
-
-
       {/* Middle */}
-      
 
-      <div  className="  mt-16  mr-4 grid grid-cols-3 grid-rows-3 gap-3 items-center rounded-3xl flx h-[120rem]  w-[78rem] dark:bg-gray-800 shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)]">
+      <div className="flex justify-center items-start mx-8">
+        <div className=" bg-[#FBF6F6] mt-10 px-6 grid grid-cols-3 grid-rows-3 gap-2 items-center rounded-3xl flx h-[108rem]  w-[70rem] dark:bg-gray-800 shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)]">
+          {data.map((item, index) => {
+            return (
+              <div className="relative p-6  h-[415px] w-[311px] ml-6 text-center rounded-md mt-20 dark:bg-gray-700 bg-[#f6fbf6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen">
+                <div className="absolute top-[-80px] left-[78px]">
+                  <img src={courses1} alt="" />
+                </div>
 
-      {data.map((item,index)=>{
-        return(
-          <div className="relative p-10  h-[460px] w-[311px] ml-7 text-center rounded-md mt-11 dark:bg-gray-700 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen">
-            <div className="absolute top-[-80px] left-[78px]">
-              <img src={courses1} alt="" />
-            </div>
+                <div className="flex justify-between items-center mt-14">
+                  <div className="flex justify-center items-center">
+                    <img src={like} alt="" />
+                    <p>{item?.likeCount}</p>
+                    <img className="mx-2" src={dislike} alt="" />
+                    <p> {item?.dissLikeCount} </p>
+                    <img src={favorite} alt="" />
+                    <p> {item?.currentRegistrants} </p>
+                  </div>
+                  <button class="text-TextGreen dark:bg-gray-800 dark:text-white bg-[#BFF4E4] rounded-lg cursor-pointer p-2">
+                    {item?.statusName}
+                  </button>
+                </div>
 
-            <div className="flex justify-between items-center mt-10">
-              <div className="flex justify-center items-center">
-                <img src={like} alt="" />
-                <p>{item?.likeCount}</p>
-                <img className="mx-2" src={dislike} alt="" />
-                <p> {item?.dissLikeCount} </p>
-                <img src={favorite} alt="" />
-                <p> {item?.currentRegistrants} </p>
+                <p className="text-right mt-3 dark:text-white text-[#1A1E21] text-xl">
+                  {item?.title}
+                </p>
+
+                <div className="flex justify-between items-center mt-5 dark:text-white">
+                  <div className="flex justify-center items-center">
+                    <img src={star} alt="" />
+                    <p className="ml-2">{item?.currentRegistrants}</p>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <p className="mr-2"> {item?.teacherName}</p>
+                    <img className="my-[-1rem]" src={profileimg} alt="" />
+                  </div>
+                </div>
+
+                <p className="rtl mt-5 ml-[4rem] text-[#41A789] text-xs ">
+                  {" "}
+                  {item?.currentRegistrants} ساعت سخنرانی ( 190 ساعت ){" "}
+                </p>
+
+                <p className="rtl mt-2 leading-5 dark:text-white truncate ... text-[#6D6767] text-xs text-right">
+                  {item?.describe}
+                </p>
+
+                <img className="mt-1" src={line} alt="" />
+
+                <div className="flex justify-between items-center mt-4">
+                  <p className="text-sm text-PriceRed rtl "> {item?.cost} </p>
+                  <p className="text-sm text-nowrap dark:text-white">
+                    : هزینه تمام دوره
+                  </p>
+                </div>
+
+                <div className="flex justify-between items-center w-[15rem] h-[2.5rem] mt-3 ml-2">
+                  <button className="bg-[#5BE1B9] dark:bg-gray-900 dark:border-green-600 dark:border dark:text-white rounded-xl w-[10rem] h-[2.5rem] mr-4">
+                    رزرو دوره
+                  </button>
+                  <button className="bg-[#eeeeee] dark:bg-gray-800 dark:text-white rounded-xl w-[10rem] h-[2.5rem] border-solid border border-green-600">
+                    جزِئیات دوره
+                  </button>
+                </div>
               </div>
-              <button class="text-TextGreen dark:bg-gray-800 dark:text-white bg-[#BFF4E4] rounded-lg cursor-pointer p-2">
-                {item?.statusName}
-              </button>
-            </div>
+            );
+          })}
+        </div>
 
-            <p className="text-right mt-3 dark:text-white text-[#1A1E21] text-xl">
-              {item?.title}
-            </p>
+        <div className="flex flex-col items-center w-[21rem] h-[51rem] bg-[#FBF6F6]  mt-16 ml-2 rounded-3xl">
+          <img className="mt-10" src={filter2} alt="" />
 
-            <div className="flex justify-between items-center mt-5 dark:text-white">
-              <div className="flex justify-center items-center">
-                <img src={star} alt="" />
-                <p className="ml-2">{item?.currentRegistrants}</p>
+
+
+
+              <div className="h-14 mt-5 w-[20rem]">
+
+
+              <details open>
+          
+          <summary className="ml-2 flex justify-between">
+            
+                <svg width="15" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 2L11.1743 9.83007L2.34863 2" stroke="#22445D" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+                
+              دسته بندی
+                
+              
+          </summary>
+               <hr class="border-2 mx-2 border-[#5BE1B9] mt-2"/>
+              <div className="rtl mx-3 mt-5 w-[19rem] border-2 border-[#5BE1B9] rounded-xl">
+
+                    <label class="flex bg-gray-100 text-gray-700 px-3 pt-1 rounded-xl  hover:bg-green-200 cursor-pointer ">
+                      <input className="ml-3 size-4" type="checkbox" name="Country"/>
+                      <i class="pl-2 text-md">حضوری</i>
+                   </label>
+
+                   <label class="flex bg-gray-100 text-gray-700 px-3 py-1 rounded-xl  hover:bg-green-200 cursor-pointer ">
+                      <input className="ml-3 size-4" type="checkbox" name="Country"/>
+                      <i class="pl-2 text-md">آنلاین</i>
+                   </label>
+
+                   <label class="flex bg-gray-100 text-gray-700 pb-1 px-3 rounded-xl  hover:bg-green-200 cursor-pointer ">
+                      <input className="ml-3 size-4" type="checkbox" name="Country"/>
+                      <i class="pl-2 text-md">آنلاین - حضوری</i>
+                   </label>
               </div>
-              <div className="flex justify-between items-center">
-                <p className="mr-2"> {item?.teacherName}</p>
-                <img className="my-[-1rem]" src={profileimg} alt="" />
-              </div>
-            </div>
+    
+                </details>
 
-            <p className="rtl mt-5 ml-[4rem] text-[#41A789] text-xs ">
-              {" "}
-              {item?.currentRegistrants} ساعت سخنرانی ( 190 ساعت ){" "}
-            </p>
 
-            <p className="rtl mt-2 leading-5 dark:text-white text-[#6D6767] text-xs text-right">
-              {item?.describe}
-            </p>
+              <details open>
+          
+              <summary className="my-5 mx-3 flex justify-between">
+                
+                    <svg width="15" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 2L11.1743 9.83007L2.34863 2" stroke="#22445D" stroke-width="3" stroke-linecap="round"/>
+                    </svg>
+                    
+                  نوع دوره
+                    
+                  
+              </summary>
+                   <hr class="border-2 mx-3 border-[#5BE1B9] mt-2"/>
+                  <div className="rtl mx-3 my-5 w-[19rem] border-2 border-[#5BE1B9] rounded-xl">
 
-            <img className="mt-1" src={line} alt="" />
+                        <label class="flex bg-gray-100 text-gray-700 px-3 pt-1 rounded-xl  hover:bg-green-200 cursor-pointer ">
+                          <input className="ml-3 size-4" type="radio" name="Country"/>
+                          <i class="pl-2 text-md">حضوری</i>
+                       </label>
 
-            <div className="flex justify-between items-center mt-4">
-              <p className="text-sm text-PriceRed rtl "> {item?.cost} </p>
-              <p className="text-sm text-nowrap dark:text-white">
-                : هزینه تمام دوره
-              </p>
-            </div>
+                       <label class="flex bg-gray-100 text-gray-700 px-3 py-1 rounded-xl  hover:bg-green-200 cursor-pointer ">
+                          <input className="ml-3 size-4" type="radio" name="Country"/>
+                          <i class="pl-2 text-md">آنلاین</i>
+                       </label>
 
-            <div className="flex justify-center items-center w-[15rem] h-[2.5rem] mt-3">
-              <button className="bg-[#5BE1B9] dark:bg-gray-900 dark:border-green-600 dark:border dark:text-white rounded-xl w-[10rem] h-[2.5rem] mr-1">
-                رزرو دوره
-              </button>
-              <button className="bg-[#eeeeee] dark:bg-gray-800 dark:text-white rounded-xl w-[10rem] h-[2.5rem] border-solid border border-green-600">
-                جزِئیات دوره
-              </button>
-            </div>
-          </div>
+                       <label class="flex bg-gray-100 text-gray-700 pb-1 px-3 rounded-xl  hover:bg-green-200 cursor-pointer ">
+                          <input className="ml-3 size-4" type="radio" name="Country"/>
+                          <i class="pl-2 text-md">آنلاین - حضوری</i>
+                       </label>
+                  </div>
         
-        )
-        
-      })}
+                </details>
 
-<div className="flex ml-20 w-[86rem] ">
+
+
+            <details open>
+             
+
+              <summary className="mx-3 flex justify-between">
+                
+                    <svg width="15" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 2L11.1743 9.83007L2.34863 2" stroke="#22445D" stroke-width="3" stroke-linecap="round"/>
+                    </svg>
+                    
+              سطح دوره
+                    
+                  
+              </summary>
+                   <hr class="border-2 mx-3 border-[#5BE1B9] mt-2"/>
+                  <div className="rtl mx-3 mt-5 w-[19rem] border-2 border-[#5BE1B9] rounded-xl">
+
+                        <label class="flex bg-gray-100 text-gray-700 px-3 pt-1 rounded-xl  hover:bg-green-200 cursor-pointer ">
+                          <input className="ml-3 size-4" type="radio" name="Country"/>
+                          <i class="pl-2 text-md">مبتدی</i>
+                       </label>
+
+                       <label class="flex bg-gray-100 text-gray-700 px-3 py-1 rounded-xl  hover:bg-green-200 cursor-pointer ">
+                          <input className="ml-3 size-4" type="radio" name="Country"/>
+                          <i class="pl-2 text-md">پیشرفته</i>
+                       </label>
+
+                       <label class="flex bg-gray-100 text-gray-700 pb-1 px-3 rounded-xl  hover:bg-green-200 cursor-pointer ">
+                          <input className="ml-3 size-4" type="radio" name="Country"/>
+                          <i class="pl-2 text-md">فوق پیشرفته</i>
+                       </label>
+                  </div>
+             </details>
+
+
+            <details open>
+             
+
+             <summary className="mx-3 mt-5 flex justify-between">
+               
+                   <svg width="15" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <path d="M20 2L11.1743 9.83007L2.34863 2" stroke="#22445D" stroke-width="3" stroke-linecap="round"/>
+                   </svg>
+                   
+                    قیمت
+                   
+                 
+             </summary>
+                  
+             <div class="price-range p-4">
+    {/* <span class="text-sm">$</span>
+    <span class="text-sm">900</span> */}
+    <input class="w-full bg-green-300" type="range" name="" value="110" min="0" max="1000" oninput="this.previousElementSibling.innerText=this.value"/>
+    <div class="-mt-2 flex w-full justify-between">
+      <span class="text-sm text-gray-600">0</span>
+      <span class="text-sm text-gray-600">1000</span>
+    </div>
+  </div>
+             </details>
+
+            </div>
+
+
+
+
+         </div>
+
+
+
+      </div>
+
+      {/* <div className="flex relative ml-20 w-[86rem] ">
        
 
        <ul className="text-[#22445D] text-right h-[39rem] flex w-[20rem] mt-16 dark:text-white dark:bg-gray-800 bg-[#FBF6F6] shadow-[10px 10px 3px rgba(0, 0, 0, 0.160784)] rounded-3xl   ">
@@ -221,11 +367,7 @@ const CoursesListForm = () => {
 
        
      </div>
-
-
-</div>
-
-     
+     */}
 
       {/* Slider */}
 

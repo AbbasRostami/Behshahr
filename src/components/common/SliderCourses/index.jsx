@@ -14,6 +14,7 @@ import starRating from "./../../../assets/svg/Landing/StarRating.svg"
 import line from "./../../../assets/svg/Landing/Line.svg"
 import { useEffect } from 'react';
 import { getApi } from '../../../core/api/api';
+import { Link } from 'react-router-dom';
 
 const CoursesSlider = () => {
 
@@ -64,7 +65,7 @@ const CoursesSlider = () => {
 
                 <div className="mt-16 mx-16 flex justify-around items-center rounded-3xl ">
       
-      <div className='relative p-10 text-center rounded-md mt-11 bg-[#FBF6F6] dark:bg-gray-800 shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen h-[490px] w-[370px]'>
+      <div className='relative p-10 text-center rounded-md mt-11 bg-[#FBF6F6] dark:bg-gray-800 shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen h-[460px] w-[370px]'>
           <div className='absolute top-[-80px] left-[110px]'><img src={courses1} alt="" /></div>
         
       
@@ -102,7 +103,7 @@ const CoursesSlider = () => {
       
           <p className='rtl mt-3 ml-28  text-[#41A789] text-xs dark:text-white '> {item?.currentRegistrants} ساعت سخنرانی ( 190 ساعت ) </p>
       
-          <p className='rtl mt-5 leading-5 text-[#6D6767] text-xs text-right dark:text-white'>{item?.describe} </p>
+          <p className='rtl mt-5 leading-5 text-[#6D6767] text-xs text-right truncate ... dark:text-white'>{item?.describe} </p>
       
           <img className='mt-5 ' src={line} alt="" />
       
@@ -112,7 +113,7 @@ const CoursesSlider = () => {
             <p className='text-sm text-'>: هزینه تمام دوره</p>
           </div>
       
-          <button class="w-[240px] h-[40px] text-white bg-BgGreen rounded-lg mt-6 ">الان ثبت نام کن</button>
+          <Link to='/register'><button class="w-[240px] h-[40px] text-white bg-BgGreen rounded-lg mt-6 ">الان ثبت نام کن</button></Link>
       
       </div>
       
