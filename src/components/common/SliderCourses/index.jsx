@@ -102,7 +102,7 @@ const CoursesSlider = () => {
       
           <p className='rtl mt-3 ml-28  text-[#41A789] text-xs dark:text-white '> {item?.currentRegistrants} ساعت سخنرانی ( 190 ساعت ) </p>
       
-          <p className='rtl mt-5 leading-5 text-[#6D6767] text-xs text-right dark:text-white'>{item?.describe} </p>
+          <p className='rtl mt-5 leading-5 text-[#6D6767] truncate ... text-xs text-right dark:text-white'>{item?.describe} </p>
       
           <img className='mt-5 ' src={line} alt="" />
       
