@@ -8,7 +8,7 @@ const Header = () => {
   return (
 
   <div class="bg-gradient-to-r from-green-300 to-gray-50 dark:dark:bg-slate-900 dark:bg-none">
-    <div class="flex justify-between items-center container mx-auto px-20 h-20">
+    <div class="flex justify-between items-center px-20 h-20">
     <div class="flex justify-center items-center">
     
     <Link to='/login'><button class="text-[#22445D] bg-[#00DF9D] dark:bg-gray-800 dark:text-white rounded-lg cursor-pointer p-2">ورود / ثبت نام</button></Link>

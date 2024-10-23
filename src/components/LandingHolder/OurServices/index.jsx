@@ -15,7 +15,7 @@ const OurServices = () => {
         <p class="leading-10">ما فرصت آماده شدن برای زندگی را فراهم می کنیم</p>
     </div>
 
-    <div class="px-16 py-16  text-[#22445D] grid grid-cols-3 gap-2 rtl">
+    <div class="px-16 py-16  text-[#22445D] grid grid-col-2 lg:grid-cols-3 gap-2 rtl">
         
     <div class="rounded p-5 bg-rd ">
         <div class="flex justify-center items-center">
