@@ -90,7 +90,7 @@ const NewsArticlesForm = () => {
         </div>
 
         <div className=" flex justify-evenly items-center">
-          <div className="grid grid-cols-3  gap-20">
+          <div className="grid grid-cols-3  gap-56">
             {cards.map((item ,index)=>{
               return(<ArticlesCard item={item} />)
             })}

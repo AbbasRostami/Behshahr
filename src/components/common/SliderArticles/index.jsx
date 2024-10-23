@@ -36,9 +36,14 @@ const SliderArticles = () => {
   return (
     <>
       <div class="text-center leading-10 mt-14 dark:text-white">
+        <br />
+        <br />
+        <br />
         <p class="text-[35px] font-bold">اخبار و مقالات</p>
         <p class="leading-10">ساختن دنیایی بهتر، یک دوره در یک زمان</p>
       </div>
+      <br />
+      <br />
 
       <Swiper
       slidesPerView={3}
@@ -51,11 +56,11 @@ const SliderArticles = () => {
           return (
             <SwiperSlide>
 
-              <div className="  flex justify-around items-center rounded-3xl ">
-                <div className="relative h-[540px] w-[370px] text-center rounded-[1.5rem] mt-11 dark:bg-gray-800 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen ">
+              <div className="  flex justify-around items-center rounded-3xl  ">
+                <div className="relative h-[540px] w-[430px] text-center rounded-[1.5rem] mt-11 dark:bg-gray-800 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen ">
                   <div className="h-64">
                     <img
-                      className="p-0 object-cover h-full w-full"
+                      className="p-0 object-cover h-[20rem] w-full"
                       src={item?.currentImageAddressTumb}
                       alt=""
                     />
