@@ -8,7 +8,7 @@ import { Footer } from "./../common/Footer"
 
 import newsPic from "./../../assets/svg/ArticlesDetails/newPic.svg";
 import like from "./../../assets/svg/ArticlesDetails/like.svg";
-import dislike from "./../../assets/svg/ArticlesDetails/dislike.svg";
+import disLike from "./../../assets/svg/ArticlesDetails/disLike.svg";
 import favorite from "./../../assets/svg/ArticlesDetails/favorite.svg";
 import starRating from "./../../assets/svg/ArticlesDetails/starRating.svg";
 import profileimg from "./../../assets/svg/ArticlesDetails/profileimg.svg";
@@ -27,33 +27,25 @@ const ArticlesDetailsForm = () => {
   return (
     
 <>
-        <HeaderUserlogin />
-      <div className="bg-[#FBF6F6] rounded-2xl w-[94%] m-auto mt-16">
-        <div className="flex justify-center items">
-          <img className="w-[70%]" src={articlePic} alt="" />
+<div>
+         <HeaderUserlogin />
+        
+         <div className="flex flex-col px-16 py-[70px] ">
+      
+         <div className="min-h-screen bg-[#FBF6F6] rounded-[40px] flex justify-center p-6 ">
+      <div className="flex flex-col w-full min-w-[100px]  gap-6">
+        <div className=" flex-col rounded-[30px] flex items-center justify-center p-6">
+          <img
+            src={articlePic}
+            alt="image"
+            className="min-w-[300px] object-cover rounded-[30px]"
+          />
         </div>
-
-        <div className="w-[78%] bg-[#fff] rounded-3xl  h-[30rem] m-auto">
-          <h1 className="text-3xl text-black flex justify-center items-center my-10 py-5">
+        <div className="bg-white p-6  flex-col rounded-[30px] shadow-md px-9">
+          <h1 className="text-[30px] w-full flex flex-col items-center">
             عنوان مقاله
           </h1>
-          <h1 className="text-[16px] rtl p-2 text-black text-justify leading-5">
-            لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه
-            دهندگان وب، تایپوگراف ها و طراحان استفاده می شود. تکه های لاتین متن
-            نشان می دهد که یک پروژه در حال توسعه است. لورم ایپسوم فقط برای توسعه
-            دهندگان وب نیست. طراحان گرافیک نیز از آن با نرم افزارهای مختلفی
-            مانند فوتوشاپ استفاده می کنند.
-          </h1>
-          <br></br>
-          <h1 className="text-[16px] rtl p-2 text-black text-justify leading-5">
-            لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه
-            دهندگان وب، تایپوگراف ها و طراحان استفاده می شود. تکه های لاتین متن
-            نشان می دهد که یک پروژه در حال توسعه است. لورم ایپسوم فقط برای توسعه
-            دهندگان وب نیست. طراحان گرافیک نیز از آن با نرم افزارهای مختلفی
-            مانند فوتوشاپ استفاده می کنند.
-          </h1>
-          <br></br>
-          <h1 className="text-[16px] rtl p-2 text-black text-justify leading-5">
+          <div className="text-gray-700 pt-8">
             لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه
             دهندگان وب، تایپوگراف ها و طراحان استفاده می شود. تکه های لاتین متن
             نشان می دهد که یک پروژه در حال توسعه است. لورم ایپسوم فقط برای توسعه
@@ -61,264 +53,120 @@ const ArticlesDetailsForm = () => {
             مانند فوتوشاپ استفاده می کنند. لورم ایپسوم محبوب ترین و
             استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها
             و طراحان استفاده می شود. تکه های لاتین متن نشان می دهد که یک پروژه
-            در حال توسعه است. لورم ایپسوم فقط برای توسعه دهندگان وب نیست. طراحان
-            گرافیک نیز از آن با نرم افزارهای مختلفی مانند فوتوشاپ استفاده می
-            کنند. لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط
-            توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود. تکه های
-            لاتین متن نشان می دهد که یک پروژه در حال توسعه است.
-          </h1>
-          <div>
-            <img
-              className="h-[1.2rem] absolute left-[49.5rem] bottom-[-23rem]"
-              src={author}
-              alt=""
-            />
-            <img
-              className="h-[1.2rem] absolute left-[70.5rem] bottom-[-23rem]"
-              src={eye}
-              alt=""
-            />
-            <img
-              className="h-[1.2rem] absolute left-[64rem] bottom-[-23rem]"
-              src={calendar}
-              alt=""
-            />
-            <img
-              className="h-[1.2rem] absolute left-[54.5rem] bottom-[-23rem]"
-              src={key}
-              alt=""
-            />
+            در حال توسعه است. لورم ایپسوم فقط برای توسعه دهندگان وب نیست.
+            <p className="pt-8">
+              طراحان گرافیک نیز از آن با نرم افزارهای مختلفی مانند فوتوشاپ
+              استفاده می کنند. لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی
+              است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می
+              شود. تکه های لاتین متن نشان می دهد که یک پروژه در حال توسعه است.
+              لورم ایپسوم فقط برای توسعه دهندگان وب نیست. طراحان گرافیک نیز از
+              آن با نرم افزارهای مختلفی مانند فوتوشاپ استفاده می کنند.
+            </p>
+            <p className="pt-8">
+              لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط
+              توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود. تکه های
+              لاتین متن نشان می دهد که یک پروژه در حال توسعه است. لورم ایپسوم
+              فقط برای توسعه دهندگان وب نیست. طراحان گرافیک نیز از آن با نرم
+              افزارهای مختلفی مانند فوتوشاپ استفاده می کنند. لورم ایپسوم محبوب
+              ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب،
+              تایپوگراف ها و طراحان استفاده می شود. تکه های لاتین متن نشان می
+              دهد که یک پروژه در حال توسعه است.
+            </p>
+          </div>
+          <div className="flex flex-row-reverse justify-between items-center">
+            <div className="flex flex-row-reverse gap-4">
+              <span>
+                {" "}
+                <img src={like} />
+              </span>
+              <span>
+                <img src={disLike} />
+              </span>
+              <span>
+                <img src={starRating} />
+              </span>
+            </div>
+            <div className="flex flex-row gap-11 py-8">
+              <div className="flex flex-row-reverse gap-3">
+                <span className="text-[13px] text-[#126F94] w-full">
+                  نام نویسنده :{" "}
+                </span>
+                <img src={author} />
+              </div>
 
-            <img
-              className="w-[1.4rem] h-[1.4rem] absolute left-[14rem] bottom-[-21.7rem]"
-              src={like}
-              alt=""
-            />
-            <img
-              className="w-[1.4rem] h-[1.4rem] absolute left-[16rem] bottom-[-21.7rem]"
-              src={dislike}
-              alt=""
-            />
-            <img
-              className="w-[1.4rem] h-[1.4rem] absolute left-[18rem] bottom-[-21.7rem]"
-              src={favorite}
-              alt=""
-            />
+              <div className="flex flex-row-reverse gap-3">
+                <span className="text-[13px] text-[#807A7A] w-full">1124</span>
+                <img src={eye} />
+              </div>
 
-            <h1 className=" text-[13px] text-[#126F94] text-right absolute right-[15.3rem] bottom-[-22.7rem]">
-              نام نویسنده{" "}
-            </h1>
-            <h1 className="text-[13px] text-[#807A7A] text-right absolute right-[25rem] bottom-[-22.7rem]">
-              1124
-            </h1>
-            <h1 className="text-[13px] text-[#807A7A] text-right absolute right-[31.5rem] bottom-[-22.7rem]">
-              06 مهر 1402
-            </h1>
-            <h1 className="text-[13px] text-[#807A7A] text-right absolute right-[41rem] bottom-[-22.7rem]">
-              کلمات کلیدی
-            </h1>
+              <div className="flex flex-row-reverse gap-3">
+                <span className="text-[13px] text-[#807A7A] w-full">
+                  مهر 1402
+                </span>
+                <img src={calendar} />
+              </div>
+
+              <div className="flex flex-row-reverse gap-3">
+                <span className="text-[13px] text-[#807A7A] w-full">
+                  کلمات کلیدی
+                </span>
+                <img src={key} />
+              </div>
+            </div>
           </div>
         </div>
-
-        <div className="ml-[25rem] mt-[3rem]">
-          <button className="boredr-solid boredr-2 border-[#5BE1B9] w-[20rem] h-[3rem] rounded-l text-[15px] bg-[#ffff] text-[#22445D] mt-[-48px] ">
+        <div className="flex flex-row rounded-[15px] px-28 py-3">
+          <button
+            type="button"
+            className="w-1/2 py-4 text-center rounded-[10px] bg-[#A4F6DE]"
+          >
             ثبت نظر
           </button>
-
-          <button className="boredr-solid boredr-2 border-[#5BE1B9] w-[20rem] h-[3rem] rounded-l text-[15px] bg-[#5BE1B9] text-[#22445D] mt-[-48px] ">
+          <button
+            type="button"
+            className="w-1/2 py-4 border-2 border-[#A4F6DE] rounded-[10px] text-center "
+          >
             نظرات کاربران
           </button>
         </div>
-        <br></br>
-        <br></br>
-        <div className="w-[78%] h-[10rem] bg-[#fff] rounded-3xl m-auto">
-          <img
-            className="w-[2.2rem] h-[2.2rem] absolute right-[14rem] my-[1rem]"
-            src={dummy}
-            alt=""
-          />
-          <img
-            className="w-[1.4rem] h-[1.4rem] absolute left-[18rem] my-[1rem]"
-            src={like}
-            alt=""
-          />
-          <img
-            className="w-[1.4rem] h-[1.4rem] absolute left-[16rem] my-[1rem]"
-            src={dislike}
-            alt=""
-          />
-          <img
-            className="w-[1.4rem] h-[1.4rem] absolute left-[14rem] my-[1rem]"
-            src={undo}
-            alt=""
-          />
-
-          <h2 className="text-[20px] text-[#22445D] absolute right-[17rem] my-[1rem]">
-            عنوان: عنوان نظر
-          </h2>
-
-          <h3 className="text-[14px] rtl text-[#22445D] absolute right-[17rem] my-[3.5rem]">
+        <div className="bg-white p-6 px-7 flex-col rounded-[30px] shadow-md">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-4">
+              <div>
+                <img src={dummy} />
+              </div>
+              <h2 className="text-[15px]">عنوان : عنوان نظر</h2>
+            </div>
+            <div className="flex flex-row gap-4">
+              <img src={like} />
+              <img src={disLike} />
+              <img src={undo} />
+            </div>
+          </div>
+          <div className="text-gray-700 pt-5 min-h-[110px]">
             لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه
-            دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.
-          </h3>
-          <h4 className="text-[14px] rtl text-[#22445D] absolute right-[17rem] my-[5rem]">
-            تکه های لاتین متن نشان می دهد که یک پروژه در حال توسعه است.
-          </h4>
-
-          <h5 className="text-[14px] text-[#22445D] absolute left-[18rem] my-[8rem]">
-            1403/03/16
-          </h5>
-          <h5 className="text-[14px] text-[#22445D] absolute left-[15rem] my-[8rem]">
-            9:48
-          </h5>
+            دهندگان وب، تایپوگراف ها و طراحان استفاده می شود. تکه های لاتین متن
+            نشان می دهد که یک پروژه در حال توسعه است. لورم ایپسوم فقط برای توسعه
+            دهندگان وب نیست. طراحان گرافیک نیز از آن با نرم افزارهای مختلفی
+            مانند فوتوشاپ استفاده می کنند. لورم ایپسوم محبوب ترین و
+            استانداردترین متن ساختگی است که توسط توسعه دهندگان وب،
+          </div>
+          <div className="flex flex-row-reverse justify-between items-center text-xs text-gray-500">
+            <span>2024-10-15 | 12:45 </span>
+          </div>
         </div>
-        <br></br>
-        <br></br>
-        <div className="w-[60%] h-[10rem] bg-[#fff] rounded-3xl mx-[22rem]">
-          <img
-            className="w-[2.2rem] h-[2.2rem] absolute right-[18rem] my-[1rem]"
-            src={dummy}
-            alt=""
-          />
-          <img
-            className="w-[1.4rem] h-[1.4rem] absolute left-[30rem] my-[1rem]"
-            src={like}
-            alt=""
-          />
-          <img
-            className="w-[1.4rem] h-[1.4rem] absolute left-[28rem] my-[1rem]"
-            src={dislike}
-            alt=""
-          />
-          <img
-            className="w-[1.4rem] h-[1.4rem] absolute left-[26rem] my-[1rem]"
-            src={undo}
-            alt=""
-          />
-
-          <h2 className="text-[20px] text-[#22445D] absolute right-[21rem] my-[1rem]">
-            عنوان: عنوان نظر
-          </h2>
-
-          <h3 className="text-[14px] rtl text-[#22445D] absolute right-[21rem] my-[3.5rem]">
-            لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه
-            دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.
-          </h3>
-          <h4 className="text-[14px] rtl text-[#22445D] absolute right-[21rem] my-[5rem]">
-            تکه های لاتین متن نشان می دهد که یک پروژه در حال توسعه است.
-          </h4>
-
-          <h5 className="text-[14px] text-[#22445D] absolute left-[30rem] my-[8rem]">
-            1403/03/16
-          </h5>
-
-          <h5 className="text-[14px] text-[#22445D] absolute left-[27rem] my-[8rem]">
-            9:48
-          </h5>
-        </div>
-        <br></br>
-        <br></br>
-        <div className="w-[78%] h-[10rem] bg-[#fff] rounded-3xl m-auto">
-          <img
-            className="w-[2.2rem] h-[2.2rem] absolute right-[14rem] my-[1rem]"
-            src={dummy}
-            alt=""
-          />
-          <img
-            className="w-[1.4rem] h-[1.4rem] absolute left-[18rem] my-[1rem]"
-            src={like}
-            alt=""
-          />
-          <img
-            className="w-[1.4rem] h-[1.4rem] absolute left-[16rem] my-[1rem]"
-            src={dislike}
-            alt=""
-          />
-          <img
-            className="w-[1.4rem] h-[1.4rem] absolute left-[14rem] my-[1rem]"
-            src={undo}
-            alt=""
-          />
-
-          <h2 className="text-[20px] text-[#22445D] absolute right-[17rem] my-[1rem]">
-            عنوان: عنوان نظر
-          </h2>
-
-          <h3 className="text-[14px] rtl text-[#22445D] absolute right-[17rem] my-[3.5rem]">
-            لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه
-            دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.
-          </h3>
-          <h4 className="text-[14px] rtl text-[#22445D] absolute right-[17rem] my-[5rem]">
-            تکه های لاتین متن نشان می دهد که یک پروژه در حال توسعه است.
-          </h4>
-
-          <h5 className="text-[14px] text-[#22445D] absolute left-[18rem] my-[8rem]">
-            1403/03/16
-          </h5>
-
-          <h5 className="text-[14px] text-[#22445D] absolute left-[15rem] my-[8rem]">
-            9:48
-          </h5>
-        </div>
-        <br></br>
-        <br></br>
-        <div className="w-[78%] h-[10rem] bg-[#fff] rounded-3xl m-auto">
-          <img
-            className="w-[2.2rem] h-[2.2rem] absolute right-[14rem] my-[1rem]"
-            src={dummy}
-            alt=""
-          />
-          <img
-            className="w-[1.4rem] h-[1.4rem] absolute left-[18rem] my-[1rem]"
-            src={like}
-            alt=""
-          />
-          <img
-            className="w-[1.4rem] h-[1.4rem] absolute left-[16rem] my-[1rem]"
-            src={dislike}
-            alt=""
-          />
-          <img
-            className="w-[1.4rem] h-[1.4rem] absolute left-[14rem] my-[1rem]"
-            src={undo}
-            alt=""
-          />
-
-          <h2 className="text-[20px] text-[#22445D] absolute right-[17rem] my-[1rem]">
-            عنوان: عنوان نظر
-          </h2>
-
-          <h3 className="text-[14px] rtl text-[#22445D] absolute right-[17rem] my-[3.5rem]">
-            لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه
-            دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.
-          </h3>
-          <h4 className="text-[14px] rtl text-[#22445D] absolute right-[17rem] my-[5rem]">
-            تکه های لاتین متن نشان می دهد که یک پروژه در حال توسعه است.
-          </h4>
-
-          <h5 className="text-[14px] text-[#22445D] absolute left-[18rem] my-[8rem]">
-            1403/03/16
-          </h5>
-
-          <h5 className="text-[14px] text-[#22445D] absolute left-[15rem] my-[8rem]">
-            9:48
-          </h5>
-        </div>
-        <br></br>
-        <br></br>
-        <br></br>
+        <div className="p-4 pt-0 flex flex-row-reverse gap-6">
+            <p className="text-[14px] text-[#158B68]">پاسخ ها</p>
+            <p className="text-[14px] text-[#158B68]">پاسخ دادن</p>
+          </div>
       </div>
+    </div>
 
-      <div className="w-[1300px] ml-[7rem]">
-        <div className="text-center leading-10 mt-[70px]">
-          <p className="text-[35px] text-[#22445D] font-bold">
-            {" "}
-            اخبار و مقالات مشابه
-          </p>
-          <p className="leading-10 text-[#22445D]">
-            ساختن دنیایی بهتر، یک دوره در یک زمان
-          </p>
-        </div>
+
+
+
+    </div>
+        
 
         <Swiper
           navigation={true}
@@ -342,7 +190,7 @@ const ArticlesDetailsForm = () => {
                   <div className="flex justify-between items-center mt-5 px-5">
                     <div className="flex justify-center items-center ">
                       <img src={like} alt="" />
-                      <img className="mx-2" src={dislike} alt="" />
+                      <img className="mx-2" src={disLike} alt="" />
                       <img src={favorite} alt="" />
                     </div>
 
@@ -396,7 +244,7 @@ const ArticlesDetailsForm = () => {
                   <div className="flex justify-between items-center mt-5 px-5">
                     <div className="flex justify-center items-center ">
                       <img src={like} alt="" />
-                      <img className="mx-2" src={dislike} alt="" />
+                      <img className="mx-2" src={disLike} alt="" />
                       <img src={favorite} alt="" />
                     </div>
 
@@ -450,7 +298,7 @@ const ArticlesDetailsForm = () => {
                   <div className="flex justify-between items-center mt-5 px-5">
                     <div className="flex justify-center items-center ">
                       <img src={like} alt="" />
-                      <img className="mx-2" src={dislike} alt="" />
+                      <img className="mx-2" src={disLike} alt="" />
                       <img src={favorite} alt="" />
                     </div>
 
@@ -508,7 +356,7 @@ const ArticlesDetailsForm = () => {
                   <div className="flex justify-between items-center mt-5 px-5">
                     <div className="flex justify-center items-center ">
                       <img src={like} alt="" />
-                      <img className="mx-2" src={dislike} alt="" />
+                      <img className="mx-2" src={disLike} alt="" />
                       <img src={favorite} alt="" />
                     </div>
 
@@ -562,7 +410,7 @@ const ArticlesDetailsForm = () => {
                   <div className="flex justify-between items-center mt-5 px-5">
                     <div className="flex justify-center items-center ">
                       <img src={like} alt="" />
-                      <img className="mx-2" src={dislike} alt="" />
+                      <img className="mx-2" src={disLike} alt="" />
                       <img src={favorite} alt="" />
                     </div>
 
@@ -616,7 +464,7 @@ const ArticlesDetailsForm = () => {
                   <div className="flex justify-between items-center mt-5 px-5">
                     <div className="flex justify-center items-center ">
                       <img src={like} alt="" />
-                      <img className="mx-2" src={dislike} alt="" />
+                      <img className="mx-2" src={disLike} alt="" />
                       <img src={favorite} alt="" />
                     </div>
 
@@ -658,9 +506,10 @@ const ArticlesDetailsForm = () => {
           </SwiperSlide>
         </Swiper>
 
-        <button className="bg-[#12926C] rounded-full h-[3.5rem] w-[14rem] absolute my-[-2rem] mx-[35rem] ">
+        <button className="bg-[#12926C] rounded-full h-[3.5rem] w-[14rem] absolute my-[-2rem] mx-[50rem] ">
           مشاهده مقالات بیشتر
         </button>
+        
       </div>
 
       <Footer />

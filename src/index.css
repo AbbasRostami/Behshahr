@@ -7,3 +7,13 @@
     direction: rtl;
   }
 }
+
+body {
+  font-family: IranSans; 
+  line-height: 1.5;
+}
+
+@font-face {
+  font-family: IranSans;
+  src: url(/src/assets/fonts/IRANSans.ttf);
+}
