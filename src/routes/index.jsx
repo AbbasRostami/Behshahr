@@ -11,6 +11,7 @@ import { ForgetPassword } from "../screens/ForgetPassword";
 import { StepOne } from "../components/RegisterForm/StepOne";
 import { StepTwo } from "../components/RegisterForm/StepTwo";
 import { StepThree } from "../components/RegisterForm/StepThree";
+import { Steptwo } from "../components/ForgetPasswordForm/StepTwo";
 
 
 const RoutesApp = createBrowserRouter([
@@ -61,6 +62,11 @@ const RoutesApp = createBrowserRouter([
         path:'/forget-password',
         element: <ForgetPassword />,
       },
+      {
+        path:'/new-password',
+        element: <Steptwo />,
+      },
+      
     
     
       ]);
