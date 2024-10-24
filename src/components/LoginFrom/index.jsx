@@ -31,7 +31,14 @@ const LoginForm = () => {
 
   return (
     <>
-      {show ? (
+{/* . */}
+      {show ?
+
+
+
+
+
+
         <div className="flex  m-auto h-[32rem] w-[50rem] mt-[5rem] ">
           <div
             onClick={() => setShow(!show)}
