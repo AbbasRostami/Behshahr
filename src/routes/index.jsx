@@ -1,5 +1,4 @@
-import { createBrowserRouter, Router } from "react-router-dom";
-import App from "../app";
+import { createBrowserRouter } from "react-router-dom";
 import { Landing } from "../screens/Landing";
 import { AboutUs } from "../screens/AboutUs";
 import { CoursesDetails } from "../screens/CoursesDetails";
@@ -8,67 +7,95 @@ import { NewsArticles } from "../screens/NewsArticles";
 import { NotFound } from "../components/NotFound";
 import { Login } from "../screens/Login";
 import { ForgetPassword } from "../screens/ForgetPassword";
+import { MyCourses } from "../components/MyCourses/myCourses";
+import { MyReserveCourses } from "../components/MyCourses/myReserveCourses";
+import { Favorites } from "../components/MyCourses/favorites";
+import { MyComments } from "../components/MyCourses/myComments";
+import { ChangePassword } from "../components/MyCourses/changePassword";
+import { EditProfile } from "../components/MyCourses/editProfile";
+import { Dashbord } from "../components/MyCourses/dashbord";
+import { PanelLayout } from "../screens/layout/PanelLayout";
 import { StepOne } from "../components/RegisterForm/StepOne";
 import { StepTwo } from "../components/RegisterForm/StepTwo";
 import { StepThree } from "../components/RegisterForm/StepThree";
-import { Steptwo } from "../components/ForgetPasswordForm/StepTwo";
 
-
-const RoutesApp = createBrowserRouter([
-    
-    
+export const RoutesApp = createBrowserRouter([
+  {
+    path: "/",
+    element: <Landing />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
+  },
+  {
+    path: "/about",
+    element: <AboutUs />,
+  },
+  {
+    path: "/courses-details",
+    element: <CoursesDetails />,
+  },
+  {
+    path: "/articles-details",
+    element: <ArticlesDetails />,
+  },
+  // Register Routers
+  {
+    path: "/register",
+    element: <StepOne />,
+  },
+  {
+    path: "/register-verify",
+    element: <StepTwo />,
+  },
+  {
+    path: "/register-final",
+    element: <StepThree />,
+  },
+  {
+    path: "/news-articles",
+    element: <NewsArticles />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/forget-password",
+    element: <ForgetPassword />,
+  },
+  {
+    element: <PanelLayout />,
+    children: [
       {
-        path:'/',
-        element: <Landing />,
+        path: "/myCourses",
+        element: <MyCourses />,
       },
       {
-        path: "*",
-        element: <NotFound />,
+        path: "/myReserveCourses",
+        element: <MyReserveCourses />,
       },
       {
-        path:'/about',
-        element: <AboutUs />,
+        path: "/favorites",
+        element: <Favorites />,
       },
       {
-        path:'/courses-details',
-        element: <CoursesDetails />,
+        path: "/myComments",
+        element: <MyComments />,
       },
       {
-        path:'/articles-details',
-        element: <ArticlesDetails />,
-      },
-      // Register Routers
-      {
-        path:'/register',
-        element: <StepOne />,
+        path: "/changePassword",
+        element: <ChangePassword />,
       },
       {
-        path:'/register-verify',
-        element: <StepTwo />,
+        path: "/editProfile",
+        element: <EditProfile />,
       },
       {
-        path:'/register-final',
-        element: <StepThree />,
+        path: "/dashbord",
+        element: <Dashbord />,
       },
-      {
-        path:'/news-articles',
-        element: <NewsArticles />,
-      },
-      {
-        path:'/login',
-        element: <Login />,
-      },
-      {
-        path:'/forget-password',
-        element: <ForgetPassword />,
-      },
-      {
-        path:'/new-password',
-        element: <Steptwo />,
-      },
-      
-    
-    
-      ]);
-  
-  export default RoutesApp
+    ],
+  },
+]);
