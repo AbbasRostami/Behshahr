@@ -9,6 +9,7 @@ import newsPic from "./../../assets/newsPick.svg"
 import { getArticlesListTop } from "../../core/api/getArticlesList";
 import { useEffect , useState } from "react";
 import { getApi } from "../../core/api/api";
+import { SliderArticles } from "../common/SliderArticles";
 
 const ArticlesCard = ({item}) => {
 
@@ -72,6 +73,8 @@ const ArticlesCard = ({item}) => {
               </div>
             </div>
           </div>
+
+          <SliderArticles />
          
           
     </>

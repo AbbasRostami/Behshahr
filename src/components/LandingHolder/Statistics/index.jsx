@@ -3,13 +3,31 @@ import iconCarrier0 from "./../../../assets/svg/Landing/iconCarrier.svg"
 import iconCarrier1 from "./../../../assets/svg/Landing/iconCarrier-1.svg"
 import iconCarrier2 from "./../../../assets/svg/Landing/iconCarrier-2.svg"
 import iconCarrier3 from "./../../../assets/svg/Landing/iconCarrier-3.svg"
+import { getLandingStatistics } from '../../../core/api/landingPage'
+import { useState ,useEffect } from 'react'
+import { getApi } from '../../../core/api/api'
 
 const Statistics = () => {
+
+  const [Statistics, setStatistics] = useState([]);
+
+  const getStatistics = async () => {
+    const path = `/Home/LandingReport`;
+    const response = await getApi({ path });
+    console.log(response?.data);
+    if (response) {
+        setStatistics(response?.data);
+    }
+  };
+  useEffect(() => {
+    getStatistics();
+  }, []);
+  
+
   return (
 
 
-    <div className=" bg-BgGreen mx-16 flex justify-around items-center rounded-3xl  h-[230px]">
-
+    <div className=" bg-BgGreen mx-16 flex justify-around items-center rounded-3xl  h-[230px] dark:bg-gray-800">
 
         <div className='py-5 text-center text-TextGreen'>
             <img src={iconCarrier1} alt="" />
@@ -21,7 +39,7 @@ const Statistics = () => {
         <div className='p-5 text-center text-TextGreen'>
         <img src={iconCarrier0} alt="" />
             <p>دوره آموزشی</p>
-            <p className='font-medium text-2xl'>182</p>
+            <p className='font-medium text-2xl'>{}</p>
         </div>
 
 
