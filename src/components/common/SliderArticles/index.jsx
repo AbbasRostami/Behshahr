@@ -60,14 +60,14 @@ const SliderArticles = () => {
                 <div className="relative h-[540px] w-[430px] text-center rounded-[1.5rem] mt-11 dark:bg-gray-800 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen ">
                   <div className="h-64">
                     <img
-                      className="p-0 object-cover h-[20rem] w-full"
+                      className="p-0 object-cover h-[16rem] w-full"
                       src={item?.currentImageAddressTumb}
                       alt=""
                     />
                   </div>
 
                   <div className="flex justify-between items-center mt-5 px-5">
-                    <div className="flex justify-center items-center ">
+                    <div className="flex justify-center items-center gap-2 ">
                       <img src={like} alt="" />
                       <p>{item?.currentLikeCount}</p>
                       <img className="mx-2" src={dislike} alt="" />

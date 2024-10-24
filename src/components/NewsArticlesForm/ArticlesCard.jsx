@@ -18,9 +18,9 @@ const ArticlesCard = ({item}) => {
 
   return (
     <>
-          <div className="flex justify-around items-center w-[22rem] ">
-            <div className="flex justify-around items-center rounded-3xl ">
-              <div className="relative h-[540px] w-[430px] text-center rounded-[1.5rem] mt-11 dark:bg-gray-800 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen ">
+          <div className="flex  items-center w-[22rem] ">
+            <div className="flex items-center rounded-3xl ">
+              <div className="relative h-[540px] w-[320px] lg:w-[430px] text-center rounded-[1.5rem] mt-11 dark:bg-gray-800 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen ">
                 <div>
                   <img
                     className="p-0 object-cover h-[20rem] w-full"
@@ -39,7 +39,7 @@ const ArticlesCard = ({item}) => {
                     <p> {item?.currentRate} </p>
                   </div>
 
-                  <button class="text-TextGreen dark:bg-gray-700 dark:text-white bg-[#BFF4E4] rounded-lg cursor-pointer p-2 w-auto-[120px]">
+                  <button class=" text-TextGreen dark:bg-gray-700 dark:text-white bg-[#BFF4E4] rounded-lg cursor-pointer p-2 w-auto-[120px]">
                     وضعیت دوره
                   </button>
                 </div>
