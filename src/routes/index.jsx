@@ -4,7 +4,7 @@ import { AboutUs } from "../screens/AboutUs";
 import { CoursesDetails } from "../screens/CoursesDetails";
 import { ArticlesDetails } from "../screens/ArticlesDetails";
 import { NewsArticles } from "../screens/NewsArticles";
-import { NotFound } from "../components/NotFound";
+import { NotFound } from "./../components/NotFound/index.jsx";
 import { Login } from "../screens/Login";
 import { ForgetPassword } from "../screens/ForgetPassword";
 import { MyCourses } from "../components/MyCourses/myCourses";
