@@ -48,17 +48,17 @@ const SliderArticles = () => {
           return (
             <SwiperSlide>
               <div className="flex justify-around items-center rounded-3xl ">
-                <div className="relative h-[540px] w-[370px] text-center rounded-[1.5rem] mt-11 dark:bg-gray-800 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen ">
+                <div className="relative h-[420px] lg:h-[540px] w-[300px] lg:w-[370px] text-center rounded-[1.5rem] mt-11 dark:bg-gray-800 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen ">
                   <div className="h-64">
                     <img
-                      className="p-0 object-cover h-full w-full"
+                      className="p-0 object-cover h-[8rem] lg:h-full w-full"
                       src={item?.currentImageAddressTumb}
                       alt=""
                     />
                   </div>
 
-                  <div className="flex justify-between items-center mt-5 px-5">
-                    <div className="flex justify-center items-center ">
+                  <div className="flex justify-between items-center mt-[-5rem] lg:mt-5 px-5">
+                    <div className="flex justify-center items-center hidden lg:flex gap-1">
                       <img src={like} alt="" />
                       <p>{item?.currentLikeCount}</p>
                       <img className="mx-2" src={dislike} alt="" />
@@ -68,17 +68,17 @@ const SliderArticles = () => {
                       <p>{item?.currentRate}</p>
                     </div>
 
-                    <button class="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer p-2 w-auto-[120px]">
+                    <button class="text-TextGreen bg-[#BFF4E4] rounded-lg hidden lg:inline-block cursor-pointer p-2 w-auto-[120px]">
                       وضعیت دوره
                     </button>
                   </div>
 
-                  <p className="rtl mt-3 text-[#1A1E21] text-xl rtl text-right px-5 dark:text-white">
+                  <p className="rtl mt-[-2rem] lg:mt-3 text-[#1A1E21] text-xl rtl text-right px-5 dark:text-white">
                     {item?.title}{" "}
                   </p>
 
                   <div className="flex justify-between items-center mt-5 px-5 dark:text-white">
-                    <div className="flex justify-center items-center ">
+                    <div className="flex justify-center items-center">
                       <img src={starRating} alt="" />
                       <p className="ml-2">{item?.currentRate}</p>
                     </div>
@@ -109,7 +109,7 @@ const SliderArticles = () => {
         })}
       </Swiper>
 
-      <div className="flex justify-center items-center mt-2 ">
+      <div className="flex justify-center items-center my-[-3rem] lg:mt-2 ">
         <button class="w-[220px] h-[60px] text-white bg-[#12926C] rounded-full dark:bg-gray-800">
           مشاهده مقالات بیشتر
         </button>
