@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import like from "./../../../assets/coursesLike.svg";
 import dislike from "./../../../assets/dislike.svg";
 import favorite from "./../../../assets/favo.svg";
@@ -13,11 +13,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { getApi } from '../../../core/api/api';
+import { getApi } from "../../../core/api/api";
 
 const SliderArticles = () => {
-
-    const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
 
   const getArticles = async () => {
     const path = `/News?PageNumber=1&RowsOfPage=10&SortingCol=InsertDate&SortType=DESC`;
@@ -31,8 +30,6 @@ const SliderArticles = () => {
     getArticles();
   }, []);
 
-
-
   return (
     <>
       <div class="text-center leading-10 mt-14 dark:text-white">
@@ -41,8 +38,8 @@ const SliderArticles = () => {
       </div>
 
       <Swiper
-      slidesPerView={3}
-      spaceBetween={40}
+        slidesPerView={3}
+        spaceBetween={40}
         navigation={true}
         modules={[Navigation]}
         className="mySwiper h-[40rem]"
@@ -50,8 +47,7 @@ const SliderArticles = () => {
         {data?.map((item, index) => {
           return (
             <SwiperSlide>
-
-              <div className="  flex justify-around items-center rounded-3xl ">
+              <div className="flex justify-around items-center rounded-3xl ">
                 <div className="relative h-[540px] w-[370px] text-center rounded-[1.5rem] mt-11 dark:bg-gray-800 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen ">
                   <div className="h-64">
                     <img
@@ -70,7 +66,6 @@ const SliderArticles = () => {
 
                       <img src={favorite} alt="" />
                       <p>{item?.currentRate}</p>
-                      
                     </div>
 
                     <button class="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer p-2 w-auto-[120px]">
@@ -90,7 +85,11 @@ const SliderArticles = () => {
 
                     <div className="flex justify-between items-center">
                       <p className="mr-2"> {item?.addUserFullName} </p>
-                      <img className="w-12 h-12 rounded-full" src={profileimg} alt="" />
+                      <img
+                        className="w-12 h-12 rounded-full"
+                        src={profileimg}
+                        alt=""
+                      />
                     </div>
                   </div>
 
@@ -116,7 +115,7 @@ const SliderArticles = () => {
         </button>
       </div>
     </>
-  )
-}
+  );
+};
 
-export  { SliderArticles }
+export { SliderArticles };
