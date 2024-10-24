@@ -25,7 +25,7 @@ const CoursesSlider = () => {
   const getCourses = async () => {
     const path = `/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=10&SortingCol=Active&SortType=DESC&TechCount=0`;
     const response = await getApi({ path });
-    console.log(response.data?.courseFilterDtos);
+    // console.log(response.data?.courseFilterDtos);
     if (response) {
         setcourses(response.data?.courseFilterDtos);
     }

@@ -7,7 +7,7 @@ import searching from "./../../assets/search.svg";
 import courses1 from "./../../assets/courses1.svg";
 import like from "./../../assets/coursesLike.svg";
 import dislike from "./../../assets/dislike.svg";
-import favorite from "./../../assets/favo.svg";
+import favorites from "./../../assets/favo.svg";
 import star from "./../../assets/star.svg";
 import profileimg from "./../../assets/profileimg.svg";
 import line from "./../../assets/line.svg";
@@ -15,23 +15,62 @@ import filter2 from "./../../assets/Group 242.svg";
 import { CoursesSlider } from "../common/SliderCourses";
 import { getApi } from "../../core/api/api";
 import arrow from "./../../assets/arrow.svg";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 const CoursesListForm = () => {
   const [data, setData] = useState([]);
- 
+  const [favorite, setfavorite] = useState([]);
+  const [isOpen, setisOpen] = useState([]);
 
   const GetCouresesTop = async () => {
     const path = `/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=9&SortingCol=Active&SortType=DESC&TechCount=0`;
     const response = await getApi({ path });
     console.log(response.data.courseFilterDtos);
     setData(response.data.courseFilterDtos);
+
   };
+
   useEffect(() => {
     GetCouresesTop();
   }, []);
 
 
+  
+  const priceFilter = async () => {
+    const path = `/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=9&SortingCol=cost&SortType=DESC&TechCount=0`;
+    const response = await getApi({ path });
+    console.log(response.data.courseFilterDtos);
+    setData(response.data.courseFilterDtos);
 
+  };
+
+  const likeFilter = async () => {
+    const path = `/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=9&SortingCol=likeCount&SortType=DESC&TechCount=0`;
+    const response = await getApi({ path });
+    console.log(response.data.courseFilterDtos);
+    setData(response.data.courseFilterDtos);
+
+  };
+
+  const starFilter = async () => {
+    const path = `/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=9&SortingCol=currentRegistrants&SortType=DESC&TechCount=0`;
+    const response = await getApi({ path });
+    console.log(response.data.courseFilterDtos);
+    setData(response.data.courseFilterDtos);
+
+  };
+ 
+  // const [filterSearch, setfilterSearch] = useState([]);
+
+  // const handleSearch = (query) => {
+  //   const searchData = data.filter((item) => {
+  //     return item.title.toLowerCase().match(query.toLowerCase());
+  //   });
+  //   console.log(searchData);
+  //   setfilterSearch(searchData);
+  // };
+
+  
   return (
     <>
       <h1 className="bg-white-500 mt-10 text-center text-3xl mx-14 dark:text-white">
@@ -46,9 +85,10 @@ const CoursesListForm = () => {
             <div className="relative">
               <Field
                 type="text"
-                className="rtl p-4 dark:text-white border-y-green-800 w-80 text-sm text-gray-900 border dark:bg-gray-800  rounded-2xl bg-gray-50"
+                className="rtl p-4 dark:text-white border-green-800 w-80 text-sm text-gray-900 border dark:bg-gray-800  rounded-2xl bg-gray-50"
                 placeholder="جستجو..."
                 required
+                onChange={(e) => handleSearch(e.target.value)}
               />
 
               <svg
@@ -84,24 +124,59 @@ const CoursesListForm = () => {
           </Form>
         </Formik>
 
-        <div className="flex justify-center items-center mr-10">
-          <select className="mr-5 dark:bg-gray-800 border-y-green-800 border-solid border-2 rounded-full h-[4rem] bg-[#ffffff] w-[13rem] text-center   text-[17px] text-[#158B68] ">
-            <option value="">مرتب سازی</option>
-            <option value="">متوسط </option>
-            <option value="">پیشرفته </option>
+        <div className="relative flex justify-center items-center mr-10">
+          {/* <select  className="mr-5 dark:bg-gray-800 border-y-green-800 border-solid border-2 rounded-full h-[4rem] bg-[#ffffff] w-[13rem] text-center   text-[17px] text-[#158B68] ">
+            <option value="">مرتب سازی </option>
+            
+            <option value="">قیمت </option>
+            <option onClick={() => priceFilter()}  value="favo">محبوب ترین ها </option>
             <img className="h-[8px] ml-5 " src={arrowUnder} alt="" />
-          </select>
+          </select> */}
 
+            <button onClick={() => setisOpen((prev) => !prev)} className="rtl px-4  flex justify-between items-center rounded-full w-52 h-14 dark:text-white dark:bg-gray-800 bg-white border-green-800 border-2 mr-10">
+              
+            مرتب سازی
+
+            {isOpen ? 
+              
+              <IoIosArrowDown className="mr-10"/>
+              : 
+              <IoIosArrowUp />
+            }
+
+            </button>
+
+            {!isOpen &&
+            <div className=" absolute top-16 left-0 rounded-xl bg-[#f0ecec] rtl w-52 h-32">
+
+              <label class="flex  text-gray-700 px-3 pt-4 dark:bg-gray-700 dark:text-white cursor-pointer ">
+                  <input onClick={() => priceFilter()}  className="ml-3 size-4" type="radio" name="Country" />
+                  <i class="pl-2 text-md">قیمت</i>
+                </label>
+
+                <label class="flex  text-gray-700 px-3 py-3 dark:bg-gray-700 dark:text-white cursor-pointer ">
+                  <input onClick={() => likeFilter()} className="ml-3 size-4" type="radio" name="Country" />
+                  <i class="pl-2 text-md">پسندیده ترین ها</i>
+                </label>
+
+                <label class="flex  text-gray-700 px-3  dark:bg-gray-700 dark:text-white cursor-pointer ">
+                  <input onClick={() => starFilter()} className="ml-3 size-4" type="radio" name="Country" />
+                  <i class="pl-2 text-md">محبوب ترین ها</i>
+                </label>
+            </div>
+            }
+          
           <button>
-            <img className="w-[7rem] border-y-green-800" src={filter} alt="" />
+            <img className="w-[7rem] border-green-800" src={filter} alt="" />
           </button>
+            
         </div>
       </div>
 
       {/* Middle */}
 
       <div className="flex justify-center items-start mx-8">
-        <div className=" bg-[#FBF6F6] mt-10 px-6 grid grid-cols-3 grid-rows-3 gap-2 items-center rounded-3xl flx h-[108rem]  w-[70rem] dark:bg-gray-800 shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)]">
+        <div className=" bg-[#FBF6F6] mt-12 px-6 grid grid-cols-3 grid-rows-3 gap-2 items-center rounded-3xl flx h-[108rem]  w-[70rem] dark:bg-gray-800 shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)]">
           {data.map((item, index) => {
             return (
               <div className="relative p-6  h-[415px] w-[311px] ml-6 text-center rounded-md mt-20 dark:bg-gray-700 bg-[#f6fbf6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen">
@@ -110,14 +185,20 @@ const CoursesListForm = () => {
                 </div>
 
                 <div className="flex justify-between items-center mt-14">
-                  <div className="flex justify-center items-center">
+                  <div>
                     <img src={like} alt="" />
                     <p>{item?.likeCount}</p>
-                    <img className="mx-2" src={dislike} alt="" />
+                  </div>
+
+                  <div>
+                    <img src={dislike} alt="" />
                     <p> {item?.dissLikeCount} </p>
-                    <img src={favorite} alt="" />
+                  </div>
+                  <div>
+                  <img src={favorites} alt="" />
                     <p> {item?.currentRegistrants} </p>
                   </div>
+
                   <button class="text-TextGreen dark:bg-gray-800 dark:text-white bg-[#BFF4E4] rounded-lg cursor-pointer p-2">
                     {item?.statusName}
                   </button>
@@ -172,149 +253,174 @@ const CoursesListForm = () => {
         <div className="flex flex-col items-center w-[21rem] h-[51rem]  dark:bg-gray-800 bg-[#FBF6F6]  mt-10 ml-2 rounded-3xl">
           <img className="mt-10" src={filter2} alt="" />
 
-
-
-
-              <div className="dark:text-white h-14 mt-5 w-[20rem]">
-
-
-              <details open>
-          
-          <summary className="ml-2 flex justify-between">
-            
-                <svg width="15" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 2L11.1743 9.83007L2.34863 2" stroke="#22445D" stroke-width="3" stroke-linecap="round"/>
-                </svg>
-                
-              دسته بندی
-                
-              
-          </summary>
-               <hr class="border-2 mx-2 border-[#5BE1B9] mt-2"/>
-              <div className="rtl mx-3 mt-5 w-[19rem] border-2 border-[#5BE1B9] rounded-xl">
-
-                    <label class="flex bg-gray-100 text-gray-700 px-3 pt-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
-                      <input className="ml-3 size-4" type="checkbox" name="Country"/>
-                      <i class="pl-2 text-md">حضوری</i>
-                   </label>
-
-                   <label class="flex bg-gray-100 text-gray-700 px-3 py-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
-                      <input className="ml-3 size-4" type="checkbox" name="Country"/>
-                      <i class="pl-2 text-md">آنلاین</i>
-                   </label>
-
-                   <label class="flex bg-gray-100 text-gray-700 pb-1 px-3 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
-                      <input className="ml-3 size-4" type="checkbox" name="Country"/>
-                      <i class="pl-2 text-md">آنلاین - حضوری</i>
-                   </label>
-              </div>
-    
-                </details>
-
-
-              <details open>
-          
-              <summary className="my-5 mx-3 flex justify-between">
-                
-                    <svg width="15" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 2L11.1743 9.83007L2.34863 2" stroke="#22445D" stroke-width="3" stroke-linecap="round"/>
-                    </svg>
-                    
-                  نوع دوره
-                    
-                  
-              </summary>
-                   <hr class="border-2 mx-3 border-[#5BE1B9] mt-2"/>
-                  <div className="rtl mx-3 my-5 w-[19rem] border-2 border-[#5BE1B9] rounded-xl">
-
-                        <label class="flex bg-gray-100 text-gray-700 px-3 pt-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
-                          <input className="ml-3 size-4" type="radio" name="Country"/>
-                          <i class="pl-2 text-md">حضوری</i>
-                       </label>
-
-                       <label class="flex bg-gray-100 text-gray-700 px-3 py-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
-                          <input className="ml-3 size-4" type="radio" name="Country"/>
-                          <i class="pl-2 text-md">آنلاین</i>
-                       </label>
-
-                       <label class="flex bg-gray-100 text-gray-700 pb-1 px-3 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
-                          <input className="ml-3 size-4" type="radio" name="Country"/>
-                          <i class="pl-2 text-md">آنلاین - حضوری</i>
-                       </label>
-                  </div>
-        
-                </details>
-
-
+          <div className="dark:text-white h-14 mt-5 w-[20rem]">
 
             <details open>
-             
-
               <summary className="mx-3 flex justify-between">
-                
-                    <svg width="15" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 2L11.1743 9.83007L2.34863 2" stroke="#22445D" stroke-width="3" stroke-linecap="round"/>
-                    </svg>
-                    
-              سطح دوره
-                    
-                  
+                <svg
+                  width="15"
+                  height="12"
+                  viewBox="0 0 22 12"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20 2L11.1743 9.83007L2.34863 2"
+                    stroke="#22445D"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                دسته بندی
               </summary>
-                   <hr class="border-2 mx-3 border-[#5BE1B9] mt-2"/>
-                  <div className="rtl mx-3 mt-5 w-[19rem] border-2 border-[#5BE1B9] rounded-xl">
+              <hr class="border-2 mx-2 border-[#5BE1B9] mt-2" />
+              <div className="rtl mx-3 mt-5 w-[19rem] border-2 border-[#5BE1B9] rounded-xl">
+                <label class="flex bg-gray-100 text-gray-700 px-3 pt-1 dark:bg-gray-700 dark:text-white cursor-pointer ">
+                  <input
+                    className="ml-3 size-4"
+                    type="checkbox"
+                    name="Country"
+                  />
+                  <i class="pl-2 text-md">حضوری</i>
+                </label>
 
-                        <label class="flex bg-gray-100 text-gray-700 px-3 pt-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
-                          <input className="ml-3 size-4" type="radio" name="Country"/>
-                          <i class="pl-2 text-md">مبتدی</i>
-                       </label>
+                <label class="flex bg-gray-100 text-gray-700 px-3 py-1 dark:bg-gray-700 dark:text-white cursor-pointer ">
+                  <input
+                    className="ml-3 size-4"
+                    type="checkbox"
+                    name="Country"
+                  />
+                  <i class="pl-2 text-md">آنلاین</i>
+                </label>
 
-                       <label class="flex bg-gray-100 text-gray-700 px-3 py-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
-                          <input className="ml-3 size-4" type="radio" name="Country"/>
-                          <i class="pl-2 text-md">پیشرفته</i>
-                       </label>
-
-                       <label class="flex bg-gray-100 text-gray-700 pb-1 px-3 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
-                          <input className="ml-3 size-4" type="radio" name="Country"/>
-                          <i class="pl-2 text-md">فوق پیشرفته</i>
-                       </label>
-                  </div>
-             </details>
-
+                <label class="flex bg-gray-100 text-gray-700 pb-1 px-3 dark:bg-gray-700 dark:text-white cursor-pointer ">
+                  <input
+                    className="ml-3 size-4"
+                    type="checkbox"
+                    name="Country"
+                  />
+                  <i class="pl-2 text-md">آنلاین - حضوری</i>
+                </label>
+              </div>
+            </details>
 
             <details open>
-             
+              <summary className="my-5 mx-3 flex justify-between">
+                <svg
+                  width="15"
+                  height="12"
+                  viewBox="0 0 22 12"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20 2L11.1743 9.83007L2.34863 2"
+                    stroke="#22445D"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                نوع دوره
+              </summary>
+              <hr class="border-2 mx-3 border-[#5BE1B9] mt-2" />
+              <div className="rtl mx-3 my-5 w-[19rem] border-2 border-[#5BE1B9] rounded-xl">
+                <label class="flex bg-gray-100 text-gray-700 px-3 pt-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
+                  <input className="ml-3 size-4" type="radio" name="Country" />
+                  <i class="pl-2 text-md">حضوری</i>
+                </label>
 
-             <summary className="mx-3 mt-5 flex justify-between">
-               
-                   <svg width="15" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                   <path d="M20 2L11.1743 9.83007L2.34863 2" stroke="#22445D" stroke-width="3" stroke-linecap="round"/>
-                   </svg>
-                   
-                    قیمت
-                   
-                 
-             </summary>
-                  
-             <div class="price-range p-4">
-    {/* <span class="text-sm">$</span>
+                <label class="flex bg-gray-100 text-gray-700 px-3 py-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
+                  <input className="ml-3 size-4" type="radio" name="Country" />
+                  <i class="pl-2 text-md">آنلاین</i>
+                </label>
+
+                <label class="flex bg-gray-100 text-gray-700 pb-1 px-3 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
+                  <input className="ml-3 size-4" type="radio" name="Country" />
+                  <i class="pl-2 text-md">آنلاین - حضوری</i>
+                </label>
+              </div>
+            </details>
+
+            <details open>
+              <summary className="mx-3 flex justify-between">
+                <svg
+                  width="15"
+                  height="12"
+                  viewBox="0 0 22 12"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20 2L11.1743 9.83007L2.34863 2"
+                    stroke="#22445D"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                سطح دوره
+              </summary>
+              <hr class="border-2 mx-3 border-[#5BE1B9] mt-2" />
+              <div className="rtl mx-3 mt-5 w-[19rem] border-2 border-[#5BE1B9] rounded-xl">
+                <label class="flex bg-gray-100 text-gray-700 px-3 pt-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
+                  <input className="ml-3 size-4" type="radio" name="Country" />
+                  <i class="pl-2 text-md">مبتدی</i>
+                </label>
+
+                <label class="flex bg-gray-100 text-gray-700 px-3 py-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
+                  <input className="ml-3 size-4" type="radio" name="Country" />
+                  <i class="pl-2 text-md">پیشرفته</i>
+                </label>
+
+                <label class="flex bg-gray-100 text-gray-700 pb-1 px-3 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
+                  <input className="ml-3 size-4" type="radio" name="Country" />
+                  <i class="pl-2 text-md">فوق پیشرفته</i>
+                </label>
+              </div>
+            </details>
+
+            <details open>
+              <summary className="mx-3 mt-5 flex justify-between">
+                <svg
+                  width="15"
+                  height="12"
+                  viewBox="0 0 22 12"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20 2L11.1743 9.83007L2.34863 2"
+                    stroke="#22445D"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                قیمت
+              </summary>
+
+              <div class="price-range p-4">
+                {/* <span class="text-sm">$</span>
     <span class="text-sm">900</span> */}
-    <input class="w-full bg-green-300" type="range" name="" value="110" min="0" max="1000" oninput="this.previousElementSibling.innerText=this.value"/>
-    <div class="-mt-2 flex w-full justify-between">
-      <span class="text-sm text-gray-600">0</span>
-      <span class="text-sm text-gray-600">1000</span>
-    </div>
-  </div>
-             </details>
+                <input
+                  class="w-full bg-green-300"
+                  type="range"
+                  name=""
+                  value="110"
+                  min="0"
+                  max="1000"
+                  oninput="this.previousElementSibling.innerText=this.value"
+                />
+                <div class="-mt-2 flex w-full justify-between">
+                  <span class="text-sm text-gray-600">0</span>
+                  <span class="text-sm text-gray-600">1000</span>
+                </div>
+              </div>
+            </details>
 
-            </div>
-
-
-
-
-         </div>
-
-
-
+            <button className="bg-[#5BE1B9] mt-5 dark:bg-gray-800 dark:text-white ml-3 rounded-xl w-[10rem] h-[2.5rem] border-solid border border-green-600">
+              پاک کردن فیلتر ها
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* <div className="flex relative ml-20 w-[86rem] ">
