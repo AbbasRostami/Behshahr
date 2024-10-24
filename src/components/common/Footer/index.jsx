@@ -54,11 +54,11 @@ const Footer = () => {
             <img className="dark:fill-slate-200" src={facebook} alt="" />
           </div>
 
-          <div className="flex justify-center items-center dark:text-white">
+          <div className="flex justify-center text-justify items-center dark:text-white">
             <p className="">
               کلیه حقوق این وب سایت برای آکادمی اچ وان محفوظ است.©
             </p>
-            <img className='dark:fill-[#ff0000]' src={logoLanding} alt="" />
+            <img className="dark:fill-[#ff0000]" src={logoLanding} alt="" />
           </div>
         </div>
       </div>

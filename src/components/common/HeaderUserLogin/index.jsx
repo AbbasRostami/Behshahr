@@ -34,8 +34,8 @@ const HeaderUserlogin = () => {
     // </div>
 
     <div class="bg-gradient-to-r from-green-300 to-gray-50 dark:dark:bg-slate-900 dark:bg-none">
-      <div class="w-full flex justify-between items-center px-6 lg:px-20 h-20">
-        <div class="flex lg:justify-center items-center gap-2 lg:gap-0 justify-end">
+      <div class="flex justify-between items-center px-20 h-20">
+        <div class="flex justify-center items-center gap-2">
           <img src={topProfile} alt="" />
           <div className="relative">
             <img className="ml-3" src={topIcon} alt="" />
@@ -49,7 +49,7 @@ const HeaderUserlogin = () => {
           <DarkLightToggle />
         </div>
 
-        <div class="flex justify-between items-center dark:text-white hidden lg:inline-block">
+        <div class="justify-between items-center dark:text-white hidden lg:inline-block">
           <Link to="/about">
             {" "}
             <span class="hover:bg-[#9e969657] hover:text-[#158B68] w-24 text-center rounded-lg cursor-pointer items-center p-1">
