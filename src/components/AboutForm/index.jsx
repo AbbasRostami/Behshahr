@@ -1,6 +1,4 @@
 import React from 'react'
-import { Header } from '../common/Header'
-import { Footer } from '../common/Footer/Footer'
 import { Formik, Field, Form } from "formik";
 
 
@@ -8,7 +6,6 @@ const AboutForm = () => {
   return (
     <div>
 
-      <Header />
 
 
 
@@ -51,8 +48,6 @@ const AboutForm = () => {
                    </Form>
                 </Formik>
           </div>
-
-vv
 
 
           <div>

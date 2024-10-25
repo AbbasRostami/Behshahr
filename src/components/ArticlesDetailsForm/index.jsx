@@ -6,7 +6,7 @@ import "swiper/css/navigation";
 import { Header } from "./../common/Header";
 import { Footer } from "./../common/Footer";
 
-import newsPic from "./../../assets/svg/ArticlesDetails/newPic.svg";
+import newsPic from "./../../assets/svg/ArticlesDetails/";
 import like from "./../../assets/svg/ArticlesDetails/like.svg";
 import disLike from "./../../assets/svg/ArticlesDetails/disLike.svg";
 import favorite from "./../../assets/svg/ArticlesDetails/favorite.svg";

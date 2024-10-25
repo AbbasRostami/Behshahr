@@ -90,7 +90,7 @@ const LoginForm = () => {
             </Link>
           </div>
         </div>
-      ) : (
+       : 
         <div className="flex  m-auto h-[32rem] w-[50rem] mt-[5rem] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)]">
           <div className="bg-[#A4F6DE] relative left-[1px] w-[25rem] rounded-l-lg ">
             <img className="m-auto h-[31rem]" src={loginPick} alt="" />
@@ -157,7 +157,7 @@ const LoginForm = () => {
             </Link>
           </div>
         </div>
-      )}
+      }
     </>
   );
 };

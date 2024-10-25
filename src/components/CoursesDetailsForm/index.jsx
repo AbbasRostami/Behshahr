@@ -5,7 +5,7 @@ import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Field, Form, Formik } from "formik";
 
-import articlePic3 from "./../../assets/articlePic33.svg";
+import articlePic3 from "./../../assets/svg/ArticlesDetails/articlePic3.svg";
 import articlePic2 from "./../../assets/svg/ArticlesDetails/artilclePic2.svg";
 import courses1 from "./../../assets/svg/ArticlesDetails/courses1.svg";
 import dislike from "./../../assets/svg/ArticlesDetails/dislike.svg";

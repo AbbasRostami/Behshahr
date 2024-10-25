@@ -6,7 +6,7 @@ import { ArticlesDetails } from "../screens/ArticlesDetails";
 import { NewsArticles } from "../screens/NewsArticles";
 import { NotFound } from "./../components/NotFound/index.jsx";
 import { Login } from "../screens/Login";
-import { ForgetPassword } from "../screens/ForgetPassword";
+// import { ForgetPassword } from "../screens/ForgetPassword";
 import { MyCourses } from "../components/MyCourses/myCourses";
 import { MyReserveCourses } from "../components/MyCourses/myReserveCourses";
 import { Favorites } from "../components/MyCourses/favorites";
@@ -61,10 +61,10 @@ export const RoutesApp = createBrowserRouter([
     path: "/login",
     element: <Login />,
   },
-  {
-    path: "/forget-password",
-    element: <ForgetPassword />,
-  },
+  // {
+  //   path: "/forget-password",
+  //   element: <ForgetPassword />,
+  // },
   {
     element: <PanelLayout />,
     children: [

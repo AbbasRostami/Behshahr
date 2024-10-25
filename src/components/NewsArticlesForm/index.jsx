@@ -2,7 +2,7 @@ import React from "react";
 import { ArticlesCard} from "./ArticlesCard";
 import { useState, useEffect } from "react";
 import { Field, Form, Formik } from "formik";
-import searching from "./../../assets/search.svg";
+import searching from "./../../assets/svg/Landing/searchicon.svg";
 import arrowUnder from "./../../assets/arrowUnder.svg";
 import { getArticlesListSort } from "../../core/api/getArticlesList";
 import { getArticlesListSort2 } from "../../core/api/getArticlesList";
