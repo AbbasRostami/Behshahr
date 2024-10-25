@@ -4,7 +4,7 @@ import home from "../../assets/home2.svg";
 import { Field, Formik, Form } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import { SendVerifyMessage } from "../../core/api/register";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import { postApi } from "../../core/api/api";
 
 const StepOne = () => {

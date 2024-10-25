@@ -43,7 +43,7 @@ const CoursesSlider = () => {
         modules={[Navigation]}
         className="mySwiper h-[40rem]"
       >
-        {cnourses?.map((item, index) => {
+        {courses?.map((item, index) => {
           return (
             <SwiperSlide>
               <div className="mt-16 mx-auto lg:mx-16 flex justify-around items-center rounded-3xl ">

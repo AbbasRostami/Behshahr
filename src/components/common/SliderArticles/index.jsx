@@ -1,16 +1,9 @@
 import React from "react";
-import like from "./../../../assets/coursesLike.svg";
-import dislike from "./../../../assets/dislike.svg";
-import favorite from "./../../../assets/favo.svg";
-import line from "./../../../assets/line.svg";
-import newsPic from "./../../../assets/newsPick.svg";
-import profileimg from "./../../../assets/profileimg.svg";
-import React from 'react'
 import like from "./../../../assets/svg/Landing/coursesLike.svg";
 import dislike from "./../../../assets/svg/Landing/CoursesDisLike.svg";
 import favorite from "./../../../assets/svg/Landing/CoursesFavo.svg";
+// import newsPic from "./../../../assets/svg/Landing/newspic.svg";
 import line from "./../../../assets/svg/Landing/Line.svg";
-import newsPic from "./../../../assets/svg/Landing/newspic.svg";
 import profileimg from "./../../../assets/svg/Landing/ProfileImage.svg";
 import starRating from "./../../../assets/svg/Landing/StarRating.svg";
 import { useEffect, useState } from "react";
@@ -56,25 +49,23 @@ const SliderArticles = () => {
         modules={[Navigation]}
         className="mySwiper h-[40rem]"
       >
-        {data.map((item, index) => {
+
+        {data?.map((item, index) => {
           return (
             <SwiperSlide>
 
+
+
               <div className="flex justify-around items-center rounded-3xl ">
                 <div className="relative h-[420px] lg:h-[540px] w-[300px] lg:w-[370px] text-center rounded-[1.5rem] mt-11 dark:bg-gray-800 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen ">
-              <div className="  flex justify-around items-center rounded-3xl  ">
-                <div className="relative h-[540px] w-[430px] text-center rounded-[1.5rem] mt-11 dark:bg-gray-800 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen ">
                   <div className="h-64">
                     <img
                       className="p-0 object-cover h-[8rem] lg:h-full w-full"
-                      className="p-0 object-cover h-[16rem] w-full"
                       src={item?.currentImageAddressTumb}
                       alt=""
                     />
                   </div>
 
-                  <div className="flex justify-between items-center mt-[-5rem] lg:mt-5 px-5">
-                    <div className="flex justify-center items-center hidden lg:flex gap-1">
                   <div className="flex justify-between items-center mt-5 px-5">
                     <div className="flex justify-center items-center gap-2 ">
                       <img src={like} alt="" />
@@ -122,9 +113,15 @@ const SliderArticles = () => {
                   </p>
                 </div>
               </div>
+
+
+
+
+
             </SwiperSlide>
           );
         })}
+
       </Swiper>
 
       <div className="flex justify-center items-center my-[-3rem] lg:mt-2 ">

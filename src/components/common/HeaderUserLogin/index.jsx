@@ -2,8 +2,8 @@ import React from "react";
 import logoLanding from "./../../../assets/svg/Landing/logoSite.svg";
 // import seachIcon from "./../../../assets/svg/Landing/searchicon.svg"
 import seachIcon from "./../../../assets/svg/Landing/searchicon.svg";
-import topProfile from "./../../../assets/svg/Landing/topProfile.svg";
-import topIcon from "./../../../assets/svg/Landing/topicon.svg";
+import topProfile from "./../../../assets/svg/ArticlesDetails/profileimg.svg";
+import topIcon from "./../../../assets/svg/ArticlesDetails/profileimg.svg";
 import { Link } from "react-router-dom";
 import DarkLightToggle from "./../DarkMode.jsx";
 import { ResponsiveMenu } from "../Header/index.jsx";
