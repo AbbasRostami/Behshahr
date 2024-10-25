@@ -44,9 +44,10 @@ const SliderArticles = () => {
         modules={[Navigation]}
         className="mySwiper h-[40rem]"
       >
-        {data?.map((item, index) => {
+        {data.map((item, index) => {
           return (
             <SwiperSlide>
+
               <div className="flex justify-around items-center rounded-3xl ">
                 <div className="relative h-[420px] lg:h-[540px] w-[300px] lg:w-[370px] text-center rounded-[1.5rem] mt-11 dark:bg-gray-800 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen ">
                   <div className="h-64">
