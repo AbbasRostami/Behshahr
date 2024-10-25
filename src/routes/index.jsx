@@ -12,45 +12,49 @@ import { ForgetPassword } from "../screens/ForgetPassword";
 
 
 const RoutesApp = createBrowserRouter([
-    
-    
-      {
-        path:'/',
-        element: <Landing />,
-      },
-      {
-        path: "*",
-        element: <NotFound />,
-      },
-      {
-        path:'/about',
-        element: <AboutUs />,
-      },
-      {
-        path:'/courses-details',
-        element: <CoursesDetails />,
-      },
-      {
-        path:'/articles-details',
-        element: <ArticlesDetails />,
-      },
-      {
-        path:'/register',
-        element: <RegisterForm />,
-      },
-      {
-        path:'/news-articles',
-        element: <NewsArticles />,
-      },
-      {
-        path:'/login',
-        element: <Login />,
-      },
-      {
-        path:'/forget-password',
-        element: <ForgetPassword />,
-      },
-    
-      ]);
-  
-  export default RoutesApp
+
+
+  {
+    path: '/',
+    element: <Landing />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
+  },
+  {
+    path: '/about',
+    element: <AboutUs />,
+  },
+  {
+    path: '/courses-list',
+    element: <CoursesDetails />,
+  },
+  // {
+  //   path: '/courses-details',
+  //   element: <CoursesDetails />,
+  // },
+  {
+    path: '/articles-details',
+    element: <ArticlesDetails />,
+  },
+  {
+    path: '/register',
+    element: <RegisterForm />,
+  },
+  {
+    path: '/news-articles',
+    element: <NewsArticles />,
+  },
+  {
+    path: '/login',
+    element: <Login />,
+  },
+  {
+    path: '/forget-password',
+    element: <ForgetPassword />,
+  },
+
+]);
+
+export default RoutesApp
