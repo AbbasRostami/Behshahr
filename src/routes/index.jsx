@@ -11,64 +11,74 @@ import { ForgetPassword } from "../screens/ForgetPassword";
 import { StepOne } from "../components/RegisterForm/StepOne";
 import { StepTwo } from "../components/RegisterForm/StepTwo";
 import { StepThree } from "../components/RegisterForm/StepThree";
-import { Steptwo } from "../components/ForgetPasswordForm/StepTwo";
-
+import { ForgetStepOne } from "../components/ForgetPasswordForm/StepOne";
+import { ForgetStepTwo } from "../components/ForgetPasswordForm/StepTwo";
+import PassProvider from "../core/provider/PasswoedProvider";
 
 const RoutesApp = createBrowserRouter([
-    
-    
-      {
-        path:'/',
-        element: <Landing />,
-      },
-      {
-        path: "*",
-        element: <NotFound />,
-      },
-      {
-        path:'/about',
-        element: <AboutUs />,
-      },
-      {
-        path:'/courses-details',
-        element: <CoursesDetails />,
-      },
-      {
-        path:'/articles-details',
-        element: <ArticlesDetails />,
-      },
-      // Register Routers
-      {
-        path:'/register',
-        element: <StepOne />,
-      },
-      {
-        path:'/register-verify',
-        element: <StepTwo />,
-      },
-      {
-        path:'/register-final',
-        element: <StepThree />,
-      },
-      {
-        path:'/news-articles',
-        element: <NewsArticles />,
-      },
-      {
-        path:'/login',
-        element: <Login />,
-      },
-      {
-        path:'/forget-password',
-        element: <ForgetPassword />,
-      },
-      {
-        path:'/new-password',
-        element: <Steptwo />,
-      },
-      
-    
-    
-      ]);
-  
-  export default RoutesApp
+  {
+    path: "/",
+    element: <Landing />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
+  },
+  {
+    path: "/about",
+    element: <AboutUs />,
+  },
+  {
+    path: "/courses-details",
+    element: <CoursesDetails />,
+  },
+  {
+    path: "/articles-details",
+    element: <ArticlesDetails />,
+  },
+  // Register Routers
+  {
+    path: "/register",
+    element: <StepOne />,
+  },
+  {
+    path: "/register-verify",
+    element: <StepTwo />,
+  },
+  {
+    path: "/register-final",
+    element: <StepThree />,
+  },
+  {
+    path: "/news-articles",
+    element: <NewsArticles />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/forget-password",
+    element: (
+      <PassProvider>
+        {" "}
+        <ForgetPassword />{" "}
+      </PassProvider>
+    ),
+  },
+  // {
+  //   path:'/forget-pass-StepOne',
+  //   element: <ForgetStepOne />,
+  // },
+
+  {
+    path: "/reset-password/:id",
+    element: (
+      <PassProvider>
+        <ForgetStepTwo />
+      </PassProvider>
+    ),
+  },
+]);
+
+export default RoutesApp;
