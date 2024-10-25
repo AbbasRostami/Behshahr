@@ -19,28 +19,35 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 const CoursesListForm = () => {
   const [data, setData] = useState([]);
-  const [favorite, setfavorite] = useState([]);
+  const [sort, setSort] = useState({});
+  const [filter, setFilter] = useState({});
+  const [PageNumber, setPageNumber] = useState(1);
+
   const [isOpen, setisOpen] = useState([]);
   // const [filter, setFilter] = useState([]);
   // const [] =  useState()
 
   const GetCouresesTop = async () => {
-    const path = `/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=9&SortingCol=Active&SortType=DESC&TechCount=0`;
-    const response = await getApi({ path });
+    const path = `/Home/GetCoursesWithPagination`;
+    const response = await getApi(
+      { path },
+      { PageNumber, RowsOfPage: 9, ...sort, ...filter }
+    );
     console.log(response.data.courseFilterDtos);
     setData(response.data.courseFilterDtos);
   };
 
   useEffect(() => {
     GetCouresesTop();
-  }, []);
+  }, [sort]);
 
-  const priceFilter = async () => {
-    const path = `/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=9&SortingCol=cost&SortType=DESC&TechCount=0`;
-    const response = await getApi({ path });
-    console.log(response.data.courseFilterDtos);
-    setData(response.data.courseFilterDtos);
-  };
+  // const priceFilter = async () => {
+  //   const path = `/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=9&SortingCol=cost&SortType=DESC&TechCount=0`;
+  //   const response = await getApi({ path });
+  //   console.log(response.data.courseFilterDtos);
+  //   setData(response.data.courseFilterDtos);
+
+  // };
 
   const likeFilter = async () => {
     const path = `/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=9&SortingCol=likeCount&SortType=DESC&TechCount=0`;
@@ -48,16 +55,21 @@ const CoursesListForm = () => {
     console.log(response.data.courseFilterDtos);
     setData(response.data.courseFilterDtos);
   };
+  // const likeFilter = async () => {
+  //   const path = `/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=9&SortingCol=likeCount&SortType=DESC&TechCount=0`;
+  //   const response = await getApi({ path });
+  //   console.log(response.data.courseFilterDtos);
+  //   setData(response.data.courseFilterDtos);
 
-  const starFilter = async () => {
-    const path = `/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=9&SortingCol=currentRegistrants&SortType=DESC&TechCount=0`;
-    const response = await getApi({ path });
-    console.log(response.data.courseFilterDtos);
-    setData(response.data.courseFilterDtos);
-  };
+  // };
 
-  // const [filterSearch, setfilterSearch] = useState([]);
+  // const starFilter = async () => {
+  //   const path = `/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=9&SortingCol=currentRegistrants&SortType=DESC&TechCount=0`;
+  //   const response = await getApi({ path });
+  //   console.log(response.data.courseFilterDtos);
+  //   setData(response.data.courseFilterDtos);
 
+  // };
   // const handleSearch = (query) => {
   //   const searchData = data.filter((item) => {
   //     return item.title.toLowerCase().match(query.toLowerCase());
@@ -128,45 +140,45 @@ const CoursesListForm = () => {
 
           <button
             onClick={() => setisOpen((prev) => !prev)}
-            className="rtl px-4  flex justify-between text-nowrap items-center rounded-full w-[8rem] lg:w-52 h-[3rem] lg:h-14 dark:text-white dark:bg-gray-800 bg-white border-green-800 border-2 mr-10"
+            className="rtl px-4  flex justify-between items-center rounded-full w-52 h-14 dark:text-white dark:bg-gray-800 bg-white border-green-800 border-2 mr-10"
           >
             مرتب سازی
             {isOpen ? <IoIosArrowDown className="mr-10" /> : <IoIosArrowUp />}
           </button>
 
-          {!isOpen && (
+          <select
+            id=""
+            onChange={(e) => {
+              const val = e.target.value.split("-");
+
+              const myFilters = {
+                SortingCol: val[0],
+                SortType: val[1],
+              };
+              setSort(myFilters);
+            }}
+          >
+            <option value="cost-DESC">gheymat</option>
+            <option value="likeCount-DESC">mahbob</option>
+          </select>
+          {/* {!isOpen &&
             <div className=" absolute top-16 left-0 rounded-xl bg-[#f0ecec] rtl w-52 h-32">
               <label class="flex  text-gray-700 px-3 pt-4 dark:bg-gray-700 dark:text-white cursor-pointer ">
-                <input
-                  onClick={() => priceFilter()}
-                  className="ml-3 size-4"
-                  type="radio"
-                  name="Country"
-                />
+                <input onClick={() => priceFilter()} className="ml-3 size-4" type="radio" name="Country" />
                 <i class="pl-2 text-md">قیمت</i>
               </label>
 
               <label class="flex  text-gray-700 px-3 py-3 dark:bg-gray-700 dark:text-white cursor-pointer ">
-                <input
-                  onClick={() => likeFilter()}
-                  className="ml-3 size-4"
-                  type="radio"
-                  name="Country"
-                />
+                <input onClick={() => likeFilter()} className="ml-3 size-4" type="radio" name="Country" />
                 <i class="pl-2 text-md">پسندیده ترین ها</i>
               </label>
 
               <label class="flex  text-gray-700 px-3  dark:bg-gray-700 dark:text-white cursor-pointer ">
-                <input
-                  onClick={() => starFilter()}
-                  className="ml-3 size-4"
-                  type="radio"
-                  name="Country"
-                />
+                <input onClick={() => starFilter()} className="ml-3 size-4" type="radio" name="Country" />
                 <i class="pl-2 text-md">محبوب ترین ها</i>
               </label>
             </div>
-          )}
+          } */}
 
           <button>
             <img className="w-[7rem] border-green-800" src={filter} alt="" />
