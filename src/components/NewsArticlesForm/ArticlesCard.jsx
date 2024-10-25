@@ -1,4 +1,4 @@
-import courses1 from "./../../assets/courses1.svg";
+import courses1 from "./../../assets/svg/Landing/courses1,svg";
 import like from "./../../assets/coursesLike.svg";
 import dislike from "./../../assets/dislike.svg";
 import favorite from "./../../assets/favo.svg";

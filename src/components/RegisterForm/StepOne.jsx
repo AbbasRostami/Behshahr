@@ -1,6 +1,6 @@
 import React from "react";
 import registerStepOne from "../../assets/registerStepOne.svg";
-import home from "../../assets/home.svg";
+import home from "../../assets/home2.svg";
 import { Field, Formik, Form } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import { SendVerifyMessage } from "../../core/api/register";

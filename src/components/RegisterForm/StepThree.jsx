@@ -1,6 +1,6 @@
 import React from "react";
 import registerStepThree from "../../assets/registerStepThree.svg";
-import home from "../../assets/home.svg";
+import home from "../../assets/home2.svg";
 import { useState } from "react";
 import { finalregister } from "../../core/api/register";
 
