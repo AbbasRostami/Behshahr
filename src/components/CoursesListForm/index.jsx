@@ -21,27 +21,25 @@ const CoursesListForm = () => {
   const [data, setData] = useState([]);
   const [favorite, setfavorite] = useState([]);
   const [isOpen, setisOpen] = useState([]);
+  // const [filter, setFilter] = useState([]);
+  // const [] =  useState()
 
   const GetCouresesTop = async () => {
     const path = `/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=9&SortingCol=Active&SortType=DESC&TechCount=0`;
     const response = await getApi({ path });
     console.log(response.data.courseFilterDtos);
     setData(response.data.courseFilterDtos);
-
   };
 
   useEffect(() => {
     GetCouresesTop();
   }, []);
 
-
-  
   const priceFilter = async () => {
     const path = `/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=9&SortingCol=cost&SortType=DESC&TechCount=0`;
     const response = await getApi({ path });
     console.log(response.data.courseFilterDtos);
     setData(response.data.courseFilterDtos);
-
   };
 
   const likeFilter = async () => {
@@ -49,7 +47,6 @@ const CoursesListForm = () => {
     const response = await getApi({ path });
     console.log(response.data.courseFilterDtos);
     setData(response.data.courseFilterDtos);
-
   };
 
   const starFilter = async () => {
@@ -57,9 +54,8 @@ const CoursesListForm = () => {
     const response = await getApi({ path });
     console.log(response.data.courseFilterDtos);
     setData(response.data.courseFilterDtos);
-
   };
- 
+
   // const [filterSearch, setfilterSearch] = useState([]);
 
   // const handleSearch = (query) => {
@@ -70,16 +66,13 @@ const CoursesListForm = () => {
   //   setfilterSearch(searchData);
   // };
 
-  
   return (
     <>
       <h1 className="bg-white-500 mt-10 text-center text-3xl mx-14 dark:text-white">
         لیست دوره ها
       </h1>
-
       {/* Top */}
-
-      <div className=" flex justify-between items-center mt-8 shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)]  bg-[#FBF6F6] dark:bg-gray-800 p-5 rounded-3xl mx-8">
+      <div className=" flex justify-between gap-4 lg:gap-0 items-center mt-8 shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)]  bg-[#FBF6F6] dark:bg-gray-800 p-5 rounded-3xl mx-8">
         <Formik>
           <Form className="ml-10">
             <div className="relative">
@@ -133,54 +126,61 @@ const CoursesListForm = () => {
             <img className="h-[8px] ml-5 " src={arrowUnder} alt="" />
           </select> */}
 
-            <button onClick={() => setisOpen((prev) => !prev)} className="rtl px-4  flex justify-between items-center rounded-full w-52 h-14 dark:text-white dark:bg-gray-800 bg-white border-green-800 border-2 mr-10">
-              
+          <button
+            onClick={() => setisOpen((prev) => !prev)}
+            className="rtl px-4  flex justify-between text-nowrap items-center rounded-full w-[8rem] lg:w-52 h-[3rem] lg:h-14 dark:text-white dark:bg-gray-800 bg-white border-green-800 border-2 mr-10"
+          >
             مرتب سازی
+            {isOpen ? <IoIosArrowDown className="mr-10" /> : <IoIosArrowUp />}
+          </button>
 
-            {isOpen ? 
-              
-              <IoIosArrowDown className="mr-10"/>
-              : 
-              <IoIosArrowUp />
-            }
-
-            </button>
-
-            {!isOpen &&
+          {!isOpen && (
             <div className=" absolute top-16 left-0 rounded-xl bg-[#f0ecec] rtl w-52 h-32">
-
               <label class="flex  text-gray-700 px-3 pt-4 dark:bg-gray-700 dark:text-white cursor-pointer ">
-                  <input onClick={() => priceFilter()}  className="ml-3 size-4" type="radio" name="Country" />
-                  <i class="pl-2 text-md">قیمت</i>
-                </label>
+                <input
+                  onClick={() => priceFilter()}
+                  className="ml-3 size-4"
+                  type="radio"
+                  name="Country"
+                />
+                <i class="pl-2 text-md">قیمت</i>
+              </label>
 
-                <label class="flex  text-gray-700 px-3 py-3 dark:bg-gray-700 dark:text-white cursor-pointer ">
-                  <input onClick={() => likeFilter()} className="ml-3 size-4" type="radio" name="Country" />
-                  <i class="pl-2 text-md">پسندیده ترین ها</i>
-                </label>
+              <label class="flex  text-gray-700 px-3 py-3 dark:bg-gray-700 dark:text-white cursor-pointer ">
+                <input
+                  onClick={() => likeFilter()}
+                  className="ml-3 size-4"
+                  type="radio"
+                  name="Country"
+                />
+                <i class="pl-2 text-md">پسندیده ترین ها</i>
+              </label>
 
-                <label class="flex  text-gray-700 px-3  dark:bg-gray-700 dark:text-white cursor-pointer ">
-                  <input onClick={() => starFilter()} className="ml-3 size-4" type="radio" name="Country" />
-                  <i class="pl-2 text-md">محبوب ترین ها</i>
-                </label>
+              <label class="flex  text-gray-700 px-3  dark:bg-gray-700 dark:text-white cursor-pointer ">
+                <input
+                  onClick={() => starFilter()}
+                  className="ml-3 size-4"
+                  type="radio"
+                  name="Country"
+                />
+                <i class="pl-2 text-md">محبوب ترین ها</i>
+              </label>
             </div>
-            }
-          
+          )}
+
           <button>
             <img className="w-[7rem] border-green-800" src={filter} alt="" />
           </button>
-            
         </div>
       </div>
-
       {/* Middle */}
-
       <div className="flex justify-center items-start mx-8">
-        <div className=" bg-[#FBF6F6] mt-12 px-6 grid grid-cols-3 grid-rows-3 gap-2 items-center rounded-3xl flx h-[108rem]  w-[70rem] dark:bg-gray-800 shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)]">
+        {/* <div className=" bg-[#FBF6F6] mt-12 px-6 grid grid-cols-2 lg:grid-cols-3 grid-rows-6 lg:grid-rows-3 gap-y-440 items-center rounded-3xl flx h-[140rem] lg:h-[108rem] w-[45rem] lg:w-[70rem] dark:bg-gray-800 shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)]"> */}
+        <div className="w-full h-[170rem] lg:h-full flex flex-wrap justify-between mt-20 px-5 lg:gap-10 bg-[#FBF6F6] rounded-3xl dark:bg-gray-800 shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)]">
           {data.map((item, index) => {
             return (
-              <div className="relative p-6  h-[415px] w-[311px] ml-6 text-center rounded-md mt-20 dark:bg-gray-700 bg-[#f6fbf6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen">
-                <div className="absolute top-[-80px] left-[78px]">
+              <div className="relative p-6 h-[410px] lg:h-[390px] w-[260px] lg:w-[311px] ml-6 text-center rounded-lg mt-24 lg:mt-20 dark:bg-gray-700 bg-[#f6fbf6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen">
+                <div className="w-[7.5rem] lg:w-full absolute top-[-80px] left-[78px]">
                   <img src={courses1} alt="" />
                 </div>
 
@@ -194,8 +194,9 @@ const CoursesListForm = () => {
                     <img src={dislike} alt="" />
                     <p> {item?.dissLikeCount} </p>
                   </div>
+
                   <div>
-                  <img src={favorites} alt="" />
+                    <img src={favorites} alt="" />
                     <p> {item?.currentRegistrants} </p>
                   </div>
 
@@ -213,13 +214,17 @@ const CoursesListForm = () => {
                     <img src={star} alt="" />
                     <p className="ml-2">{item?.currentRegistrants}</p>
                   </div>
+
                   <div className="flex justify-between items-center">
-                    <p className="mr-2"> {item?.teacherName}</p>
+                    <p className="mr-2 text-nowrap text-xs lg:text-sm">
+                      {" "}
+                      {item?.teacherName}
+                    </p>
                     <img className="my-[-1rem]" src={profileimg} alt="" />
                   </div>
                 </div>
 
-                <p className="rtl mt-5 ml-[4rem] text-[#41A789] text-xs ">
+                <p className="rtl mt-5 ml-[4rem] text-[#41A789] text-xs text-nowrap">
                   {" "}
                   {item?.currentRegistrants} ساعت سخنرانی ( 190 ساعت ){" "}
                 </p>
@@ -237,10 +242,11 @@ const CoursesListForm = () => {
                   </p>
                 </div>
 
-                <div className="flex justify-between items-center w-[15rem] h-[2.5rem] mt-3 ml-2">
+                <div className="flex justify-between items-center w-[15rem] h-[2.5rem] mt-6 lg:mt-3 -ml-3 lg:ml-2">
                   <button className="bg-[#5BE1B9] dark:bg-gray-900 dark:border-green-600 dark:border dark:text-white rounded-xl w-[10rem] h-[2.5rem] mr-4">
                     رزرو دوره
                   </button>
+
                   <button className="bg-[#eeeeee] dark:bg-gray-800 dark:text-white rounded-xl w-[10rem] h-[2.5rem] border-solid border border-green-600">
                     جزِئیات دوره
                   </button>
@@ -250,11 +256,12 @@ const CoursesListForm = () => {
           })}
         </div>
 
-        <div className="flex flex-col items-center w-[21rem] h-[51rem]  dark:bg-gray-800 bg-[#FBF6F6]  mt-10 ml-2 rounded-3xl">
+        <div
+          className={`flex flex-col items-center w-[21rem] h-[51rem]  dark:bg-gray-800 bg-[#FBF6F6]  lg:mt-20 ml-2 rounded-3xl fixed top-0 transition-all duration-150 right-[-500rem] lg:static`}
+        >
           <img className="mt-10" src={filter2} alt="" />
 
           <div className="dark:text-white h-14 mt-5 w-[20rem]">
-
             <details open>
               <summary className="mx-3 flex justify-between">
                 <svg
@@ -273,7 +280,9 @@ const CoursesListForm = () => {
                 </svg>
                 دسته بندی
               </summary>
+
               <hr class="border-2 mx-2 border-[#5BE1B9] mt-2" />
+
               <div className="rtl mx-3 mt-5 w-[19rem] border-2 border-[#5BE1B9] rounded-xl">
                 <label class="flex bg-gray-100 text-gray-700 px-3 pt-1 dark:bg-gray-700 dark:text-white cursor-pointer ">
                   <input
@@ -322,7 +331,9 @@ const CoursesListForm = () => {
                 </svg>
                 نوع دوره
               </summary>
+
               <hr class="border-2 mx-3 border-[#5BE1B9] mt-2" />
+
               <div className="rtl mx-3 my-5 w-[19rem] border-2 border-[#5BE1B9] rounded-xl">
                 <label class="flex bg-gray-100 text-gray-700 px-3 pt-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
                   <input className="ml-3 size-4" type="radio" name="Country" />
@@ -422,7 +433,6 @@ const CoursesListForm = () => {
           </div>
         </div>
       </div>
-
       {/* <div className="flex relative ml-20 w-[86rem] ">
        
 
@@ -474,9 +484,7 @@ const CoursesListForm = () => {
        
      </div>
      */}
-
       {/* Slider */}
-
       <CoursesSlider />
     </>
   );
