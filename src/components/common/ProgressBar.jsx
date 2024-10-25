@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const ProgressBar = () => {
-  const [scrollPercent, setscrollPercent] = useState(20);
+  const [scrollPercent, setscrollPercent] = useState(1);
   
   useEffect(() => {
 
@@ -14,7 +14,7 @@ const ProgressBar = () => {
     
         const scrollPercent = (scrollY / (docuHeight - winHeight)) * 100
         setscrollPercent(scrollPercent)
-        console.log(scrollPercent);
+        // console.log(scrollPercent);
         
     }
     

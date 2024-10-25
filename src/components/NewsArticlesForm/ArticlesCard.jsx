@@ -1,11 +1,11 @@
-import courses1 from "./../../assets/svg/Landing/courses1,svg";
-import like from "./../../assets/coursesLike.svg";
-import dislike from "./../../assets/dislike.svg";
-import favorite from "./../../assets/favo.svg";
-import star from "./../../assets/star.svg";
-import profileimg from "./../../assets/profileimg.svg";
-import line from "./../../assets/line.svg";
-import newsPic from "./../../assets/newsPick.svg"
+import courses1 from "./../../assets/svg/Landing/courses1.svg";
+import like from "./../../assets/svg/Landing/coursesLike.svg";
+import dislike from "./../../assets/svg/ArticlesDetails/dislike.svg";
+import favorite from "./../../assets/svg/Landing/CoursesFavo.svg";
+import star from "./../../assets/svg/Landing/StarRating.svg";
+import profileimg from "./../../assets/svg/ArticlesDetails/profileimg.svg";
+import line from "./../../assets/svg/ArticlesDetails/line.svg";
+import newsPic from "./../../assets/svg/Landing/newspic.svg"
 import { getArticlesListTop } from "../../core/api/getArticlesList";
 import { useEffect , useState } from "react";
 import { getApi } from "../../core/api/api";

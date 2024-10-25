@@ -56,11 +56,9 @@ const CoursesSlider = () => {
     <Swiper slidesPerView={3} spaceBetween={15} navigation={true} modules={[Navigation]} className="mySwiper h-[40rem]">
 
 
-        {courses.map((item ,index)=>{
+        {courses?.map((item ,index)=>{
             return(
-                <SwiperSlide 
-
-                >
+                <SwiperSlide>
 
 
                 <div className="mt-16 mx-16 flex justify-around items-center rounded-3xl ">

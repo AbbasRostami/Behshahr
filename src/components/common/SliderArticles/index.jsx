@@ -1,10 +1,10 @@
 import React from 'react'
-import like from "./../../../assets/coursesLike.svg";
-import dislike from "./../../../assets/dislike.svg";
-import favorite from "./../../../assets/favo.svg";
-import line from "./../../../assets/line.svg";
-import newsPic from "./../../../assets/newsPick.svg";
-import profileimg from "./../../../assets/profileimg.svg";
+import like from "./../../../assets/svg/Landing/coursesLike.svg";
+import dislike from "./../../../assets/svg/Landing/CoursesDisLike.svg";
+import favorite from "./../../../assets/svg/Landing/CoursesFavo.svg";
+import line from "./../../../assets/svg/Landing/Line.svg";
+import newsPic from "./../../../assets/svg/Landing/newspic.svg";
+import profileimg from "./../../../assets/svg/Landing/ProfileImage.svg";
 import starRating from "./../../../assets/svg/Landing/StarRating.svg";
 import { useEffect, useState } from "react";
 
