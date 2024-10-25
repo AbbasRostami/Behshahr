@@ -2,7 +2,7 @@ import React from "react";
 import { Field, Formik, Form } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import { loginAPI } from "../../core/services/api/auth";
-import login2Pick from "../../assets/login2Pic.svg";
+import login2Pick from "../../assets/login2Pic.svg7";
 import home from "../../assets/home.svg";
 import loginPick from "../../assets/loginPick.svg";
 import { useState } from "react";

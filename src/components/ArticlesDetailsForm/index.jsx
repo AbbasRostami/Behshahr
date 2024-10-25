@@ -3,10 +3,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Header } from "./../common/Header";
-import { Footer } from "./../common/Footer";
 
-import newsPic from "./../../assets/svg/ArticlesDetails/";
+import newsPic from "./../../assets/svg/ArticlesDetails/newPic.svg";
 import like from "./../../assets/svg/ArticlesDetails/like.svg";
 import disLike from "./../../assets/svg/ArticlesDetails/disLike.svg";
 import favorite from "./../../assets/svg/ArticlesDetails/favorite.svg";
