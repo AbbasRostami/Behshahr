@@ -1,3 +1,10 @@
+import React from "react";
+import like from "./../../../assets/coursesLike.svg";
+import dislike from "./../../../assets/dislike.svg";
+import favorite from "./../../../assets/favo.svg";
+import line from "./../../../assets/line.svg";
+import newsPic from "./../../../assets/newsPick.svg";
+import profileimg from "./../../../assets/profileimg.svg";
 import React from 'react'
 import like from "./../../../assets/svg/Landing/coursesLike.svg";
 import dislike from "./../../../assets/svg/Landing/CoursesDisLike.svg";
@@ -13,11 +20,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { getApi } from '../../../core/api/api';
+import { getApi } from "../../../core/api/api";
 
 const SliderArticles = () => {
-
-    const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
 
   const getArticles = async () => {
     const path = `/News?PageNumber=1&RowsOfPage=10&SortingCol=InsertDate&SortType=DESC`;
@@ -30,8 +36,6 @@ const SliderArticles = () => {
   useEffect(() => {
     getArticles();
   }, []);
-
-
 
   return (
     <>
@@ -46,26 +50,31 @@ const SliderArticles = () => {
       <br />
 
       <Swiper
-      slidesPerView={3}
-      spaceBetween={40}
+        slidesPerView={3}
+        spaceBetween={40}
         navigation={true}
         modules={[Navigation]}
         className="mySwiper h-[40rem]"
       >
-        {data?.map((item, index) => {
+        {data.map((item, index) => {
           return (
             <SwiperSlide>
 
+              <div className="flex justify-around items-center rounded-3xl ">
+                <div className="relative h-[420px] lg:h-[540px] w-[300px] lg:w-[370px] text-center rounded-[1.5rem] mt-11 dark:bg-gray-800 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen ">
               <div className="  flex justify-around items-center rounded-3xl  ">
                 <div className="relative h-[540px] w-[430px] text-center rounded-[1.5rem] mt-11 dark:bg-gray-800 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen ">
                   <div className="h-64">
                     <img
+                      className="p-0 object-cover h-[8rem] lg:h-full w-full"
                       className="p-0 object-cover h-[16rem] w-full"
                       src={item?.currentImageAddressTumb}
                       alt=""
                     />
                   </div>
 
+                  <div className="flex justify-between items-center mt-[-5rem] lg:mt-5 px-5">
+                    <div className="flex justify-center items-center hidden lg:flex gap-1">
                   <div className="flex justify-between items-center mt-5 px-5">
                     <div className="flex justify-center items-center gap-2 ">
                       <img src={like} alt="" />
@@ -75,31 +84,34 @@ const SliderArticles = () => {
 
                       <img src={favorite} alt="" />
                       <p>{item?.currentRate}</p>
-                      
                     </div>
 
-                    <button class="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer p-2 w-auto-[120px]">
+                    <button class="text-TextGreen bg-[#BFF4E4] rounded-lg hidden lg:inline-block cursor-pointer p-2 w-auto-[120px]">
                       وضعیت دوره
                     </button>
                   </div>
 
-                  <p className="rtl mt-3 text-[#1A1E21] text-xl rtl text-right px-5 dark:text-white">
+                  <p className="rtl mt-[-2rem] lg:mt-3 text-[#1A1E21] text-xl rtl text-right px-5 dark:text-white">
                     {item?.title}{" "}
                   </p>
 
                   <div className="flex justify-between items-center mt-5 px-5 dark:text-white">
-                    <div className="flex justify-center items-center ">
+                    <div className="flex justify-center items-center">
                       <img src={starRating} alt="" />
                       <p className="ml-2">{item?.currentRate}</p>
                     </div>
 
                     <div className="flex justify-between items-center">
                       <p className="mr-2"> {item?.addUserFullName} </p>
-                      <img className="w-12 h-12 rounded-full" src={profileimg} alt="" />
+                      <img
+                        className="w-12 h-12 rounded-full"
+                        src={profileimg}
+                        alt=""
+                      />
                     </div>
                   </div>
 
-                  <p className="rtl mt-5 px-5 leading-5 text-[#6D6767] truncate ... text-xs text-right dark:text-white">
+                  <p className="rtl mt-5 px-5 leading-5 text-[#6D6767] text-xs text-right dark:text-white">
                     {item?.miniDescribe}
                   </p>
 
@@ -115,13 +127,13 @@ const SliderArticles = () => {
         })}
       </Swiper>
 
-      <div className="flex justify-center items-center mt-2 ">
+      <div className="flex justify-center items-center my-[-3rem] lg:mt-2 ">
         <button class="w-[220px] h-[60px] text-white bg-[#12926C] rounded-full dark:bg-gray-800">
           مشاهده مقالات بیشتر
         </button>
       </div>
     </>
-  )
-}
+  );
+};
 
-export  { SliderArticles }
+export { SliderArticles };
