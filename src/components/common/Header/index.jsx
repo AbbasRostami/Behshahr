@@ -4,17 +4,9 @@ import seachIcon from "./../../../assets/svg/Landing/searchicon.svg";
 import { Link } from "react-router-dom";
 import DarkLightToggle from "../DarkMode";
 import { Button, Menu, MenuItem } from "@mui/material";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 const Header = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
   return (
     <div class="bg-gradient-to-r from-green-300 to-gray-50 dark:dark:bg-slate-900 dark:bg-none">
       <div class="flex justify-between items-center px-20 h-20">
@@ -31,14 +23,6 @@ const Header = () => {
 
           <DarkLightToggle />
         </div>
-
-        <ResponsiveMenu
-          anchorEl={anchorEl}
-          handleClick={handleClick}
-          handleClose={handleClose}
-          open={open}
-          className={`inline-block lg:hidden`}
-        />
 
         <div class="flex justify-between items-center dark:text-white hidden lg:flex">
           <Link to="/about">
@@ -69,6 +53,7 @@ const Header = () => {
             </span>
           </Link>
         </div>
+
         <div class="flex justify-center items-center dark:text-white">
           <Link to="/">
             <span class="cursor-pointer">آکادمی اچ وان</span>
@@ -78,24 +63,37 @@ const Header = () => {
             <img class="h-10 cursor-pointer" src={logoLanding} alt="" />
           </Link>
         </div>
+
+        <ResponsiveMenu />
       </div>
     </div>
   );
 };
 
-function ResponsiveMenu({ open, handleClick, anchorEl, handleClose, ...rest }) {
+export function ResponsiveMenu() {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <>
-      <Button
-        id="basic-button"
-        aria-controls={open ? "basic-menu" : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? "true" : undefined}
-        onClick={handleClick}
-        {...rest}
-      >
-        Dashboard
-      </Button>
+      <div className="block lg:hidden">
+        <Button
+          id="basic-button"
+          aria-controls={open ? "basic-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleClick}
+          className="!text-black"
+        >
+          <RxHamburgerMenu size={20} />
+        </Button>
+      </div>
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
@@ -105,9 +103,10 @@ function ResponsiveMenu({ open, handleClick, anchorEl, handleClose, ...rest }) {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={handleClose}>صفحه اصلی</MenuItem>
+        <MenuItem onClick={handleClose}>دوره ها</MenuItem>
+        <MenuItem onClick={handleClose}>مقالات</MenuItem>
+        <MenuItem onClick={handleClose}>درباره ما</MenuItem>
       </Menu>
     </>
   );
