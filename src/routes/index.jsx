@@ -9,6 +9,7 @@ import { NewsArticles } from "../screens/NewsArticles";
 import { NotFound } from "../components/NotFound";
 import { Login } from "../screens/Login";
 import { ForgetPassword } from "../screens/ForgetPassword";
+import { CoursesList } from "../screens/CoursesList";
 
 
 const RoutesApp = createBrowserRouter([
@@ -28,12 +29,12 @@ const RoutesApp = createBrowserRouter([
   },
   {
     path: '/courses-list',
+    element: <CoursesList />,
+  },
+  {
+    path: '/courses-details',
     element: <CoursesDetails />,
   },
-  // {
-  //   path: '/courses-details',
-  //   element: <CoursesDetails />,
-  // },
   {
     path: '/articles-details',
     element: <ArticlesDetails />,

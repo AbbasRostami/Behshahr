@@ -21,7 +21,7 @@ const SliderArticles = () => {
   const getArticles = async () => {
     const path = `/News?PageNumber=1&RowsOfPage=10&SortingCol=InsertDate&SortType=DESC`;
     const response = await getApi({ path });
-    console.log(response.data?.news);
+    // console.log(response.data?.news);
     if (response) {
       setData(response.data?.news);
     }

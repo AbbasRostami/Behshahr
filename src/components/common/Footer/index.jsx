@@ -8,7 +8,7 @@ import facebook from "./../../../assets/svg/Landing/FacebookF.svg";
 const Footer = () => {
   return (
     <>
-      <div class="bg-[#A4F6DE] mt-16 h-[300px]  dark:bg-slate-900 ">
+      <div class="bg-gradient-to-r from-green-300 to-gray-50 mt-16 h-[300px]  dark:dark:bg-slate-900 dark:bg-none  ">
         <div className="flex justify-around items-start pt-8 text-[#444444E5] dark:text-white">
           <div className="rtl">
             <p>اخبار آموزشگاه</p>

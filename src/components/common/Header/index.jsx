@@ -39,7 +39,7 @@ const Header = () => {
             </span>
           </Link>
 
-          <Link to="">
+          <Link to="/courses-list">
             {" "}
             <span class="hover:bg-[#9e969657] hover:text-[#158B68] mr-4 w-24 text-center rounded-lg cursor-pointer items-center p-1">
               دوره ها
