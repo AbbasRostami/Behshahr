@@ -1,15 +1,15 @@
 import axios from "axios";
-// import {getItem, removeItem } from "../common/storage";
+// import { getItem, removeItem } from "../common/storage";
 
-const baseURL = import.meta.env.VITE_BASE_URL
+const baseURL = import.meta.env.VITE_BASE_URL;
 
 const instance = axios.create({
-   baseURL: baseURL
-})
+  baseURL: baseURL,
+});
 
 const onSuccess = (response) => {
-       return response.data;
-}
+  return response.data;
+};
 
 // const onError = (err) => {
 //    console.log(err);
@@ -22,7 +22,7 @@ const onSuccess = (response) => {
 //    // if(err.response.status >= 400 && err.response.status < 500){
 //    //     alert("error:" + err.response.status);
 //    // }
-   
+
 //    return Promise.reject(err);
 // }
 
