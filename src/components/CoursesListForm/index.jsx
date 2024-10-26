@@ -16,12 +16,29 @@ import { CoursesSlider } from "../common/SliderCourses";
 import { getApi } from "../../core/api/api";
 import arrow from "./../../assets/arrow.svg";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { Box, Slider } from "@mui/material";
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
+
 
 const CoursesListForm = () => {
   const [data, setData] = useState([]);
   const [sort, setSort] = useState({});
   const [filter, setFilter] = useState({});
   const [PageNumber, setPageNumber] = useState(1);
+  const [level, setLevel] = useState(1);
+  const [value, setValue] = React.useState([1, 100]);
+  const [cost, setCost] = useState([]);
+
+  function valuetext(value) {
+    return `${value}`;
+  }
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+
 
   const [isOpen, setisOpen] = useState([]);
   // const [filter, setFilter] = useState([]);
@@ -31,7 +48,7 @@ const CoursesListForm = () => {
     const path = `/Home/GetCoursesWithPagination`;
     const response = await getApi(
       { path },
-      { PageNumber, RowsOfPage: 9, ...sort, ...filter }
+      { PageNumber, RowsOfPage: 9, ...sort, ...filter, ...level, TechCount: 0 }
     );
     console.log(response.data.courseFilterDtos);
     setData(response.data.courseFilterDtos);
@@ -49,12 +66,14 @@ const CoursesListForm = () => {
 
   // };
 
-  const likeFilter = async () => {
-    const path = `/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=9&SortingCol=likeCount&SortType=DESC&TechCount=0`;
-    const response = await getApi({ path });
-    console.log(response.data.courseFilterDtos);
-    setData(response.data.courseFilterDtos);
-  };
+  // const likeFilter = async () => {
+  //   const path = `/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=9&SortingCol=likeCount&SortType=DESC&TechCount=0`;
+  //   const response = await getApi({ path });
+  //   console.log(response.data.courseFilterDtos);
+  //   setData(response.data.courseFilterDtos);
+  // };
+
+
   // const likeFilter = async () => {
   //   const path = `/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=9&SortingCol=likeCount&SortType=DESC&TechCount=0`;
   //   const response = await getApi({ path });
@@ -77,6 +96,8 @@ const CoursesListForm = () => {
   //   console.log(searchData);
   //   setfilterSearch(searchData);
   // };
+
+
 
   return (
     <>
@@ -130,23 +151,7 @@ const CoursesListForm = () => {
         </Formik>
 
         <div className="relative flex justify-center items-center mr-10">
-          {/* <select  className="mr-5 dark:bg-gray-800 border-y-green-800 border-solid border-2 rounded-full h-[4rem] bg-[#ffffff] w-[13rem] text-center   text-[17px] text-[#158B68] ">
-            <option value="">مرتب سازی </option>
-            
-            <option value="">قیمت </option>
-            <option onClick={() => priceFilter()}  value="favo">محبوب ترین ها </option>
-            <img className="h-[8px] ml-5 " src={arrowUnder} alt="" />
-          </select> */}
-
-          <button
-            onClick={() => setisOpen((prev) => !prev)}
-            className="rtl px-4  flex justify-between items-center rounded-full w-52 h-14 dark:text-white dark:bg-gray-800 bg-white border-green-800 border-2 mr-10"
-          >
-            مرتب سازی
-            {isOpen ? <IoIosArrowDown className="mr-10" /> : <IoIosArrowUp />}
-          </button>
-
-          <select
+          <select className="mr-14 dark:bg-gray-800 dark:text-white text-lg w-56 h-14 rounded-3xl rtl px-2 bg-gray-50 border border-green-800 "
             id=""
             onChange={(e) => {
               const val = e.target.value.split("-");
@@ -158,40 +163,24 @@ const CoursesListForm = () => {
               setSort(myFilters);
             }}
           >
-            <option value="cost-DESC">gheymat</option>
-            <option value="likeCount-DESC">mahbob</option>
+            <option value="Active-DESC">مرتب سازی</option>
+            <option value="cost-DESC">قیمت</option>
+            <option value="likeCount-DESC">پسندیده ترین ها</option>
+            <option value="currentRegistrants-DESC">محبوب ترین ها</option>
           </select>
-          {/* {!isOpen &&
-            <div className=" absolute top-16 left-0 rounded-xl bg-[#f0ecec] rtl w-52 h-32">
-              <label class="flex  text-gray-700 px-3 pt-4 dark:bg-gray-700 dark:text-white cursor-pointer ">
-                <input onClick={() => priceFilter()} className="ml-3 size-4" type="radio" name="Country" />
-                <i class="pl-2 text-md">قیمت</i>
-              </label>
-
-              <label class="flex  text-gray-700 px-3 py-3 dark:bg-gray-700 dark:text-white cursor-pointer ">
-                <input onClick={() => likeFilter()} className="ml-3 size-4" type="radio" name="Country" />
-                <i class="pl-2 text-md">پسندیده ترین ها</i>
-              </label>
-
-              <label class="flex  text-gray-700 px-3  dark:bg-gray-700 dark:text-white cursor-pointer ">
-                <input onClick={() => starFilter()} className="ml-3 size-4" type="radio" name="Country" />
-                <i class="pl-2 text-md">محبوب ترین ها</i>
-              </label>
-            </div>
-          } */}
-
           <button>
             <img className="w-[7rem] border-green-800" src={filter} alt="" />
           </button>
         </div>
       </div>
       {/* Middle */}
+
       <div className="flex justify-center items-start mx-8">
         {/* <div className=" bg-[#FBF6F6] mt-12 px-6 grid grid-cols-2 lg:grid-cols-3 grid-rows-6 lg:grid-rows-3 gap-y-440 items-center rounded-3xl flx h-[140rem] lg:h-[108rem] w-[45rem] lg:w-[70rem] dark:bg-gray-800 shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)]"> */}
-        <div className="w-full h-[170rem] lg:h-full flex flex-wrap justify-between mt-20 px-5 lg:gap-10 bg-[#FBF6F6] rounded-3xl dark:bg-gray-800 shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)]">
+        <div className="w-full h-[170rem] lg:h-full py-4 flex flex-wrap justify-evenly  mt-20 px-5 lg:gap-10 bg-[#FBF6F6] rounded-3xl dark:bg-gray-800 shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)]">
           {data.map((item, index) => {
             return (
-              <div className="relative p-6 h-[410px] lg:h-[390px] w-[260px] lg:w-[311px] ml-6 text-center rounded-lg mt-24 lg:mt-20 dark:bg-gray-700 bg-[#f6fbf6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen">
+              <div className="relative p-6 h-[410px] lg:h-[406px] w-[260px] lg:w-[311px] ml-6 text-center rounded-lg mt-24 lg:mt-20 dark:bg-gray-700 bg-[#f6fbf6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen">
                 <div className="w-[7.5rem] lg:w-full absolute top-[-80px] left-[78px]">
                   <img src={courses1} alt="" />
                 </div>
@@ -235,10 +224,12 @@ const CoursesListForm = () => {
                     <img className="my-[-1rem]" src={profileimg} alt="" />
                   </div>
                 </div>
-
-                <p className="rtl mt-5 ml-[4rem] text-[#41A789] text-xs text-nowrap">
+                <p className="rtl mt-2 ml-[10rem] text-[#41A789] text-xs text-nowrap">
                   {" "}
-                  {item?.currentRegistrants} ساعت سخنرانی ( 190 ساعت ){" "}
+                  {item?.currentRegistrants} ساعت سخنرانی {" "}
+                </p>
+                <p className="rtl mt-2 ml-[10.5rem] text-[#41A789] text-md text-nowrap">
+                  سطح دوره: {item?.levelName}
                 </p>
 
                 <p className="rtl mt-2 leading-5 dark:text-white truncate ... text-[#6D6767] text-xs text-right">
@@ -266,10 +257,13 @@ const CoursesListForm = () => {
               </div>
             );
           })}
+          <Stack>
+            <Pagination count={10} size="large" />
+          </Stack>
         </div>
 
         <div
-          className={`flex flex-col items-center w-[21rem] h-[51rem]  dark:bg-gray-800 bg-[#FBF6F6]  lg:mt-20 ml-2 rounded-3xl fixed top-0 transition-all duration-150 right-[-500rem] lg:static`}
+          className={`flex flex-col items-center w-[21rem] h-[55rem]  dark:bg-gray-800 bg-[#FBF6F6]  lg:mt-20 ml-2 rounded-3xl fixed top-0 transition-all duration-150 right-[-500rem] lg:static`}
         >
           <img className="mt-10" src={filter2} alt="" />
 
@@ -290,7 +284,7 @@ const CoursesListForm = () => {
                     stroke-linecap="round"
                   />
                 </svg>
-                دسته بندی
+                تکنولوژِی
               </summary>
 
               <hr class="border-2 mx-2 border-[#5BE1B9] mt-2" />
@@ -302,7 +296,7 @@ const CoursesListForm = () => {
                     type="checkbox"
                     name="Country"
                   />
-                  <i class="pl-2 text-md">حضوری</i>
+                  <i class="pl-2 text-md">بــک اند</i>
                 </label>
 
                 <label class="flex bg-gray-100 text-gray-700 px-3 py-1 dark:bg-gray-700 dark:text-white cursor-pointer ">
@@ -311,7 +305,7 @@ const CoursesListForm = () => {
                     type="checkbox"
                     name="Country"
                   />
-                  <i class="pl-2 text-md">آنلاین</i>
+                  <i class="pl-2 text-md">فــرانت اند</i>
                 </label>
 
                 <label class="flex bg-gray-100 text-gray-700 pb-1 px-3 dark:bg-gray-700 dark:text-white cursor-pointer ">
@@ -320,12 +314,12 @@ const CoursesListForm = () => {
                     type="checkbox"
                     name="Country"
                   />
-                  <i class="pl-2 text-md">آنلاین - حضوری</i>
+                  <i class="pl-2 text-md">React Js</i>
                 </label>
               </div>
             </details>
 
-            <details open>
+            <details className="transition duration-700 ease-in-out" open>
               <summary className="my-5 mx-3 flex justify-between">
                 <svg
                   width="15"
@@ -353,12 +347,28 @@ const CoursesListForm = () => {
                 </label>
 
                 <label class="flex bg-gray-100 text-gray-700 px-3 py-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
-                  <input className="ml-3 size-4" type="radio" name="Country" />
+                  <input value="cost-DESC" onChange={(e) => {
+                    const val = e.target.value.split("-");
+
+                    const myFilters = {
+                      SortingCol: val[0],
+                      SortType: val[1],
+                    };
+                    setSort(myFilters);
+                  }} className="ml-3 size-4" type="radio" name="Country" />
                   <i class="pl-2 text-md">آنلاین</i>
                 </label>
 
                 <label class="flex bg-gray-100 text-gray-700 pb-1 px-3 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
-                  <input className="ml-3 size-4" type="radio" name="Country" />
+                  <input value="likeCount-DESC" onChange={(e) => {
+                    const val = e.target.value.split("-");
+
+                    const myFilters = {
+                      SortingCol: val[0],
+                      SortType: val[1],
+                    };
+                    setSort(myFilters);
+                  }} className="ml-3 size-4" type="radio" name="Country" />
                   <i class="pl-2 text-md">آنلاین - حضوری</i>
                 </label>
               </div>
@@ -385,7 +395,15 @@ const CoursesListForm = () => {
               <hr class="border-2 mx-3 border-[#5BE1B9] mt-2" />
               <div className="rtl mx-3 mt-5 w-[19rem] border-2 border-[#5BE1B9] rounded-xl">
                 <label class="flex bg-gray-100 text-gray-700 px-3 pt-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
-                  <input className="ml-3 size-4" type="radio" name="Country" />
+                  <input value="levelName-DESC" onChange={(e) => {
+                    const val = e.target.value.split("-");
+
+                    const myFilters = {
+                      SortingCol: val[0],
+                      SortType: val[1],
+                    };
+                    setSort(myFilters);
+                  }} className="ml-3 size-4" type="radio" name="Country" />
                   <i class="pl-2 text-md">مبتدی</i>
                 </label>
 
@@ -420,26 +438,33 @@ const CoursesListForm = () => {
                 قیمت
               </summary>
 
-              <div class="price-range p-4">
-                {/* <span class="text-sm">$</span>
-    <span class="text-sm">900</span> */}
-                <input
-                  class="w-full bg-green-300"
-                  type="range"
-                  name=""
-                  value="110"
-                  min="0"
-                  max="1000"
-                  oninput="this.previousElementSibling.innerText=this.value"
-                />
-                <div class="-mt-2 flex w-full justify-between">
-                  <span class="text-sm text-gray-600">0</span>
-                  <span class="text-sm text-gray-600">1000</span>
-                </div>
+              <hr class="border-2 mx-3 border-[#5BE1B9] mt-2" />
+              <div className="rtl mx-3 mt-5 w-[19rem] border-2 border-[#5BE1B9] rounded-xl">
+
+
+
+
+                <Box className="px-8 my-4" sx={{ width: 300 }}>
+                  <Slider
+                    getAriaLabel={() => 'Temperature range'}
+                    value={value}
+                    onChange={handleChange}
+                    valueLabelDisplay="auto"
+                    getAriaValueText={valuetext}
+                  />
+                  <div className="flex justify-between items-center">
+                    <p>{value[1]}</p>
+                    <p>{value[0]}</p>
+                  </div>
+                </Box>
+
+
+
+
               </div>
             </details>
 
-            <button className="bg-[#5BE1B9] mt-5 dark:bg-gray-800 dark:text-white ml-3 rounded-xl w-[10rem] h-[2.5rem] border-solid border border-green-600">
+            <button className="bg-[#5BE1B9] mt-8 dark:bg-gray-800 dark:text-white ml-3 rounded-xl w-[10rem] h-[2.5rem] border-solid border border-green-600">
               پاک کردن فیلتر ها
             </button>
           </div>
