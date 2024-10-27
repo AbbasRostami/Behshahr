@@ -28,7 +28,7 @@ const CoursesDetailsForm = () => {
   const [details, setDeatils] = useState(null)
 
   const getCoursesDetails = async () => {
-    const path = `/Home/GetCourseDetails?${params?.id}`;
+    const path = `/Course/${params?.id}`;
     const response = await getApi({ path });
     console.log(response?.data);
     if (response) {
