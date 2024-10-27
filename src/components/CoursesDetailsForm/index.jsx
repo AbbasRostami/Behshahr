@@ -17,14 +17,18 @@ import mrSmith from "./../../assets/svg/ArticlesDetails/mrSmith.svg";
 import profileimg from "./../../assets/svg/ArticlesDetails/profileimg.svg";
 import starRating from "./../../assets/svg/ArticlesDetails/StarRating.svg";
 import { getApi } from "../../core/api/api";
+import { useParams } from "react-router-dom";
 
 const CoursesDetailsForm = () => {
 
+  const params = useParams()
+
+  console.log(params?.id)
 
   const [details, setDeatils] = useState(null)
 
   const getCoursesDetails = async () => {
-    const path = `/Home/GetCourseDetails?CourseId=f4f2b093-8914-ef11-b6c2-f4b229435c5d`;
+    const path = `/Home/GetCourseDetails?${params?.id}`;
     const response = await getApi({ path });
     console.log(response?.data);
     if (response) {
