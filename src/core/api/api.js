@@ -1,8 +1,7 @@
 import http from "../interceptor";
-
-export const getApi = async ({ path }) => {
+export const getApi = async ({ path, params }) => {
   try {
-    const response = await http.get(`${path}`);
+    const response = await http.get(`${path}`, params);
     return response;
   } catch (error) {
     return error;

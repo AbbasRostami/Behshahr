@@ -1,6 +1,5 @@
 import React from "react";
 import { ArticlesCard} from "./ArticlesCard";
-import { ArticlesListUnder } from "./articlesListUnder";
 import { useState, useEffect } from "react";
 import { Field, Form, Formik } from "formik";
 import searching from "./../../assets/search.svg";
@@ -8,10 +7,9 @@ import arrowUnder from "./../../assets/arrowUnder.svg";
 import { getArticlesListSort } from "../../core/api/getArticlesList";
 import { getArticlesListSort2 } from "../../core/api/getArticlesList";
 import { getApi } from "../../core/api/api";
+import { SliderArticles } from "../common/SliderArticles";
 
 const NewsArticlesForm = () => {
-  const [sort, setSort] = useState([]);
-  const [sort2, setSort2] = useState([]);
 
   const [cards, setCards] = useState([]);
   
@@ -29,27 +27,6 @@ const NewsArticlesForm = () => {
   }, []);
 
 
-  const ArticlesSort = async () => {
-    const response3 = await getArticlesListSort();
-    console.log(response3);
-    if (response3) {
-      setSort(response3);
-    }
-  };
-  useEffect(() => {
-    ArticlesSort();
-  }, []);
-
-  const ArticlesSort2 = async () => {
-    const response4 = await getArticlesListSort2();
-    console.log(response4);
-    if (response4) {
-      setSort2(response4);
-    }
-  };
-  useEffect(() => {
-    ArticlesSort2();
-  }, []);
 
   return (
     <>
@@ -99,7 +76,7 @@ const NewsArticlesForm = () => {
           </div>
         </div>
 
-        <ArticlesListUnder />
+        <SliderArticles />
       </div>
     </>
   );
