@@ -26,12 +26,12 @@ const StepThree = () => {
   };
 
   return (
-    <div className="flex  m-auto h-[32rem] w-[50rem] mt-[5rem] ">
-      <div className="bg-[#A4F6DE] relative left-[1px] w-[25rem] rounded-l-lg ">
+    <div className="flex  m-auto h-[32rem] w-[43rem] lg:w-[50rem] mt-[5rem] ">
+      <div className="bg-[#A4F6DE] relative left-[1px] w-[25rem] rounded-l-lg hidden lg:flex">
         <img className="m-auto h-[31rem]" src={registerStepThree} alt="" />
       </div>
 
-      <div className="w-[25rem] bg-[#eeeaea] rounded-r-lg shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] ">
+      <div className="w-[40rem] lg:w-[25rem] mx-auto bg-[#eeeaea] rounded-r-lg shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] ">
         <img src={home} alt="" />
         <h2 className="text-right mr-6 text-[#22445D] mt-[0.8rem] text-[23px]">
           ثبت نام
@@ -49,28 +49,28 @@ const StepThree = () => {
             <Field
               disabled
               placeholder="شماره همراه    "
-              className=" ml-7 border-solid border-2 border-[#158B68] text-right rounded-xl  text-[#ABA7A7] w-[22rem] h-[3rem] mt-[1rem] "
+              className=" ml-7 border-solid border-2 border-[#158B68] text-right rounded-xl  text-[#ABA7A7] w-[37rem] lg:w-[22rem] h-[3rem] mt-[1rem] "
               type="text"
               name="phoneNumber"
             />
 
             <Field
               placeholder="ایمیل کاربر    "
-              className=" ml-7 border-solid border-2 border-[#158B68] text-right rounded-xl  text-[#ABA7A7] w-[22rem] h-[3rem] mt-[1rem] "
+              className=" ml-7 border-solid border-2 border-[#158B68] text-right rounded-xl  text-[#ABA7A7] w-[37rem] lg:w-[22rem] h-[3rem] mt-[1rem] "
               type="text"
               name="gmail"
             />
 
             <Field
               placeholder="رمز عبور    "
-              className=" ml-7 border-solid border-2 border-[#158B68] text-right rounded-xl  text-[#ABA7A7] w-[22rem] h-[3rem] mt-[1rem] "
+              className=" ml-7 border-solid border-2 border-[#158B68] text-right rounded-xl  text-[#ABA7A7] w-[37rem] lg:w-[22rem] h-[3rem] mt-[1rem] "
               type="text"
               name="password"
             />
 
             <Field
               placeholder="تکرار رمز عبور    "
-              className=" ml-7 border-solid border-2 border-[#158B68] text-right rounded-xl  text-[#ABA7A7] w-[22rem] h-[3rem] mt-[1rem] "
+              className=" ml-7 border-solid border-2 border-[#158B68] text-right rounded-xl  text-[#ABA7A7] w-[37rem] lg:w-[22rem] h-[3rem] mt-[1rem] "
               type="text"
               name="confirmPass"
             />
@@ -82,14 +82,14 @@ const StepThree = () => {
 
               <Field
                 placeholder="   "
-                className=" rounded-xl w-[1rem] h-[1rem]  mx-[22.2rem] "
+                className=" rounded-xl w-[1rem] h-[1rem] mx-[37rem] lg:mx-[22.2rem] "
                 type="checkbox"
                 name="phoneOrGmail"
               />
             </label>
 
             <button
-              className=" ml-7 w-[22rem] h-[3.4rem] bg-[#158B68] rounded-xl mt-[3rem] text-[#ffff]"
+              className=" ml-7 w-[37rem] lg:w-[22rem] h-[3.4rem] bg-[#158B68] rounded-xl mt-[3rem] text-[#ffff]"
               type="submit"
             >
               ادامه

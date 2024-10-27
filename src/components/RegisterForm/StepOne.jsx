@@ -28,12 +28,12 @@ const StepOne = () => {
   };
 
   return (
-    <div className="flex  m-auto h-[32rem] w-[50rem] mt-[5rem] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)]">
-      <div className="bg-[#A4F6DE] relative left-[1px] w-[25rem] rounded-l-lg ">
+    <div className="flex m-auto h-[32rem] w-[43rem] lg:w-[50rem] mt-[5rem] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)]">
+      <div className="bg-[#A4F6DE] relative left-[1px] w-[25rem] rounded-l-lg hidden lg:flex">
         <img className="m-auto h-[31rem]" src={registerStepOne} alt="" />
       </div>
 
-      <div className=" relative w-[25rem] bg-[#eeeaea] rounded-r-lg shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] ">
+      <div className=" relative w-[40rem] lg:w-[25rem] mx-auto bg-[#eeeaea] rounded-r-lg shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] ">
         <img src={home} alt="" />
         <h2 className="text-right mr-6 text-[#22445D] mt-[1.5rem] text-[23px]">
           ثبت نام
@@ -42,7 +42,7 @@ const StepOne = () => {
           <Form>
             <Field
               placeholder="شماره همراه"
-              className="pr-9 ml-7 border-solid border-2 border-[#158B68] text-right rounded-xl text-black w-[22rem] h-[3rem] mt-[1.6rem] "
+              className="pr-9 ml-7 border-solid border-2 border-[#158B68] text-right rounded-xl text-black w-[37rem] lg:w-[22rem] h-[3rem] mt-[1.6rem] "
               type="text"
               name="phoneNumber"
             />
@@ -65,7 +65,7 @@ const StepOne = () => {
             </svg>
 
             <button
-              className="w-[22rem] h-[3.4rem] bg-[#158B68] rounded-xl mt-[7.2rem] ml-7 text-[#ffff]"
+              className="w-[37rem] lg:w-[22rem] h-[3.4rem] bg-[#158B68] rounded-xl mt-[7.2rem] ml-7 text-[#ffff]"
               type="submit"
             >
               ادامه
@@ -75,7 +75,7 @@ const StepOne = () => {
 
         <Link to="/">
           {" "}
-          <button className="w-[22rem] h-[3.4rem] border-solid border-[1.7px] border-[#158B68] rounded-xl mt-[0.7rem] bg-[#fff] ml-7">
+          <button className="w-[37rem] lg:w-[22rem] h-[3.4rem] border-solid border-[1.7px] border-[#158B68] rounded-xl mt-[0.7rem] bg-[#fff] ml-7">
             بازگشت به صفحه اصلی
           </button>
         </Link>
