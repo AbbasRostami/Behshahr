@@ -4,7 +4,7 @@ import home from "../../assets/home.svg";
 import { Field, Formik, Form } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import { SendVerifyMessage } from "../../core/api/register";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import { postApi } from "../../core/api/api";
 
 const StepOne = () => {
@@ -47,10 +47,22 @@ const StepOne = () => {
               name="phoneNumber"
             />
 
-                  <svg className=' absolute top-[7.5rem] right-8' width="15" height="25" viewBox="0 0 20 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M7.4292 1.49854H4.2146C2.43923 1.49854 1 2.93776 1 4.71314V28.2869C1 30.0622 2.43923 31.5015 4.2146 31.5015H14.9299C16.7053 31.5015 18.1445 30.0622 18.1445 28.2869V4.71314C18.1445 2.93776 16.7053 1.49854 14.9299 1.49854H11.7153M7.4292 1.49854V3.6416H11.7153V1.49854M7.4292 1.49854H11.7153M7.4292 28.2869H11.7153" stroke="#158B68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-
+            <svg
+              className=" absolute top-[7.5rem] right-8"
+              width="15"
+              height="25"
+              viewBox="0 0 20 33"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7.4292 1.49854H4.2146C2.43923 1.49854 1 2.93776 1 4.71314V28.2869C1 30.0622 2.43923 31.5015 4.2146 31.5015H14.9299C16.7053 31.5015 18.1445 30.0622 18.1445 28.2869V4.71314C18.1445 2.93776 16.7053 1.49854 14.9299 1.49854H11.7153M7.4292 1.49854V3.6416H11.7153V1.49854M7.4292 1.49854H11.7153M7.4292 28.2869H11.7153"
+                stroke="#158B68"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
 
             <button
               className="w-[22rem] h-[3.4rem] bg-[#158B68] rounded-xl mt-[7.2rem] ml-7 text-[#ffff]"
