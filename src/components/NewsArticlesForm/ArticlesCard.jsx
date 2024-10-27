@@ -61,7 +61,7 @@ const ArticlesCard = ({ item }) => {
                 <img src={star} alt="" />
                 <p className="ml-2 hover:text-slate-950">
                   {" "}
-                  {item?.currentUserRateNumber}{" "}
+                  {item?.currentRate}{" "}
                 </p>
               </div>
 
