@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import "swiper/css";
@@ -23,6 +23,23 @@ import key from "./../../assets/svg/ArticlesDetails/key.svg";
 import { HeaderUserlogin } from "../common/HeaderUserLogin";
 
 const ArticlesDetailsForm = () => {
+
+  const [cards, setCards] = useState([]);
+
+
+  const getArticlesTop = async () => {
+    const path = `/News`;
+    const response = await getApi({ path });
+    console.log(response.data?.news);
+    if (response) {
+      setCards(response.data?.news);
+    }
+  };
+  useEffect(() => {
+    getArticlesTop();
+  }, []);
+
+
   return (
     <>
       <div>
