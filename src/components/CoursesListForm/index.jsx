@@ -58,46 +58,12 @@ const CoursesListForm = () => {
     GetCouresesTop();
   }, [sort]);
 
-  // const priceFilter = async () => {
-  //   const path = `/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=9&SortingCol=cost&SortType=DESC&TechCount=0`;
-  //   const response = await getApi({ path });
-  //   console.log(response.data.courseFilterDtos);
-  //   setData(response.data.courseFilterDtos);
+  const addLike =async (id) => {
+    console.log(id)
+    const path =`Course/AddCourseLike?CourseId=${id}`
+await postApi
 
-  // };
-
-  // const likeFilter = async () => {
-  //   const path = `/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=9&SortingCol=likeCount&SortType=DESC&TechCount=0`;
-  //   const response = await getApi({ path });
-  //   console.log(response.data.courseFilterDtos);
-  //   setData(response.data.courseFilterDtos);
-  // };
-
-
-  // const likeFilter = async () => {
-  //   const path = `/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=9&SortingCol=likeCount&SortType=DESC&TechCount=0`;
-  //   const response = await getApi({ path });
-  //   console.log(response.data.courseFilterDtos);
-  //   setData(response.data.courseFilterDtos);
-
-  // };
-
-  // const starFilter = async () => {
-  //   const path = `/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=9&SortingCol=currentRegistrants&SortType=DESC&TechCount=0`;
-  //   const response = await getApi({ path });
-  //   console.log(response.data.courseFilterDtos);
-  //   setData(response.data.courseFilterDtos);
-
-  // };
-  // const handleSearch = (query) => {
-  //   const searchData = data.filter((item) => {
-  //     return item.title.toLowerCase().match(query.toLowerCase());
-  //   });
-  //   console.log(searchData);
-  //   setfilterSearch(searchData);
-  // };
-
-
+  }
 
   return (
     <>
@@ -187,7 +153,7 @@ const CoursesListForm = () => {
 
                 <div className="flex justify-between items-center mt-14">
                   <div>
-                    <img src={like} alt="" />
+                    <img onClick={() => addLike(item.courseId)} src={like} alt="" />
                     <p>{item?.likeCount}</p>
                   </div>
 
