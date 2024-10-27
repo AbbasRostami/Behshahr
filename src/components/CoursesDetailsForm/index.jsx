@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
@@ -16,8 +16,30 @@ import line from "./../../assets/svg/ArticlesDetails/line.svg";
 import mrSmith from "./../../assets/svg/ArticlesDetails/mrSmith.svg";
 import profileimg from "./../../assets/svg/ArticlesDetails/profileimg.svg";
 import starRating from "./../../assets/svg/ArticlesDetails/StarRating.svg";
+import { getApi } from "../../core/api/api";
 
 const CoursesDetailsForm = () => {
+
+
+  const [details, setDeatils] = useState(null)
+
+  const getCoursesDetails = async () => {
+    const path = `/Home/GetCourseDetails?CourseId=f4f2b093-8914-ef11-b6c2-f4b229435c5d`;
+    const response = await getApi({ path });
+    console.log(response?.data);
+    if (response) {
+      setDeatils(response?.data);
+    }
+  };
+  useEffect(() => {
+    getCoursesDetails();
+  }, []);
+
+
+
+
+
+
   return (
     <>
       <div className="flex flex-row-reverse px-16 py-[70px] gap-5">
@@ -26,7 +48,7 @@ const CoursesDetailsForm = () => {
             <div className="flex flex-col w-full min-w-[300px]  gap-6">
               <div className=" flex-col rounded-md flex items-center justify-center p-6 ">
                 <img
-                  src={articlePic2}
+                  src={details?.imageAddress}
                   alt="image"
                   className="w-full h-[340px] object-cover rounded-md"
                 />
@@ -36,7 +58,7 @@ const CoursesDetailsForm = () => {
                 <div>
                   <div className="bg-white p-6 dark:text-white dark:bg-gray-700 rounded-md gap-5 shadow-md flex flex-col justify-between">
                     <div className="flex flex-row">
-                      <h1 className="font-bold text-lg w-full">عنوان دوره</h1>
+                      <h1 className="font-bold text-lg w-full">{details?.title}</h1>
 
                       <div className="flex flex-row-reverse gap-2 lg:gap-4 w-full">
                         <button className="text-gray-500  hover:text-green-500">
@@ -51,23 +73,8 @@ const CoursesDetailsForm = () => {
                       </div>
                     </div>
                     <div className="text-gray-700 dark:text-white text-justify">
-                      لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که
-                      توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می
-                      شود. تکه های لاتین متن نشان می دهد که یک پروژه در حال
-                      توسعه است. لورم ایپسوم فقط برای توسعه دهندگان وب نیست.
-                      طراحان گرافیک نیز از آن با نرم افزارهای مختلفی مانند
-                      فوتوشاپ استفاده می کنند. لورم ایپسوم محبوب ترین و
-                      استانداردترین متن ساختگی است که توسط توسعه دهندگان وب،
-                      تایپوگراف ها و طراحان استفاده می شود. تکه های لاتین متن
-                      نشان می دهد که یک پروژه در حال توسعه است. لورم ایپسوم فقط
-                      برای توسعه دهندگان وب نیست. طراحان گرافیک نیز از آن با نرم
-                      افزارهای مختلفی مانند فوتوشاپ استفاده می کنند. لورم ایپسوم
-                      محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه
-                      دهندگان وب، تایپوگراف ها و طراحان استفاده می شود. تکه های
-                      لاتین متن نشان می دهد که یک پروژه در حال توسعه است. لورم
-                      ایپسوم فقط برای توسعه دهندگان وب نیست. طراحان گرافیک نیز
-                      از آن با نرم افزارهای مختلفی مانند فوتوشاپ استفاده می
-                      کنند.
+
+                      {details?.describe}
                     </div>
                   </div>
                 </div>
@@ -163,17 +170,17 @@ const CoursesDetailsForm = () => {
               {" "}
               <div className="flex flex-col bg-white  dark:bg-gray-700 dark:text-white p-4 gap-2 rounded-md  text-[#12926C]">
                 <p>مدرس دوره : استاد </p>
-                <p>هزینه تمام دوره : 3.000.000 </p>
-                <p>تکنولوژی دوره : نام تکنولوژی </p>
-                <p>سطح دوره : پیشرفته</p>
-                <p>ظرفیت دوره : 50 نفر</p>
-                <p>وضعیت دوره : شروع ثبت نام</p>
+                <p>هزینه تمام دوره : {details?.cost} </p>
+                <p>تکنولوژی دوره :  {details?.techs} </p>
+                <p>سطح دوره : {details?.courseLevelName}</p>
+                <p>ظرفیت دوره : {details?.capacity} </p>
+                <p>وضعیت دوره : {details?.courseStatusName}</p>
               </div>
               <div className="bg-white  dark:bg-gray-700 dark:text-white p-4 space-y-2 rounded-md  text-[#12926C]">
                 <p>مدت زمان :</p>
                 <p>تعداد ویدیوها :</p>
-                <p>تعداد نظرات :</p>
-                <p>امتیاز دوره : 4.5</p>
+                <p>تعداد نظرات : {details?.commentCount}</p>
+                <p>امتیاز دوره : {details?.currentRegistrants}</p>
               </div>
               <div className="bg-white  dark:bg-gray-700 dark:text-white p-4 space-y-2 rounded-md  text-[#12926C]">
                 <p>تاریخ بروزرسانی :</p>
@@ -185,28 +192,7 @@ const CoursesDetailsForm = () => {
                   رزرو دوره
                 </button>
               </div>
-              <div className="bg-white  dark:bg-gray-700 dark:text-white rounded-md  flex items-center gap-4  p-4">
-                <div className="space-y-4">
-                  <h3 className="pr-16">درباره استاد</h3>
-                  <div className="flex flex-row gap-3 pr-6">
-                    <div className="pb-2">
-                      <img
-                        src={mrSmith}
-                        className="w-9 h-9 rounded-full object-cover"
-                      />
-                    </div>
 
-                    <h3 className="text-lg text-gray-700 dark:text-white pt-1">
-                      جان اسمیت
-                    </h3>
-                  </div>
-                  <p className="text-xs text-[#6D6767] dark:text-white">
-                    لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که
-                    توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود
-                    .
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
         </div>
