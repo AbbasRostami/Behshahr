@@ -13,27 +13,32 @@ import profileimg from "./../../assets/profileimg.svg";
 import line from "./../../assets/line.svg";
 import filter2 from "./../../assets/Group 242.svg";
 import { CoursesSlider } from "../common/SliderCourses";
-import { getApi } from "../../core/api/api";
+import { getApi, postApi } from "../../core/api/api";
 import arrow from "./../../assets/arrow.svg";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { Box, Slider } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import { PiHandHeartBold } from "react-icons/pi";
+import { Link } from "react-router-dom";
 
 const CoursesListForm = () => {
   const [data, setData] = useState([]);
   const [sort, setSort] = useState({});
-  const [filter, setFilter] = useState({});
+  const [pagination, setPagination] = useState({});
   const [PageNumber, setPageNumber] = useState(1);
   const [level, setLevel] = useState(1);
-  const [value, setValue] = React.useState([1, 100]);
+  const [value, setValue] = React.useState([1, 20000000]);
   const [cost, setCost] = useState([]);
+  const [filter, setFilter] = useState();
+
 
   function valuetext(value) {
     return `${value}`;
   }
 
   const handleChange = (event, newValue) => {
+    console.log(newValue);
     setValue(newValue);
   };
 
@@ -41,25 +46,47 @@ const CoursesListForm = () => {
   // const [filter, setFilter] = useState([]);
   // const [] =  useState()
 
-  const GetCouresesTop = async () => {
+  const GetCouresesTop = async (params) => {
     const path = `/Home/GetCoursesWithPagination`;
     const response = await getApi(
-      { path },
-      { PageNumber, RowsOfPage: 9, ...sort, ...filter, ...level, TechCount: 0 }
+      { path, params: { params: { ...params, RowsOfPage: 9 } } }
+      // { PageNumber, RowsOfPage: 9, ...sort, ...filter, ...level, TechCount: 0 }
     );
     console.log(response.data.courseFilterDtos);
     setData(response.data.courseFilterDtos);
+    setPagination(response.data);
   };
 
   useEffect(() => {
     GetCouresesTop();
   }, [sort]);
 
+  const filterDataHanlder = (newParams) => {
+    setFilter({ PageNumber: 1, ...filter, ...newParams });
+    const allFilter = {
+      PageNumber: 1, ...filter,
+      ...newParams,
+    };
+    console.log("filter", allFilter);
+    GetCouresesTop(allFilter)
+  }
+
   const addLike = async (id) => {
     console.log(id)
     const path = `Course/AddCourseLike?CourseId=${id}`
-    // await postApi
+    const response = await postApi({ path })
+    console.log(response)
 
+  }
+
+  const clearFilter = () => {
+    filterDataHanlder({ PageNumber: 1, inde: "", slab: "" })
+  }
+
+  const handleChangePage = (e, i) => {
+    console.log(e)
+    console.log(i)
+    filterDataHanlder({ PageNumber: i })
   }
 
   return (
@@ -118,19 +145,17 @@ const CoursesListForm = () => {
             className="mr-14 dark:bg-gray-800 dark:text-white text-lg w-56 h-14 rounded-3xl rtl px-2 bg-gray-50 border border-green-800 "
             id=""
             onChange={(e) => {
-              const val = e.target.value.split("-");
-
-              const myFilters = {
-                SortingCol: val[0],
-                SortType: val[1],
-              };
-              setSort(myFilters);
+              filterDataHanlder({
+                PageNumber: 1,
+                SortingCol: e.target.value,
+                SortType: "DESC",
+              })
             }}
           >
-            <option value="Active-DESC">مرتب سازی</option>
-            <option value="cost-DESC">قیمت</option>
-            <option value="likeCount-DESC">پسندیده ترین ها</option>
-            <option value="currentRegistrants-DESC">محبوب ترین ها</option>
+            <option value="">مرتب سازی</option>
+            <option value="cost">قیمت</option>
+            <option value="likeCount">پسندیده ترین ها</option>
+            <option value="currentRegistrants">محبوب ترین ها</option>
           </select>
           <button>
             <img className="w-[7rem] border-green-800" src={filter} alt="" />
@@ -151,7 +176,8 @@ const CoursesListForm = () => {
 
                 <div className="flex justify-between items-center mt-14">
                   <div>
-                    <img onClick={() => addLike(item.courseId)} src={like} alt="" />
+                    {/* <img className="cursor-pointer"  /> */}
+                    <PiHandHeartBold size={26} onClick={() => addLike(item.courseId)} src={like} alt="" className={item?.userIsLiked ? "text-green-600" : "text-gray-500"} />
                     <p>{item?.likeCount}</p>
                   </div>
 
@@ -214,15 +240,21 @@ const CoursesListForm = () => {
                     رزرو دوره
                   </button>
 
-                  <button className="bg-[#eeeeee] dark:bg-gray-800 dark:text-white rounded-xl w-[10rem] h-[2.5rem] border-solid border border-green-600">
-                    جزِئیات دوره
+                  <button className="block bg-[#eeeeee] dark:bg-gray-800 dark:text-white rounded-xl w-[10rem] h-[2.5rem] border-solid border border-green-600">
+                    <Link to={`/courses-details/${item?.courseId}`}>
+                      جزِئیات دوره
+                    </Link>
                   </button>
                 </div>
               </div>
             );
           })}
           <Stack>
-            <Pagination count={10} size="large" />
+            <Pagination
+              count={Math.ceil(pagination?.totalCount / 9)}
+              page={filter?.PageNumber || 1}
+              onChange={handleChangePage}
+              size="large" />
           </Stack>
         </div>
 
@@ -373,17 +405,10 @@ const CoursesListForm = () => {
                 <label class="flex bg-gray-100 text-gray-700 px-3 pt-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
                   <input
                     value="levelName-DESC"
-                    onChange={(e) => {
-                      const val = e.target.value.split("-");
-
-                      const myFilters = {
-                        SortingCol: val[0],
-                        SortType: val[1],
-                      };
-                      setSort(myFilters);
-                    }}
                     className="ml-3 size-4"
                     type="radio"
+                    onClick={() => filterDataHanlder({ PageNumber: 1, levelName: 1 })}
+                    checked={filter?.levelName == 1 ? true : false}
                     name="Country"
                   />
                   <i class="pl-2 text-md">مبتدی</i>
@@ -424,10 +449,12 @@ const CoursesListForm = () => {
               <div className="rtl mx-3 mt-5 w-[19rem] border-2 border-[#5BE1B9] rounded-xl">
                 <Box className="px-8 my-4" sx={{ width: 300 }}>
                   <Slider
-                    getAriaLabel={() => "Temperature range"}
+                    // getAriaLabel={() => "Temperature range"}
                     value={value}
                     onChange={handleChange}
-                    valueLabelDisplay="auto"
+                    // valueLabelDisplay="auto"
+                    min={1}
+                    max={20000000}
                     getAriaValueText={valuetext}
                   />
                   <div className="flex justify-between items-center">
