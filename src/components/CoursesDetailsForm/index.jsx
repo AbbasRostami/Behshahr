@@ -18,6 +18,16 @@ import profileimg from "./../../assets/svg/ArticlesDetails/profileimg.svg";
 import starRating from "./../../assets/svg/ArticlesDetails/StarRating.svg";
 
 const CoursesDetailsForm = () => {
+
+
+
+
+
+
+
+
+
+
   return (
     <>
       <div className="flex flex-row-reverse px-16 py-[70px] gap-5">
@@ -127,6 +137,20 @@ const CoursesDetailsForm = () => {
                           </button>
                         </div>
 
+                        <div className="flex flex-col gap-2">
+                          <Field
+                            name="title"
+                            placeholder="عنوان"
+                            className="p-2 border-2 bg-[#FBF6F6] border-BgGreen rounded-md "
+                          />
+                          <Field
+                            name="text"
+                            placeholder="متن..."
+                            rows="4"
+                            as="textarea"
+                            className="p-2 border-2 bg-[#FBF6F6] border-BgGreen rounded-md text-[#807A7A]"
+                          />
+                        </div>
                         <div className="flex flex-col gap-2">
                           <Field
                             name="title"
