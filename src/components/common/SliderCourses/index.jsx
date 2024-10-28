@@ -13,6 +13,7 @@ import starRating from "./../../../assets/svg/Landing/StarRating.svg";
 import line from "./../../../assets/svg/Landing/Line.svg";
 import { useEffect } from "react";
 import { getApi } from "../../../core/api/api";
+import { Link } from "react-router-dom";
 
 const CoursesSlider = () => {
   const [courses, setcourses] = useState([]);
@@ -54,13 +55,20 @@ const CoursesSlider = () => {
 
                   <div className="flex justify-between items-center mt-1 lg:mt-10">
                     <div className="flex justify-center items-center hidden lg:flex gap-1">
-                      <img src={like} alt="" />
-                      <p>{item?.likeCount}</p>
-                      <img className="mx-2" src={dislike} alt="" />
-                      <p>{item?.dissLikeCount}</p>
-                      <img src={favorite} alt="" />
-                      <p>{item?.currentRegistrants}</p>
+                      <div>
+                        <img src={like} alt="" />
+                        <p>{item?.likeCount}</p>
+                      </div>
+                      <div>
+                        <img className="mx-2" src={dislike} alt="" />
+                        <p>{item?.dissLikeCount}</p>
+                      </div>
+                      <div>
+                        <img src={favorite} alt="" />
+                        <p>{item?.currentRegistrants}</p>
+                      </div>
                     </div>
+
                     <button class="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer mx-auto p-2">
                       {item?.statusName}
                     </button>
@@ -76,8 +84,14 @@ const CoursesSlider = () => {
                       <p className="ml-2">{item?.currentRegistrants}</p>
                     </div>
                     <div className="flex rtl justify-between items-center mx-[-2rem] lg:mx-0">
-                      <img className="h-[2rem] lg:h-[3rem]" src={profileimg} alt="" />
-                      <p className="text-xs lg:text-lg mr-2">{item?.teacherName}</p>
+                      <img
+                        className="h-[2rem] lg:h-[3rem]"
+                        src={profileimg}
+                        alt=""
+                      />
+                      <p className="text-xs lg:text-lg mr-2">
+                        {item?.teacherName}
+                      </p>
                     </div>
                   </div>
 
@@ -97,9 +111,12 @@ const CoursesSlider = () => {
                     <p className="text-sm text-nowrap">: هزینه تمام دوره</p>
                   </div>
 
-                  <button class="w-[200px] lg:w-[240px] h-[30px] lg:h-[40px] text-white bg-BgGreen rounded-lg mx-[-4rem] lg:mx-0 mt-4 lg:mt-6 ">
-                    الان ثبت نام کن
-                  </button>
+                  <Link to="/register">
+                    {" "}
+                    <button class="transition ease-in-out delay-150 hover:text-yellow-950 hover:text-lg hover:-translate-y-1 hover:scale-110  duration-300 ... w-[200px] lg:w-[240px] h-[30px] lg:h-[40px] text-white bg-BgGreen rounded-lg mx-[-4rem] lg:mx-0 mt-4 lg:mt-6 ">
+                      الان ثبت نام کن
+                    </button>
+                  </Link>
                 </div>
               </div>
             </SwiperSlide>
