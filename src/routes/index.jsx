@@ -18,8 +18,11 @@ import { PanelLayout } from "../screens/layout/PanelLayout";
 import { StepOne } from "../components/RegisterForm/StepOne";
 import { StepTwo } from "../components/RegisterForm/StepTwo";
 import { StepThree } from "../components/RegisterForm/StepThree";
+import { ForgetStepOne } from "../components/ForgetPasswordForm/StepOne";
+import { ForgetStepTwo } from "../components/ForgetPasswordForm/StepTwo";
+import PassProvider from "../core/provider/PasswoedProvider";
 
-export const RoutesApp = createBrowserRouter([
+const RoutesApp = createBrowserRouter([
   {
     path: "/",
     element: <Landing />,
@@ -61,41 +64,28 @@ export const RoutesApp = createBrowserRouter([
     path: "/login",
     element: <Login />,
   },
-  // {
-  //   path: "/forget-password",
-  //   element: <ForgetPassword />,
-  // },
   {
-    element: <PanelLayout />,
-    children: [
-      {
-        path: "/myCourses",
-        element: <MyCourses />,
-      },
-      {
-        path: "/myReserveCourses",
-        element: <MyReserveCourses />,
-      },
-      {
-        path: "/favorites",
-        element: <Favorites />,
-      },
-      {
-        path: "/myComments",
-        element: <MyComments />,
-      },
-      {
-        path: "/changePassword",
-        element: <ChangePassword />,
-      },
-      {
-        path: "/editProfile",
-        element: <EditProfile />,
-      },
-      {
-        path: "/dashbord",
-        element: <Dashbord />,
-      },
-    ],
+    path: "/forget-password",
+    element: (
+      <PassProvider>
+        {" "}
+        <ForgetPassword />{" "}
+      </PassProvider>
+    ),
+  },
+  // {
+  //   path:'/forget-pass-StepOne',
+  //   element: <ForgetStepOne />,
+  // },
+
+  {
+    path: "/reset-password/:id",
+    element: (
+      <PassProvider>
+        <ForgetStepTwo />
+      </PassProvider>
+    ),
   },
 ]);
+
+export default RoutesApp;
