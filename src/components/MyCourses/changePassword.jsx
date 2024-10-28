@@ -4,17 +4,20 @@ import changePassword from "../../assets/changePassword.svg";
 import lock from "../../assets/lock.svg";
 import key from "../../assets/key.svg";
 import security from "./../../assets/security.svg";
-import { postChengePassword } from "../../core/api/chengePassword";
+// import { postChengePassword } from "../../core/api/chengePassword";
+import { postApi } from "../../core/api/api";
 
 const ChangePassword = () => {
   const handlerPass = async (values) => {
     console.log(values);
 
+    const path = `/SharePanel/ChangePassword`;
     const body = values;
 
-    const response = await postChengePassword(body);
+    const response = await postApi({ path, body });
     console.log(response);
   };
+
   return (
     <>
       <div className="w-[48rem] xl:w-[70rem] h-[43rem] my-[1rem] border-[1px] bg-[#ffff] rounded-2xl shadow-2xl">
@@ -31,19 +34,19 @@ const ChangePassword = () => {
 
           <Formik
             onSubmit={handlerPass}
-            initialValues={{ password: "", newPass: "", repetPass: "" }}
+            initialValues={{ oldPassword: "", newPassword: "" }}
           >
             <Form>
               <Field
                 type="text      "
-                name="password"
+                name="oldPassword"
                 placeholder="رمز عبور فعلی"
                 className="text-[#ABA7A7] pr-12 text-sm xl:text-lg bg-[#ffff] border-[2px] border-[#158B68] rounded-lg w-[18rem] xl:w-[29rem] h-[3.5rem] xl:h-[4rem] absolute top-[19.5rem] xl:top-[19rem] right-[20rem] xl:right-[30rem]"
               ></Field>
 
               <Field
                 type="text"
-                name="newPass"
+                name="newPassword"
                 placeholder="رمز عبور جدید"
                 className="text-[#ABA7A7] pr-12 text-sm xl:text-lg bg-[#ffff] border-[2px] border-[#158B68] rounded-lg w-[18rem] xl:w-[29rem] h-[3.5rem] xl:h-[4rem] absolute top-[25.5rem] xl:top-[25.5rem] right-[20rem] xl:right-[30rem]"
               ></Field>
