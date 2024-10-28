@@ -24,6 +24,7 @@ const CoursesSlider = () => {
     // console.log(response.data?.courseFilterDtos);
     if (response) {
       setcourses(response.data?.courseFilterDtos);
+      setcourses(response.data?.courseFilterDtos);
     }
   };
   useEffect(() => {
@@ -35,6 +36,7 @@ const CoursesSlider = () => {
       <div class="text-center leading-10 mt-24 dark:text-white">
         <p class="text-[35px] font-bold">دوره های ما</p>
         <p class="leading-10">ساختن دنیایی بهتر، یک دوره در یک زمان</p>
+      </div>
       </div>
 
       <Swiper
