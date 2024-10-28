@@ -6,11 +6,7 @@ import { Footer } from "./../../components/common/Footer";
 const NewsArticles = () => {
   return (
     <div>
-      <div className='dark:bg-slate-900'>
-      <HeaderUserlogin />
-        <NewsArticlesForm />
-      <Footer />
-      </div>
+      <NewsArticlesForm />
     </div>
   );
 };

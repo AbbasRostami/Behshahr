@@ -6,11 +6,7 @@ import { Footer } from '../../components/common/Footer'
 const ArticlesDetails = () => {
   return (
     <>
-    <div className='dark:bg-slate-900'>
-        <HeaderUserlogin />
-          <ArticlesDetailsForm />
-        <Footer />
-        </div>
+      <ArticlesDetailsForm />
     </>
   )
 }

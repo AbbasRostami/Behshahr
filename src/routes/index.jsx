@@ -6,7 +6,6 @@ import { ArticlesDetails } from "../screens/ArticlesDetails";
 import { NewsArticles } from "../screens/NewsArticles";
 import { NotFound } from "./../components/NotFound/index.jsx";
 import { Login } from "../screens/Login";
-import { ForgetPassword } from "../screens/ForgetPassword";
 import { MyCourses } from "../components/MyCourses/myCourses";
 import { MyReserveCourses } from "../components/MyCourses/myReserveCourses";
 import { Favorites } from "../components/MyCourses/favorites";
@@ -21,55 +20,103 @@ import { StepThree } from "../components/RegisterForm/StepThree";
 import { ForgetStepOne } from "../components/ForgetPasswordForm/StepOne";
 import { ForgetStepTwo } from "../components/ForgetPasswordForm/StepTwo";
 import PassProvider from "../core/provider/PasswoedProvider";
+import { ForgetPasswordForm } from "../components/ForgetPasswordForm/index.jsx";
+import { CoursesListForm } from "../components/CoursesListForm/index.jsx";
+import { CoursesList } from "../screens/CoursesList/index.jsx";
+import { MainLayout } from "../screens/layout/MainLayout.jsx";
 
 const RoutesApp = createBrowserRouter([
   {
-    path: "/",
-    element: <Landing />,
-  },
+    element: <MainLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Landing />,
+      }, {
+        path: "*",
+        element: <NotFound />,
+      },
+      {
+        path: "/about",
+        element: <AboutUs />,
+      },
+      {
+        path: "/courses-details/:id",
+        element: <CoursesDetails />,
+      }, {
+        path: "/courses-list",
+        element: <CoursesList />,
+      },
+      {
+        path: "/articles-details",
+        element: <ArticlesDetails />,
+      },// Register Routers
+      {
+        path: "/register",
+        element: <StepOne />,
+      },
+      {
+        path: "/register-verify",
+        element: <StepTwo />,
+      },
+      {
+        path: "/register-final",
+        element: <StepThree />,
+      },
+      {
+        path: "/news-articles",
+        element: <NewsArticles />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+    ]
+  }
+  ,
+  // {
+  //   path: "/forget-password",
+  //   element: <ForgetPassword />,
+  // },
   {
-    path: "*",
-    element: <NotFound />,
-  },
-  {
-    path: "/about",
-    element: <AboutUs />,
-  },
-  {
-    path: "/courses-details",
-    element: <CoursesDetails />,
-  },
-  {
-    path: "/articles-details",
-    element: <ArticlesDetails />,
-  },
-  // Register Routers
-  {
-    path: "/register",
-    element: <StepOne />,
-  },
-  {
-    path: "/register-verify",
-    element: <StepTwo />,
-  },
-  {
-    path: "/register-final",
-    element: <StepThree />,
-  },
-  {
-    path: "/news-articles",
-    element: <NewsArticles />,
-  },
-  {
-    path: "/login",
-    element: <Login />,
+    element: <PanelLayout />,
+    children: [
+      {
+        path: "/myCourses",
+        element: <MyCourses />,
+      },
+      {
+        path: "/myReserveCourses",
+        element: <MyReserveCourses />,
+      },
+      {
+        path: "/favorites",
+        element: <Favorites />,
+      },
+      {
+        path: "/myComments",
+        element: <MyComments />,
+      },
+      {
+        path: "/changePassword",
+        element: <ChangePassword />,
+      },
+      {
+        path: "/editProfile",
+        element: <EditProfile />,
+      },
+      {
+        path: "/dashbord",
+        element: <Dashbord />,
+      },
+    ],
   },
   {
     path: "/forget-password",
     element: (
       <PassProvider>
         {" "}
-        <ForgetPassword />{" "}
+        <ForgetPasswordForm />{" "}
       </PassProvider>
     ),
   },

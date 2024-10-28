@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useTransition } from "react";
 import arrowUnder from "./../../assets/arrowUnder.svg";
 import filter from "./../../assets/filter.svg";
 import { Field, Form, Formik } from "formik";
@@ -25,6 +25,7 @@ import { BiDislike, BiLike } from "react-icons/bi";
 import { FaRegStar } from "react-icons/fa";
 
 const CoursesListForm = () => {
+
   const [data, setData] = useState([]);
   const [sort, setSort] = useState({});
   const [pagination, setPagination] = useState({});
@@ -43,6 +44,11 @@ const CoursesListForm = () => {
     console.log("new value:", newValue);
     setValue(newValue);
   };
+
+  useEffect(() => {
+    const timeOutId = setTimeout(() => filterDataHanlder({ PageNumber: 1, CostDown: value[0], CostUp: value[1] }), 500);
+    return () => clearTimeout(timeOutId);
+  }, [value]);
 
 
   const GetCouresesTop = async (params) => {
@@ -78,6 +84,9 @@ const CoursesListForm = () => {
     console.log(id)
     const path = `Course/AddCourseLike?CourseId=${id}`
     const response = await postApi({ path })
+    if (response?.data?.success) {
+      filterDataHanlder({})
+    }
     console.log(response)
 
   }
@@ -86,6 +95,9 @@ const CoursesListForm = () => {
     console.log(id)
     const path = `/Course/AddCourseDissLike?CourseId=${id}`
     const response = await postApi({ path })
+    if (response?.data?.success) {
+      filterDataHanlder({})
+    }
     console.log(response)
   }
 
@@ -93,6 +105,9 @@ const CoursesListForm = () => {
     console.log(id)
     const path = `/Course/SetCourseRating?CourseId=${id}&RateNumber=2`
     const response = await postApi({ path })
+    if (response?.data?.success) {
+      filterDataHanlder({})
+    }
     console.log(response)
   }
 
@@ -118,49 +133,47 @@ const CoursesListForm = () => {
       </h1>
       {/* Top */}
       <div className=" flex justify-between gap-4 lg:gap-0 items-center mt-8 shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)]  bg-[#FBF6F6] dark:bg-gray-800 p-5 rounded-3xl mx-8">
-        <Formik>
-          <Form className="ml-10">
-            <div className="relative">
-              <Field
-                type="text"
-                className="rtl p-4 dark:text-white border-green-800 w-80 text-sm text-gray-900 border dark:bg-gray-800  rounded-2xl bg-gray-50"
-                placeholder="جستجو..."
-                required
-                onChange={(e) => handleSearch(e.target.value)}
-              />
+        <div className="ml-10">
+          <div className="relative">
+            <input
+              type="text"
+              className="rtl p-4 dark:text-white border-green-800 w-80 text-sm text-gray-900 border dark:bg-gray-800  rounded-2xl bg-gray-50"
+              placeholder="جستجو..."
+              required
+              onChange={(e) => filterDataHanlder({ PageNumber: 1, Query: e.target.value })}
+            />
 
-              <svg
-                className="absolute  bottom-[6px] left-[12px]"
-                fill="#158B68"
-                height="40px"
-                width="40px"
-                version="1.1"
-                id="Capa_1"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                viewBox="-53.72 -53.72 595.84 595.84"
-                xml:space="preserve"
-              >
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g
-                  id="SVGRepo_tracerCarrier"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></g>
-                <g id="SVGRepo_iconCarrier">
+            <svg
+              className="absolute  bottom-[6px] left-[12px]"
+              fill="#158B68"
+              height="40px"
+              width="40px"
+              version="1.1"
+              id="Capa_1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              viewBox="-53.72 -53.72 595.84 595.84"
+              xml:space="preserve"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                {" "}
+                <g>
                   {" "}
                   <g>
                     {" "}
-                    <g>
-                      {" "}
-                      <path d="M0,203.25c0,112.1,91.2,203.2,203.2,203.2c51.6,0,98.8-19.4,134.7-51.2l129.5,129.5c2.4,2.4,5.5,3.6,8.7,3.6 s6.3-1.2,8.7-3.6c4.8-4.8,4.8-12.5,0-17.3l-129.6-129.5c31.8-35.9,51.2-83,51.2-134.7c0-112.1-91.2-203.2-203.2-203.2 S0,91.15,0,203.25z M381.9,203.25c0,98.5-80.2,178.7-178.7,178.7s-178.7-80.2-178.7-178.7s80.2-178.7,178.7-178.7 S381.9,104.65,381.9,203.25z"></path>{" "}
-                    </g>{" "}
+                    <path d="M0,203.25c0,112.1,91.2,203.2,203.2,203.2c51.6,0,98.8-19.4,134.7-51.2l129.5,129.5c2.4,2.4,5.5,3.6,8.7,3.6 s6.3-1.2,8.7-3.6c4.8-4.8,4.8-12.5,0-17.3l-129.6-129.5c31.8-35.9,51.2-83,51.2-134.7c0-112.1-91.2-203.2-203.2-203.2 S0,91.15,0,203.25z M381.9,203.25c0,98.5-80.2,178.7-178.7,178.7s-178.7-80.2-178.7-178.7s80.2-178.7,178.7-178.7 S381.9,104.65,381.9,203.25z"></path>{" "}
                   </g>{" "}
-                </g>
-              </svg>
-            </div>
-          </Form>
-        </Formik>
+                </g>{" "}
+              </g>
+            </svg>
+          </div>
+        </div>
 
         <div className="relative flex justify-center items-center mr-10">
           <select
@@ -266,7 +279,7 @@ const CoursesListForm = () => {
                   </button>
 
                   <button className="block bg-[#eeeeee] dark:bg-gray-800 dark:text-white rounded-xl w-[10rem] h-[2.5rem] border-solid border border-green-600">
-                    <Link to={`/courses-details/${item?.courseId}`}>
+                    <Link to={localStorage.getItem('token') ? `/courses-details/${item?.courseId}` : '/login'}>
                       جزِئیات دوره
                     </Link>
                   </button>
@@ -367,7 +380,7 @@ const CoursesListForm = () => {
                     className="ml-3 size-4"
                     type="radio"
                     onClick={() => filterDataHanlder({ PageNumber: 1, typeName: 1 })}
-                    Checked={filter?.typeName == 1 ? true : false}
+                    checked={filter?.typeName === 1 ? true : false}
                   />
                   <i class="pl-2 text-md">حضوری</i>
                 </label>
@@ -378,8 +391,8 @@ const CoursesListForm = () => {
                     className="ml-3 size-4"
                     type="radio"
                     onClick={() => filterDataHanlder({ PageNumber: 1, typeName: 2 })}
-                    aria-checked={filter?.typeName == 2 ? true : false}
-                    
+                    checked={filter?.typeName === 2 ? true : false}
+
                   />
                   <i class="pl-2 text-md">آنلاین</i>
                 </label>
@@ -390,7 +403,7 @@ const CoursesListForm = () => {
                     className="ml-3 size-4"
                     type="radio"
                     onClick={() => filterDataHanlder({ PageNumber: 1, typeName: 3 })}
-                    Checked={filter?.typeName == 3 ? true : false}
+                    checked={filter?.typeName === 3 ? true : false}
                   />
                   <i class="pl-2 text-md">آنلاین - حضوری</i>
                 </label>

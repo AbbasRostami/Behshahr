@@ -24,6 +24,8 @@ const Professionals = () => {
     getTeachers();
   }, []);
 
+  console.log(Teachers)
+
 
   return (
     <>
@@ -38,7 +40,7 @@ const Professionals = () => {
           </p>
         </div>
 
-        {Teachers?.map((item, index) =>
+        {Teachers?.length ? Teachers.map((item, index) =>
 
           <div className="flex justify-center items-center w-[300px] h-[380px]  mt-36 ">
             <div className="flex flex-col items-center ">
@@ -48,11 +50,11 @@ const Professionals = () => {
               </p>
               <p className="text-[#21394B] px-14 rtl text-xs mt-6 text-center dark:text-white	">
                 استاد برنامه نویس
-                              </p>
+              </p>
               <img className="m-3" src={socials} alt="" />
             </div>
           </div>
-        )}
+        ) : null}
 
 
 
