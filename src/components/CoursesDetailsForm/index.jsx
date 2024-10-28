@@ -18,17 +18,18 @@ import profileimg from "./../../assets/svg/ArticlesDetails/profileimg.svg";
 import starRating from "./../../assets/svg/ArticlesDetails/StarRating.svg";
 import { getApi } from "../../core/api/api";
 import { useParams } from "react-router-dom";
+import moment from "jalali-moment";
 
 const CoursesDetailsForm = () => {
 
   const params = useParams()
 
-  console.log(params?.id)
+  // console.log(params?.id)
 
   const [details, setDeatils] = useState(null)
 
   const getCoursesDetails = async () => {
-    const path = `/Course/${params?.id}`;
+    const path = `/Home/GetCourseDetails?CourseId=${params?.id}`;
     const response = await getApi({ path });
     console.log(response?.data);
     if (response) {
@@ -38,6 +39,9 @@ const CoursesDetailsForm = () => {
   useEffect(() => {
     getCoursesDetails();
   }, []);
+
+
+
 
 
 
@@ -54,7 +58,7 @@ const CoursesDetailsForm = () => {
                 <img
                   src={details?.imageAddress}
                   alt="image"
-                  className="w-full h-[340px] object-cover rounded-md"
+                  className="h-[21.5rem] w-[60rem] object-fill rounded-md"
                 />
               </div>
 
@@ -76,9 +80,11 @@ const CoursesDetailsForm = () => {
                         </button>
                       </div>
                     </div>
-                    <div className="text-gray-700 dark:text-white text-justify">
+                    <div className="text-gray-700 dark:text-white text-justify  ">
 
                       {details?.describe}
+                      {details?.miniDescribe}
+                      {details?.googleSchema}
                     </div>
                   </div>
                 </div>
@@ -92,24 +98,33 @@ const CoursesDetailsForm = () => {
                       className="w-full h-[380px] rounded-md object-cover"
                     />
                   </div>
-                  <ul className="flex flex-col gap-4">
+                  <ul className="flex flex-col gap-4 ">
                     <div className="flex justify-between items-center border-b pb-3 gap-20">
                       <li>ویدیو اول : آشنایی با دوره</li>
-                      <img className="pl-6" src={download} />
+                      <div className="flex justify-center items-center gap-3">
+                        <p>00:28:00</p>
+                        <img className="pl-6" src={download} />
+                      </div>
                     </div>
 
                     <div className="flex justify-between items-center border-b pb-3 gap-20">
                       <li className=" pb-3">
                         ویدیو دوم : آشنایی با جاوا اسکریپت
                       </li>
-                      <img className="pl-6" src={download} />
+                      <div className="flex justify-center items-center gap-3">
+                        <p>00:45:00</p>
+                        <img className="pl-6" src={download} />
+                      </div>
                     </div>
 
                     <div className="flex justify-between items-center border-b pb-3 gap-20">
                       <li className=" pb-3">
                         ویدیو دوم : آشنایی با جاوا اسکریپت
                       </li>
-                      <img className="pl-6" src={download} />
+                      <div className="flex justify-center items-center gap-3">
+                        <p>00:29:00</p>
+                        <img className="pl-6" src={download} />
+                      </div>
                     </div>
                   </ul>
                 </div>
@@ -142,30 +157,17 @@ const CoursesDetailsForm = () => {
                           <Field
                             name="title"
                             placeholder="عنوان"
-                            className="p-2 border-2 bg-[#FBF6F6] border-BgGreen rounded-md "
+                            className="p-2 text-black border-2 bg-[#FBF6F6] border-BgGreen rounded-md "
                           />
                           <Field
                             name="text"
                             placeholder="متن..."
                             rows="4"
                             as="textarea"
-                            className="p-2 border-2 bg-[#FBF6F6] border-BgGreen rounded-md text-[#807A7A]"
+                            className="p-2  text-black border-2 bg-[#FBF6F6] border-BgGreen rounded-md "
                           />
                         </div>
-                        <div className="flex flex-col gap-2">
-                          <Field
-                            name="title"
-                            placeholder="عنوان"
-                            className="p-2 border-2 bg-[#FBF6F6] border-BgGreen rounded-md "
-                          />
-                          <Field
-                            name="text"
-                            placeholder="متن..."
-                            rows="4"
-                            as="textarea"
-                            className="p-2 border-2 bg-[#FBF6F6] border-BgGreen rounded-md text-[#807A7A]"
-                          />
-                        </div>
+
 
                         <button
                           type="submit"
@@ -186,27 +188,27 @@ const CoursesDetailsForm = () => {
           <div className="min-h-screen w-full bg-[#FBF6F6] dark:bg-gray-800 rounded-md flex justify-center p-6 rtl">
             <div className="flex flex-col w-full min-w-64 gap-6">
               {" "}
-              <div className="flex flex-col bg-white  dark:bg-gray-700 dark:text-white p-4 gap-2 rounded-md  text-[#12926C]">
-                <p>مدرس دوره : استاد </p>
-                <p>هزینه تمام دوره : {details?.cost} </p>
-                <p>تکنولوژی دوره :  {details?.techs} </p>
-                <p>سطح دوره : {details?.courseLevelName}</p>
-                <p>ظرفیت دوره : {details?.capacity} </p>
-                <p>وضعیت دوره : {details?.courseStatusName}</p>
+              <div className="flex flex-col transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 ... bg-white  dark:bg-gray-700 dark:text-white p-4 gap-2 rounded-md  text-[#12926C]">
+                <p>مدرس دوره : <span className="text-[#22445D]">{details?.teacherName}</span> </p>
+                <p>هزینه تمام دوره : <span className="text-[#22445D]">{details?.cost}</span> </p>
+                <p>تکنولوژی دوره :  <span className="text-[#22445D]">{details?.techs}</span> </p>
+                <p>سطح دوره : <span className="text-[#22445D]">{details?.courseLevelName}</span></p>
+                <p>ظرفیت دوره : <span className="text-[#22445D]">{details?.capacity}</span> </p>
+                <p>وضعیت دوره : <span className="text-[#22445D]">{details?.courseStatusName}</span></p>
               </div>
-              <div className="bg-white  dark:bg-gray-700 dark:text-white p-4 space-y-2 rounded-md  text-[#12926C]">
-                <p>مدت زمان :</p>
-                <p>تعداد ویدیوها :</p>
-                <p>تعداد نظرات : {details?.commentCount}</p>
-                <p>امتیاز دوره : {details?.currentRegistrants}</p>
+              <div className="bg-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 ...  dark:bg-gray-700 dark:text-white p-4 space-y-2 rounded-md  text-[#12926C]">
+                <p>مدت زمان : <span className="text-[#22445D]">{details?.commentCount}</span></p>
+                <p>تعداد ویدیوها : <span className="text-[#22445D]">{details?.capacity}</span></p>
+                <p>تعداد نظرات : <span className="text-[#22445D]">{details?.commentCount}</span></p>
+                <p>امتیاز دوره : <span className="text-[#22445D]">{details?.currentRegistrants}</span></p>
               </div>
-              <div className="bg-white  dark:bg-gray-700 dark:text-white p-4 space-y-2 rounded-md  text-[#12926C]">
-                <p>تاریخ بروزرسانی :</p>
-                <p>شروع دوره :</p>
-                <p>پایان دوره :</p>
+              <div className="bg-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 ...  dark:bg-gray-700 dark:text-white p-4 space-y-2 rounded-md  text-[#12926C]">
+                <p>تاریخ بروزرسانی :<span className="text-[#22445D]"> {moment(details?.insertDate).locale('fa').format('YYYY/MM/DD')}</span></p>
+                <p>شروع دوره: <span className="text-[#22445D]"> {moment(details?.startTime).locale('fa').format('YYYY/MM/DD')}</span></p>
+                <p>پایان دوره :  <span className="text-[#22445D]">{moment(details?.endTime).locale('fa').format('YYYY/MM/DD')}</span></p>
               </div>
               <div className="md:col-span-2">
-                <button className="w-full bg-[#5BE1B9] dark:bg-gray-500 dark:text-white text-black py-3 rounded-md shadow-lg text-center">
+                <button className="mt-3 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 ... w-full bg-[#5BE1B9] dark:bg-gray-500 dark:text-white text-black text-md py-3 rounded-md shadow-lg text-center">
                   رزرو دوره
                 </button>
               </div>
