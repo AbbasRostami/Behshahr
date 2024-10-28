@@ -16,9 +16,11 @@ import line from "./../../assets/svg/ArticlesDetails/line.svg";
 import mrSmith from "./../../assets/svg/ArticlesDetails/mrSmith.svg";
 import profileimg from "./../../assets/svg/ArticlesDetails/profileimg.svg";
 import starRating from "./../../assets/svg/ArticlesDetails/StarRating.svg";
-import { getApi } from "../../core/api/api";
+import { getApi, postApi } from "../../core/api/api";
 import { useParams } from "react-router-dom";
 import moment from "jalali-moment";
+import { FaRegStar } from "react-icons/fa";
+import { BiDislike, BiLike } from "react-icons/bi";
 
 const CoursesDetailsForm = () => {
 
@@ -41,6 +43,28 @@ const CoursesDetailsForm = () => {
   }, []);
 
 
+
+
+  const addLike = async (id) => {
+    console.log(id)
+    const path = `Course/AddCourseLike?CourseId=${id}`
+    const response = await postApi({ path })
+    console.log(response)
+  }
+
+  const addDislike = async (id) => {
+    console.log(id)
+    const path = `/Course/AddCourseDissLike?CourseId=${id}`
+    const response = await postApi({ path })
+    console.log(response)
+  }
+
+  const addStarRatng = async (id) => {
+    console.log(id)
+    const path = `/Course/SetCourseRating?CourseId=<uuid>${id}`
+    const response = await postApi({ path })
+    console.log(response)
+  }
 
 
 
@@ -70,13 +94,13 @@ const CoursesDetailsForm = () => {
 
                       <div className="flex flex-row-reverse gap-2 lg:gap-4 w-full">
                         <button className="text-gray-500  hover:text-green-500">
-                          <img src={like} />
+                            <BiLike size={26} onClick={() => addLike(details.courseId)} className={details?.userIsLiked ? "text-green-600" : "text-gray-500"} />
                         </button>
                         <button className="text-gray-500  hover:text-red-500">
-                          <img src={dislike} />
+                             <BiDislike size={26} onClick={() => addLike(details.courseId)} className={details?.currentUserDissLike ? "text-green-600" : "text-gray-500"} />
                         </button>
                         <button className="text-gray-500  hover:text-yellow-500">
-                          <img src={starRating} />
+                            <FaRegStar size={26} onClick={() => addLike(details.courseId)} className={details?.currentUserSetRate ? "text-green-600" : "text-gray-500"} />
                         </button>
                       </div>
                     </div>

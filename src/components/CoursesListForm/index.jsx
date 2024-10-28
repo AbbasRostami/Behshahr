@@ -21,6 +21,8 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { PiHandHeartBold } from "react-icons/pi";
 import { Link } from "react-router-dom";
+import { BiDislike, BiLike } from "react-icons/bi";
+import { FaRegStar } from "react-icons/fa";
 
 const CoursesListForm = () => {
   const [data, setData] = useState([]);
@@ -38,13 +40,10 @@ const CoursesListForm = () => {
   }
 
   const handleChange = (event, newValue) => {
-    console.log(newValue);
+    console.log("new value:", newValue);
     setValue(newValue);
   };
 
-  const [isOpen, setisOpen] = useState([]);
-  // const [filter, setFilter] = useState([]);
-  // const [] =  useState()
 
   const GetCouresesTop = async (params) => {
     const path = `/Home/GetCoursesWithPagination`;
@@ -61,6 +60,8 @@ const CoursesListForm = () => {
     GetCouresesTop();
   }, [sort]);
 
+
+
   const filterDataHanlder = (newParams) => {
     setFilter({ PageNumber: 1, ...filter, ...newParams });
     const allFilter = {
@@ -71,6 +72,8 @@ const CoursesListForm = () => {
     GetCouresesTop(allFilter)
   }
 
+
+
   const addLike = async (id) => {
     console.log(id)
     const path = `Course/AddCourseLike?CourseId=${id}`
@@ -78,6 +81,25 @@ const CoursesListForm = () => {
     console.log(response)
 
   }
+
+  const addDislike = async (id) => {
+    console.log(id)
+    const path = `/Course/AddCourseDissLike?CourseId=${id}`
+    const response = await postApi({ path })
+    console.log(response)
+  }
+
+  const addStarRatng = async (id) => {
+    console.log(id)
+    const path = `/Course/SetCourseRating?CourseId=${id}&RateNumber=2`
+    const response = await postApi({ path })
+    console.log(response)
+  }
+
+
+
+
+
 
   const clearFilter = () => {
     filterDataHanlder({ PageNumber: 1, inde: "", slab: "" })
@@ -175,25 +197,28 @@ const CoursesListForm = () => {
                 </div>
 
                 <div className="flex justify-between items-center mt-14">
-                  <div>
-                    {/* <img className="cursor-pointer"  /> */}
-                    <PiHandHeartBold size={26} onClick={() => addLike(item.courseId)} src={like} alt="" className={item?.userIsLiked ? "text-green-600" : "text-gray-500"} />
-                    <p>{item?.likeCount}</p>
-                  </div>
+                  <div className="flex justify-center items-center gap-2">
+                    <div>
+                      {/* <img className="cursor-pointer"  /> */}
+                      <BiLike size={26} onClick={() => addLike(item?.courseId)} className={item?.userIsLiked ? "text-green-600" : "text-gray-500"} />
+                      <p className="text-slate-700">{item?.likeCount}</p>
+                    </div>
 
-                  <div>
-                    <img src={dislike} alt="" />
-                    <p> {item?.dissLikeCount} </p>
-                  </div>
+                    <div>
+                      <BiDislike size={26} onClick={() => addDislike(item?.courseId)} className={item?.currentUserDissLike ? "text-green-600" : "text-gray-500"} />
 
-                  <div>
-                    <img src={favorites} alt="" />
-                    <p> {item?.currentRegistrants} </p>
-                  </div>
+                      <p className="text-slate-700"> {item?.dissLikeCount} </p>
+                    </div>
 
+                    <div>
+                      <FaRegStar size={26} onClick={() => addStarRatng(item?.courseId)} className={item?.currentUserSetRate ? "text-green-600" : "text-gray-500"} />
+                      <p className="text-slate-700"> {item?.currentRegistrants} </p>
+                    </div>
+                  </div>
                   <button class="text-TextGreen dark:bg-gray-800 dark:text-white bg-[#BFF4E4] rounded-lg cursor-pointer p-2">
                     {item?.statusName}
                   </button>
+
                 </div>
 
                 <p className="text-right mt-3 dark:text-white text-[#1A1E21] text-xl">
@@ -338,44 +363,34 @@ const CoursesListForm = () => {
 
               <div className="rtl mx-3 my-5 w-[19rem] border-2 border-[#5BE1B9] rounded-xl">
                 <label class="flex bg-gray-100 text-gray-700 px-3 pt-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
-                  <input className="ml-3 size-4" type="radio" name="Country" />
+                  <input value="typeName-DESC"
+                    className="ml-3 size-4"
+                    type="radio"
+                    onClick={() => filterDataHanlder({ PageNumber: 1, typeName: 1 })}
+                    Checked={filter?.typeName == 1 ? true : false}
+                  />
                   <i class="pl-2 text-md">حضوری</i>
                 </label>
 
                 <label class="flex bg-gray-100 text-gray-700 px-3 py-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
                   <input
-                    value="cost-DESC"
-                    onChange={(e) => {
-                      const val = e.target.value.split("-");
-
-                      const myFilters = {
-                        SortingCol: val[0],
-                        SortType: val[1],
-                      };
-                      setSort(myFilters);
-                    }}
+                    value="typeName-DESC"
                     className="ml-3 size-4"
                     type="radio"
-                    name="Country"
+                    onClick={() => filterDataHanlder({ PageNumber: 1, typeName: 2 })}
+                    aria-checked={filter?.typeName == 2 ? true : false}
+                    
                   />
                   <i class="pl-2 text-md">آنلاین</i>
                 </label>
 
                 <label class="flex bg-gray-100 text-gray-700 pb-1 px-3 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
                   <input
-                    value="likeCount-DESC"
-                    onChange={(e) => {
-                      const val = e.target.value.split("-");
-
-                      const myFilters = {
-                        SortingCol: val[0],
-                        SortType: val[1],
-                      };
-                      setSort(myFilters);
-                    }}
+                    value="typeName-DESC"
                     className="ml-3 size-4"
                     type="radio"
-                    name="Country"
+                    onClick={() => filterDataHanlder({ PageNumber: 1, typeName: 3 })}
+                    Checked={filter?.typeName == 3 ? true : false}
                   />
                   <i class="pl-2 text-md">آنلاین - حضوری</i>
                 </label>
@@ -415,13 +430,24 @@ const CoursesListForm = () => {
                 </label>
 
                 <label class="flex bg-gray-100 text-gray-700 px-3 py-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
-                  <input className="ml-3 size-4" type="radio" name="Country" />
-                  <i class="pl-2 text-md">پیشرفته</i>
+                  <input
+                    value="levelName-DESC"
+                    className="ml-3 size-4"
+                    type="radio"
+                    onClick={() => filterDataHanlder({ PageNumber: 1, levelName: 2 })}
+                    checked={filter?.levelName == 2 ? true : false}
+                    name="Country" />
+                  <i class="pl-2 text-md">متوسط</i>
                 </label>
 
                 <label class="flex bg-gray-100 text-gray-700 pb-1 px-3 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
-                  <input className="ml-3 size-4" type="radio" name="Country" />
-                  <i class="pl-2 text-md">فوق پیشرفته</i>
+                  <input value="levelName-DESC"
+                    className="ml-3 size-4"
+                    type="radio"
+                    onClick={() => filterDataHanlder({ PageNumber: 1, levelName: 3 })}
+                    defaultChecked={filter?.levelName == 3 ? true : false}
+                    name="Country" />
+                  <i class="pl-2 text-md">پیشرفته</i>
                 </label>
               </div>
             </details>
