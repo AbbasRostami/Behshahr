@@ -1,12 +1,12 @@
 import { ProgressBar } from "../components/common/ProgressBar";
-import { RoutesApp } from "../routes";
 import "./App.css";
 import { RouterProvider } from "react-router-dom";
+import RoutesApp from "../routes";
 
 function App() {
   return (
     <>
-    <ProgressBar />
+      <ProgressBar />
       <RouterProvider router={RoutesApp} />
     </>
   );

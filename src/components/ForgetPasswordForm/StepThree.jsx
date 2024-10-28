@@ -1,7 +1,7 @@
 import React from "react";
 import { Field, Form, Formik } from "formik";
-import home from "./../../assets/home.svg";
-import forgetPassword2 from "./../../assets/forgetPassword2.svg";
+import home from "./../../assets/home2.svg";
+// import forgetPassword2 from "./../../assets/";
 import { postApi } from "../../core/api/api";
 import { usePass } from "../../core/provider/PasswoedProvider";
 
@@ -31,7 +31,7 @@ const ForgetStepThree = ({ id }) => {
       <div className="bg-[#A4F6DE] relative left-[1px] w-[25rem] rounded-l-md hidden lg:flex">
         <img
           className="m-auto h-[28rem] w-[23rem]"
-          src={forgetPassword2}
+          // src={forgetPassword2}
           alt=""
         />
       </div>

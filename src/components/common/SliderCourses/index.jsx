@@ -37,7 +37,7 @@ const CoursesSlider = () => {
         <p class="text-[35px] font-bold">دوره های ما</p>
         <p class="leading-10">ساختن دنیایی بهتر، یک دوره در یک زمان</p>
       </div>
-      </div>
+
 
       <Swiper
         slidesPerView={3}
