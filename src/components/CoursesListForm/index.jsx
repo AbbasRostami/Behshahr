@@ -42,12 +42,8 @@ const CoursesListForm = () => {
   const handleChange = (event, newValue) => {
     console.log("new value:", newValue);
     setValue(newValue);
-
   };
 
-  const [isOpen, setisOpen] = useState([]);
-  // const [filter, setFilter] = useState([]);
-  // const [] =  useState()
 
   const GetCouresesTop = async (params) => {
     const path = `/Home/GetCoursesWithPagination`;
@@ -85,6 +81,25 @@ const CoursesListForm = () => {
     console.log(response)
 
   }
+
+  const addDislike = async (id) => {
+    console.log(id)
+    const path = `/Course/AddCourseDissLike?CourseId=${id}`
+    const response = await postApi({ path })
+    console.log(response)
+  }
+
+  const addStarRatng = async (id) => {
+    console.log(id)
+    const path = `/Course/SetCourseRating?CourseId=${id}&RateNumber=2`
+    const response = await postApi({ path })
+    console.log(response)
+  }
+
+
+
+
+
 
   const clearFilter = () => {
     filterDataHanlder({ PageNumber: 1, inde: "", slab: "" })
@@ -185,18 +200,18 @@ const CoursesListForm = () => {
                   <div className="flex justify-center items-center gap-2">
                     <div>
                       {/* <img className="cursor-pointer"  /> */}
-                      <BiLike size={26} onClick={() => addLike(item.courseId)} src={like} alt="" className={item?.userIsLiked ? "text-green-600" : "text-gray-500"} />
+                      <BiLike size={26} onClick={() => addLike(item?.courseId)} className={item?.userIsLiked ? "text-green-600" : "text-gray-500"} />
                       <p className="text-slate-700">{item?.likeCount}</p>
                     </div>
 
                     <div>
-                      <BiDislike size={26} onClick={() => addLike(item.courseId)} src={like} alt="" className={item?.userIsLiked ? "text-green-600" : "text-gray-500"} />
+                      <BiDislike size={26} onClick={() => addDislike(item?.courseId)} className={item?.currentUserDissLike ? "text-green-600" : "text-gray-500"} />
 
                       <p className="text-slate-700"> {item?.dissLikeCount} </p>
                     </div>
 
                     <div>
-                      <FaRegStar size={26} onClick={() => addLike(item.courseId)} src={like} alt="" className={item?.userIsLiked ? "text-green-600" : "text-gray-500"} />
+                      <FaRegStar size={26} onClick={() => addStarRatng(item?.courseId)} className={item?.currentUserSetRate ? "text-green-600" : "text-gray-500"} />
                       <p className="text-slate-700"> {item?.currentRegistrants} </p>
                     </div>
                   </div>
@@ -363,8 +378,8 @@ const CoursesListForm = () => {
                     className="ml-3 size-4"
                     type="radio"
                     onClick={() => filterDataHanlder({ PageNumber: 1, typeName: 2 })}
-                    Checked={filter?.typeName == 2 ? true : false}
-                    name="Country"
+                    aria-checked={filter?.typeName == 2 ? true : false}
+                    
                   />
                   <i class="pl-2 text-md">آنلاین</i>
                 </label>
