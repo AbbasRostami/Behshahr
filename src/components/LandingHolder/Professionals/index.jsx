@@ -30,10 +30,10 @@ const Professionals = () => {
 
       <div className="flex justify-center items-center relative bg-gradient-to-br from-emerald-300/75 from-35% to-white h-[600px] dark:dark:bg-slate-900 dark:bg-none mt-16 ">
         <div class=" absolute top-[2rem] left-[15.5rem] lg:left-[39.5rem] text-nowrap text-center items-center ">
-          <p class="text-[35px] font-bold text-TextGray dark:text-white">
+          <p class="text-[35px] font-bold text-black dark:text-white">
             حرفه ای های ما
           </p>
-          <p class="leading-10 text-TextGray dark:text-white">
+          <p class="leading-10 text-black dark:text-white">
             ساختن دنیایی بهتر، یک دوره در یک زمان
           </p>
         </div>
@@ -42,13 +42,13 @@ const Professionals = () => {
 
           <div className="flex justify-center items-center w-[300px] h-[380px]  mt-36 ">
             <div className="flex flex-col items-center ">
-              <img src={item?.pictureAddress} alt="" />
-              <p className="text-[#086CB5] dark:text-white text-sm mt-5">
+              <img className=" rounded-2xl" src={item?.pictureAddress} alt="" />
+              <p className="text-[#086CB5] text-bold dark:text-white text-sm mt-5">
                 {item?.fullName}
               </p>
-              <p className="text-[#21394B] rtl text-sm mt-6 text-center dark:text-white	">
-                {item?.teacherId}
-              </p>
+              <p className="text-[#21394B] px-14 rtl text-xs mt-6 text-center dark:text-white	">
+                استاد برنامه نویس
+                              </p>
               <img className="m-3" src={socials} alt="" />
             </div>
           </div>

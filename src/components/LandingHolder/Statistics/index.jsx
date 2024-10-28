@@ -31,29 +31,29 @@ const Statistics = () => {
 
       <div className='py-5 text-center text-TextGreen dark:text-white '>
         <img src={iconCarrier1} alt="" />
-        <p>مقاله آموزشی</p>
-        <p className='font-medium text-2xl'>{Statistics?.newsCount}</p>
+        <p className='text-slate-700 text-xl '>مقاله آموزشی</p>
+        <p className='font-medium text-2xl hover:underline text-black'>{Statistics?.newsCount}</p>
       </div>
 
 
       <div className='p-5 text-center text-TextGreen dark:text-white'>
         <img src={iconCarrier0} alt="" />
-        <p>دوره آموزشی</p>
-        <p className='font-medium text-2xl'>{Statistics?.courseCount}</p>
+        <p className='text-slate-700 text-xl '>دوره آموزشی</p>
+        <p className='font-medium text-2xl hover:underline text-black'>{Statistics?.courseCount}</p>
       </div>
 
 
       <div className='p-5 text-center text-TextGreen dark:text-white'>
         <img src={iconCarrier3} alt="" />
-        <p>داشنجو</p>
-        <p className='font-medium text-2xl'>{Statistics?.studentCount}</p>
+        <p className='text-slate-700 text-xl '>داشنجو</p>
+        <p className='font-medium text-2xl hover:underline text-black'>{Statistics?.studentCount}</p>
       </div>
 
 
       <div className='p-5 text-center text-TextGreen dark:text-white'>
         <img src={iconCarrier2} alt="" />
-        <p>  اساتید حرفه ای</p>
-        <p className='font-medium text-2xl'>{Statistics?.teacherCount}</p>
+        <p className='text-slate-700 text-xl '>  اساتید حرفه ای</p>
+        <p className='font-medium text-2xl hover:underline text-black'>{Statistics?.teacherCount}</p>
       </div>
 
 

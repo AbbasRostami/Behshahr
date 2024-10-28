@@ -60,13 +60,22 @@ const SliderArticles = () => {
 
                   <div className="flex justify-between items-center mt-[-5rem] lg:mt-5 px-5">
                     <div className="flex justify-center items-center hidden lg:flex gap-1">
-                      <img src={like} alt="" />
-                      <p>{item?.currentLikeCount}</p>
-                      <img className="mx-2" src={dislike} alt="" />
-                      <p>{item?.currentDissLikeCount}</p>
 
-                      <img src={favorite} alt="" />
-                      <p>{item?.currentRate}</p>
+                      <div>
+                          <img src={like} alt="" />
+                          <p className="text-black hover:text-green-400">{item?.currentLikeCount}</p>
+                      </div>
+
+                        <div>
+                          <img className="mx-2" src={dislike} alt="" />
+                          <p className="text-black hover:text-green-400">{item?.currentDissLikeCount}</p>
+                      </div>
+
+                        <div>
+                          <img src={favorite} alt="" />
+                          <p className="text-black hover:text-green-400">{item?.currentRate}</p>
+                      </div>
+
                     </div>
 
                     <button class="text-TextGreen bg-[#BFF4E4] rounded-lg hidden lg:inline-block cursor-pointer p-2 w-auto-[120px]">
@@ -94,13 +103,13 @@ const SliderArticles = () => {
                     </div>
                   </div>
 
-                  <p className="rtl mt-5 px-5 leading-5 text-[#6D6767] text-xs text-right dark:text-white">
+                  <p className="rtl mt-5 px-5 leading-5 text-[#6D6767] truncate ... text-xs text-right dark:text-white">
                     {item?.miniDescribe}
                   </p>
 
                   <img className="mt-5 px-5" src={line} alt="" />
 
-                  <p className="text-base  text-[#807A7A] mt-1 dark:text-white">
+                  <p className="text-base  text-[#807A7A] mt-3 dark:text-white">
                     مشاهده جزئیات
                   </p>
                 </div>
