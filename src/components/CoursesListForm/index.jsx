@@ -292,7 +292,8 @@ const CoursesListForm = () => {
               count={Math.ceil(pagination?.totalCount / 9)}
               page={filter?.PageNumber || 1}
               onChange={handleChangePage}
-              size="large" />
+              size="large"
+              className="dark:bg-gray-700" />
           </Stack>
         </div>
 

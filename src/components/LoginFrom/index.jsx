@@ -3,7 +3,7 @@ import { Field, Formik, Form } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 // import { loginAPI } from "../../core/services/api/auth";
 import login2Pick from "../../assets/loginPick2.svg";
-import home from "../../assets/home2.svg";
+import home from "../../assets/home.svg";
 import loginPick from "../../assets/loginPick.svg";
 import { useState } from "react";
 import { postApi } from "../../core/api/api";
@@ -117,7 +117,7 @@ const LoginForm = () => {
                   name="phoneOrGmail"
                 />
                 <svg
-                  className=" absolute top-[7.5rem] right-8"
+                  className=" absolute top-[8rem] right-8"
                   width="15"
                   height="25"
                   viewBox="0 0 20 33"
@@ -140,7 +140,7 @@ const LoginForm = () => {
                   name="password"
                 />
                 <svg
-                  className=" absolute top-[179px] right-8"
+                  className=" absolute top-[190px] right-8"
                   width="20"
                   height="25"
                   viewBox="0 0 27 27"

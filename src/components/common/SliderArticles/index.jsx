@@ -71,17 +71,17 @@ const SliderArticles = () => {
 
                       <div>
                           <img src={like} alt="" />
-                          <p className="text-black hover:text-green-400">{item?.currentLikeCount}</p>
+                          <p className="text-black dark:text-white hover:text-green-400">{item?.currentLikeCount}</p>
                       </div>
 
                         <div>
                           <img className="mx-2" src={dislike} alt="" />
-                          <p className="text-black hover:text-green-400">{item?.currentDissLikeCount}</p>
+                          <p className="text-black dark:text-white hover:text-green-400">{item?.currentDissLikeCount}</p>
                       </div>
 
                         <div>
                           <img src={favorite} alt="" />
-                          <p className="text-black hover:text-green-400">{item?.currentRate}</p>
+                          <p className="text-black dark:text-white hover:text-green-400">{item?.currentRate}</p>
                       </div>
 
                     </div>

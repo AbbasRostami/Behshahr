@@ -37,7 +37,7 @@ const StepTwo = () => {
         <Formik onSubmit={registerHandler2} initialValues={{ verifyCode: "" }}>
           <Form>
             <svg
-              className=" absolute top-[9rem] right-8"
+              className=" absolute top-[9.5rem] right-8"
               width="25"
               height="25"
               viewBox="0 0 25 27"
@@ -68,7 +68,7 @@ const StepTwo = () => {
           </Form>
         </Formik>
 
-        <Link to="/">
+        <Link to="/register">
           <button className="ml-7 w-[37rem] lg:w-[22rem] h-[3.4rem] border-solid border-[1.7px] border-[#158B68] rounded-xl mt-[0.7rem] bg-[#fff] ">
             بازگشت به صفحه قبل
           </button>

@@ -48,36 +48,34 @@ const RoutesApp = createBrowserRouter([
         element: <CoursesList />,
       },
       {
-        path: "/articles-details",
+        path: "/articles-details/:id",
         element: <ArticlesDetails />,
       },// Register Routers
-      {
-        path: "/register",
-        element: <StepOne />,
-      },
-      {
-        path: "/register-verify",
-        element: <StepTwo />,
-      },
-      {
-        path: "/register-final",
-        element: <StepThree />,
-      },
+
       {
         path: "/news-articles",
         element: <NewsArticles />,
       },
-      {
-        path: "/login",
-        element: <Login />,
-      },
+
     ]
   }
   ,
-  // {
-  //   path: "/forget-password",
-  //   element: <ForgetPassword />,
-  // },
+  {
+    path: "/register",
+    element: <StepOne />,
+  },
+  {
+    path: "/register-verify",
+    element: <StepTwo />,
+  },
+  {
+    path: "/register-final",
+    element: <StepThree />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
   {
     element: <PanelLayout />,
     children: [

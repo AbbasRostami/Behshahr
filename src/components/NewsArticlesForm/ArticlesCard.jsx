@@ -10,6 +10,7 @@ import { getArticlesListTop } from "../../core/api/getArticlesList";
 import { useEffect, useState } from "react";
 import { getApi } from "../../core/api/api";
 import { SliderArticles } from "../common/SliderArticles";
+import { Link } from "react-router-dom";
 
 const ArticlesCard = ({ item }) => {
   return (
@@ -80,9 +81,9 @@ const ArticlesCard = ({ item }) => {
 
             <img className="mt-5 px-5" src={line} alt="" />
 
-            <p className="text-base  text-[#807A7A] mt-3 cursor-pointer hover:text-green-500 dark:text-white">
+           <Link to={localStorage.getItem('token') ? `/articles-details/${item?.id}` : '/login'}><p className="text-base  text-[#807A7A] mt-3 cursor-pointer hover:text-green-500 dark:text-white">
               مشاهده جزئیات
-            </p>
+            </p></Link> 
           </div>
         </div>
       </div>

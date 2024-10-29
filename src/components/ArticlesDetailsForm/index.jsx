@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
+
 
 import newsPic from "./../../assets/svg/ArticlesDetails/newPic.svg";
 import like from "./../../assets/svg/ArticlesDetails/like.svg";
@@ -19,23 +16,38 @@ import eye from "./../../assets/svg/ArticlesDetails/eye.svg";
 import calendar from "./../../assets/svg/ArticlesDetails/calendar.svg";
 import key from "./../../assets/svg/ArticlesDetails/key.svg";
 import { HeaderUserlogin } from "../common/HeaderUserLogin";
+import { useParams } from "react-router-dom";
+import { getApi } from "../../core/api/api";
+import { SliderArticles } from "../common/SliderArticles";
 
 const ArticlesDetailsForm = () => {
 
+  const params = useParams()
+
+  console.log("params", params);
+
   const [cards, setCards] = useState([]);
+
+  console.log(cards);
 
 
   const getArticlesTop = async () => {
-    const path = `/News`;
+    const path = `/News/NewsCategoryId=${params?.id}`;
     const response = await getApi({ path });
-    console.log(response.data?.news);
+    console.log(response?.data);
     if (response) {
-      setCards(response.data?.news);
+      setCards(response?.data);
     }
   };
   useEffect(() => {
     getArticlesTop();
   }, []);
+
+
+
+
+
+
 
 
   return (
@@ -278,344 +290,7 @@ const ArticlesDetailsForm = () => {
           </div>
         </div>
 
-        <Swiper
-          navigation={true}
-          modules={[Navigation]}
-          className="mySwiper h-[40rem] "
-        >
-          <SwiperSlide>
-            {/* First News Card */}
-
-            <div className="flex justify-around items-center px-16">
-              <div className="  flex justify-around items-center rounded-3xl ">
-                <div className="relative h-[540px] w-[370px] text-center rounded-[1.5rem] mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen ">
-                  <div>
-                    <img
-                      classNa
-                      me="p-0 object-cover h-full w-full"
-                      src={newsPic}
-                      alt=""
-                    />
-                  </div>
-
-                  <div className="flex justify-between items-center mt-5 px-5">
-                    <div className="flex justify-center items-center ">
-                      <img src={like} alt="" />
-                      <img className="mx-2" src={disLike} alt="" />
-                      <img src={favorite} alt="" />
-                    </div>
-
-                    <button class="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer p-2 w-auto-[120px]">
-                      وضعیت دوره
-                    </button>
-                  </div>
-
-                  <p className="rtl mt-3 text-[#1A1E21] text-xl rtl text-right px-5">
-                    آشنایی با برنامه نویسی با وردپرس
-                  </p>
-
-                  <div className="flex justify-between items-center mt-5 px-5">
-                    <div className="flex justify-center items-center ">
-                      <img src={starRating} alt="" />
-                      <p className="ml-2">4.8</p>
-                    </div>
-
-                    <div className="flex justify-between items-center">
-                      <p className="mr-2">جان اسمیت</p>
-                      <img src={profileimg} alt="" />
-                    </div>
-                  </div>
-
-                  <p className="rtl mt-5 px-5 leading-5 text-[#6D6767] text-xs text-right">
-                    {" "}
-                    لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که
-                    توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.{" "}
-                  </p>
-
-                  <img className="mt-5 px-5" src={line} alt="" />
-
-                  <p className="text-base  text-[#807A7A] mt-1">
-                    مشاهده جزئیات
-                  </p>
-                </div>
-              </div>
-
-              {/* Two News Card*/}
-
-              <div className="  flex justify-around items-center rounded-3xl ">
-                <div className="relative h-[540px] w-[370px] text-center rounded-[1.5rem] mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen ">
-                  <div>
-                    <img
-                      className="p-0 object-cover h-full w-full"
-                      src={newsPic}
-                      alt=""
-                    />
-                  </div>
-
-                  <div className="flex justify-between items-center mt-5 px-5">
-                    <div className="flex justify-center items-center ">
-                      <img src={like} alt="" />
-                      <img className="mx-2" src={disLike} alt="" />
-                      <img src={favorite} alt="" />
-                    </div>
-
-                    <button class="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer p-2 w-auto-[120px]">
-                      وضعیت دوره
-                    </button>
-                  </div>
-
-                  <p className="rtl mt-3 text-[#1A1E21] text-xl rtl text-right px-5">
-                    آشنایی با برنامه نویسی با وردپرس
-                  </p>
-
-                  <div className="flex justify-between items-center mt-5 px-5">
-                    <div className="flex justify-center items-center ">
-                      <img src={starRating} alt="" />
-                      <p className="ml-2">4.8</p>
-                    </div>
-
-                    <div className="flex justify-between items-center">
-                      <p className="mr-2">جان اسمیت</p>
-                      <img src={profileimg} alt="" />
-                    </div>
-                  </div>
-
-                  <p className="rtl mt-5 px-5 leading-5 text-[#6D6767] text-xs text-right">
-                    {" "}
-                    لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که
-                    توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.{" "}
-                  </p>
-
-                  <img className="mt-5 px-5" src={line} alt="" />
-
-                  <p className="text-base  text-[#807A7A] mt-1">
-                    مشاهده جزئیات
-                  </p>
-                </div>
-              </div>
-
-              {/* Three News Card*/}
-
-              <div className="  flex justify-around items-center rounded-3xl ">
-                <div className="relative h-[540px] w-[370px] text-center rounded-[1.5rem] mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen ">
-                  <div>
-                    <img
-                      className="p-0 object-cover h-full w-full"
-                      src={newsPic}
-                      alt=""
-                    />
-                  </div>
-
-                  <div className="flex justify-between items-center mt-5 px-5">
-                    <div className="flex justify-center items-center ">
-                      <img src={like} alt="" />
-                      <img className="mx-2" src={disLike} alt="" />
-                      <img src={favorite} alt="" />
-                    </div>
-
-                    <button class="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer p-2 w-auto-[120px]">
-                      وضعیت دوره
-                    </button>
-                  </div>
-
-                  <p className="rtl mt-3 text-[#1A1E21] text-xl rtl text-right px-5">
-                    آشنایی با برنامه نویسی با وردپرس
-                  </p>
-
-                  <div className="flex justify-between items-center mt-5 px-5">
-                    <div className="flex justify-center items-center ">
-                      <img src={starRating} alt="" />
-                      <p className="ml-2">4.8</p>
-                    </div>
-
-                    <div className="flex justify-between items-center">
-                      <p className="mr-2">جان اسمیت</p>
-                      <img src={profileimg} alt="" />
-                    </div>
-                  </div>
-
-                  <p className="rtl mt-5 px-5 leading-5 text-[#6D6767] text-xs text-right">
-                    {" "}
-                    لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که
-                    توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.{" "}
-                  </p>
-
-                  <img className="mt-5 px-5" src={line} alt="" />
-
-                  <p className="text-base  text-[#807A7A] mt-1">
-                    مشاهده جزئیات
-                  </p>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            {/* First News Card */}
-
-            <div className="flex justify-around items-center px-16">
-              <div className="  flex justify-around items-center rounded-3xl ">
-                <div className="relative h-[540px] w-[370px] text-center rounded-[1.5rem] mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen ">
-                  <div>
-                    <img
-                      className="p-0 object-cover h-full w-full"
-                      src={newsPic}
-                      alt=""
-                    />
-                  </div>
-
-                  <div className="flex justify-between items-center mt-5 px-5">
-                    <div className="flex justify-center items-center ">
-                      <img src={like} alt="" />
-                      <img className="mx-2" src={disLike} alt="" />
-                      <img src={favorite} alt="" />
-                    </div>
-
-                    <button class="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer p-2 w-auto-[120px]">
-                      وضعیت دوره
-                    </button>
-                  </div>
-
-                  <p className="rtl mt-3 text-[#1A1E21] text-xl rtl text-right px-5">
-                    آشنایی با برنامه نویسی با وردپرس
-                  </p>
-
-                  <div className="flex justify-between items-center mt-5 px-5">
-                    <div className="flex justify-center items-center ">
-                      <img src={starRating} alt="" />
-                      <p className="ml-2">4.8</p>
-                    </div>
-
-                    <div className="flex justify-between items-center">
-                      <p className="mr-2">جان اسمیت</p>
-                      <img src={profileimg} alt="" />
-                    </div>
-                  </div>
-
-                  <p className="rtl mt-5 px-5 leading-5 text-[#6D6767] text-xs text-right">
-                    {" "}
-                    لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که
-                    توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.{" "}
-                  </p>
-
-                  <img className="mt-5 px-5" src={line} alt="" />
-
-                  <p className="text-base  text-[#807A7A] mt-1">
-                    مشاهده جزئیات
-                  </p>
-                </div>
-              </div>
-
-              {/* Two News Card*/}
-
-              <div className="  flex justify-around items-center rounded-3xl ">
-                <div className="relative h-[540px] w-[370px] text-center rounded-[1.5rem] mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen ">
-                  <div>
-                    <img
-                      className="p-0 object-cover h-full w-full"
-                      src={newsPic}
-                      alt=""
-                    />
-                  </div>
-
-                  <div className="flex justify-between items-center mt-5 px-5">
-                    <div className="flex justify-center items-center ">
-                      <img src={like} alt="" />
-                      <img className="mx-2" src={disLike} alt="" />
-                      <img src={favorite} alt="" />
-                    </div>
-
-                    <button class="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer p-2 w-auto-[120px]">
-                      وضعیت دوره
-                    </button>
-                  </div>
-
-                  <p className="rtl mt-3 text-[#1A1E21] text-xl rtl text-right px-5">
-                    آشنایی با برنامه نویسی با وردپرس
-                  </p>
-
-                  <div className="flex justify-between items-center mt-5 px-5">
-                    <div className="flex justify-center items-center ">
-                      <img src={starRating} alt="" />
-                      <p className="ml-2">4.8</p>
-                    </div>
-
-                    <div className="flex justify-between items-center">
-                      <p className="mr-2">جان اسمیت</p>
-                      <img src={profileimg} alt="" />
-                    </div>
-                  </div>
-
-                  <p className="rtl mt-5 px-5 leading-5 text-[#6D6767] text-xs text-right">
-                    {" "}
-                    لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که
-                    توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.{" "}
-                  </p>
-
-                  <img className="mt-5 px-5" src={line} alt="" />
-
-                  <p className="text-base  text-[#807A7A] mt-1">
-                    مشاهده جزئیات
-                  </p>
-                </div>
-              </div>
-
-              {/* Three News Card*/}
-
-              <div className="  flex justify-around items-center rounded-3xl ">
-                <div className="relative h-[540px] w-[370px] text-center rounded-[1.5rem] mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen ">
-                  <div>
-                    <img
-                      className="p-0 object-cover h-full w-full"
-                      src={newsPic}
-                      alt=""
-                    />
-                  </div>
-
-                  <div className="flex justify-between items-center mt-5 px-5">
-                    <div className="flex justify-center items-center ">
-                      <img src={like} alt="" />
-                      <img className="mx-2" src={disLike} alt="" />
-                      <img src={favorite} alt="" />
-                    </div>
-
-                    <button class="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer p-2 w-auto-[120px]">
-                      وضعیت دوره
-                    </button>
-                  </div>
-
-                  <p className="rtl mt-3 text-[#1A1E21] text-xl rtl text-right px-5">
-                    آشنایی با برنامه نویسی با وردپرس
-                  </p>
-
-                  <div className="flex justify-between items-center mt-5 px-5">
-                    <div className="flex justify-center items-center ">
-                      <img src={starRating} alt="" />
-                      <p className="ml-2">4.8</p>
-                    </div>
-
-                    <div className="flex justify-between items-center">
-                      <p className="mr-2">جان اسمیت</p>
-                      <img src={profileimg} alt="" />
-                    </div>
-                  </div>
-
-                  <p className="rtl mt-5 px-5 leading-5 text-[#6D6767] text-xs text-right">
-                    {" "}
-                    لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که
-                    توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.{" "}
-                  </p>
-
-                  <img className="mt-5 px-5" src={line} alt="" />
-
-                  <p className="text-base  text-[#807A7A] mt-1">
-                    مشاهده جزئیات
-                  </p>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-        </Swiper>
+    <SliderArticles />
 
         <button className="bg-[#12926C] rounded-full h-[3.5rem] w-[14rem] absolute my-[-2rem] mx-[50rem] dark:bg-gray-800 dark:text-white">
           مشاهده مقالات بیشتر

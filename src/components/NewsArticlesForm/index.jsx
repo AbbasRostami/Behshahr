@@ -13,20 +13,35 @@ const NewsArticlesForm = () => {
 
 
   const [cards, setCards] = useState([]);
+  const [filter, setFilter] = useState();
 
 
-  const getArticlesTop = async () => {
+  const getArticlesTop = async (params) => {
     const path = `/News`;
-    const response = await getApi({ path });
+    const response = await getApi(
+      { path, params: { params: { ...params, RowsOfPage: 9 } } }
+    );
     console.log(response.data?.news);
     if (response) {
       setCards(response.data?.news);
     }
   };
+  
   useEffect(() => {
     getArticlesTop();
   }, []);
 
+
+
+  const filterDataHanlder = (newParams) => {
+    setFilter({ PageNumber: 1, ...filter, ...newParams });
+    const allFilter = {
+      PageNumber: 1, ...filter,
+      ...newParams,
+    };
+    console.log("filter", allFilter);
+    getArticlesTop(allFilter)
+  }
 
 
   return (
@@ -59,7 +74,7 @@ const NewsArticlesForm = () => {
                   className="rtl p-4 dark:border-white dark:text-white border-green-800 w-80 text-sm text-gray-900 border dark:bg-gray-800  rounded-2xl bg-gray-50"
                   placeholder="جستجو..."
                   required
-                  onChange={(e) => handleSearch(e.target.value)}
+                 onChange={(e) => filterDataHanlder({ PageNumber: 1, Query: e.target.value })}
                 />
 
                 <svg
@@ -96,7 +111,7 @@ const NewsArticlesForm = () => {
           </Formik>
         </div>
 
-        <div className="items-center h-[82rem] container mx-auto dark:bg-gray-800 bg-[#FBF6F6] mt-10 rounded-2xl shadow-[9px_9px_12px_3px_rgba(0,1,_0.5,_0.2)] ">
+        <div className="items-center h-[82rem] w-[1446px] container mx-auto dark:bg-gray-800 bg-[#FBF6F6] mt-10 rounded-2xl shadow-[9px_9px_12px_3px_rgba(0,1,_0.5,_0.2)] ">
           <div className="grid grid-cols-2 gap-14 lg:gap-0 lg:grid-cols-3 ml-16">
             {cards.map((item, index) => {
               return (<ArticlesCard item={item} />)

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import logoLanding from "./../../../assets/svg/Landing/logosite.svg";
 import seachIcon from "./../../../assets/svg/Landing/searchicon.svg";
+import topProfile from "./../../../assets/svg/Landing/topProfile.svg";
+import topIcon from "./../../../assets/svg/Landing/topicon.svg";
 import { Link } from "react-router-dom";
 import DarkLightToggle from "../DarkMode";
 import { Button, Menu, MenuItem } from "@mui/material";
@@ -9,21 +11,40 @@ import { RxHamburgerMenu } from "react-icons/rx";
 const Header = () => {
 
   return (
+    <>
     <div class="bg-gradient-to-r from-green-300 to-gray-50 dark:dark:bg-slate-900 dark:bg-none">
       <div class="flex justify-between items-center px-20 h-20">
         <div class="flex justify-center items-center">
-          <Link to="/login">
-            <button class="text-[#22445D] bg-[#00DF9D] dark:bg-gray-800 dark:text-white rounded-lg cursor-pointer p-2">
-              ورود / ثبت نام
-            </button>
-          </Link>
 
-          <div class="">
-            <img src={seachIcon} alt="" />
-          </div>
+            {localStorage.getItem('token') ? <><img src={topProfile} alt="" /><div className="relative">
+              <img className="ml-3" src={topIcon} alt="" />
+              <div className="absolute -top-2.5 right-0 bg-slate-50 w-5 rounded-full text-center">
+                3
+              </div>
+            </div><div class="">
+                <img src={seachIcon} alt="" />
+              </div></>
+          
+          : 
+          
+          <><Link to="/login">
+                <button class="text-[#22445D] bg-[#00DF9D] dark:bg-gray-800 dark:text-white rounded-lg cursor-pointer p-2">
+                  ورود / ثبت نام
+                </button>
+              </Link><div class="">
+                  <img src={seachIcon} alt="" />
+                </div></>
+          }
+
+          
+
+
 
           <DarkLightToggle />
         </div>
+
+
+
 
         <div class="flex justify-between items-center dark:text-white hidden lg:flex">
           <Link to="/about">
@@ -68,6 +89,7 @@ const Header = () => {
         <ResponsiveMenu />
       </div>
     </div>
+    </>
   );
 };
 

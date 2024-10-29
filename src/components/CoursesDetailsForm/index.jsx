@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "swiper/css";
-import "swiper/css/navigation";
-import { Navigation } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { Field, Form, Formik } from "formik";
 
 import articlePic3 from "./../../assets/svg/ArticlesDetails/articlePic3.svg";
@@ -21,12 +17,11 @@ import { useParams } from "react-router-dom";
 import moment from "jalali-moment";
 import { FaRegStar } from "react-icons/fa";
 import { BiDislike, BiLike } from "react-icons/bi";
+import { CoursesSlider } from "../common/SliderCourses";
 
 const CoursesDetailsForm = () => {
 
   const params = useParams()
-
-  // console.log(params?.id)
 
   const [details, setDeatils] = useState(null)
 
@@ -213,26 +208,26 @@ const CoursesDetailsForm = () => {
             <div className="flex flex-col w-full min-w-64 gap-6">
               {" "}
               <div className="flex flex-col transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 ... bg-white  dark:bg-gray-700 dark:text-white p-4 gap-2 rounded-md  text-[#12926C]">
-                <p>مدرس دوره : <span className="text-[#22445D]">{details?.teacherName}</span> </p>
-                <p>هزینه تمام دوره : <span className="text-[#22445D]">{details?.cost}</span> </p>
-                <p>تکنولوژی دوره :  <span className="text-[#22445D]">{details?.techs}</span> </p>
-                <p>سطح دوره : <span className="text-[#22445D]">{details?.courseLevelName}</span></p>
-                <p>ظرفیت دوره : <span className="text-[#22445D]">{details?.capacity}</span> </p>
-                <p>وضعیت دوره : <span className="text-[#22445D]">{details?.courseStatusName}</span></p>
+                <p>مدرس دوره : <span className="text-[#22445D] dark:text-slate-300">{details?.teacherName}</span> </p>
+                <p>هزینه تمام دوره : <span className="text-[#22445D] dark:text-slate-300">{details?.cost}</span> </p>
+                <p>تکنولوژی دوره :  <span className="text-[#22445D] dark:text-slate-300">{details?.techs}</span> </p>
+                <p>سطح دوره : <span className="text-[#22445D] dark:text-slate-300">{details?.courseLevelName}</span></p>
+                <p>ظرفیت دوره : <span className="text-[#22445D] dark:text-slate-300">{details?.capacity}</span> </p>
+                <p>وضعیت دوره : <span className="text-[#22445D] dark:text-slate-300">{details?.courseStatusName}</span></p>
               </div>
               <div className="bg-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 ...  dark:bg-gray-700 dark:text-white p-4 space-y-2 rounded-md  text-[#12926C]">
-                <p>مدت زمان : <span className="text-[#22445D]">{details?.commentCount}</span></p>
-                <p>تعداد ویدیوها : <span className="text-[#22445D]">{details?.capacity}</span></p>
-                <p>تعداد نظرات : <span className="text-[#22445D]">{details?.commentCount}</span></p>
-                <p>امتیاز دوره : <span className="text-[#22445D]">{details?.currentRegistrants}</span></p>
+                <p>مدت زمان : <span className="text-[#22445D] dark:text-slate-300">{details?.commentCount}</span></p>
+                <p>تعداد ویدیوها : <span className="text-[#22445D] dark:text-slate-300">{details?.capacity}</span></p>
+                <p>تعداد نظرات : <span className="text-[#22445D] dark:text-slate-300">{details?.commentCount}</span></p>
+                <p>امتیاز دوره : <span className="text-[#22445D] dark:text-slate-300">{details?.currentRegistrants}</span></p>
               </div>
               <div className="bg-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 ...  dark:bg-gray-700 dark:text-white p-4 space-y-2 rounded-md  text-[#12926C]">
-                <p>تاریخ بروزرسانی :<span className="text-[#22445D]"> {moment(details?.insertDate).locale('fa').format('YYYY/MM/DD')}</span></p>
-                <p>شروع دوره: <span className="text-[#22445D]"> {moment(details?.startTime).locale('fa').format('YYYY/MM/DD')}</span></p>
-                <p>پایان دوره :  <span className="text-[#22445D]">{moment(details?.endTime).locale('fa').format('YYYY/MM/DD')}</span></p>
+                <p>تاریخ بروزرسانی :<span className="text-[#22445D] dark:text-slate-300"> {moment(details?.insertDate).locale('fa').format('YYYY/MM/DD')}</span></p>
+                <p>شروع دوره: <span className="text-[#22445D] dark:text-slate-300"> {moment(details?.startTime).locale('fa').format('YYYY/MM/DD')}</span></p>
+                <p>پایان دوره :  <span className="text-[#22445D] dark:text-slate-300">{moment(details?.endTime).locale('fa').format('YYYY/MM/DD')}</span></p>
               </div>
               <div className="md:col-span-2">
-                <button className="mt-3 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 ... w-full bg-[#5BE1B9] dark:bg-gray-500 dark:text-white text-black text-md py-3 rounded-md shadow-lg text-center">
+                <button className="mt-3 transition ease-in-out delay-150 dark:hover:bg-green-300 hover:-translate-y-1 hover:scale-110  duration-300 ... w-full bg-[#5BE1B9] dark:bg-gray-500 dark:text-white text-black text-md py-3 rounded-md shadow-lg text-center">
                   رزرو دوره
                 </button>
               </div>
@@ -242,343 +237,8 @@ const CoursesDetailsForm = () => {
         </div>
       </div>
 
-      <Swiper
-        navigation={true}
-        modules={[Navigation]}
-        className="mySwiper h-[40rem]"
-      >
-        <SwiperSlide>
-          <div className="mt-16 mx-16 flex justify-around items-center rounded-3xl ">
-            <div className="relative p-10 text-center rounded-md mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen h-[490px] w-[370px]">
-              <div className="absolute top-[-80px] left-[110px]">
-                <img src={courses1} alt="" />
-              </div>
+   <CoursesSlider />
 
-              <div className="flex justify-between items-center mt-10">
-                <div className="flex justify-center items-center">
-                  <img src={like} alt="" />
-                  <img className="mx-2" src={dislike} alt="" />
-                  <img src={favorite} alt="" />
-                </div>
-                <button class="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer p-2">
-                  وضعیت دوره
-                </button>
-              </div>
-
-              <p className="rtl mt-6 text-[#1A1E21] text-xl">
-                آشنایی با برنامه نویسی با وردپرس
-              </p>
-
-              <div className="flex justify-between items-center mt-5">
-                <div className="flex justify-center items-center">
-                  <img src={starRating} alt="" />
-                  <p className="ml-2">4.8</p>
-                </div>
-                <div className="flex justify-between items-center">
-                  <p className="mr-2">جان اسمیت</p>
-                  <img src={profileimg} alt="" />
-                </div>
-              </div>
-
-              <p className="rtl mt-3 ml-28  text-[#41A789] text-xs ">
-                {" "}
-                50 ساعت سخنرانی ( 190 ساعت ){" "}
-              </p>
-
-              <p className="rtl mt-5 leading-5 text-[#6D6767] text-xs text-right">
-                {" "}
-                لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط
-                توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.{" "}
-              </p>
-
-              <img className="mt-5" src={line} alt="" />
-
-              <div className="flex justify-between items-center mt-5">
-                <p className="text-sm text-PriceRed rtl"> 3,000,000 تومان</p>
-                <p className="text-sm text-">: هزینه تمام دوره</p>
-              </div>
-
-              <button class="w-[240px] h-[40px] text-white bg-BgGreen rounded-lg mt-6 ">
-                الان ثبت نام کن
-              </button>
-            </div>
-
-            <div className="relative p-10 text-center rounded-md mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen h-[490px] w-[370px]">
-              <div className="absolute top-[-80px] left-[110px]">
-                <img src={courses1} alt="" />
-              </div>
-
-              <div className="flex justify-between items-center mt-10">
-                <div className="flex justify-center items-center">
-                  <img src={like} alt="" />
-                  <img className="mx-2" src={dislike} alt="" />
-                  <img src={favorite} alt="" />
-                </div>
-                <button class="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer p-2">
-                  وضعیت دوره
-                </button>
-              </div>
-
-              <p className="rtl mt-6 text-[#1A1E21] text-xl">
-                آشنایی با برنامه نویسی با وردپرس
-              </p>
-
-              <div className="flex justify-between items-center mt-5">
-                <div className="flex justify-center items-center">
-                  <img src={starRating} alt="" />
-                  <p className="ml-2">4.8</p>
-                </div>
-                <div className="flex justify-between items-center">
-                  <p className="mr-2">جان اسمیت</p>
-                  <img src={profileimg} alt="" />
-                </div>
-              </div>
-
-              <p className="rtl mt-3 ml-28  text-[#41A789] text-xs ">
-                {" "}
-                50 ساعت سخنرانی ( 190 ساعت ){" "}
-              </p>
-
-              <p className="rtl mt-5 leading-5 text-[#6D6767] text-xs text-right">
-                {" "}
-                لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط
-                توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.{" "}
-              </p>
-
-              <img className="mt-5" src={line} alt="" />
-
-              <div className="flex justify-between items-center mt-5">
-                <p className="text-sm text-PriceRed rtl"> 3,000,000 تومان</p>
-                <p className="text-sm text-">: هزینه تمام دوره</p>
-              </div>
-
-              <button class="w-[240px] h-[40px] text-white bg-BgGreen rounded-lg mt-6 ">
-                الان ثبت نام کن
-              </button>
-            </div>
-
-            <div className="relative p-10 text-center rounded-md mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen h-[490px] w-[370px]">
-              <div className="absolute top-[-80px] left-[110px]">
-                <img src={courses1} alt="" />
-              </div>
-
-              <div className="flex justify-between items-center mt-10">
-                <div className="flex justify-center items-center">
-                  <img src={like} alt="" />
-                  <img className="mx-2" src={dislike} alt="" />
-                  <img src={favorite} alt="" />
-                </div>
-                <button class="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer p-2">
-                  وضعیت دوره
-                </button>
-              </div>
-
-              <p className="rtl mt-6 text-[#1A1E21] text-xl">
-                آشنایی با برنامه نویسی با وردپرس
-              </p>
-
-              <div className="flex justify-between items-center mt-5">
-                <div className="flex justify-center items-center">
-                  <img src={starRating} alt="" />
-                  <p className="ml-2">4.8</p>
-                </div>
-                <div className="flex justify-between items-center">
-                  <p className="mr-2">جان اسمیت</p>
-                  <img src={profileimg} alt="" />
-                </div>
-              </div>
-
-              <p className="rtl mt-3 ml-28  text-[#41A789] text-xs ">
-                {" "}
-                50 ساعت سخنرانی ( 190 ساعت ){" "}
-              </p>
-
-              <p className="rtl mt-5 leading-5 text-[#6D6767] text-xs text-right">
-                {" "}
-                لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط
-                توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.{" "}
-              </p>
-
-              <img className="mt-5" src={line} alt="" />
-
-              <div className="flex justify-between items-center mt-5">
-                <p className="text-sm text-PriceRed rtl"> 3,000,000 تومان</p>
-                <p className="text-sm text-">: هزینه تمام دوره</p>
-              </div>
-
-              <button class="w-[240px] h-[40px] text-white bg-BgGreen rounded-lg mt-6 ">
-                الان ثبت نام کن
-              </button>
-            </div>
-          </div>
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <div className="mt-16 mx-16 flex justify-around items-center rounded-3xl ">
-            <div className="relative p-10 text-center rounded-md mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen h-[490px] w-[370px]">
-              <div className="absolute top-[-80px] left-[110px]">
-                <img src={courses1} alt="" />
-              </div>
-
-              <div className="flex justify-between items-center mt-10">
-                <div className="flex justify-center items-center">
-                  <img src={like} alt="" />
-                  <img className="mx-2" src={dislike} alt="" />
-                  <img src={favorite} alt="" />
-                </div>
-                <button class="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer p-2">
-                  وضعیت دوره
-                </button>
-              </div>
-
-              <p className="rtl mt-6 text-[#1A1E21] text-xl">
-                آشنایی با برنامه نویسی با وردپرس
-              </p>
-
-              <div className="flex justify-between items-center mt-5">
-                <div className="flex justify-center items-center">
-                  <img src={starRating} alt="" />
-                  <p className="ml-2">4.8</p>
-                </div>
-                <div className="flex justify-between items-center">
-                  <p className="mr-2">جان اسمیت</p>
-                  <img src={profileimg} alt="" />
-                </div>
-              </div>
-
-              <p className="rtl mt-3 ml-28  text-[#41A789] text-xs ">
-                {" "}
-                50 ساعت سخنرانی ( 190 ساعت ){" "}
-              </p>
-
-              <p className="rtl mt-5 leading-5 text-[#6D6767] text-xs text-right">
-                {" "}
-                لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط
-                توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.{" "}
-              </p>
-
-              <img className="mt-5" src={line} alt="" />
-
-              <div className="flex justify-between items-center mt-5">
-                <p className="text-sm text-PriceRed rtl"> 3,000,000 تومان</p>
-                <p className="text-sm text-">: هزینه تمام دوره</p>
-              </div>
-
-              <button class="w-[240px] h-[40px] text-white bg-BgGreen rounded-lg mt-6 ">
-                الان ثبت نام کن
-              </button>
-            </div>
-
-            <div className="relative p-10 text-center rounded-md mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen h-[490px] w-[370px]">
-              <div className="absolute top-[-80px] left-[110px]">
-                <img src={courses1} alt="" />
-              </div>
-
-              <div className="flex justify-between items-center mt-10">
-                <div className="flex justify-center items-center">
-                  <img src={like} alt="" />
-                  <img className="mx-2" src={dislike} alt="" />
-                  <img src={favorite} alt="" />
-                </div>
-                <button class="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer p-2">
-                  وضعیت دوره
-                </button>
-              </div>
-
-              <p className="rtl mt-6 text-[#1A1E21] text-xl">
-                آشنایی با برنامه نویسی با وردپرس
-              </p>
-
-              <div className="flex justify-between items-center mt-5">
-                <div className="flex justify-center items-center">
-                  <img src={starRating} alt="" />
-                  <p className="ml-2">4.8</p>
-                </div>
-                <div className="flex justify-between items-center">
-                  <p className="mr-2">جان اسمیت</p>
-                  <img src={profileimg} alt="" />
-                </div>
-              </div>
-
-              <p className="rtl mt-3 ml-28  text-[#41A789] text-xs ">
-                {" "}
-                50 ساعت سخنرانی ( 190 ساعت ){" "}
-              </p>
-
-              <p className="rtl mt-5 leading-5 text-[#6D6767] text-xs text-right">
-                {" "}
-                لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط
-                توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.{" "}
-              </p>
-
-              <img className="mt-5" src={line} alt="" />
-
-              <div className="flex justify-between items-center mt-5">
-                <p className="text-sm text-PriceRed rtl"> 3,000,000 تومان</p>
-                <p className="text-sm text-">: هزینه تمام دوره</p>
-              </div>
-
-              <button class="w-[240px] h-[40px] text-white bg-BgGreen rounded-lg mt-6 ">
-                الان ثبت نام کن
-              </button>
-            </div>
-
-            <div className="relative p-10 text-center rounded-md mt-11 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen h-[490px] w-[370px]">
-              <div className="absolute top-[-80px] left-[110px]">
-                <img src={courses1} alt="" />
-              </div>
-
-              <div className="flex justify-between items-center mt-10">
-                <div className="flex justify-center items-center">
-                  <img src={like} alt="" />
-                  <img className="mx-2" src={dislike} alt="" />
-                  <img src={favorite} alt="" />
-                </div>
-                <button class="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer p-2">
-                  وضعیت دوره
-                </button>
-              </div>
-
-              <p className="rtl mt-6 text-[#1A1E21] text-xl">
-                آشنایی با برنامه نویسی با وردپرس
-              </p>
-
-              <div className="flex justify-between items-center mt-5">
-                <div className="flex justify-center items-center">
-                  <img src={starRating} alt="" />
-                  <p className="ml-2">4.8</p>
-                </div>
-                <div className="flex justify-between items-center">
-                  <p className="mr-2">جان اسمیت</p>
-                  <img src={profileimg} alt="" />
-                </div>
-              </div>
-
-              <p className="rtl mt-3 ml-28  text-[#41A789] text-xs ">
-                {" "}
-                50 ساعت سخنرانی ( 190 ساعت ){" "}
-              </p>
-
-              <p className="rtl mt-5 leading-5 text-[#6D6767] text-xs text-right">
-                {" "}
-                لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط
-                توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.{" "}
-              </p>
-
-              <img className="mt-5" src={line} alt="" />
-
-              <div className="flex justify-between items-center mt-5">
-                <p className="text-sm text-PriceRed rtl"> 3,000,000 تومان</p>
-                <p className="text-sm text-">: هزینه تمام دوره</p>
-              </div>
-
-              <button class="w-[240px] h-[40px] text-white bg-BgGreen rounded-lg mt-6 ">
-                الان ثبت نام کن
-              </button>
-            </div>
-          </div>
-        </SwiperSlide>
-      </Swiper>
     </>
   );
 };

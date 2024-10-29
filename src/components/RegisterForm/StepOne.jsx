@@ -1,6 +1,6 @@
 import React from "react";
 import registerStepOne from "../../assets/registerStepOne.svg";
-import home from "../../assets/home2.svg";
+import home from "../../assets/home.svg";
 import { Field, Formik, Form } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import { SendVerifyMessage } from "../../core/api/register";
@@ -34,7 +34,7 @@ const StepOne = () => {
       </div>
 
       <div className=" relative w-[40rem] lg:w-[25rem] mx-auto bg-[#eeeaea] rounded-r-lg shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] ">
-        <img src={home} alt="" />
+        <img className="ml-2 mt-2" src={home} alt="" />
         <h2 className="text-right mr-6 text-[#22445D] mt-[1.5rem] text-[23px]">
           ثبت نام
         </h2>
@@ -48,7 +48,7 @@ const StepOne = () => {
             />
 
             <svg
-              className=" absolute top-[7.5rem] right-8"
+              className=" absolute top-[8.5rem] right-8"
               width="15"
               height="25"
               viewBox="0 0 20 33"
@@ -80,7 +80,7 @@ const StepOne = () => {
           </button>
         </Link>
 
-        <Link to="/register">
+        <Link to="/login">
           <h3 className="text-sm text-[#22445D] hover:underline  text-right cursor-pointer mt-8 mr-9">
             من از قبل عضو هستم
           </h3>
