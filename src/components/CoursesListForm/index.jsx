@@ -140,7 +140,7 @@ const CoursesListForm = () => {
               className="rtl p-4 dark:text-white border-green-800 w-80 text-sm text-gray-900 border dark:bg-gray-800  rounded-2xl bg-gray-50"
               placeholder="جستجو..."
               required
-              onChange={(e) => filterDataHanlder({ PageNumber: 1, Query: e.target.value })}
+              onChange={(e) => { if (e.target.value === "") { filterDataHanlder({ PageNumber: 1 }) } else { filterDataHanlder({ PageNumber: 1, Query: e.target.value }) } }}
             />
 
             <svg
@@ -494,7 +494,8 @@ const CoursesListForm = () => {
                     onChange={handleChange}
                     // valueLabelDisplay="auto"
                     min={1}
-                    max={20000000}
+                    max={2000000}
+                    step={5000}
                     getAriaValueText={valuetext}
                   />
                   <div className="flex justify-between items-center">
