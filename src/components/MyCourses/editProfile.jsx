@@ -7,186 +7,128 @@ import profileHeader from "../../assets/profileHeader.svg";
 
 const EditProfile = () => {
   return (
-        <div className="w-[71rem] h-[56.5rem] my-[1rem] gap-2 flex justify-center border-[1px] bg-[#ffff] rounded-2xl shadow-2xl mr-[10rem]">
-          <div className="flex flex-col">
-            <div className="w-[17rem] h-[18rem] bg-[#FBF6F6] rounded-xl shadow-2xl border-[1px] my-[1.5rem] mr-[0.5rem]">
-              <div className="text-nowrap text-[#22445D] text-[8px] text-lg text-center bg-[#A4F6DE] h-[3.7rem] rounded-xl border-[1px]">
-                <h1 className="mt-[0.5rem]">عکس پروفایل</h1>
-              </div>
-
-              <img
-                className="h-[7.5rem] mx-[4.5rem] my-[1.5rem]"
-                src={profileHeader}
-                alt=""
-              />
-
-              <button className="rounded-full bg-[#12926C] mx-[4rem] w-[8rem] h-[2.5rem] text-nowrap text-[#fff]">
-                ویرایش عکس
-              </button>
-            </div>
-
-            <div className="w-[17rem] h-[18rem] bg-[#FBF6F6] rounded-xl shadow-2xl border-[1px] mr-[0.5rem]">
-              <div className="text-nowrap text-[#22445D] text-[8px] text-lg text-center bg-[#A4F6DE] h-[3.7rem] rounded-xl border-[1px]">
-                <h1 className="mt-[0.5rem]">امنیت</h1>
-              </div>
-            </div>
+    <div className="w-[45rem] lg:w-[70rem] my-[1rem] flex justify-center gap-3 border-[1px] bg-white dark:bg-gray-800 rounded-2xl shadow-2xl">
+      <div className="flex flex-col">
+        <div className="w-[17rem] h-[18rem] bg-[#FBF6F6] dark:bg-gray-700 rounded-xl shadow-2xl border-[1px] my-[1.5rem] mr-[0.5rem]">
+          <div className="text-nowrap text-[#22445D] dark:text-white text-[8px] text-lg text-center bg-[#A4F6DE] dark:bg-gray-900 h-[3.7rem] rounded-xl border-[1px]">
+            <h1 className="mt-[0.5rem]">عکس پروفایل</h1>
           </div>
 
-          <div className="w-[51rem] h-[54rem] bg-[#FBF6F6] rounded-xl shadow-2xl border-[1px] my-[1.5rem] ml-[1rem]">
-            <div className="text-nowrap text-[#22445D] text-[8px] text-lg text-center bg-[#A4F6DE] h-[3.7rem] rounded-xl border-[1px]">
-              <h1 className="mt-[0.5rem]">مشخصات کاربر</h1>
-            </div>
+          <img
+            className="h-[7.5rem] mx-[4.5rem] my-[1.5rem]"
+            src={profileHeader}
+            alt=""
+          />
 
-            <div className="grid grid-cols-2 grid-rows-8 gap-1">
-              <div>
-                <Formik>
-                  <Form>
-                    <Field
-                      type="text"
-                      placeholder="     نام"
-                      className="w-[22rem] h-[3.8rem] mt-[2rem] mr-[3rem] text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] rounded-lg"
-                    ></Field>
-                  </Form>
-                </Formik>
-              </div>
+          <button className="rounded-full bg-[#12926C] dark:bg-gray-800 mx-[4rem] w-[8rem] h-[2.5rem] text-nowrap text-[#fff]">
+            ویرایش عکس
+          </button>
+        </div>
 
-              <div>
-                <Formik>
-                  <Form>
-                    <Field
-                      type="text"
-                      placeholder="     نام خانوادگی"
-                      className="w-[22rem] h-[3.8rem] mt-[2rem] text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] rounded-lg"
-                    ></Field>
-                  </Form>
-                </Formik>
-              </div>
-
-              <div className="col-span-2">
-                <Formik>
-                  <Form>
-                    <Field
-                      type="text"
-                      placeholder="     شماره همراه"
-                      className="w-[44.7rem] h-[3.8rem] mt-[1.8rem] mr-[3rem] text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] rounded-lg"
-                    ></Field>
-                  </Form>
-                </Formik>
-              </div>
-
-              <div>
-                <Formik>
-                  <Form>
-                    <Field
-                      type="text"
-                      placeholder="     شماره ملی"
-                      className="w-[22rem] h-[3.8rem] mt-[1.7rem] mr-[3rem] text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] rounded-lg"
-                    ></Field>
-                  </Form>
-                </Formik>
-              </div>
-
-              <div>
-                <Formik>
-                  <Form>
-                    <Field
-                      type="text"
-                      placeholder="     تاریخ تولد"
-                      className="w-[22rem] h-[3.8rem] mt-[1.7rem] text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] rounded-lg"
-                    ></Field>
-                  </Form>
-                </Formik>
-              </div>
-
-              <div className="col-span-2">
-                <Formik>
-                  <Form>
-                    <Field
-                      type="text"
-                      placeholder="     درباره من"
-                      className="w-[44.7rem] h-[3.8rem] mt-[1.6rem] mr-[3rem] text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] rounded-lg"
-                    ></Field>
-                  </Form>
-                </Formik>
-              </div>
-
-              <div>
-                <Formik>
-                  <Form>
-                    <Field
-                      type="text"
-                      placeholder="     ایمیل"
-                      className="w-[34rem] h-[3.8rem] mt-[1.6rem] mr-[3rem] text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] rounded-lg"
-                    ></Field>
-                  </Form>
-                </Formik>
-              </div>
-
-              <div>
-                <Formik>
-                  <Form>
-                    <Field
-                      type="text"
-                      placeholder="   جنسیت"
-                      className="w-[10rem] h-[3.8rem] mt-[1.6rem] mr-[12rem] text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] rounded-lg"
-                    ></Field>
-                  </Form>
-                </Formik>
-
-                <select
-                  name="sexual"
-                  id="pet-select"
-                  className="bg-[#fff] text-[#000] border-[2px] border-[#158B68] rounded-lg absolute left-[6.5rem] bottom-[5.5rem]"
-                >
-                  <option value="مرد">مرد</option>
-                  <option value="زن">زن</option>
-                </select>
-              </div>
-
-              <div className="col-span-2">
-                <Formik>
-                  <Form>
-                    <Field
-                      type="text"
-                      placeholder="     درباره من"
-                      className="w-[44.7rem] h-[3.8rem] mt-[1.6rem] mr-[3rem] text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] rounded-lg"
-                    ></Field>
-                  </Form>
-                </Formik>
-              </div>
-
-              <div>
-                <Formik>
-                  <Form>
-                    <Field
-                      type="text"
-                      placeholder="     لینک تلگرام"
-                      className="w-[22rem] h-[3.8rem] mt-[1.6rem] mr-[3rem] text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] rounded-lg"
-                    ></Field>
-                  </Form>
-                </Formik>
-              </div>
-
-              <div>
-                <Formik>
-                  <Form>
-                    <Field
-                      type="text"
-                      placeholder="     پروفایل لینکدین"
-                      className="w-[22rem] h-[3.8rem] mt-[1.6rem] text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] rounded-lg"
-                    ></Field>
-                  </Form>
-                </Formik>
-              </div>
-
-              <div className="w-[44.7rem] h-[3.8rem] mt-[1.6rem] mr-[3rem] text-nowrap text-center border-[2px] bg-[#158B68] rounded-lg">
-                <button className="w-[44.7rem] h-[3.8rem] text-lg text-[#fff] bg-[#158B68]">
-                  ثبت تغییرات
-                </button>
-              </div>
-            </div>
+        <div className="w-[17rem] h-[18rem] bg-[#FBF6F6] dark:bg-gray-700 rounded-xl shadow-2xl border-[1px] mr-[0.5rem]">
+          <div className="text-nowrap text-[#22445D] dark:text-white text-[8px] text-lg text-center bg-[#A4F6DE] dark:bg-gray-900 h-[3.7rem] rounded-xl border-[1px]">
+            <h1 className="mt-[0.5rem]">امنیت</h1>
           </div>
         </div>
+      </div>
+
+      <div className="w-[51rem] h-[54rem] bg-[#FBF6F6] dark:bg-gray-800 rounded-xl shadow-2xl border-[1px] my-[1.5rem] ml-[1rem]">
+        <div className="text-nowrap text-[#22445D] dark:text-white text-[8px] text-lg text-center bg-[#A4F6DE] dark:bg-gray-900 h-[3.7rem] rounded-xl border-[1px]">
+          <h1 className="mt-[0.5rem]">مشخصات کاربر</h1>
+        </div>
+
+        <div>
+          <Formik>
+            <Form>
+              <div className="grid gap-2 lg:gap-8 mt-8 px-4">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
+                  <Field
+                    type="text"
+                    placeholder="نام"
+                    className=" h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                  ></Field>
+
+                  <Field
+                    type="text"
+                    placeholder="نام خانوادگی"
+                    className=" h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                  ></Field>
+                </div>
+
+                <Field
+                  type="text"
+                  placeholder="شماره همراه"
+                  className="w-full h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                ></Field>
+
+                <div className="grid grid-cols-2 gap-2">
+                  <Field
+                    type="text"
+                    placeholder="شماره ملی"
+                    className=" h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                  ></Field>
+
+                  <Field
+                    type="text"
+                    placeholder="تاریخ تولد"
+                    className=" h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                  ></Field>
+                </div>
+
+                <Field
+                  type="text"
+                  placeholder="درباره من"
+                  className="w-full h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                ></Field>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
+                  <Field
+                    type="text"
+                    placeholder="ایمیل"
+                    className="w-[100%] lg:w-[153%] h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                  ></Field>
+
+                  <select
+                    name="sexual"
+                    id="pet-select"
+                    className="w-[100%] lg:w-[46%] h-[3.8rem] mr-0 lg:mr-52 px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                  >
+                    <option value="مرد">مرد</option>
+                    <option value="زن">زن</option>
+                  </select>
+                </div>
+
+                <Field
+                  type="text"
+                  placeholder="درباره من"
+                  className="w-full h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                ></Field>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
+                  <Field
+                    type="text"
+                    placeholder="لینک تلگرام"
+                    className=" h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                  ></Field>
+
+                  <Field
+                    type="text"
+                    placeholder="پروفایل لینکدین"
+                    className=" h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                  ></Field>
+                </div>
+
+                <div className=" text-nowrap text-center border-[2px] rounded-lg">
+                  <button className="w-full h-[3.8rem] text-lg text-[#fff] bg-[#158B68] dark:bg-gray-800">
+                    ثبت تغییرات
+                  </button>
+                </div>
+              </div>
+            </Form>
+          </Formik>
+        </div>
+      </div>
+    </div>
   );
 };
 
