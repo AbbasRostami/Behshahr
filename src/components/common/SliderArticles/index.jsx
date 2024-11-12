@@ -47,7 +47,6 @@ const SliderArticles = () => {
         {data.map((item, index) => {
           return (
             <SwiperSlide>
-
               <div className="flex justify-around items-center rounded-3xl ">
                 <div className="relative h-[420px] lg:h-[540px] w-[300px] lg:w-[370px] text-center rounded-[1.5rem] mt-11 dark:bg-gray-800 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen ">
                   <div className="h-64">
@@ -60,22 +59,26 @@ const SliderArticles = () => {
 
                   <div className="flex justify-between items-center mt-[-5rem] lg:mt-5 px-5">
                     <div className="flex justify-center items-center hidden lg:flex gap-1">
+                      <div>
+                        <img src={like} alt="" />
+                        <p className="text-black hover:text-green-400">
+                          {item?.currentLikeCount}
+                        </p>
+                      </div>
 
                       <div>
-                          <img src={like} alt="" />
-                          <p className="text-black hover:text-green-400">{item?.currentLikeCount}</p>
+                        <img className="mx-2" src={dislike} alt="" />
+                        <p className="text-black hover:text-green-400">
+                          {item?.currentDissLikeCount}
+                        </p>
                       </div>
 
-                        <div>
-                          <img className="mx-2" src={dislike} alt="" />
-                          <p className="text-black hover:text-green-400">{item?.currentDissLikeCount}</p>
+                      <div>
+                        <img src={favorite} alt="" />
+                        <p className="text-black hover:text-green-400">
+                          {item?.currentRate}
+                        </p>
                       </div>
-
-                        <div>
-                          <img src={favorite} alt="" />
-                          <p className="text-black hover:text-green-400">{item?.currentRate}</p>
-                      </div>
-
                     </div>
 
                     <button class="text-TextGreen bg-[#BFF4E4] rounded-lg hidden lg:inline-block cursor-pointer p-2 w-auto-[120px]">

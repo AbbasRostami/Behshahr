@@ -64,7 +64,9 @@ const Header = () => {
           </Link>
         </div>
 
-        <ResponsiveMenu />
+        <div className="dark:bg-slate-400 rounded-sm">
+          <ResponsiveMenu />
+        </div>
       </div>
     </div>
   );
