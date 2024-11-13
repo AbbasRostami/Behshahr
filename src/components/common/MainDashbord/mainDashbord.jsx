@@ -129,10 +129,11 @@ const MainDashbord = ({ showMenu, setShowMenu }) => {
           src={home2}
           alt=""
         />
-
-        <h2 className="text-[#158B68] dark:text-white text-lg lg:text-lg text-nowrap top-[37.5rem] right-[9rem]">
-          بازگشت به خانه
-        </h2>
+        <Link to="/">
+          <h2 className="text-[#158B68] dark:text-white text-lg lg:text-lg text-nowrap top-[37.5rem] right-[9rem]">
+            بازگشت به خانه
+          </h2>
+        </Link>
       </div>
 
       <div className="w-[2.5rem] lg:w-[3.2rem] h-[2.5rem] lg:h-[3.2rem] flex flex-nowrap gap-5 rounded-full bg-[#158B68] mx-[0.5rem] lg:mx-[4rem]">

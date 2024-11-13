@@ -39,7 +39,7 @@ const Favorites = () => {
             <h1>حذف</h1>
           </div>
           <br></br>
-          {data.map((data) => {
+          {data?.map((data) => {
             return (
               <div className="text-nowrap text-[#22445D] text-[12px] bg-[#ffff] w-[43rem] xl:w-[64rem] h-[3.5rem] rounded-2xl flex justify-end rtl gap-14 xl:gap-28  shadow-sm border-[1px] py-[1.2rem] px-[3rem] mx-[1rem]">
                 <img
