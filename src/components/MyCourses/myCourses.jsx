@@ -5,14 +5,15 @@ import { MainDashbord } from "../common/MainDashbord/mainDashbord";
 import nest from "../../assets/nest.svg";
 import { getApi } from "../../core/api/api";
 import { useParams } from "react-router-dom";
+import moment from "jalali-moment";
 
 const MyCourses = () => {
   const [data, setData] = useState([]);
   const getMyCourses = async () => {
     const path = `/SharePanel/GetMyCourses?PageNumber=1&RowsOfPage=10&SortingCol=DESC&SortType=LastUpdate&Query=s`;
     const response = await getApi({ path });
-    console.log(response);
-    setData(response);
+    console.log(response.data.listOfMyCourses);
+    setData(response.data.listOfMyCourses);
   };
   useEffect(() => {
     getMyCourses();
@@ -26,125 +27,31 @@ const MyCourses = () => {
             <h1>نام دوره</h1>
             <h1>نام استاد</h1>
             <h1>نام ترم</h1>
-            <h1>نام گروه</h1>
+            <h1>سطح دوره</h1>
             <h1>تاریخ شروع</h1>
             <h1>وضعیت پرداخت</h1>
           </div>
           <br></br>
-          <div className="text-nowrap text-[#22445D] dark:text-white text-[12px] bg-[#ffff] dark:bg-gray-700 w-[41rem] lg:w-[64rem] h-[3.5rem] rounded-2xl flex justify-end rtl gap-14 lg:gap-28 shadow-sm border-[1px] py-[1.2rem] px-[3rem] mx-auto">
-            <img
-              className="hidden lg:inline-block w-[4rem] h-[4rem] mx-[-4.5rem] my-[-1.2rem]"
-              src={nest}
-              alt=""
-            />
+          {data.map((item) => {
+            return (
+              <div className=" mt-2 text-nowrap text-[#22445D] text-[12px] bg-[#ffff] w-[43rem] xl:w-[64rem] h-[3.5rem] rounded-2xl flex justify-end rtl gap-14 xl:gap-28 shadow-sm border-[1px] py-[1.2rem] px-[3rem] mx-[1rem]">
+                <img
+                  className="hidden xl:inline-block w-[4rem] h-[4rem] mx-[-4.5rem] my-[-1.2rem]"
+                  src={nest}
+                  alt=""
+                />
 
-            <h2>تکست جی اس</h2>
-            <h2>استاد بحر</h2>
-            <h2>بهار</h2>
-            <h2>سه شنبه</h2>
-            <h2>1403/03/16</h2>
-            <h2>پرداخت نشده</h2>
-          </div>
-
-          <br></br>
-
-          <div className="text-nowrap text-[#22445D] dark:text-white text-[12px] bg-[#ffff] dark:bg-gray-700 w-[41rem] lg:w-[64rem] h-[3.5rem] rounded-2xl flex justify-end rtl gap-14 lg:gap-28 shadow-sm border-[1px] py-[1.2rem] px-[3rem] mx-auto">
-            <img
-              className="hidden lg:inline-block w-[4rem] h-[4rem] mx-[-4.5rem] my-[-1.2rem]"
-              src={nest}
-              alt=""
-            />
-
-            <h2>تکست جی اس</h2>
-            <h2>استاد بحر</h2>
-            <h2>بهار</h2>
-            <h2>سه شنبه</h2>
-            <h2>1403/03/16</h2>
-            <h2>پرداخت نشده</h2>
-          </div>
-
-          <br></br>
-
-          <div className="text-nowrap text-[#22445D] dark:text-white text-[12px] bg-[#ffff] dark:bg-gray-700 w-[41rem] lg:w-[64rem] h-[3.5rem] rounded-2xl flex justify-end rtl gap-14 lg:gap-28 shadow-sm border-[1px] py-[1.2rem] px-[3rem] mx-auto">
-            <img
-              className="hidden lg:inline-block w-[4rem] h-[4rem] mx-[-4.5rem] my-[-1.2rem]"
-              src={nest}
-              alt=""
-            />
-
-            <h2>تکست جی اس</h2>
-            <h2>استاد بحر</h2>
-            <h2>بهار</h2>
-            <h2>سه شنبه</h2>
-            <h2>1403/03/16</h2>
-            <h2>پرداخت نشده</h2>
-          </div>
-
-          <br></br>
-
-          <div className="text-nowrap text-[#22445D] dark:text-white text-[12px] bg-[#ffff] dark:bg-gray-700 w-[41rem] lg:w-[64rem] h-[3.5rem] rounded-2xl flex justify-end rtl gap-14 lg:gap-28 shadow-sm border-[1px] py-[1.2rem] px-[3rem] mx-auto">
-            <img
-              className="hidden lg:inline-block w-[4rem] h-[4rem] mx-[-4.5rem] my-[-1.2rem]"
-              src={nest}
-              alt=""
-            />
-
-            <h2>تکست جی اس</h2>
-            <h2>استاد بحر</h2>
-            <h2>بهار</h2>
-            <h2>سه شنبه</h2>
-            <h2>1403/03/16</h2>
-            <h2>پرداخت نشده</h2>
-          </div>
-
-          <br></br>
-
-          <div className="text-nowrap text-[#22445D] dark:text-white text-[12px] bg-[#ffff] dark:bg-gray-700 w-[41rem] lg:w-[64rem] h-[3.5rem] rounded-2xl flex justify-end rtl gap-14 lg:gap-28 shadow-sm border-[1px] py-[1.2rem] px-[3rem] mx-auto">
-            <img
-              className="hidden lg:inline-block w-[4rem] h-[4rem] mx-[-4.5rem] my-[-1.2rem]"
-              src={nest}
-              alt=""
-            />
-
-            <h2>تکست جی اس</h2>
-            <h2>استاد بحر</h2>
-            <h2>بهار</h2>
-            <h2>سه شنبه</h2>
-            <h2>1403/03/16</h2>
-            <h2>پرداخت نشده</h2>
-          </div>
-
-          <br></br>
-
-          <div className="text-nowrap text-[#22445D] dark:text-white text-[12px] bg-[#ffff] dark:bg-gray-700 w-[41rem] lg:w-[64rem] h-[3.5rem] rounded-2xl flex justify-end rtl gap-14 lg:gap-28 shadow-sm border-[1px] py-[1.2rem] px-[3rem] mx-auto">
-            <img
-              className="hidden lg:inline-block w-[4rem] h-[4rem] mx-[-4.5rem] my-[-1.2rem]"
-              src={nest}
-              alt=""
-            />
-
-            <h2>تکست جی اس</h2>
-            <h2>استاد بحر</h2>
-            <h2>بهار</h2>
-            <h2>سه شنبه</h2>
-            <h2>1403/03/16</h2>
-            <h2>پرداخت نشده</h2>
-          </div>
-
-          <div className="my-5 flex justify-center gap-6 rounded-full">
-            <button className="rounded-full text-[#158B68] dark:text-white text-sm bg-[#BFF4E4] dark:bg-gray-700 w-[2rem] h-[2rem]">
-              1
-            </button>
-            <button className="rounded-full text-[#158B68] dark:text-white bg-[#FBF6F6] dark:bg-gray-700 text-sm">
-              2
-            </button>
-            <button className="rounded-full text-[#158B68] dark:text-white bg-[#FBF6F6] dark:bg-gray-700 text-sm">
-              3
-            </button>
-            <button className="rounded-full text-[#158B68] dark:text-white bg-[#FBF6F6] dark:bg-gray-700 text-sm">
-              4
-            </button>
-          </div>
+                <h2> {item?.courseTitle} </h2>
+                <h2> {item?.fullName} </h2>
+                <h2>{item?.termName}</h2>
+                <h2> {item?.levelName}</h2>
+                <h2>
+                  {moment(item?.lastUpdate).locale("fa").format("YYYY/MM/DD")}
+                </h2>
+                <h2> {item?.paymentStatus}</h2>
+              </div>
+            );
+          })}
         </div>
       </div>
     </>
