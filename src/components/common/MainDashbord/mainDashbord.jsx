@@ -25,23 +25,23 @@ const MainDashbord = ({ showMenu, setShowMenu }) => {
           <PiXCircleFill size={26} className="text-[#158B68]" />
         </button>
       </div>
-      <div className="w-[2.5rem] lg:w-[3.2rem] h-[2.5rem] lg:h-[3.2rem] flex flex-nowrap gap-5 rounded-full bg-[#158B68]  mt-[2rem] mx-[0.5rem] lg:mx-[4rem] my-[1.5rem]">
+      <div className="w-[2.5rem] lg:w-[3.2rem] h-[2.5rem] lg:h-[3.2rem] flex flex-nowrap gap-5 rounded-full bg-[#158B68] mt-[2rem] mr-[0.5rem] lg:mr-[4rem] my-[1.5rem]">
         <img
-          className="w-[1.3rem] lg:w-[1.8rem] h-[1.3rem] lg:h-[1.8rem] mx-[0.7rem] mt-[0.7rem] "
+          className="w-[1.3rem] lg:w-[1.8rem] h-[1.3rem] lg:h-[1.8rem] mr-[0.7rem] mt-[0.7rem]"
           src={counter}
           alt=""
         />
 
         <Link to="/dashbord">
-          <h2 className="text-[#158B68] dark:text-white text-lg lg:text-lg text-nowrap top-[3rem] right-[9rem]">
+          <h2 className="text-[#158B68] dark:text-white text-lg lg:text-lg top-[3rem] right-[9rem]">
             پیشخوان
           </h2>
         </Link>
       </div>
 
-      <div className="w-[2.5rem] lg:w-[3.2rem] h-[2.5rem] lg:h-[3.2rem] flex flex-nowrap gap-5 rounded-full bg-[#158B68] mx-[0.5rem] lg:mx-[4rem] my-[1.5rem]">
+      <div className="w-[2.5rem] lg:w-[3.2rem] h-[2.5rem] lg:h-[3.2rem] flex flex-nowrap gap-5 rounded-full bg-[#158B68] mr-[0.5rem] lg:mr-[4rem] my-[1.5rem]">
         <img
-          className="w-[1.3rem] lg:w-[1.8rem] h-[1.3rem] lg:h-[1.8rem] mx-[0.7rem] my-[0.7rem]"
+          className="w-[1.3rem] lg:w-[1.8rem] h-[1.3rem] lg:h-[1.8rem] mr-[0.7rem] my-[0.7rem]"
           src={author2}
           alt=""
         />
@@ -53,9 +53,9 @@ const MainDashbord = ({ showMenu, setShowMenu }) => {
         </Link>
       </div>
 
-      <div className="w-[2.5rem] lg:w-[3.2rem] h-[2.5rem] lg:h-[3.2rem] flex flex-nowrap gap-5 rounded-full bg-[#158B68] mx-[0.5rem] lg:mx-[4rem] my-[1.5rem]">
+      <div className="w-[2.5rem] lg:w-[3.2rem] h-[2.5rem] lg:h-[3.2rem] flex flex-nowrap gap-5 rounded-full bg-[#158B68] mr-[0.5rem] lg:mr-[4rem] my-[1.5rem]">
         <img
-          className="w-[1.3rem] lg:w-[1.8rem] h-[1.3rem] lg:h-[1.8rem] mx-[0.7rem] my-[0.7rem]"
+          className="w-[1.3rem] lg:w-[1.8rem] h-[1.3rem] lg:h-[1.8rem] mr-[0.7rem] my-[0.7rem]"
           src={camera}
           alt=""
         />
@@ -67,9 +67,9 @@ const MainDashbord = ({ showMenu, setShowMenu }) => {
         </Link>
       </div>
 
-      <div className="w-[2.5rem] lg:w-[3.2rem] h-[2.5rem] lg:h-[3.2rem] flex flex-nowrap gap-5 rounded-full bg-[#158B68] mx-[0.5rem] lg:mx-[4rem] my-[1.5rem]">
+      <div className="w-[2.5rem] lg:w-[3.2rem] h-[2.5rem] lg:h-[3.2rem] flex flex-nowrap gap-5 rounded-full bg-[#158B68] mr-[0.5rem] lg:mr-[4rem] my-[1.5rem]">
         <img
-          className="w-[1.3rem] lg:w-[1.8rem] h-[1.3rem] lg:h-[1.8rem] mx-[0.7rem] my-[0.7rem]"
+          className="w-[1.3rem] lg:w-[1.8rem] h-[1.3rem] lg:h-[1.8rem] mr-[0.7rem] my-[0.7rem]"
           src={reserved}
           alt=""
         />
@@ -81,9 +81,9 @@ const MainDashbord = ({ showMenu, setShowMenu }) => {
         </Link>
       </div>
 
-      <div className="w-[2.5rem] lg:w-[3.2rem] h-[2.5rem] lg:h-[3.2rem] flex flex-nowrap gap-5 rounded-full bg-[#158B68] mx-[0.5rem] lg:mx-[4rem] my-[1.5rem]">
+      <div className="w-[2.5rem] lg:w-[3.2rem] h-[2.5rem] lg:h-[3.2rem] flex flex-nowrap gap-5 rounded-full bg-[#158B68] mr-[0.5rem] lg:mr-[4rem] my-[1.5rem]">
         <img
-          className="w-[1.3rem] lg:w-[1.8rem] h-[1.3rem] lg:h-[1.8rem] mx-[0.7rem] my-[0.7rem]"
+          className="w-[1.3rem] lg:w-[1.8rem] h-[1.3rem] lg:h-[1.8rem] mr-[0.7rem] my-[0.7rem]"
           src={heart}
           alt=""
         />
@@ -95,9 +95,9 @@ const MainDashbord = ({ showMenu, setShowMenu }) => {
         </Link>
       </div>
 
-      <div className="w-[2.5rem] lg:w-[3.2rem] h-[2.5rem] lg:h-[3.2rem] flex flex-nowrap gap-5 rounded-full bg-[#158B68] mx-[0.5rem] lg:mx-[4rem] my-[1.5rem]">
+      <div className="w-[2.5rem] lg:w-[3.2rem] h-[2.5rem] lg:h-[3.2rem] flex flex-nowrap gap-5 rounded-full bg-[#158B68] mr-[0.5rem] lg:mr-[4rem] my-[1.5rem]">
         <img
-          className="w-[1.3rem] lg:w-[1.8rem] h-[1.3rem] lg:h-[1.8rem] mx-[0.7rem] my-[0.7rem]"
+          className="w-[1.3rem] lg:w-[1.8rem] h-[1.3rem] lg:h-[1.8rem] mr-[0.7rem] my-[0.7rem]"
           src={massage}
           alt=""
         />
@@ -109,9 +109,9 @@ const MainDashbord = ({ showMenu, setShowMenu }) => {
         </Link>
       </div>
 
-      <div className="w-[2.5rem] lg:w-[3.2rem] h-[2.5rem] lg:h-[3.2rem] flex flex-nowrap gap-5 rounded-full bg-[#158B68] mx-[0.5rem] lg:mx-[4rem] my-[1.5rem]">
+      <div className="w-[2.5rem] lg:w-[3.2rem] h-[2.5rem] lg:h-[3.2rem] flex flex-nowrap gap-5 rounded-full bg-[#158B68] mr-[0.5rem] lg:mr-[4rem] my-[1.5rem]">
         <img
-          className="w-[1.3rem] lg:w-[1.8rem] h-[1.3rem] lg:h-[1.8rem] mx-[0.7rem] my-[0.7rem]"
+          className="w-[1.3rem] lg:w-[1.8rem] h-[1.3rem] lg:h-[1.8rem] mr-[0.7rem] my-[0.7rem]"
           src={key2}
           alt=""
         />
@@ -123,9 +123,9 @@ const MainDashbord = ({ showMenu, setShowMenu }) => {
         </Link>
       </div>
 
-      <div className="w-[2.5rem] lg:w-[3.2rem] h-[2.5rem] lg:h-[3.2rem] flex flex-nowrap gap-5 rounded-full bg-[#158B68] mx-[0.5rem] lg:mx-[4rem] mb-[1rem] my-[2.6rem]">
+      <div className="w-[2.5rem] lg:w-[3.2rem] h-[2.5rem] lg:h-[3.2rem] flex flex-nowrap gap-5 rounded-full bg-[#158B68] mr-[0.5rem] lg:mr-[4rem] mb-[1rem] my-[2.6rem]">
         <img
-          className="w-[1.3rem] lg:w-[1.8rem] h-[1.3rem] lg:h-[1.8rem] mx-[0.7rem] my-[0.7rem]"
+          className="w-[1.3rem] lg:w-[1.8rem] h-[1.3rem] lg:h-[1.8rem] mr-[0.7rem] my-[0.7rem]"
           src={home2}
           alt=""
         />
@@ -135,14 +135,14 @@ const MainDashbord = ({ showMenu, setShowMenu }) => {
         </h2>
       </div>
 
-      <div className="w-[2.5rem] lg:w-[3.2rem] h-[2.5rem] lg:h-[3.2rem] flex flex-nowrap gap-5 rounded-full bg-[#158B68] mx-[0.5rem] lg:mx-[4rem]">
+      <div className="w-[2.5rem] lg:w-[3.2rem] h-[2.5rem] lg:h-[3.2rem] flex flex-nowrap gap-5 rounded-full bg-[#158B68] mr-[0.5rem] lg:mr-[4rem]">
         <img
-          className="w-[1.3rem] lg:w-[1.8rem] h-[1.3rem] lg:h-[1.8rem] mx-[0.7rem] my-[0.7rem]"
+          className="w-[1.3rem] lg:w-[1.8rem] h-[1.3rem] lg:h-[1.8rem] mr-[0.7rem] my-[0.7rem]"
           src={exist}
           alt=""
         />
 
-        <h2 className="text-[#158B68] dark:text-white text-lg lg:text-lg text-nowrap top-[41.5rem] right-[9rem]">
+        <h2 className="text-[#158B68] dark:text-white text-lg lg:text-lg top-[41.5rem] right-[9rem]">
           خروج
         </h2>
       </div>
