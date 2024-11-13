@@ -31,20 +31,11 @@ const ProgressBar = () => {
     <>
       <div
         id="progress-container"
-        style={{
-          height: "6px",
-          width: "100%",
-
-          position: "sticky",
-          top: "0",
-          left: "0",
-          right: "0",
-        }}
-        className="z-50"
+        className="z-50 h-[6px] sticky top-0 left-0 right-0 max-w-full"
       >
         <div
-          className="progress-fill"
-          style={{ height: "100%", backgroundColor: "#097969	", width: `${scrollPercent}%` }}
+          className="progress-fill max-w-full h-full bg-[#097969]"
+          style={{width: `${scrollPercent}%` }}
         ></div>
       </div>
     </>

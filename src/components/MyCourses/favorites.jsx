@@ -20,18 +20,18 @@ const Favorites = () => {
 
   return (
     <>
-      <div className="w-[48rem] xl:w-[70rem] h-[43rem] my-[1rem] border-[1px] bg-white rounded-2xl shadow-2xl">
-        <div className="text-nowrap absolute top-[7rem] right-[18.5rem] xl:right-[30rem]">
-          <button className="bg-[#A4F6DE] w-[21rem] xl:w-[30rem] h-[3rem] text-[#22445D] text-lg">
+      <div className="w-[45rem] lg:w-[70rem] h-[43rem] my-[1rem] border-[1px] bg-white dark:bg-gray-800 rounded-2xl shadow-2xl">
+        <div className="text-nowrap mt-6 mr-6 lg:mr-20 ">
+          <button className="bg-[#A4F6DE] dark:bg-gray-900 w-[21rem] lg:w-[30rem] h-[3rem] text-[#22445D] dark:text-white text-lg">
             دوره های مورد علاقه من
           </button>
-          <button className="bg-[#ffff] border-[2px] border-[#A4F6DE] w-[21rem] xl:w-[30rem] h-[3rem] text-[#22445D] text-lg">
+          <button className="bg-[#ffff] dark:bg-gray-700 border-[2px] border-[#A4F6DE] w-[21rem] lg:w-[30rem] h-[3rem] text-[#22445D] dark:text-white text-lg">
             مقالات مورد علاقه من
           </button>
         </div>
 
-        <div className="w-[45rem] xl:w-[66rem] h-[35rem] mx-[2rem] my-[6.5rem] bg-[#FBF6F6] border-[1px] rounded-lg shadow-2xl">
-          <div className="text-nowrap text-[#22445D] text-[5px] text-xs xl:text-sm bg-[#A4F6DE] h-[4.5rem] rounded-lg flex justify-end rtl gap-14 xl:gap-24 py-[1.5rem] px-[4rem]">
+        <div className="w-[43rem] lg:w-[66rem] h-[35rem] mx-auto my-[2rem] bg-[#FBF6F6] dark:bg-gray-700 border-[1px] rounded-lg shadow-2xl">
+          <div className="text-nowrap text-[#22445D] dark:text-white text-[5px] text-xs lg:text-sm bg-[#A4F6DE] dark:bg-gray-900 h-[4.5rem] rounded-lg flex justify-end rtl gap-14 lg:gap-24 py-[1.5rem] px-[4rem]">
             <h1>نام دوره</h1>
             <h1>نوع دوره</h1>
             <h1>سطح دوره</h1>
