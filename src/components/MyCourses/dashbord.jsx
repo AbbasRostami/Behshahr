@@ -7,8 +7,27 @@ import redDashbordImg from "../../assets/redDashbordImg.svg";
 import profileHeader from "../../assets/profileHeader.svg";
 import textDashbord from "../../assets/textDashbord.svg";
 import dashbordImg from "../../assets/dashbordImg.svg";
+import { postApi } from "../../core/api/api";
+import { Link } from "react-router-dom";
 
 const Dashbord = () => {
+  const Addprof = async () => {
+    const path = "/SharePanel/AddProfileImage";
+
+    const body = { name: "img" };
+
+    const response = await postApi({ path, body });
+    console.log(response);
+
+    // if (response?.data?.success) {
+    //   localStorage.setItem("token", response?.data?.token);
+    //   toast.success("شما با موفقیت وارد شدید.");
+    //   navigate("/");
+    // } else {
+    //   toast.error(response?.data?.message);
+    // }
+  };
+
   return (
     <>
       <div className="w-[70rem] h-[43rem] my-[1rem] border-[1px] bg-[#ffff] dark:bg-gray-800 rounded-2xl shadow-2xl grid grid-col-3 grid-rows-3 gap-4">
@@ -51,10 +70,15 @@ const Dashbord = () => {
             <h5 className="text-[17px] text-[#22445D] dark:text-white ml-[10rem] mt-[1rem]">
               کدملی: 0123456789
             </h5>
-
-            <button className="bg-[#12926C] dark:bg-gray-800 w-[7rem] h-[2.5rem] mt-[1rem] rounded-full text-[#fff]">
-              ویرایش
-            </button>
+            <Link to="/editProfile">
+              <button
+                name="img"
+                type="submit"
+                className="bg-[#12926C] dark:bg-gray-800 w-[7rem] h-[2.5rem] mt-[1rem] rounded-full text-[#fff]"
+              >
+                ویرایش
+              </button>
+            </Link>
           </div>
         </div>
 

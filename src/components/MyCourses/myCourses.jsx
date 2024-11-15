@@ -23,7 +23,7 @@ const MyCourses = () => {
     <>
       <div className="w-[45rem] lg:w-[70rem] h-[43rem] my-[1rem] border-[1px] bg-[#ffff] dark:bg-gray-800 rounded-2xl shadow-2xl">
         <div className="w-[43rem] lg:w-[66rem] h-[40.5rem] mx-auto my-[1.3rem] bg-[#FBF6F6] dark:bg-gray-700 border-[1px] rounded-lg shadow-2xl">
-          <div className="text-nowrap text-[#22445D] dark:text-white text-[5px] text-xs lg:text-sm bg-[#A4F6DE] dark:bg-gray-900 h-[4.5rem] rounded-lg flex justify-end rtl gap-14 lg:gap-24 py-[1.5rem] px-[4rem]">
+          <div className="text-nowrap text-[#22445D] dark:text-white text-[5px] text-xs lg:text-sm bg-[#A4F6DE] dark:bg-gray-900 h-[4.5rem] rounded-lg flex justify-evenly rtl gap-14 lg:gap- py-[1.5rem] px-[4rem]">
             <h1>نام دوره</h1>
             <h1>نام استاد</h1>
             <h1>نام ترم</h1>
@@ -34,13 +34,7 @@ const MyCourses = () => {
           <br></br>
           {data.map((item) => {
             return (
-              <div className=" mt-2 text-nowrap text-[#22445D] text-[12px] bg-[#ffff] w-[43rem] xl:w-[64rem] h-[3.5rem] rounded-2xl flex justify-end rtl gap-14 xl:gap-28 shadow-sm border-[1px] py-[1.2rem] px-[3rem] mx-[1rem]">
-                <img
-                  className="hidden xl:inline-block w-[4rem] h-[4rem] mx-[-4.5rem] my-[-1.2rem]"
-                  src={nest}
-                  alt=""
-                />
-
+              <div className=" mt-2 text-nowrap text-[#22445D] text-[12px] bg-[#ffff] w-[43rem] xl:w-[64rem] h-[3.5rem] rounded-2xl flex justify-evenly rtl gap-14 xl:gap-4 shadow-sm border-[1px] py-[1.2rem] px-[3rem] mx-[1rem]">
                 <h2> {item?.courseTitle} </h2>
                 <h2> {item?.fullName} </h2>
                 <h2>{item?.termName}</h2>
