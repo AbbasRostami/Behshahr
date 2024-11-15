@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { HeaderDashbord } from "../common/HeaderDashbord/HeaderDashbord";
-import { MainDashbord } from "../common/MainDashbord/mainDashbord";
-
 import recycle from "../../assets/recycle.svg";
 import nest from "../../assets/nest.svg";
 import { getApi } from "../../core/api/api";

@@ -17,6 +17,7 @@ const HeaderDashbord = ({ showMenu, setShowMenu }) => {
           <DarkLightToggle />
           <img className="h-[1.8rem] lg:h-[2rem]" src={pin} alt="" />
         </div>
+
         <div className="flex items-center text-[#22445D] text-nowrap">
           <button
             onClick={() => setShowMenu(!showMenu)}
@@ -24,9 +25,11 @@ const HeaderDashbord = ({ showMenu, setShowMenu }) => {
           >
             <GiHamburgerMenu size={28} />
           </button>
+
           <span class="cursor-pointer mt-2 text-lg dark:text-white">
             آکادمی اچ وان
           </span>
+
           <div>
             <img class="h-10" src={logoSite} alt="" />
           </div>
