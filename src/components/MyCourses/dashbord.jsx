@@ -1,12 +1,10 @@
 import React from "react";
-import { HeaderDashbord } from "../common/HeaderDashbord/HeaderDashbord";
-import { MainDashbord } from "../common/MainDashbord/mainDashbord";
-
 import percentageDashbord from "../../assets/percentageDashbord.svg";
 import redDashbordImg from "../../assets/redDashbordImg.svg";
 import profileHeader from "../../assets/profileHeader.svg";
 import textDashbord from "../../assets/textDashbord.svg";
 import dashbordImg from "../../assets/dashbordImg.svg";
+import { Link } from "react-router-dom";
 
 const Dashbord = () => {
   return (
@@ -52,9 +50,9 @@ const Dashbord = () => {
               کدملی: 0123456789
             </h5>
 
-            <button className="bg-[#12926C] dark:bg-gray-800 w-[7rem] h-[2.5rem] mt-[1rem] rounded-full text-[#fff]">
+            <Link to="/editProfile"><button className="bg-[#12926C] dark:bg-gray-800 w-[7rem] h-[2.5rem] mt-[1rem] rounded-full text-[#fff]">
               ویرایش
-            </button>
+            </button></Link>
           </div>
         </div>
 
