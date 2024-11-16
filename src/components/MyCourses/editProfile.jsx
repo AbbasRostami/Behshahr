@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Field, Formik } from "formik";
 
 import profileHeader from "../../assets/profileHeader.svg";
@@ -15,13 +15,12 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Navigation } from "swiper/modules";
-import { editApi } from "../../core/api/api";
+import { editApi, getApi } from "../../core/api/api";
 
 const EditProfile = () => {
-  const [show, setShow] = useState(false);
   const editHandler = async (values) => {
     console.log(values);
-    const path = `/SharePanel/UpdateProfileIn `;
+    const path = `/SharePanel/UpdateProfileIn`;
     const body = values;
 
     const response = await editApi({ path, body });
@@ -34,6 +33,18 @@ const EditProfile = () => {
     //   alert("koooft");
     // }
   };
+
+  const [data, setData] = useState([]);
+  const getEditProf = async () => {
+    const path = `/SharePanel/GetProfileInfo`;
+    const response = await getApi({ path });
+    console.log(response.data);
+    setData(response);
+  };
+  useEffect(() => {
+    getEditProf();
+  }, []);
+  const [show, setShow] = useState(false);
   return (
     <>
       <div className="w-[45rem] lg:w-[70rem] my-[1rem] flex justify-center gap-3 border-[1px] bg-white dark:bg-gray-800 rounded-2xl shadow-2xl">
@@ -91,7 +102,6 @@ const EditProfile = () => {
                         navigation={true}
                         modules={[Navigation]}
                         className="mySwiper "
-                        
                       >
                         <SwiperSlide className="flex justify-center  ">
                           <img className="rounded-full" src={Avatar2} alt="" />
@@ -102,13 +112,16 @@ const EditProfile = () => {
                         <SwiperSlide className="flex justify-center">
                           <img className="rounded-full" src={Avatar3} alt="" />
                         </SwiperSlide>
-                      </Swiper>    
+                      </Swiper>
                       <div className="absolute group z-50 w-52 hover:bg-opacity-25  h-48 rounded-full flex justify-center gap-2 items-center">
-                      <button className="bg-[#12926C] text-white text-bold rounded-md w-16 h-8 invisible group-hover:visible ">حذف</button>
-                        <button className="bg-[#12926C] text-white text-bold rounded-md w-16 h-8 invisible group-hover:visible ">انتخاب</button>
-                        </div>
+                        <button className="bg-[#12926C] text-white text-bold rounded-md w-16 h-8 invisible group-hover:visible ">
+                          حذف
+                        </button>
+                        <button className="bg-[#12926C] text-white text-bold rounded-md w-16 h-8 invisible group-hover:visible ">
+                          انتخاب
+                        </button>
+                      </div>
                     </div>
-                    
 
                     <div class="w-full py-9 bg-gray-50 rounded-2xl border border-gray-300 gap-3 grid border-dashed">
                       <div class="grid gap-1">
@@ -176,68 +189,46 @@ const EditProfile = () => {
           </div>
 
           <div>
-            <Formik>
+            <Formik
+              onSubmit={editHandler}
+              initialValues={{
+                FName: "",
+                LName: "",
+                UserAbout: "",
+                LinkdinProfile: "",
+                TelegramLink: "",
+                ReceiveMessageEvent: true,
+                HomeAdderess: "",
+                NationalCode: "",
+                Gender: true,
+                BirthDay: Date,
+                Latitude: "",
+                rememberMe: true,
+              }}
+            >
               <Form>
                 <div className="grid gap-2 lg:gap-8 mt-8 px-4">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
                     <Field
+                      name="FName"
                       type="text"
                       placeholder="نام"
                       className=" h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                     ></Field>
-        <div>
-          <Formik
-            onSubmit={editHandler}
-            initialValues={{
-              LName: "",
-              FName: "",
-              UserAbout: "",
-              LinkdinProfile: "",
-              TelegramLink: "",
-              ReceiveMessageEvent: true,
-              HomeAdderess: "",
-              NationalCode: "",
-              Gender: true,
-              BirthDay: Date,
-              Latitude: "",
-              rememberMe: true,
-            }}
-          >
-            <Form>
-              <div className="grid gap-2 lg:gap-8 mt-8 px-4">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-                  <Field
-                    name="LName"
-                    type="text"
-                    placeholder="نام"
-                    className=" h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
-                  ></Field>
 
                     <Field
+                      name="LName"
                       type="text"
                       placeholder="نام خانوادگی"
                       className=" h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                     ></Field>
                   </div>
-                  <Field
-                    name="FName"
-                    type="text"
-                    placeholder="نام خانوادگی"
-                    className=" h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
-                  ></Field>
-                </div>
 
                   <Field
                     type="text"
                     placeholder="شماره همراه"
                     className="w-full h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                   ></Field>
-                <Field
-                  name="UserAbout"
-                  type="text"
-                  placeholder="شماره همراه"
-                  className="w-full h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
-                ></Field>
 
                   <div className="grid grid-cols-2 gap-2">
                     <Field
@@ -245,13 +236,6 @@ const EditProfile = () => {
                       placeholder="شماره ملی"
                       className=" h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                     ></Field>
-                <div className="grid grid-cols-2 gap-2">
-                  <Field
-                    name="LinkdinProfile"
-                    type="text"
-                    placeholder="شماره ملی"
-                    className=" h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
-                  ></Field>
 
                     <Field
                       type="text"
@@ -259,25 +243,13 @@ const EditProfile = () => {
                       className=" h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                     ></Field>
                   </div>
-                  <Field
-                    name="TelegramLink"
-                    type="text"
-                    placeholder="تاریخ تولد"
-                    className=" h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
-                  ></Field>
-                </div>
 
                   <Field
+                    name="UserAbout"
                     type="text"
                     placeholder="درباره من"
                     className="w-full h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                   ></Field>
-                <Field
-                  name="ReceiveMessageEvent"
-                  type="text"
-                  placeholder="درباره من"
-                  className="w-full h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
-                ></Field>
 
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
                     <Field
@@ -285,13 +257,6 @@ const EditProfile = () => {
                       placeholder="ایمیل"
                       className="w-[100%] lg:w-[153%] h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                     ></Field>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-                  <Field
-                    name="HomeAdderess"
-                    type="text"
-                    placeholder="ایمیل"
-                    className="w-[100%] lg:w-[153%] h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
-                  ></Field>
 
                     <select
                       name="sexual"
@@ -302,55 +267,28 @@ const EditProfile = () => {
                       <option value="زن">زن</option>
                     </select>
                   </div>
-                  <select
-                    name="NationalCode"
-                    id="pet-select"
-                    className="w-[100%] lg:w-[46%] h-[3.8rem] mr-0 lg:mr-52 px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
-                  >
-                    <option value="مرد">مرد</option>
-                    <option value="زن">زن</option>
-                  </select>
-                </div>
 
                   <Field
                     type="text"
                     placeholder="درباره من"
                     className="w-full h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                   ></Field>
-                <Field
-                  name="Gender"
-                  type="text"
-                  placeholder="درباره من"
-                  className="w-full h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
-                ></Field>
 
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
                     <Field
+                      name="TelegramLink"
                       type="text"
                       placeholder="لینک تلگرام"
                       className=" h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                     ></Field>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-                  <Field
-                    name="BirthDay"
-                    type="text"
-                    placeholder="لینک تلگرام"
-                    className=" h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
-                  ></Field>
 
                     <Field
+                      name="LinkdinProfile"
                       type="text"
                       placeholder="پروفایل لینکدین"
                       className=" h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                     ></Field>
                   </div>
-                  <Field
-                    name="Latitude"
-                    type="text"
-                    placeholder="پروفایل لینکدین"
-                    className=" h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
-                  ></Field>
-                </div>
 
                   <div className=" text-nowrap text-center border-[2px] rounded-lg">
                     <button className="w-full h-[3.8rem] text-lg text-[#fff] bg-[#158B68] dark:bg-gray-800">
@@ -364,20 +302,6 @@ const EditProfile = () => {
         </div>
       </div>
     </>
-                <div className=" text-nowrap text-center border-[2px] rounded-lg">
-                  <button
-                    type="submit"
-                    className="w-full h-[3.8rem] text-lg text-[#fff] bg-[#158B68] dark:bg-gray-800"
-                  >
-                    ثبت تغییرات
-                  </button>
-                </div>
-              </div>
-            </Form>
-          </Formik>
-        </div>
-      </div>
-    </div>
   );
 };
 

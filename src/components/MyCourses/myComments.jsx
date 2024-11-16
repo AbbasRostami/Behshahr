@@ -41,9 +41,9 @@ const MyComments = () => {
             <h1>جزئیات</h1>
           </div>
           <br></br>
-          {data?.map((item) => {
+          {data?.slice(1, 7).map((item) => {
             return (
-              <div className="mt-2 text-nowrap text-[#22445D] dark:text-white text-[12px] bg-[#ffff] dark:bg-gray-700 w-[41rem] lg:w-[64rem] h-[3.5rem] rounded-2xl flex justify-end rtl gap-14 lg:gap-28 shadow-sm border-[1px] py-[1.2rem] px-[6rem] mx-[1rem]">
+              <div className="mt-2 text-nowrap text-[#22445D] dark:text-white text-[12px] bg-[#ffff] dark:bg-gray-700 w-[41rem] lg:w-[64rem] h-[3.5rem] rounded-2xl flex justify-evenly rtl gap-14 lg:gap-28 shadow-sm border-[1px] py-[1.2rem] px-[1rem] mx-[1rem]">
                 <h2> {item?.author} </h2>
                 <h2> {item?.title} </h2>
                 <h2> {item?.acceptReplysCount} </h2>
