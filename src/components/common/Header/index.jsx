@@ -7,6 +7,8 @@ import { Button, Menu, MenuItem } from "@mui/material";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 const Header = () => {
+  const [show, setShaow] = useState(false);
+
   return (
     <div class="bg-gradient-to-r from-green-300 to-gray-50 dark:dark:bg-slate-900 dark:bg-none">
       <div class="flex justify-between items-center px-20 h-20">
@@ -17,12 +19,18 @@ const Header = () => {
             </button>
           </Link>
 
-          <div class="">
+          <button onClick={() => setShaow(!show)}>
             <img src={seachIcon} alt="" />
-          </div>
+          </button>
 
           <DarkLightToggle />
         </div>
+
+        {show && (
+          <>
+            <div className="w-[45%] h-28 flex justify-center items-center overflow-x-hidden bg-white rounded-lg shadow-sm"></div>
+          </>
+        )}
 
         <div class="flex justify-between items-center dark:text-white hidden lg:flex">
           <Link to="/about">
