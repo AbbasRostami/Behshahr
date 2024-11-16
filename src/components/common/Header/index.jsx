@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import logoLanding from "./../../../assets/svg/Landing/logosite.svg";
-import seachIcon from "./../../../assets/svg/Landing/searchicon.svg";
-import { Link } from "react-router-dom";
-import DarkLightToggle from "../DarkMode";
+import { Form, Link } from "react-router-dom";
 import { Button, Menu, MenuItem } from "@mui/material";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { Field, Formik } from "formik";
+
+import DarkLightToggle from "../DarkMode";
+
+import logoLanding from "./../../../assets/svg/Landing/logosite.svg";
+import seachIcon from "./../../../assets/svg/Landing/searchicon.svg";
+import courses1 from "./../../../assets/courses1.svg";
 
 const Header = () => {
-  const [show, setShaow] = useState(false);
+  const [show, setShow] = useState(false);
 
   return (
     <div class="bg-gradient-to-r from-green-300 to-gray-50 dark:dark:bg-slate-900 dark:bg-none">
@@ -19,7 +23,7 @@ const Header = () => {
             </button>
           </Link>
 
-          <button onClick={() => setShaow(!show)}>
+          <button onClick={() => setShow(!show)}>
             <img src={seachIcon} alt="" />
           </button>
 
@@ -28,7 +32,82 @@ const Header = () => {
 
         {show && (
           <>
-            <div className="w-[45%] h-28 mx-auto mt-64 flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-white rounded-lg shadow-sm"></div>
+            <div className="w-[45%] h-52 mx-auto mt-64 flex flex-col gap-3 justify-center items-center fixed inset-0 z-50 outline-none focus:outline-none bg-white rounded-lg shadow-sm">
+              <button
+                type="button"
+                class="text-gray-400 bg-transparent absolute left-0 bottom-44 hover:bg-gray-200 hover:text-gray-900 rounded-lg w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                onClick={() => setShow(false)}
+              >
+                <svg
+                  class="w-4 h-4"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 14"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                  />
+                </svg>
+              </button>
+
+              <Formik>
+                <Form>
+                  <div className="relative">
+                    <Field
+                      type="text"
+                      className="rtl p-4 dark:text-white border-green-800 w-[20rem] lg:w-[40rem] text-sm text-gray-900 border dark:bg-gray-800 rounded-lg shadow-xl bg-gray-100"
+                      placeholder="جستجو..."
+                      required
+                      onChange={(e) => handleSearch(e.target.value)}
+                    />
+
+                    <svg
+                      className="absolute bottom-[6px] left-[12px]"
+                      fill="#158B68"
+                      height="40px"
+                      width="40px"
+                      version="1.1"
+                      id="Capa_1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                      viewBox="-53.72 -53.72 595.84 595.84"
+                      xml:space="preserve"
+                    >
+                      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                      <g
+                        id="SVGRepo_tracerCarrier"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></g>
+                      <g id="SVGRepo_iconCarrier">
+                        {" "}
+                        <g>
+                          {" "}
+                          <g>
+                            {" "}
+                            <path d="M0,203.25c0,112.1,91.2,203.2,203.2,203.2c51.6,0,98.8-19.4,134.7-51.2l129.5,129.5c2.4,2.4,5.5,3.6,8.7,3.6 s6.3-1.2,8.7-3.6c4.8-4.8,4.8-12.5,0-17.3l-129.6-129.5c31.8-35.9,51.2-83,51.2-134.7c0-112.1-91.2-203.2-203.2-203.2 S0,91.15,0,203.25z M381.9,203.25c0,98.5-80.2,178.7-178.7,178.7s-178.7-80.2-178.7-178.7s80.2-178.7,178.7-178.7 S381.9,104.65,381.9,203.25z"></path>{" "}
+                          </g>{" "}
+                        </g>{" "}
+                      </g>
+                    </svg>
+                  </div>
+                </Form>
+              </Formik>
+
+              <div className="w-[95%] h-20 mx-auto flex flex-nowrap gap-8 rtl justify-center items-center bg-slate-200 rounded-lg shadow-sm">
+                <img className="h-12" src={courses1} alt="" />
+                <p>نام دوره: آموزش tailwind css</p>
+                <p>قیمت: 150.000</p>
+                <p>سطح دوره: پیشرفته</p>
+              </div>
+            </div>
+
+            <div className="opacity-40 fixed inset-0 z-40 bg-black"></div>
           </>
         )}
 
