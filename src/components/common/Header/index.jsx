@@ -28,7 +28,7 @@ const Header = () => {
 
         {show && (
           <>
-            <div className="w-[45%] h-28 flex justify-center items-center overflow-x-hidden bg-white rounded-lg shadow-sm"></div>
+            <div className="w-[45%] h-28 mx-auto mt-64 flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-white rounded-lg shadow-sm"></div>
           </>
         )}
 
