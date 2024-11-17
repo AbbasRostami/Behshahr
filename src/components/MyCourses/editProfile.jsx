@@ -16,35 +16,70 @@ import "swiper/css/navigation";
 // import required modules
 import { Navigation } from "swiper/modules";
 import { editApi, getApi } from "../../core/api/api";
+import moment from "jalali-moment";
 
 const EditProfile = () => {
-  const editHandler = async (values) => {
-    console.log(values);
-    const path = `/SharePanel/UpdateProfileIn`;
-    const body = values;
-
-    const response = await editApi({ path, body });
-    console.log(response);
-    // if (response?.data?.success) {
-    //   localStorage.setItem("token", response?.data?.token);
-    //   toast.success("شما با موفقیت وارد شدید.");
-    //   navigate("/");
-    // } else {
-    //   alert("koooft");
-    // }
-  };
 
   const [data, setData] = useState([]);
   const getEditProf = async () => {
     const path = `/SharePanel/GetProfileInfo`;
     const response = await getApi({ path });
-    console.log(response.data);
-    setData(response);
+    // console.log("User Info: ",response.data);
+    setData(response.data);
   };
   useEffect(() => {
     getEditProf();
   }, []);
+
+
+  console.log(data);
+  
+
+  
+  // const initialValues = {
+  //       FName: data.fName, //
+  //       LName: "", //
+  //       UserAbout: "", //
+  //       LinkdinProfile: "", //
+  //       TelegramLink: "", //
+  //       HomeAdderess: "", //
+  //       phoneNumber: "", //
+  //       NationalCode: "", //
+  //       email: "", //
+  //       Gender: true, //
+  //       BirthDay: Date, //
+  //       // Latitude: null,
+  //       // Longitude: null,
+  //       // ReceiveMessageEvent: false,
+  //     };
+  
+  const editHandler = async (values) => {
+
+    const formData = new FormData();
+    formData.append('FName', values.FName);
+    formData.append('LName', values.LName);
+    formData.append('UserAbout', values.UserAbout);
+    formData.append('LinkdinProfile', values.LinkdinProfile);
+    formData.append('TelegramLink', values.TelegramLink);
+    formData.append('HomeAdderess', values.HomeAdderess);
+    formData.append('phoneNumber', values.phoneNumber);
+    formData.append('NationalCode', values.NationalCode);
+    formData.append('email', values.email);
+    formData.append('Gender', values.Gender);
+    formData.append('BirthDay', values.BirthDay);
+
+    formData.forEach((value, key) => {
+      console.log(key , ":" , value);
+    });
+
+    const path = `/SharePanel/UpdateProfileInfo`;
+    const body = formData;
+    console.log(body);
+    const response = await editApi({ path, body });
+    console.log(response);
+  };
   const [show, setShow] = useState(false);
+
   return (
     <>
       <div className="w-[45rem] lg:w-[70rem] my-[1rem] flex justify-center gap-3 border-[1px] bg-white dark:bg-gray-800 rounded-2xl shadow-2xl">
@@ -191,19 +226,22 @@ const EditProfile = () => {
           <div>
             <Formik
               onSubmit={editHandler}
+              enableReinitialize={true}
               initialValues={{
-                FName: "",
-                LName: "",
-                UserAbout: "",
-                LinkdinProfile: "",
-                TelegramLink: "",
-                ReceiveMessageEvent: true,
-                HomeAdderess: "",
-                NationalCode: "",
-                Gender: true,
-                BirthDay: Date,
-                Latitude: "",
-                rememberMe: true,
+                FName: data.fName || "", //
+                LName: data.lName || "", //
+                UserAbout: data.userAbout || "", //
+                LinkdinProfile: data.linkdinProfile || "", //
+                TelegramLink: data.telegramLink || "", //
+                HomeAdderess: data.homeAdderess || "", //
+                phoneNumber: data.phoneNumber || "", //
+                NationalCode: data.nationalCode || "", //
+                email: data.email || "", //
+                Gender: true, //
+                BirthDay: data.birthDay || "", //
+                // Latitude: null,
+                // Longitude: null,
+                // ReceiveMessageEvent: false,
               }}
             >
               <Form>
@@ -213,34 +251,37 @@ const EditProfile = () => {
                       name="FName"
                       type="text"
                       placeholder="نام"
-                      className=" h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                      className=" h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                     ></Field>
 
                     <Field
                       name="LName"
                       type="text"
                       placeholder="نام خانوادگی"
-                      className=" h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                      className=" h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                     ></Field>
                   </div>
 
                   <Field
+                    name="phoneNumber"
                     type="text"
                     placeholder="شماره همراه"
-                    className="w-full h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                    className="w-full h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                   ></Field>
 
                   <div className="grid grid-cols-2 gap-2">
                     <Field
+                      name="NationalCode"
                       type="text"
                       placeholder="شماره ملی"
-                      className=" h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                      className=" h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                     ></Field>
 
                     <Field
-                      type="text"
+                      name="BirthDay"
+                      type="date"
                       placeholder="تاریخ تولد"
-                      className=" h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                      className=" h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                     ></Field>
                   </div>
 
@@ -248,20 +289,21 @@ const EditProfile = () => {
                     name="UserAbout"
                     type="text"
                     placeholder="درباره من"
-                    className="w-full h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                    className="w-full h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                   ></Field>
 
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
                     <Field
+                      name="email"
                       type="text"
                       placeholder="ایمیل"
-                      className="w-[100%] lg:w-[153%] h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                      className="w-[100%] lg:w-[153%] h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                     ></Field>
 
                     <select
-                      name="sexual"
+                      name="Gender"
                       id="pet-select"
-                      className="w-[100%] lg:w-[46%] h-[3.8rem] mr-0 lg:mr-52 px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                      className="w-[100%] lg:w-[46%] h-[3.8rem] mr-0 lg:mr-52 px-8 text-slate-900 border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                     >
                       <option value="مرد">مرد</option>
                       <option value="زن">زن</option>
@@ -269,9 +311,10 @@ const EditProfile = () => {
                   </div>
 
                   <Field
+                    name="HomeAdderess"
                     type="text"
-                    placeholder="درباره من"
-                    className="w-full h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                    placeholder="آدرس محل زندگی"
+                    className="w-full h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                   ></Field>
 
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
@@ -279,19 +322,19 @@ const EditProfile = () => {
                       name="TelegramLink"
                       type="text"
                       placeholder="لینک تلگرام"
-                      className=" h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                      className=" h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                     ></Field>
 
                     <Field
                       name="LinkdinProfile"
                       type="text"
                       placeholder="پروفایل لینکدین"
-                      className=" h-[3.8rem] px-8 text-[#158B68] border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                      className=" h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                     ></Field>
                   </div>
 
                   <div className=" text-nowrap text-center border-[2px] rounded-lg">
-                    <button className="w-full h-[3.8rem] text-lg text-[#fff] bg-[#158B68] dark:bg-gray-800">
+                    <button type="submit" className="w-full h-[3.8rem] text-lg text-[#fff] bg-[#158B68] dark:bg-gray-800">
                       ثبت تغییرات
                     </button>
                   </div>
