@@ -1,22 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Form, Field, Formik } from "formik";
-
-import profileHeader from "../../assets/profileHeader.svg";
 import Avatar1 from "../../assets/svg/Avatar1.png";
 import Avatar2 from "../../assets/svg/Avatar2.png";
 import Avatar3 from "../../assets/svg/Avatar3.png";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
-
-// import required modules
 import { Navigation } from "swiper/modules";
 import { editApi, getApi } from "../../core/api/api";
-import moment from "jalali-moment";
 
 const EditProfile = () => {
 
@@ -33,43 +26,44 @@ const EditProfile = () => {
 
 
   console.log(data);
-  
 
-  
-  // const initialValues = {
-  //       FName: data.fName, //
-  //       LName: "", //
-  //       UserAbout: "", //
-  //       LinkdinProfile: "", //
-  //       TelegramLink: "", //
-  //       HomeAdderess: "", //
-  //       phoneNumber: "", //
-  //       NationalCode: "", //
-  //       email: "", //
-  //       Gender: true, //
-  //       BirthDay: Date, //
-  //       // Latitude: null,
-  //       // Longitude: null,
-  //       // ReceiveMessageEvent: false,
-  //     };
-  
+
+
+  const initialValues = {
+    FName: data.fName || "", //
+    LName: data.lName || "", //
+    UserAbout: data.userAbout || "", //
+    LinkdinProfile: data.linkdinProfile || "", //
+    TelegramLink: data.telegramLink || "", //
+    HomeAdderess: data.homeAdderess || "", //
+    phoneNumber: data.phoneNumber || "", //
+    NationalCode: data.nationalCode || "", //
+    email: data.email || "", //
+    Gender: true, //
+    BirthDay: data.birthDay || "", //
+    // Latitude: null,
+    // Longitude: null,
+    // ReceiveMessageEvent: false,
+  };
+
   const editHandler = async (values) => {
 
     const formData = new FormData();
-    formData.append('FName', values.FName);
-    formData.append('LName', values.LName);
+
+    formData.append('FName', values.FName);
+    formData.append('LName', values.LName);
     formData.append('UserAbout', values.UserAbout);
-    formData.append('LinkdinProfile', values.LinkdinProfile);
+    formData.append('LinkdinProfile', values.LinkdinProfile);
     formData.append('TelegramLink', values.TelegramLink);
-    formData.append('HomeAdderess', values.HomeAdderess);
+    formData.append('HomeAdderess', values.HomeAdderess);
     formData.append('phoneNumber', values.phoneNumber);
-    formData.append('NationalCode', values.NationalCode);
+    formData.append('NationalCode', values.NationalCode);
     formData.append('email', values.email);
-    formData.append('Gender', values.Gender);
+    formData.append('Gender', values.Gender);
     formData.append('BirthDay', values.BirthDay);
 
     formData.forEach((value, key) => {
-      console.log(key , ":" , value);
+      console.log(key, ":", value);
     });
 
     const path = `/SharePanel/UpdateProfileInfo`;
@@ -78,6 +72,7 @@ const EditProfile = () => {
     const response = await editApi({ path, body });
     console.log(response);
   };
+
   const [show, setShow] = useState(false);
 
   return (
@@ -90,8 +85,8 @@ const EditProfile = () => {
             </div>
 
             <img
-              className="h-[7.5rem] mx-[4.5rem] my-[1.5rem]"
-              src={profileHeader}
+              className="h-[7.5rem] mx-[4.5rem] my-[1.5rem] rounded-full"
+              src={data?.currentPictureAddress}
               alt=""
             />
 
@@ -107,10 +102,10 @@ const EditProfile = () => {
             <>
               <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
                 <div className="w-[30rem] my-6 mx-auto max-w-3xl">
-                  <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                  <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white dark:bg-gray-800 outline-none focus:outline-none">
                     <button
                       type="button"
-                      class="text-gray-400 bg-transparent ml-2 mt-3 hover:bg-gray-200 hover:text-gray-900 rounded-lg w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                      class="text-gray-400  bg-transparent ml-2 mt-3 hover:bg-gray-200 hover:text-gray-900 rounded-lg w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                       onClick={() => setShow(false)}
                     >
                       <svg
@@ -158,7 +153,7 @@ const EditProfile = () => {
                       </div>
                     </div>
 
-                    <div class="w-full py-9 bg-gray-50 rounded-2xl border border-gray-300 gap-3 grid border-dashed">
+                    <div class="w-full dark:bg-gray-700 py-9 bg-[#f1f1f1]  gap-3 grid border-green-300">
                       <div class="grid gap-1">
                         <svg
                           class="mx-auto"
@@ -187,7 +182,7 @@ const EditProfile = () => {
                         <div class="flex items-center justify-center">
                           <label>
                             <input type="file" hidden />
-                            <div class="flex w-28 h-9 px-2 flex-col bg-green-800 rounded-full shadow text-white text-xs font-semibold leading-4 items-center justify-center cursor-pointer focus:outline-none">
+                            <div class="flex dark:bg-gray-900 w-28 h-9 px-2 flex-col bg-green-800 rounded-full shadow text-white text-xs font-semibold leading-4 items-center justify-center cursor-pointer focus:outline-none">
                               انتخاب عکس
                             </div>
                           </label>
@@ -195,9 +190,9 @@ const EditProfile = () => {
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-center p-6 border-t border-solid border-blueGray-200 rounded-b">
+                    <div className="flex items-center justify-center p-6 border-blueGray-200 rounded-b">
                       <button
-                        className="bg-emerald-500 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 ... text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 "
+                        className="bg-emerald-500 dark:bg-gray-900 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 ... text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 "
                         type="button"
                         onClick={() => setShow(false)}
                       >
@@ -227,22 +222,7 @@ const EditProfile = () => {
             <Formik
               onSubmit={editHandler}
               enableReinitialize={true}
-              initialValues={{
-                FName: data.fName || "", //
-                LName: data.lName || "", //
-                UserAbout: data.userAbout || "", //
-                LinkdinProfile: data.linkdinProfile || "", //
-                TelegramLink: data.telegramLink || "", //
-                HomeAdderess: data.homeAdderess || "", //
-                phoneNumber: data.phoneNumber || "", //
-                NationalCode: data.nationalCode || "", //
-                email: data.email || "", //
-                Gender: true, //
-                BirthDay: data.birthDay || "", //
-                // Latitude: null,
-                // Longitude: null,
-                // ReceiveMessageEvent: false,
-              }}
+              initialValues={initialValues}
             >
               <Form>
                 <div className="grid gap-2 lg:gap-8 mt-8 px-4">

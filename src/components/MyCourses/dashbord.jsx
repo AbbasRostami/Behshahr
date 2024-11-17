@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import percentageDashbord from "../../assets/percentageDashbord.svg";
 import redDashbordImg from "../../assets/redDashbordImg.svg";
-import profileHeader from "../../assets/profileHeader.svg";
 import textDashbord from "../../assets/textDashbord.svg";
-import dashbordImg from "../../assets/dashbordImg.svg";
+import introImg from "../../assets/introImg.svg";
 import { getApi, postApi } from "../../core/api/api";
 import { Link } from "react-router-dom";
 
@@ -29,7 +28,7 @@ const Dashbord = () => {
   const getEditProf = async () => {
     const path = `/SharePanel/GetProfileInfo`;
     const response = await getApi({ path });
-    console.log("User Info: ",response.data);
+    console.log("User Info: ", response.data);
     setData(response.data);
   };
   useEffect(() => {
@@ -40,15 +39,21 @@ const Dashbord = () => {
     <>
       <div className="w-[70rem] h-[43rem] my-[1rem] border-[1px] bg-[#ffff] dark:bg-gray-800 rounded-2xl shadow-2xl grid grid-col-3 grid-rows-3 gap-4">
         <div className="flex justify-between w-[41rem] h-[10rem] rounded-lg shadow-xl border-[1px] bg-[#FBF6F6] dark:bg-gray-700 mr-[1.5rem] mt-[1rem]">
-          <img className="h-[9rem] mt-2 mr-4" src={dashbordImg} alt="" />
+          <img
+            className="h-[9rem] mt-2 mr-2 rounded-md"
+            src={introImg}
+            alt=""
+          />
 
-          <h1 className="text-nowrap text-2xl text-[#22445D] dark:text-white mt-8 ml-16">
-            سلام نام کاربری خوش آمدید
-          </h1>
+          <div>
+            <h1 className="text-nowrap text-2xl text-[#22445D] dark:text-white mt-8 ml-16">
+              سلام {data?.fName}, خوش آمدید
+            </h1>
 
-          <h2 className="text-wrap text-sm text-[#22445D] dark:text-white mt-20 -mr-96">
-            دوره شما نود جی اس توسط 11 کاربر جدید در این هفته تکمیل شد
-          </h2>
+            <h2 className="text-wrap text-sm text-[#22445D] ml-5 dark:text-white mt-5 w-full">
+              دوره شما نود جی اس توسط 11 کاربر جدید در این هفته تکمیل شد
+            </h2>
+          </div>
         </div>
 
         <div className="w-[31rem] h-[30rem] rounded-lg shadow-xl border-[1px] bg-[#FBF6F6] dark:bg-gray-700 col-span-2 row-start-2 mr-[1.5rem] mt-[-2.8rem]">
@@ -58,13 +63,13 @@ const Dashbord = () => {
             </h1>
 
             <img
-              className="h-[8rem] mr-[11rem] mt-[1.8rem]"
-              src={profileHeader}
+              className="h-[8rem] mr-[11rem] mt-[1.8rem] rounded-2xl"
+              src={data?.currentPictureAddress}
               alt=""
             />
 
             <h2 className="text-lg text-[#22445D] dark:text-white mt-[1rem]">
-            {data?.fName} {data?.lName}
+              {data?.fName} {data?.lName}
             </h2>
 
             <h3 className="text-[17px] text-[#22445D] dark:text-white  mt-[1rem]">

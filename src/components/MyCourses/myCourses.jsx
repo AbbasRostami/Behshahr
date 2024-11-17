@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { HeaderDashbord } from "../common/HeaderDashbord/HeaderDashbord";
-import { MainDashbord } from "../common/MainDashbord/mainDashbord";
-
-import nest from "../../assets/nest.svg";
 import { getApi } from "../../core/api/api";
-import { useParams } from "react-router-dom";
 import moment from "jalali-moment";
 
 const MyCourses = () => {
