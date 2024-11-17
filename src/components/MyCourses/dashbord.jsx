@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import percentageDashbord from "../../assets/percentageDashbord.svg";
 import redDashbordImg from "../../assets/redDashbordImg.svg";
 import profileHeader from "../../assets/profileHeader.svg";
 import textDashbord from "../../assets/textDashbord.svg";
 import dashbordImg from "../../assets/dashbordImg.svg";
-import { postApi } from "../../core/api/api";
+import { getApi, postApi } from "../../core/api/api";
 import { Link } from "react-router-dom";
 
 const Dashbord = () => {
@@ -24,6 +24,17 @@ const Dashbord = () => {
     //   toast.error(response?.data?.message);
     // }
   };
+
+  const [data, setData] = useState([]);
+  const getEditProf = async () => {
+    const path = `/SharePanel/GetProfileInfo`;
+    const response = await getApi({ path });
+    console.log("User Info: ",response.data);
+    setData(response.data);
+  };
+  useEffect(() => {
+    getEditProf();
+  }, []);
 
   return (
     <>
@@ -53,19 +64,19 @@ const Dashbord = () => {
             />
 
             <h2 className="text-lg text-[#22445D] dark:text-white mt-[1rem]">
-              نام و نام خانوادگی
+            {data?.fName} {data?.lName}
             </h2>
 
-            <h3 className="text-[17px] text-[#22445D] dark:text-white ml-[7.8rem] mt-[1rem]">
-              تلفن همراه: 09111234567
+            <h3 className="text-[17px] text-[#22445D] dark:text-white  mt-[1rem]">
+              تلفن همراه: {data?.phoneNumber}
             </h3>
 
-            <h4 className="text-[17px] text-[#22445D] dark:text-white ml-[5.5rem] mt-[1rem]">
-              ایمیل: example@gmail.com
+            <h4 className="text-[17px] text-[#22445D] dark:text-white  mt-[1rem]">
+              ایمیل: {data?.email}
             </h4>
 
-            <h5 className="text-[17px] text-[#22445D] dark:text-white ml-[10rem] mt-[1rem]">
-              کدملی: 0123456789
+            <h5 className="text-[17px] text-[#22445D] dark:text-white mt-[1rem]">
+              کدملی: {data?.nationalCode}
             </h5>
             <Link to="/editProfile">
               <button
