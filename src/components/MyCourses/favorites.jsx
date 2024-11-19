@@ -7,10 +7,10 @@ import moment from "jalali-moment";
 const Favorites = () => {
   const [data, setData] = useState([]);
   const getFavorites = async () => {
-    const path = `/SharePanel/GetMyFavoriteNews`;
+    const path = `/SharePanel/GetMyFavoriteCourses`;
     const response = await getApi({ path });
-    console.log(response?.data?.myFavoriteNews);
-    setData(response?.data?.myFavoriteNews);
+    console.log(response?.data?.favoriteCourseDto);
+    setData(response?.data?.favoriteCourseDto);
   };
   useEffect(() => {
     getFavorites();
@@ -39,11 +39,11 @@ const Favorites = () => {
           <br></br>
           {data?.map((data) => {
             return (
-              <div className="mt-2 text-nowrap text-[#22445D] text-[12px] bg-[#ffff] w-[43rem] xl:w-[64rem] h-[3.5rem] rounded-2xl flex justify-start rtl gap-14 xl:gap-28  shadow-sm border-[1px] py-[1.2rem] px-[1.4rem] mx-[1rem]">
-                <h2> {data?.title}</h2>
-                <h2>{data?.title}</h2>
-                <h2> {data?.title} </h2>
-                {moment(data?.updateDate).locale("fa").format("YYYY/MM/DD")}
+              <div className="mt-2 text-nowrap text-[#22445D] text-[12px] bg-[#ffff] w-[43rem] xl:w-[64rem] h-[3.5rem] rounded-2xl flex justify-evenly rtl gap-14 xl:gap-28  shadow-sm border-[1px] py-[1.2rem] ">
+                <h2> {data?.courseTitle}</h2>
+                <h2>{data?.typeName}</h2>
+                <h2> {data?.levelName} </h2>
+                {moment(data?.lastUpdate).locale("fa").format("YYYY/MM/DD")}
                 <button className="bg-[#ffff] w-[2rem] h-[2rem] my-[-0.5rem] mx-[-0.2rem]">
                   <img
                     className="text-[#22445D] h-[1.5rem] absolute top-[19.7rem] left-[6rem] xl:left-[9rem]"
