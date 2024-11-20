@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Form, Field, Formik } from "formik";
 
 // Import Swiper React components
@@ -7,23 +7,13 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { deleteApi, editApi, getApi, postApi } from "../../core/api/api";
+import { ProfileContext } from "../../context/ProfileProvider";
 
 const EditProfile = () => {
-  const [data, setData] = useState([]);
   const [show, setShow] = useState(false);
   const [image, setImage] = useState("");
 
-  const getEditProf = async () => {
-    const path = `/SharePanel/GetProfileInfo`;
-    const response = await getApi({ path });
-    // console.log("User Info: ",response.data);
-    setData(response.data);
-  };
-  useEffect(() => {
-    getEditProf();
-  }, []);
-
-  // console.log(data?.userImage[0]?.puctureAddress);
+  const {data, getEditProf} = useContext(ProfileContext);
 
   
 
@@ -70,12 +60,17 @@ const EditProfile = () => {
     console.log(response);
   };
 
-
+  const uploadImage = (e) => {
+    setImage(e.target.files[0]);
+    console.log("Image: ", e.target.files);
+  };
 
   const PostImage = async () => {
     const formData = new FormData();
     formData.append("formFile", image);
 
+    console.log("asd",formData);
+    
     const path = `/SharePanel/AddProfileImage`;
     const body = formData;
     const response = await postApi({ path, body });

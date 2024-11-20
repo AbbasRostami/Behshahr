@@ -1,39 +1,15 @@
-import React, { useEffect, useState } from "react";
-import percentageDashbord from "../../assets/percentageDashbord.svg";
+import React, { useContext, useEffect, useState } from "react";
 import redDashbordImg from "../../assets/redDashbordImg.svg";
 import textDashbord from "../../assets/textDashbord.svg";
 import introImg from "../../assets/introImg.svg";
-import { getApi, postApi } from "../../core/api/api";
+import { getApi } from "../../core/api/api";
 import { Link } from "react-router-dom";
+import { ProfileContext } from "../../context/ProfileProvider";
 
 const Dashbord = () => {
-  const Addprof = async () => {
-    const path = "/SharePanel/AddProfileImage";
 
-    const body = { name: "img" };
-
-    const response = await postApi({ path, body });
-    console.log(response);
-
-    // if (response?.data?.success) {
-    //   localStorage.setItem("token", response?.data?.token);
-    //   toast.success("شما با موفقیت وارد شدید.");
-    //   navigate("/");
-    // } else {
-    //   toast.error(response?.data?.message);
-    // }
-  };
-
-  const [data, setData] = useState([]);
-  const getEditProf = async () => {
-    const path = `/SharePanel/GetProfileInfo`;
-    const response = await getApi({ path });
-    console.log("User Info: ", response.data);
-    setData(response.data);
-  };
-  useEffect(() => {
-    getEditProf();
-  }, []);
+  const {data} = useContext(ProfileContext)
+  console.log("ContextData Dashboard: ", data);
 
   return (
     <>
@@ -138,15 +114,50 @@ const Dashbord = () => {
         </div>
 
         <div className="w-[10rem] h-[10rem] rounded-lg shadow-xl border-[1px] bg-[#FBF6F6] dark:bg-gray-700 row-start-3 mr-[33.5rem] mt-[2.5rem]">
-          <h1 className="text-sm text-nowrap text-center text-[#22445D] dark:text-white mt-[8rem]">
+
+        <div class="relative size-40 flex flex-col">
+            <svg
+              class="rotate-[135deg] size-full"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="18"
+                cy="18"
+                r="16"
+                fill="none"
+                class="stroke-current text-green-200 dark:text-neutral-700"
+                stroke-width="1"
+                stroke-dasharray="75 100"
+                stroke-linecap="round"
+              ></circle>
+
+              <circle
+                cx="18"
+                cy="18"
+                r="16"
+                fill="none"
+                class="stroke-current text-[#12926c] dark:text-green-500"
+                stroke-width="2"
+                stroke-dasharray="56.25 100"
+                stroke-linecap="round"
+              ></circle>
+            </svg>
+
+            <div class="absolute top-[4.5rem] right-4 transform -translate-x-1/2 -translate-y-1/2 text-center">
+              <span class="text-4xl font-bold text-[#22445d] dark:text-green-500">
+                {data?.profileCompletionPercentage}%
+              </span>
+              
+            </div>
+            <h1 className="text-sm  mb-1 text-nowrap text-center text-[#22445D] dark:text-white">
             درصد تکمیل پروفایل
           </h1>
+          </div>
+          
+          
 
-          <img
-            className="h-[7rem] mt-[-9rem] mr-[1.5rem]"
-            src={percentageDashbord}
-            alt=""
-          />
+         
         </div>
 
         <div className="w-[25rem] h-[10rem] rounded-lg shadow-xl border-[1px] bg-[#FBF6F6] dark:bg-gray-700 row-start-3 mr-[-0.5rem] mt-[2.5rem]">
