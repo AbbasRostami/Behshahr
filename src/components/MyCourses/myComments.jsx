@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { HeaderDashbord } from "../common/HeaderDashbord/HeaderDashbord";
-import { MainDashbord } from "../common/MainDashbord/mainDashbord";
-
-import nest from "../../assets/nest.svg";
 import dot from "../../assets/dot.svg";
 import { getApi } from "../../core/api/api";
 import moment from "jalali-moment";
@@ -10,7 +6,7 @@ import moment from "jalali-moment";
 const MyComments = () => {
   const [data, setData] = useState([]);
   const getMyComments = async () => {
-    const path = `/Course/GetCourseCommnets/11a8d66a-2031-ef11-b6c8-c6ea51a59bbe?Count=5`;
+    const path = `/Course/GetCourseCommnets/9b8c711d-1b27-ef11-b6c7-cc06a3e06235?Count=5`;
     const response = await getApi({ path });
     console.log(response.data);
     setData(response.data);
@@ -44,15 +40,15 @@ const MyComments = () => {
           {data?.slice(1, 7).map((item) => {
             return (
               <div className="mt-2 text-nowrap text-[#22445D] dark:text-white text-[12px] bg-[#ffff] dark:bg-gray-700 w-[41rem] lg:w-[64rem] h-[3.5rem] rounded-2xl flex justify-evenly rtl gap-14 lg:gap-28 shadow-sm border-[1px] py-[1.2rem] px-[1rem] mx-[1rem]">
-                <h2> {item?.author} </h2>
-                <h2> {item?.title} </h2>
+                <h2 className="truncate ..."> {item?.author} </h2>
+                <h2 className="truncate ... w-10"> {item?.title} </h2>
                 <h2> {item?.acceptReplysCount} </h2>
-                {moment(item?.insertDate).locale("fa").format("YYYY/MM/DD")}
-                <h2> {item?.accept} </h2>
+                <p>{moment(item?.insertDate).locale("fa").format("YYYY/MM/DD")}</p>
+                <h2> {item?.accept ? "تایید شده" : "تایید نشده"} </h2>
 
                 <div>
                   <img
-                    className="text-[#22445D] w-[1.5rem] h-[1.5rem] absolute top-[19.7rem] left-[6rem] lg:left-[7rem]"
+                    className="text-[#22445D] w-[1.5rem] h-[1.5rem]"
                     src={dot}
                     alt=""
                   />
