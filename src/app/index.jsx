@@ -8,10 +8,10 @@ import { Landing } from "../screens/Landing";
 import "./App.css";
 
 function App() {
-  // vv
   return (
     <>
-      <RouterProvider router={Routes} />
+      <ProgressBar />
+      <RouterProvider router={RoutesApp} />
     </>
   );
 }
