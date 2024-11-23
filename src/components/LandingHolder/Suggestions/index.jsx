@@ -19,18 +19,18 @@ const Suggestions = () => {
           <Form>
             <div className=" flex flex-col items-end h-full">
               <Field
-                className="bg-[#FBF6F6] rtl placeholder-TextGray h-[50px] w-[500px] border-solid border-2 border-TextGreen rounded-md "
-                placeholder="  نام و نام خانواگی"
+                className="bg-[#FBF6F6] rtl placeholder-TextGray h-[50px] w-[500px] px-4 border-solid border-2 border-TextGreen rounded-md "
+                placeholder="نام و نام خانواگی"
               ></Field>
 
               <Field
-                className="bg-[#FBF6F6] rtl placeholder-TextGray my-3 h-[50px] w-[500px] border-solid border-2 border-TextGreen rounded-md"
-                placeholder="  ایمیل آدرس"
+                className="bg-[#FBF6F6] rtl placeholder-TextGray my-3 h-[50px] w-[500px] px-4 border-solid border-2 border-TextGreen rounded-md"
+                placeholder="ایمیل آدرس"
               ></Field>
 
               <Field
-                className="bg-[#FBF6F6] rtl placeholder-TextGray items-start h-[110px] w-[500px] border-solid border-2 border-TextGreen rounded-md "
-                placeholder="  متن..."
+                className="bg-[#FBF6F6] rtl placeholder-TextGray items-start h-[110px] w-[500px] px-4 border-solid border-2 border-TextGreen rounded-md "
+                placeholder="متن..."
                 rows="2"
                 as="textarea"
               ></Field>

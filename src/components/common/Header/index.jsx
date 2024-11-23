@@ -32,10 +32,10 @@ const Header = () => {
 
         {show && (
           <>
-            <div className="w-[45%] h-52 mx-auto mt-64 flex flex-col gap-3 justify-center items-center fixed inset-0 z-50 outline-none focus:outline-none bg-white rounded-lg shadow-sm">
+            <div className="w-[45%] h-52 mx-auto mt-64 flex flex-col gap-3 justify-center items-center fixed inset-0 z-50 outline-none focus:outline-none bg-white dark:bg-slate-800 rounded-lg shadow-sm">
               <button
                 type="button"
-                class="text-gray-400 bg-transparent absolute left-0 bottom-44 hover:bg-gray-200 hover:text-gray-900 rounded-lg w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                class="text-gray-400 bg-transparent absolute left-0 bottom-44 hover:bg-gray-200 hover:text-gray-900 rounded-lg w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-700 dark:hover:text-white"
                 onClick={() => setShow(false)}
               >
                 <svg
@@ -60,7 +60,7 @@ const Header = () => {
                   <div className="relative">
                     <Field
                       type="text"
-                      className="rtl p-4 dark:text-white border-green-800 w-[20rem] lg:w-[40rem] text-sm text-gray-900 border dark:bg-gray-800 rounded-lg shadow-xl bg-gray-100"
+                      className="rtl p-4 dark:text-white border-green-800 w-[20rem] lg:w-[40rem] text-sm text-gray-900 border dark:bg-gray-700 rounded-lg shadow-xl bg-gray-100"
                       placeholder="جستجو..."
                       required
                       onChange={(e) => handleSearch(e.target.value)}
@@ -99,7 +99,7 @@ const Header = () => {
                 </Form>
               </Formik>
 
-              <div className="w-[95%] h-20 mx-auto flex flex-nowrap gap-8 rtl justify-center items-center bg-slate-200 rounded-lg shadow-sm">
+              <div className="w-[95%] h-20 mx-auto flex flex-nowrap gap-8 rtl justify-center items-center bg-slate-200 dark:bg-slate-700 dark:text-white rounded-lg shadow-sm">
                 <img className="h-12" src={courses1} alt="" />
                 <p>نام دوره: آموزش tailwind css</p>
                 <p>قیمت: 150.000</p>
@@ -192,10 +192,25 @@ export function ResponsiveMenu() {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem onClick={handleClose}>صفحه اصلی</MenuItem>
-        <MenuItem onClick={handleClose}>دوره ها</MenuItem>
-        <MenuItem onClick={handleClose}>مقالات</MenuItem>
-        <MenuItem onClick={handleClose}>درباره ما</MenuItem>
+        <Link to="/">
+          {" "}
+          <MenuItem onClick={handleClose}>صفحه اصلی</MenuItem>{" "}
+        </Link>
+
+        <Link to="/courses-list">
+          {" "}
+          <MenuItem onClick={handleClose}>دوره ها</MenuItem>{" "}
+        </Link>
+
+        <Link to="/news-articles">
+          {" "}
+          <MenuItem onClick={handleClose}>مقالات</MenuItem>{" "}
+        </Link>
+
+        <Link to="/about">
+          {" "}
+          <MenuItem onClick={handleClose}>درباره ما</MenuItem>{" "}
+        </Link>
       </Menu>
     </>
   );
