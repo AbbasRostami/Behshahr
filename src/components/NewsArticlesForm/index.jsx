@@ -15,7 +15,6 @@ const NewsArticlesForm = () => {
 
   const [cards, setCards] = useState([]);
 
-
   const getArticlesTop = async () => {
     const path = `/News`;
     const response = await getApi({ path });
@@ -27,7 +26,6 @@ const NewsArticlesForm = () => {
   useEffect(() => {
     getArticlesTop();
   }, []);
-
 
   const ArticlesSort = async () => {
     const response3 = await getArticlesListSort();
@@ -59,14 +57,14 @@ const NewsArticlesForm = () => {
           لیست اخبار و مقالات
         </h1>
         <div className=" flex items-center mt-8 mx-8 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,1,_0.5,_0.2)] py-5 rounded-3xl dark:bg-gray-800 ">
-          <select className=" dark:bg-gray-800 dark:text-white rtl text-center border-solid border-2 rounded-full h-[4rem] absolute right-[13rem] lg:right-[22rem] bg-[#ffffff] w-[10rem] lg:w-[15rem]   text-[17px] text-[#158B68] ">
+          <select className=" dark:bg-gray-800 dark:text-white rtl text-center border-solid border-2 rounded-full h-[3rem] lg:h-[4rem] absolute right-[14rem] lg:right-[22rem] bg-[#ffffff] w-[10rem] lg:w-[15rem]   text-[17px] text-[#158B68] ">
             <option value="">دسته بندی</option>
             <option value="">حضوری</option>
             <option value="">ان لاین</option>
 
             <img className="h-[8px]  ml-5" src={arrowUnder} alt="" />
           </select>
-          <select className=" dark:bg-gray-800 dark:text-white rtl text-center border-solid border-2 rounded-full h-[4rem] absolute right-[2rem] lg:right-[6rem] bg-[#ffffff] w-[10rem] lg:w-[15rem]   text-[17px] text-[#158B68] ">
+          <select className=" dark:bg-gray-800 dark:text-white rtl text-center border-solid border-2 rounded-full h-[3rem] lg:h-[4rem] absolute right-[3rem] lg:right-[6rem] bg-[#ffffff] w-[10rem] lg:w-[15rem]   text-[17px] text-[#158B68] ">
             <option value="">مرتب سازی</option>
             <option value="">متوسط</option>
             <option value="">یشرفته</option>
@@ -78,7 +76,7 @@ const NewsArticlesForm = () => {
               <div className="relative">
                 <Field
                   type="text"
-                  className="rtl p-4 dark:border-white dark:text-white border-green-800 w-80 text-sm text-gray-900 border dark:bg-gray-800  rounded-2xl bg-gray-50"
+                  className="rtl p-4 dark:border-white dark:text-white border-green-800 w-72 lg:w-80 text-sm text-gray-900 border dark:bg-gray-800  rounded-2xl bg-gray-50"
                   placeholder="جستجو..."
                   required
                   onChange={(e) => handleSearch(e.target.value)}
@@ -118,13 +116,11 @@ const NewsArticlesForm = () => {
           </Formik>
         </div>
 
-        <div className="items-center h-[82rem] container mx-auto dark:bg-gray-800 bg-[#FBF6F6] mt-10 rounded-2xl shadow-[9px_9px_12px_3px_rgba(0,1,_0.5,_0.2)] ">
-          <div className="grid grid-cols-2 gap-14 lg:gap-0 lg:grid-cols-3 ml-16">
+        <div className="items-center h-[207rem] lg:h-[162rem] m-4 lg:m-6 dark:bg-gray-800 bg-[#FBF6F6] mt-10 rounded-2xl shadow-[9px_9px_12px_3px_rgba(0,1,_0.5,_0.2)] ">
+          <div className="grid grid-cols-2 gap-4 lg:gap-0 lg:grid-cols-3 ml-6 lg:ml-16">
             {cards.map((item, index) => {
-              return (<ArticlesCard item={item} />)
+              return <ArticlesCard item={item} />;
             })}
-
-
           </div>
         </div>
 
