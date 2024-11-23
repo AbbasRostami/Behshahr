@@ -6,11 +6,12 @@ import { RouterProvider } from "react-router-dom";
 
 import { Landing } from "../screens/Landing";
 import "./App.css";
+import RoutesApp from "../routes";
 
 function App() {
   return (
     <>
-      <ProgressBar />
+      {/* <ProgressBar /> */}
       <RouterProvider router={RoutesApp} />
     </>
   );
