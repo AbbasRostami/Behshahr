@@ -143,7 +143,6 @@ const MainDashbord = ({ showMenu, setShowMenu }) => {
           alt=""
         />
 
-
         <h2 className="text-[#158B68] dark:text-white mt-2 mr-2 text-lg lg:text-lg top-[41.5rem] right-[9rem]">
           خروج
         </h2>
