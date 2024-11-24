@@ -7,6 +7,7 @@ import { Navigation } from "swiper/modules";
 import { deleteApi, editApi, postApi } from "../../core/api/api";
 import { ProfileContext } from "../../context/ProfileProvider";
 import { toast } from "react-toastify";
+import moment from "jalali-moment";
 
 const EditProfile = () => {
   const [show, setShow] = useState(false);
@@ -25,12 +26,13 @@ const EditProfile = () => {
     NationalCode: data.nationalCode || "", //
     email: data.email || "", //
     Gender: true, //
-    BirthDay: data.birthDay || "", //
+    BirthDay: data?.birthDay?.slice(0,10) || "", //
     // Latitude: null,
     // Longitude: null,
     // ReceiveMessageEvent: false,
   };
 
+  
   const editProfileInfo = async (values) => {
     const formData = new FormData();
 
