@@ -53,30 +53,30 @@ const NewsArticlesForm = () => {
     <>
       <div>
         {/* <LoginForm /> */}
-        <h1 className="text-[#22445D] bg-white-500 mt-10 items-center text-3xl text-center py-8 dark:text-white">
+        <h1 className="text-[#22445D] mt-10 text-3xl text-center py-8 dark:text-white">
           لیست اخبار و مقالات
         </h1>
-        <div className=" flex items-center mt-8 mx-8 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,1,_0.5,_0.2)] py-5 rounded-3xl dark:bg-gray-800 ">
-          <select className=" dark:bg-gray-800 dark:text-white rtl text-center border-solid border-2 rounded-full h-[3rem] lg:h-[4rem] absolute right-[14rem] lg:right-[22rem] bg-[#ffffff] w-[10rem] lg:w-[15rem]   text-[17px] text-[#158B68] ">
+        <div className=" flex justify-between gap-6 rtl items-center mx-8 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,1,_0.5,_0.2)] py-5 rounded-3xl dark:bg-gray-800 ">
+          <select className=" dark:bg-gray-800 dark:text-white text-center border-solid border-2 rounded-2xl h-[3.5rem] lg:h-[3.7rem] mr-9 bg-[#ffffff] w-[10rem] lg:w-[15rem] text-[17px] text-[#158B68] ">
             <option value="">دسته بندی</option>
             <option value="">حضوری</option>
-            <option value="">ان لاین</option>
+            <option value="">آنلاین</option>
 
             <img className="h-[8px]  ml-5" src={arrowUnder} alt="" />
           </select>
-          <select className=" dark:bg-gray-800 dark:text-white rtl text-center border-solid border-2 rounded-full h-[3rem] lg:h-[4rem] absolute right-[3rem] lg:right-[6rem] bg-[#ffffff] w-[10rem] lg:w-[15rem]   text-[17px] text-[#158B68] ">
+          <select className=" dark:bg-gray-800 dark:text-white text-center border-solid border-2 rounded-2xl h-[3.5rem] lg:h-[3.7rem] lg:ml-[520px] bg-[#ffffff] w-[10rem] lg:w-[15rem] text-[17px] text-[#158B68] ">
             <option value="">مرتب سازی</option>
             <option value="">متوسط</option>
-            <option value="">یشرفته</option>
+            <option value="">پیشرفته</option>
 
-            <img className="h-[8px]   ml-5" src={arrowUnder} alt="" />
+            <img className="h-[8px] ml-5" src={arrowUnder} alt="" />
           </select>
           <Formik>
             <Form className="ml-10">
               <div className="relative">
                 <Field
                   type="text"
-                  className="rtl p-4 dark:border-white dark:text-white border-green-800 w-72 lg:w-80 text-sm text-gray-900 border dark:bg-gray-800  rounded-2xl bg-gray-50"
+                  className="rtl p-4 dark:border-white dark:text-white border-green-800 w-72 lg:w-80 text-sm text-gray-900 border dark:bg-gray-800 rounded-2xl bg-gray-50"
                   placeholder="جستجو..."
                   required
                   onChange={(e) => handleSearch(e.target.value)}
