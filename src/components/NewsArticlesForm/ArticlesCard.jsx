@@ -10,6 +10,8 @@ import { getArticlesListTop } from "../../core/api/getArticlesList";
 import { useEffect, useState } from "react";
 import { getApi } from "../../core/api/api";
 import { SliderArticles } from "../common/SliderArticles";
+import moment from "moment";
+import { Link } from "react-router-dom";
 
 const ArticlesCard = ({ item }) => {
   return (
@@ -20,7 +22,7 @@ const ArticlesCard = ({ item }) => {
             <div>
               <img
                 className="rounded-t-lg p-0 object-cover h-[20rem] w-full"
-                src={item?.currentImageAddressTumb}
+                src={item?.addUserProfileImage}
                 alt=""
               />
             </div>
@@ -48,11 +50,12 @@ const ArticlesCard = ({ item }) => {
               </div>
 
               <button class=" text-TextGreen dark:bg-gray-700 dark:text-white bg-[#BFF4E4] rounded-lg cursor-pointer p-2 w-auto-[120px]">
-                وضعیت دوره
+                تاریخ دوره:{" "}
+                {moment(item?.insertDate).locale("fa").format("YYYY/MM/DD")}
               </button>
             </div>
 
-            <p className="rtl hover:text-green-500 mt-3 text-[#1A1E21] text-xl rtl text-right px-5 dark:text-white">
+            <p className="rtl hover:text-green-500 mt-3 truncate ... text-[#1A1E21] text-xl rtl text-right px-5 dark:text-white">
               {item?.title}
             </p>
 
@@ -70,7 +73,6 @@ const ArticlesCard = ({ item }) => {
                   {" "}
                   {item?.addUserFullName}
                 </p>
-                <img src={profileimg} alt="" />
               </div>
             </div>
 
@@ -80,9 +82,11 @@ const ArticlesCard = ({ item }) => {
 
             <img className="mt-5 px-5" src={line} alt="" />
 
-            <p className="text-base  text-[#807A7A] mt-3 cursor-pointer hover:text-green-500 dark:text-white">
-              مشاهده جزئیات
-            </p>
+            <Link to="/articles-details">
+              <p className="text-base  text-[#807A7A] mt-3 cursor-pointer hover:text-green-500 dark:text-white">
+                مشاهده جزئیات
+              </p>
+            </Link>
           </div>
         </div>
       </div>
