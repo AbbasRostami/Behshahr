@@ -19,25 +19,25 @@ const Suggestions = () => {
           <Form>
             <div className=" flex flex-col items-end h-full">
               <Field
-                className="bg-[#FBF6F6] rtl placeholder-TextGray h-[50px] w-[500px] px-4 border-solid border-2 border-TextGreen rounded-md "
+                className="bg-[#FBF6F6] dark:bg-slate-700 rtl placeholder-TextGray dark:placeholder-TextWhite h-[50px] w-[500px] px-4 border-solid border-2 border-TextGreen rounded-md "
                 placeholder="نام و نام خانواگی"
               ></Field>
 
               <Field
-                className="bg-[#FBF6F6] rtl placeholder-TextGray my-3 h-[50px] w-[500px] px-4 border-solid border-2 border-TextGreen rounded-md"
+                className="bg-[#FBF6F6] dark:bg-slate-700 rtl placeholder-TextGray dark:placeholder-TextWhite my-3 h-[50px] w-[500px] px-4 border-solid border-2 border-TextGreen rounded-md"
                 placeholder="ایمیل آدرس"
               ></Field>
 
               <Field
-                className="bg-[#FBF6F6] rtl placeholder-TextGray items-start h-[110px] w-[500px] px-4 border-solid border-2 border-TextGreen rounded-md "
+                className="bg-[#FBF6F6] dark:bg-slate-700 rtl placeholder-TextGray dark:placeholder-TextWhite items-start h-[110px] w-[500px] px-4 border-solid border-2 border-TextGreen rounded-md "
                 placeholder="متن..."
                 rows="2"
                 as="textarea"
               ></Field>
 
               <button
-                class="w-[100px] h-[40px]
-                                    //  text-[#21394B] bg-BgGreen dark:bg-gray-800 dark:text-white rounded-lg mt-8"
+                class="w-[500px] h-[45px]
+                      //  text-[#21394B] bg-BgGreen dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700 rounded-lg mt-8"
               >
                 ارسال
               </button>

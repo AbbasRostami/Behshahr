@@ -23,7 +23,7 @@ const TopDescription = () => {
           </h3>
           <Link to="/courses-list">
             {" "}
-            <button class="w-[130px] lg:w-[150px] h-[45px] lg:h-[60px] mx-[8rem] lg:mx-[2rem] text-white bg-[#12926C] dark:bg-gray-800 rounded-full my-[2rem] lg:mt-[50px]">
+            <button class="w-[130px] lg:w-[150px] h-[45px] lg:h-[60px] mx-[8rem] lg:mx-[2rem] text-white bg-[#12926C] dark:bg-gray-800 dark:hover:bg-gray-700 rounded-full my-[2rem] lg:mt-[50px]">
               {" "}
               شروع یادگیری
             </button>
