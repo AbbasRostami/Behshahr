@@ -23,9 +23,7 @@ import key from "./../../assets/svg/ArticlesDetails/key.svg";
 import { HeaderUserlogin } from "../common/HeaderUserLogin";
 
 const ArticlesDetailsForm = () => {
-
   const [cards, setCards] = useState([]);
-
 
   const getArticlesTop = async () => {
     const path = `/News`;
@@ -39,13 +37,12 @@ const ArticlesDetailsForm = () => {
     getArticlesTop();
   }, []);
 
-
   return (
     <>
       <div>
-        <div className="flex flex-col px-16 py-[70px]  ">
+        <div className="flex flex-col px-16 py-[70px]">
           <div className="min-h-screen bg-[#FBF6F6] rounded-[40px] flex justify-center p-6 dark:bg-gray-800 ">
-            <div className="flex flex-col w-full min-w-[100px]  gap-6">
+            <div className="flex flex-col w-full min-w-[100px] gap-6">
               <div className=" flex-col rounded-[30px] flex items-center justify-center p-6">
                 <img
                   src={articlePic}
@@ -53,11 +50,11 @@ const ArticlesDetailsForm = () => {
                   className="min-w-[300px] object-cover rounded-[30px]"
                 />
               </div>
-              <div className="bg-white dark:bg-gray-800 p-6   flex-col rounded-[30px] shadow-md px-9">
+              <div className="bg-white dark:bg-gray-800 p-6 flex-col rounded-[30px] shadow-md px-9">
                 <h1 className="text-[30px] w-full flex flex-col items-center dark:text-white">
                   عنوان مقاله
                 </h1>
-                <div className="text-gray-700 dark:text-white pt-8 text-justify">
+                <div className="text-gray-700 dark:text-white pt-8 rtl text-justify">
                   لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط
                   توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود. تکه
                   های لاتین متن نشان می دهد که یک پروژه در حال توسعه است. لورم
@@ -103,8 +100,8 @@ const ArticlesDetailsForm = () => {
                     </span>
                   </div>
 
-                  <div className="flex justify-center items-center gap-11 mx-8 py-8">
-                    <div className="flex justify-center items-center gap-3">
+                  <div className="flex justify-center items-center gap-11 py-8">
+                    <div className="flex justify-center items-center gap-2 lg:gap-3">
                       <span className="text-[13px] text-[#807A7A] ">1124</span>
                       <img src={eye} />
                     </div>
@@ -133,16 +130,16 @@ const ArticlesDetailsForm = () => {
                 </div>
               </div>
 
-              <div className="flex  rounded-[15px] px-28 py-3">
+              <div className="flex rounded-[15px] px-28 py-3">
                 <button
                   type="button"
-                  className="w-1/2 py-4 text-center rounded-l-lg  border-[#A4F6DE] dark:bg-gray-800 dark:text-white dark:hover:bg-[#A4F6DE]  bg-[#FFFFFF] border-2 "
+                  className="w-1/2 py-4 text-center rounded-l-lg  border-[#A4F6DE] dark:bg-gray-800 dark:text-white dark:hover:bg-[#A4F6DE] bg-[#FFFFFF] border-2 "
                 >
                   ثبت نظر
                 </button>
                 <button
                   type="button"
-                  className="w-1/2 py-4  border-[#A4F6DE] dark:bg-gray-800 dark:text-white dark:border-2 dark:hover:bg-[#A4F6DE]  bg-[#A4F6DE] rounded-r-lg text-center "
+                  className="w-1/2 py-4  border-[#A4F6DE] dark:bg-gray-800 dark:text-white dark:border-2 dark:hover:bg-[#A4F6DE] bg-[#A4F6DE] rounded-r-lg text-center "
                 >
                   نظرات کاربران
                 </button>
@@ -180,7 +177,7 @@ const ArticlesDetailsForm = () => {
                 <p className="text-[14px] text-[#158B68]">پاسخ دادن</p>
               </div>
 
-              <div className="bg-white p-6 px-7 w-[37rem] lg:w-[80rem] flex-col rounded-[30px] shadow-md  rtl dark:bg-gray-700 dark:text-white">
+              <div className="bg-white p-6 px-7 w-[37rem] lg:w-[80rem] flex-col rounded-[30px] shadow-md rtl dark:bg-gray-700 dark:text-white">
                 <div className="flex justify-between items-center">
                   <div className="flex items-center gap-4 ">
                     <div>
@@ -212,7 +209,7 @@ const ArticlesDetailsForm = () => {
                 <p className="text-[14px] text-[#158B68]">پاسخ دادن</p>
               </div>
 
-              <div className="bg-white p-6 px-7 flex-col rounded-[30px] shadow-md dark:bg-gray-700 rtl  dark:text-white">
+              <div className="bg-white p-6 px-7 flex-col rounded-[30px] shadow-md dark:bg-gray-700 rtl dark:text-white">
                 <div className="flex justify-between items-center">
                   <div className="flex items-center gap-4 ">
                     <div>
@@ -619,7 +616,7 @@ const ArticlesDetailsForm = () => {
           </SwiperSlide>
         </Swiper>
 
-        <button className="bg-[#12926C] rounded-full h-[3.5rem] w-[14rem] absolute my-[-2rem] mx-[50rem] dark:bg-gray-800 dark:text-white">
+        <button className="bg-[#12926C] rounded-full h-[3.5rem] w-[14rem] my-[-2rem] ml-[330px] lg:ml-[660px] dark:bg-gray-800 hover:dark:bg-gray-700 dark:text-white">
           مشاهده مقالات بیشتر
         </button>
       </div>
