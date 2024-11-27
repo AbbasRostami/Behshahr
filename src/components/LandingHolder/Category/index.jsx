@@ -14,7 +14,7 @@ const Category = () => {
       </div>
 
       <div className="mt-16 mx-2 lg:mx-16 flex justify-around items-center gap-1 h-[230px] ">
-        <div className="p-8 lg:p-10 text-center rounded-md transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-500 ... dark:bg-gray-800 dark:text-white flex flex-col items-center bg-[#FBF6F6]  text-TextGreen">
+        <div className="p-8 lg:p-10 text-center rounded-md transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:shadow-xl duration-500 ... dark:bg-gray-800 dark:text-white flex flex-col items-center bg-[#FBF6F6]  text-TextGreen">
           <img src={categorty1} alt="" />
           <p class="mt-4 rtl w-[4rem] text-black dark:text-white lg:w-full">
             دوره های طراحی UI/UX
@@ -24,7 +24,7 @@ const Category = () => {
           </p>
         </div>
 
-        <div className="p-8 lg:p-10 text-center rounded-md transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-500 ... dark:bg-gray-800 dark:text-white flex flex-col items-center bg-[#FBF6F6] text-TextGreen">
+        <div className="p-8 lg:p-10 text-center rounded-md transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:shadow-xl duration-500 ... dark:bg-gray-800 dark:text-white flex flex-col items-center bg-[#FBF6F6] text-TextGreen">
           <img src={categorty2} alt="" />
           <p class="mt-4 rtl w-[4rem] text-black dark:text-white lg:w-full">
             دوره های طراحی UI/UX
@@ -34,7 +34,7 @@ const Category = () => {
           </p>
         </div>
 
-        <div className="p-8 lg:p-10 text-center rounded-md transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-500 ... dark:bg-gray-800 dark:text-white flex flex-col items-center bg-[#FBF6F6] text-TextGreen">
+        <div className="p-8 lg:p-10 text-center rounded-md transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:shadow-xl duration-500 ... dark:bg-gray-800 dark:text-white flex flex-col items-center bg-[#FBF6F6] text-TextGreen">
           <img src={categorty3} alt="" />
           <p class="mt-4 rtl w-[4rem] text-black dark:text-white lg:w-full">
             دوره های طراحی UI/UX
@@ -44,7 +44,7 @@ const Category = () => {
           </p>
         </div>
 
-        <div className="p-8 lg:p-10 text-center rounded-md transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-500 ... dark:bg-gray-800 dark:text-white flex flex-col items-center bg-[#FBF6F6] text-TextGreen">
+        <div className="p-8 lg:p-10 text-center rounded-md transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:shadow-xl duration-500 ... dark:bg-gray-800 dark:text-white flex flex-col items-center bg-[#FBF6F6] text-TextGreen">
           <img src={categorty4} alt="" />
           <p class="mt-4 rtl w-[4rem] text-black dark:text-white lg:w-full">
             دوره های طراحی UI/UX
@@ -54,7 +54,7 @@ const Category = () => {
           </p>
         </div>
 
-        <div className="p-8 lg:p-10 text-center rounded-md transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-500 ... dark:bg-gray-800 dark:text-white flex flex-col items-center bg-[#FBF6F6] text-TextGreen">
+        <div className="p-8 lg:p-10 text-center rounded-md transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:shadow-xl duration-500 ... dark:bg-gray-800 dark:text-white flex flex-col items-center bg-[#FBF6F6] text-TextGreen">
           <img src={categorty5} alt="" />
           <p class="mt-4 rtl w-[4rem] text-black dark:text-white lg:w-full">
             دوره های طراحی UI/UX
