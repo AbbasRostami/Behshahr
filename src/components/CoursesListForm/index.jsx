@@ -298,7 +298,7 @@ const CoursesListForm = () => {
         </div>
 
         <div
-          className={`flex flex-col items-center w-[21rem] h-[55rem] right-[-300px] lg:right-0 dark:bg-gray-800 bg-[#FBF6F6] ml-2 rounded-3xl fixed top-0 lg:mt-20 transition-all duration-700 invisible opacity-0 lg:opacity-100 lg:visible lg:relative
+          className={`flex flex-col items-center w-[21rem] h-full lg:h-[55rem] overflow-y-scroll lg:overflow-y-visible right-[-300px] lg:right-0 dark:bg-gray-800 bg-[#FBF6F6] ml-2 rounded-3xl fixed top-20 lg:top-0 lg:mt-20 transition-all duration-700 invisible opacity-0 lg:opacity-100 lg:visible lg:relative
             ${show ? "!opacity-100 !visible !right-0" : ""}`}
         >
           <button
