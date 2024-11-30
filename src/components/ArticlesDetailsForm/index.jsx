@@ -1,29 +1,31 @@
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { HeaderUserlogin } from "../common/HeaderUserLogin";
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
+import { Field, Form, Formik } from "formik";
 import { Header } from "./../common/Header";
 import { Footer } from "./../common/Footer";
+import "swiper/css/navigation";
+import "swiper/css";
 
-import newsPic from "./../../assets/svg/ArticlesDetails/newPic.svg";
-import like from "./../../assets/svg/ArticlesDetails/like.svg";
-import disLike from "./../../assets/svg/ArticlesDetails/disLike.svg";
-import favorite from "./../../assets/svg/ArticlesDetails/favorite.svg";
-import starRating from "./../../assets/svg/ArticlesDetails/starRating.svg";
 import profileimg from "./../../assets/svg/ArticlesDetails/profileimg.svg";
-import line from "./../../assets/svg/ArticlesDetails/line.svg";
+import starRating from "./../../assets/svg/ArticlesDetails/starRating.svg";
 import articlePic from "./../../assets/svg/ArticlesDetails/articlePic.svg";
+import favorite from "./../../assets/svg/ArticlesDetails/favorite.svg";
+import calendar from "./../../assets/svg/ArticlesDetails/calendar.svg";
+import disLike from "./../../assets/svg/ArticlesDetails/disLike.svg";
+import newsPic from "./../../assets/svg/ArticlesDetails/newPic.svg";
 import author from "./../../assets/svg/ArticlesDetails/author.svg";
 import dummy from "./../../assets/svg/ArticlesDetails/dummy.svg";
+import like from "./../../assets/svg/ArticlesDetails/like.svg";
+import line from "./../../assets/svg/ArticlesDetails/line.svg";
 import undo from "./../../assets/svg/ArticlesDetails/undo.svg";
 import eye from "./../../assets/svg/ArticlesDetails/eye.svg";
-import calendar from "./../../assets/svg/ArticlesDetails/calendar.svg";
 import key from "./../../assets/svg/ArticlesDetails/key.svg";
-import { HeaderUserlogin } from "../common/HeaderUserLogin";
 
 const ArticlesDetailsForm = () => {
   const [cards, setCards] = useState([]);
+  const [show, setShow] = useState(1);
 
   const getArticlesTop = async () => {
     const path = `/News`;
@@ -132,147 +134,190 @@ const ArticlesDetailsForm = () => {
 
               <div className="flex rounded-[15px] px-28 py-3">
                 <button
+                  onClick={() => setShow(1)}
                   type="button"
-                  className="w-1/2 py-4 text-center rounded-l-lg  border-[#A4F6DE] dark:bg-gray-800 dark:text-white dark:hover:bg-[#A4F6DE] bg-[#FFFFFF] border-2 "
+                  className="w-1/2 py-4 text-center rounded-l-lg  border-[#A4F6DE] dark:bg-gray-800 dark:hover:bg-slate-950 dark:text-white bg-[#FFFFFF] border-2 "
                 >
                   ثبت نظر
                 </button>
                 <button
+                  onClick={() => setShow(2)}
                   type="button"
-                  className="w-1/2 py-4  border-[#A4F6DE] dark:bg-gray-800 dark:text-white dark:border-2 dark:hover:bg-[#A4F6DE] bg-[#A4F6DE] rounded-r-lg text-center "
+                  className="w-1/2 py-4  border-[#A4F6DE] dark:bg-gray-800 dark:text-white dark:border-2 dark:hover:bg-slate-950 bg-[#A4F6DE] rounded-r-lg text-center "
                 >
                   نظرات کاربران
                 </button>
               </div>
 
-              <div className="bg-white p-6 px-7 items-end flex-col rounded-[30px] shadow-md rtl dark:bg-gray-700 dark:text-white ">
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-4 ">
-                    <div>
-                      <img src={dummy} />
+              {show === 2 ? (
+                <>
+                  <div className="bg-white p-6 px-7 items-end flex-col rounded-[30px] shadow-md rtl dark:bg-gray-700 dark:text-white ">
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center gap-4 ">
+                        <div>
+                          <img src={dummy} />
+                        </div>
+                        <h2 className="text-[15px]">عنوان : عنوان نظر</h2>
+                      </div>
+                      <div className="flex flex-row gap-4">
+                        <img src={like} />
+                        <img src={disLike} />
+                        <img src={undo} />
+                      </div>
                     </div>
-                    <h2 className="text-[15px]">عنوان : عنوان نظر</h2>
-                  </div>
-                  <div className="flex flex-row gap-4">
-                    <img src={like} />
-                    <img src={disLike} />
-                    <img src={undo} />
-                  </div>
-                </div>
-                <div className="text-gray-700 pt-5 min-h-[110px] dark:text-white">
-                  لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط
-                  توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود. تکه
-                  های لاتین متن نشان می دهد که یک پروژه در حال توسعه است. لورم
-                  ایپسوم فقط برای توسعه دهندگان وب نیست. طراحان گرافیک نیز از آن
-                  با نرم افزارهای مختلفی مانند فوتوشاپ استفاده می کنند. لورم
-                  ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه
-                  دهندگان وب،
-                </div>
-                <div className="flex flex-row items-center text-xs text-gray-500 dark:text-white rtl">
-                  <span>1403/03/16 | 09:45 </span>
-                </div>
-              </div>
-              <div className="p-4 pt-0 flex flex-row-reverse gap-6">
-                <p className="text-[14px] text-[#158B68]">پاسخ ها</p>
-                <p className="text-[14px] text-[#158B68]">پاسخ دادن</p>
-              </div>
-
-              <div className="bg-white p-6 px-7 w-[37rem] lg:w-[80rem] flex-col rounded-[30px] shadow-md rtl dark:bg-gray-700 dark:text-white">
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-4 ">
-                    <div>
-                      <img src={dummy} />
+                    <div className="text-gray-700 pt-5 min-h-[110px] dark:text-white">
+                      لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که
+                      توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می
+                      شود. تکه های لاتین متن نشان می دهد که یک پروژه در حال
+                      توسعه است. لورم ایپسوم فقط برای توسعه دهندگان وب نیست.
+                      طراحان گرافیک نیز از آن با نرم افزارهای مختلفی مانند
+                      فوتوشاپ استفاده می کنند. لورم ایپسوم محبوب ترین و
+                      استانداردترین متن ساختگی است که توسط توسعه دهندگان وب،
                     </div>
-                    <h2 className="text-[15px]">تایتل : عنوان نظر</h2>
-                  </div>
-                  <div className="flex flex-row gap-4">
-                    <img src={like} />
-                    <img src={disLike} />
-                    <img src={undo} />
-                  </div>
-                </div>
-                <div className="text-gray-700 pt-5 min-h-[110px] dark:text-white">
-                  لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط
-                  توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود. تکه
-                  های لاتین متن نشان می دهد که یک پروژه در حال توسعه است. لورم
-                  ایپسوم فقط برای توسعه دهندگان وب نیست. طراحان گرافیک نیز از آن
-                  با نرم افزارهای مختلفی مانند فوتوشاپ استفاده می کنند. لورم
-                  ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه
-                  دهندگان وب،
-                </div>
-                <div className="flex flex-row items-center text-xs text-gray-500 dark:text-white rtl">
-                  <span>1403/03/16 | 09:45 </span>
-                </div>
-              </div>
-              <div className="p-4 pt-0 flex flex-row-reverse gap-6">
-                <p className="text-[14px] text-[#158B68]">پاسخ ها</p>
-                <p className="text-[14px] text-[#158B68]">پاسخ دادن</p>
-              </div>
-
-              <div className="bg-white p-6 px-7 flex-col rounded-[30px] shadow-md dark:bg-gray-700 rtl dark:text-white">
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-4 ">
-                    <div>
-                      <img src={dummy} />
+                    <div className="flex flex-row items-center text-xs text-gray-500 dark:text-white rtl">
+                      <span>1403/03/16 | 09:45 </span>
                     </div>
-                    <h2 className="text-[15px]">عنوان : عنوان نظر</h2>
                   </div>
-                  <div className="flex flex-row gap-4">
-                    <img src={like} />
-                    <img src={disLike} />
-                    <img src={undo} />
+                  <div className="p-4 pt-0 flex flex-row-reverse gap-6">
+                    <p className="text-[14px] text-[#158B68]">پاسخ ها</p>
+                    <p className="text-[14px] text-[#158B68]">پاسخ دادن</p>
                   </div>
-                </div>
-                <div className="text-gray-700 pt-5 min-h-[110px] dark:text-white">
-                  لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط
-                  توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود. تکه
-                  های لاتین متن نشان می دهد که یک پروژه در حال توسعه است. لورم
-                  ایپسوم فقط برای توسعه دهندگان وب نیست. طراحان گرافیک نیز از آن
-                  با نرم افزارهای مختلفی مانند فوتوشاپ استفاده می کنند. لورم
-                  ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه
-                  دهندگان وب،
-                </div>
-                <div className="flex flex-row items-center text-xs text-gray-500 dark:text-white rtl">
-                  <span>1403/03/16 | 09:45 </span>
-                </div>
-              </div>
-              <div className="p-4 pt-0 flex flex-row-reverse gap-6">
-                <p className="text-[14px] text-[#158B68]">پاسخ ها</p>
-                <p className="text-[14px] text-[#158B68]">پاسخ دادن</p>
-              </div>
 
-              <div className="bg-white p-6 px-7 flex-col rounded-[30px] shadow-md  rtl dark:bg-gray-700 dark:text-white">
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-4 ">
-                    <div>
-                      <img src={dummy} />
+                  <div className="bg-white p-6 px-7 w-[37rem] lg:w-[80rem] flex-col rounded-[30px] shadow-md rtl dark:bg-gray-700 dark:text-white">
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center gap-4 ">
+                        <div>
+                          <img src={dummy} />
+                        </div>
+                        <h2 className="text-[15px]">تایتل : عنوان نظر</h2>
+                      </div>
+                      <div className="flex flex-row gap-4">
+                        <img src={like} />
+                        <img src={disLike} />
+                        <img src={undo} />
+                      </div>
                     </div>
-                    <h2 className="text-[15px]">عنوان : عنوان نظر</h2>
+                    <div className="text-gray-700 pt-5 min-h-[110px] dark:text-white">
+                      لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که
+                      توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می
+                      شود. تکه های لاتین متن نشان می دهد که یک پروژه در حال
+                      توسعه است. لورم ایپسوم فقط برای توسعه دهندگان وب نیست.
+                      طراحان گرافیک نیز از آن با نرم افزارهای مختلفی مانند
+                      فوتوشاپ استفاده می کنند. لورم ایپسوم محبوب ترین و
+                      استانداردترین متن ساختگی است که توسط توسعه دهندگان وب،
+                    </div>
+                    <div className="flex flex-row items-center text-xs text-gray-500 dark:text-white rtl">
+                      <span>1403/03/16 | 09:45 </span>
+                    </div>
                   </div>
-                  <div className="flex flex-row gap-4">
-                    <img src={like} />
-                    <img src={disLike} />
-                    <img src={undo} />
+                  <div className="p-4 pt-0 flex flex-row-reverse gap-6">
+                    <p className="text-[14px] text-[#158B68]">پاسخ ها</p>
+                    <p className="text-[14px] text-[#158B68]">پاسخ دادن</p>
                   </div>
-                </div>
-                <div className="text-gray-700 pt-5 min-h-[110px] dark:text-white">
-                  لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط
-                  توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود. تکه
-                  های لاتین متن نشان می دهد که یک پروژه در حال توسعه است. لورم
-                  ایپسوم فقط برای توسعه دهندگان وب نیست. طراحان گرافیک نیز از آن
-                  با نرم افزارهای مختلفی مانند فوتوشاپ استفاده می کنند. لورم
-                  ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه
-                  دهندگان وب،
-                </div>
-                <div className="flex flex-row items-center text-xs text-gray-500 dark:text-white rtl">
-                  <span>1403/03/16 | 09:45 </span>
-                </div>
-              </div>
 
-              <div className="p-4 pt-0 flex flex-row-reverse gap-6">
-                <p className="text-[14px] text-[#158B68]">پاسخ ها</p>
-                <p className="text-[14px] text-[#158B68]">پاسخ دادن</p>
-              </div>
+                  <div className="bg-white p-6 px-7 flex-col rounded-[30px] shadow-md dark:bg-gray-700 rtl dark:text-white">
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center gap-4 ">
+                        <div>
+                          <img src={dummy} />
+                        </div>
+                        <h2 className="text-[15px]">عنوان : عنوان نظر</h2>
+                      </div>
+                      <div className="flex flex-row gap-4">
+                        <img src={like} />
+                        <img src={disLike} />
+                        <img src={undo} />
+                      </div>
+                    </div>
+                    <div className="text-gray-700 pt-5 min-h-[110px] dark:text-white">
+                      لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که
+                      توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می
+                      شود. تکه های لاتین متن نشان می دهد که یک پروژه در حال
+                      توسعه است. لورم ایپسوم فقط برای توسعه دهندگان وب نیست.
+                      طراحان گرافیک نیز از آن با نرم افزارهای مختلفی مانند
+                      فوتوشاپ استفاده می کنند. لورم ایپسوم محبوب ترین و
+                      استانداردترین متن ساختگی است که توسط توسعه دهندگان وب،
+                    </div>
+                    <div className="flex flex-row items-center text-xs text-gray-500 dark:text-white rtl">
+                      <span>1403/03/16 | 09:45 </span>
+                    </div>
+                  </div>
+                  <div className="p-4 pt-0 flex flex-row-reverse gap-6">
+                    <p className="text-[14px] text-[#158B68]">پاسخ ها</p>
+                    <p className="text-[14px] text-[#158B68]">پاسخ دادن</p>
+                  </div>
+
+                  <div className="bg-white p-6 px-7 flex-col rounded-[30px] shadow-md  rtl dark:bg-gray-700 dark:text-white">
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center gap-4 ">
+                        <div>
+                          <img src={dummy} />
+                        </div>
+                        <h2 className="text-[15px]">عنوان : عنوان نظر</h2>
+                      </div>
+                      <div className="flex flex-row gap-4">
+                        <img src={like} />
+                        <img src={disLike} />
+                        <img src={undo} />
+                      </div>
+                    </div>
+                    <div className="text-gray-700 pt-5 min-h-[110px] dark:text-white">
+                      لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که
+                      توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می
+                      شود. تکه های لاتین متن نشان می دهد که یک پروژه در حال
+                      توسعه است. لورم ایپسوم فقط برای توسعه دهندگان وب نیست.
+                      طراحان گرافیک نیز از آن با نرم افزارهای مختلفی مانند
+                      فوتوشاپ استفاده می کنند. لورم ایپسوم محبوب ترین و
+                      استانداردترین متن ساختگی است که توسط توسعه دهندگان وب،
+                    </div>
+                    <div className="flex flex-row items-center text-xs text-gray-500 dark:text-white rtl">
+                      <span>1403/03/16 | 09:45 </span>
+                    </div>
+                  </div>
+
+                  <div className="p-4 pt-0 flex flex-row-reverse gap-6">
+                    <p className="text-[14px] text-[#158B68]">پاسخ ها</p>
+                    <p className="text-[14px] text-[#158B68]">پاسخ دادن</p>
+                  </div>
+                </>
+              ) : null}
+
+              {show === 1 ? (
+                <>
+                  <Formik
+                    initialValues={{ title: "", text: "" }}
+                    onSubmit={(values) => {
+                      console.log(values);
+                    }}
+                  >
+                    {() => (
+                      <Form className="flex flex-col gap-4">
+                        <div className="flex flex-col gap-2">
+                          <Field
+                            name="title"
+                            placeholder="عنوان"
+                            className="p-2 border-2 rtl bg-[#FBF6F6] dark:bg-slate-700 border-BgGreen rounded-md "
+                          />
+                          <Field
+                            name="text"
+                            placeholder="متن..."
+                            rows="4"
+                            as="textarea"
+                            className="p-2 border-2 rtl bg-[#FBF6F6] dark:bg-slate-700 border-BgGreen rounded-md text-[#807A7A]"
+                          />
+                        </div>
+
+                        <button
+                          type="submit"
+                          className="py-5 text-xl bg-BgGreen dark:bg-slate-900 dark:hover:bg-slate-950 text-black dark:text-white rounded-md"
+                        >
+                          ثبت کردن
+                        </button>
+                      </Form>
+                    )}
+                  </Formik>
+                </>
+              ) : null}
             </div>
           </div>
         </div>
