@@ -15,7 +15,7 @@ import key2 from "../../../assets/key2.svg";
 const MainDashbord = ({ showMenu, setShowMenu }) => {
   return (
     <div
-      className={`w-[15rem] transition-all duration-700 fixed top-0 opacity-0 invisible right-[-300px] lg:opacity-100 lg:right-0 lg:visible lg:relative h-[45rem] bg-[#A4F6DE] dark:bg-gray-700 lg:w-[20rem] ${
+      className={`w-[15rem] transition-all duration-500 fixed top-0 opacity-0 invisible right-[-300px] lg:opacity-100 lg:right-0 lg:visible lg:relative h-[45rem] bg-[#A4F6DE] dark:bg-gray-700 lg:w-[20rem] ${
         showMenu ? "!opacity-100 !visible !right-0" : ""
       }`}
     >
