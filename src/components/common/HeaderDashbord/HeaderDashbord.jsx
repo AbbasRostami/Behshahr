@@ -1,24 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import DarkLightToggle from "../DarkMode";
 import reserved2 from "../../../assets/reserved2.svg";
 import logoSite from "../../../assets/logoSite.svg";
 import { getApi } from "../../../core/api/api";
+import { ProfileContext } from "../../../context/ProfileProvider";
 
 const HeaderDashbord = ({ showMenu, setShowMenu }) => {
 
-  const [data, setData] = useState([]);
-  const getEditProf = async () => {
-    const path = `/SharePanel/GetProfileInfo`;
-    const response = await getApi({ path });
-    console.log("User Info: ",response.data);
-    setData(response.data);
-  };
-  useEffect(() => {
-    getEditProf();
-  }, []);
+  const {data} = useContext(ProfileContext);
 
-
+  console.log("ContextData: ", data);
+  
   return (
     <div class="bg-[#A4F6DE] dark:bg-gray-700 w-[46rem] lg:w-[74.2rem]">
       <div class="flex justify-between items-center container mx-auto gap-5 h-20">

@@ -1,31 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Form, Field, Formik } from "formik";
-
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
-import { deleteApi, editApi, getApi, postApi } from "../../core/api/api";
+import { deleteApi, editApi, postApi } from "../../core/api/api";
+import { ProfileContext } from "../../context/ProfileProvider";
+import { toast } from "react-toastify";
+import moment from "jalali-moment";
 
 const EditProfile = () => {
-  const [data, setData] = useState([]);
   const [show, setShow] = useState(false);
   const [image, setImage] = useState("");
 
-  const getEditProf = async () => {
-    const path = `/SharePanel/GetProfileInfo`;
-    const response = await getApi({ path });
-    // console.log("User Info: ",response.data);
-    setData(response.data);
-  };
-  useEffect(() => {
-    getEditProf();
-  }, []);
-
-  // console.log(data?.userImage[0]?.puctureAddress);
-
-  
+  const { data, getEditProf } = useContext(ProfileContext);
 
   const initialValues = {
     FName: data.fName || "", //
@@ -38,26 +26,31 @@ const EditProfile = () => {
     NationalCode: data.nationalCode || "", //
     email: data.email || "", //
     Gender: true, //
-    BirthDay: data.birthDay || "", //
+    BirthDay: data?.birthDay?.slice(0,10) || "", //
     // Latitude: null,
     // Longitude: null,
     // ReceiveMessageEvent: false,
   };
 
-  const editHandler = async (values) => {
+  
+  const editProfileInfo = async (values) => {
     const formData = new FormData();
 
-    formData.append("FName", values.FName);
-    formData.append("LName", values.LName);
-    formData.append("UserAbout", values.UserAbout);
-    formData.append("LinkdinProfile", values.LinkdinProfile);
-    formData.append("TelegramLink", values.TelegramLink);
-    formData.append("HomeAdderess", values.HomeAdderess);
-    formData.append("phoneNumber", values.phoneNumber);
-    formData.append("NationalCode", values.NationalCode);
-    formData.append("email", values.email);
-    formData.append("Gender", values.Gender);
-    formData.append("BirthDay", values.BirthDay);
+    const data = {
+      FName: values.FName,
+      LName: values.LName,
+      UserAbout: values.UserAbout,
+      LinkdinProfile: values.LinkdinProfile,
+      TelegramLink: values.TelegramLink,
+      HomeAdderess: values.HomeAdderess,
+      phoneNumber: values.phoneNumber,
+      NationalCode: values.NationalCode,
+      email: values.email,
+      Gender: values.Gender,
+      BirthDay: values.BirthDay,
+    };
+
+    Object.entries(data).forEach(([key, value]) => formData.append(key, value));
 
     formData.forEach((value, key) => {
       console.log(key, ":", value);
@@ -68,31 +61,35 @@ const EditProfile = () => {
     console.log(body);
     const response = await editApi({ path, body });
     console.log(response);
+
+    if (response.data.success) {
+      toast.success(response.data.message);
+    }
   };
 
-
-
-  const PostImage = async () => {
+  const uploadImage = async () => {
     const formData = new FormData();
     formData.append("formFile", image);
+
+    console.log("up:", formData);
 
     const path = `/SharePanel/AddProfileImage`;
     const body = formData;
     const response = await postApi({ path, body });
-
     console.log("Upload:", response);
+    if (response.data.success) {
+      toast.success(response.data.message);
+    }
+
+    getEditProf();
   };
 
-
-
   const SelectImage = async (id) => {
-
     const formData = new FormData();
 
-    formData.append("ImageId", id );
-    
+    formData.append("ImageId", id);
+
     console.log("image id:", id);
-    
 
     const path = `/SharePanel/SelectProfileImage`;
     const body = formData;
@@ -100,25 +97,18 @@ const EditProfile = () => {
 
     console.log("Select:", response);
 
-    // if (response.data.succes){
-    //   getEditProf();
-    // } else {
-    //     console.log("error: ",response.data.errors); 
-    // }
-
+    if (response.data.success) {
+      toast.success(response.data.message);
+    }
     getEditProf();
-
   };
 
-
   const deleteIamge = async (id) => {
-
     const formData = new FormData();
 
-    formData.append("DeleteEntityId", id );
-    
+    formData.append("DeleteEntityId", id);
+
     console.log("DeleteEntityId", id);
-    
 
     const path = `/SharePanel/DeleteProfileImage`;
     const body = formData;
@@ -126,9 +116,11 @@ const EditProfile = () => {
 
     console.log("Delete:", response);
 
-
+    if (response.data.success) {
+      toast.success(response.data.message);
+    }
+    getEditProf();
   };
-  
 
   return (
     <>
@@ -197,7 +189,10 @@ const EditProfile = () => {
                                 alt=""
                               />
                               <div className="absolute group z-50 w-52 hover:bg-opacity-25  h-48 rounded-full flex justify-center gap-2 items-center">
-                                <button onClick={() => deleteIamge(item.id)} className="bg-[#12926C] text-white text-bold rounded-md w-16 h-8 invisible group-hover:visible ">
+                                <button
+                                  onClick={() => deleteIamge(item.id)}
+                                  className="bg-[#12926C] text-white text-bold rounded-md w-16 h-8 invisible group-hover:visible "
+                                >
                                   حذف
                                 </button>
                                 <button
@@ -211,7 +206,6 @@ const EditProfile = () => {
                           );
                         })}
                       </Swiper>
-                      
                     </div>
 
                     <Formik>
@@ -244,11 +238,7 @@ const EditProfile = () => {
                           <div class="flex items-center justify-center">
                             <label>
                               <Form>
-                                <Field
-                                  type="file"
-                                  name="file"
-                                  hidden
-                                ></Field>
+                                <Field type="file" name="file" hidden></Field>
 
                                 <div class=" mr-8 flex dark:bg-gray-900 w-28 h-9 px-2 flex-col bg-green-800 rounded-full shadow text-white text-xs font-semibold leading-4 items-center justify-center cursor-pointer focus:outline-none">
                                   انتخاب عکس
@@ -256,7 +246,7 @@ const EditProfile = () => {
                                 <div className="flex items-center justify-center p-6 border-blueGray-200 rounded-b">
                                   <button
                                     className="bg-emerald-500 dark:bg-gray-900 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 ... text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 "
-                                    onClick={PostImage}
+                                    onClick={uploadImage}
                                   >
                                     ذخیره تغییرات
                                   </button>
@@ -288,7 +278,7 @@ const EditProfile = () => {
 
           <div>
             <Formik
-              onSubmit={editHandler}
+              onSubmit={editProfileInfo}
               enableReinitialize={true}
               initialValues={initialValues}
             >
