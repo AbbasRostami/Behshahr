@@ -21,14 +21,14 @@ import { useParams } from "react-router-dom";
 import moment from "jalali-moment";
 import { FaRegStar } from "react-icons/fa";
 import { BiDislike, BiLike } from "react-icons/bi";
+import { toast } from "react-toastify";
 
 const CoursesDetailsForm = () => {
+  const params = useParams();
 
-  const params = useParams()
+  console.log(params?.id);
 
-  // console.log(params?.id)
-
-  const [details, setDeatils] = useState(null)
+  const [details, setDeatils] = useState(null);
 
   const getCoursesDetails = async () => {
     const path = `/Home/GetCourseDetails?CourseId=${params?.id}`;
@@ -42,35 +42,47 @@ const CoursesDetailsForm = () => {
     getCoursesDetails();
   }, []);
 
+  const addComments = async (values) => {
+    const formData = new FormData();
+    const data = {
+      CourseId: params.id,
+      Title: values.Title,
+      Describe: values.Describe,
+    };
+    Object.entries(data).forEach(([key, value]) => formData.append(key, value));
+    formData.forEach((value, key) => {
+      console.log(key, ":", value);
+    });
 
-
+    const path = `/Course/AddCommentCourse`;
+    const body = formData;
+    const response = await postApi({ path, body });
+    console.log(response);
+    if (response.data.success) {
+      toast.success(response.data.message);
+    }
+  };
 
   const addLike = async (id) => {
-    console.log(id)
-    const path = `Course/AddCourseLike?CourseId=${id}`
-    const response = await postApi({ path })
-    console.log(response)
-  }
+    console.log(id);
+    const path = `Course/AddCourseLike?CourseId=${id}`;
+    const response = await postApi({ path });
+    console.log(response);
+  };
 
   const addDislike = async (id) => {
-    console.log(id)
-    const path = `/Course/AddCourseDissLike?CourseId=${id}`
-    const response = await postApi({ path })
-    console.log(response)
-  }
+    console.log(id);
+    const path = `/Course/AddCourseDissLike?CourseId=${id}`;
+    const response = await postApi({ path });
+    console.log(response);
+  };
 
   const addStarRatng = async (id) => {
-    console.log(id)
-    const path = `/Course/SetCourseRating?CourseId=<uuid>${id}`
-    const response = await postApi({ path })
-    console.log(response)
-  }
-
-
-
-
-
-
+    console.log(id);
+    const path = `/Course/SetCourseRating?CourseId=<uuid>${id}`;
+    const response = await postApi({ path });
+    console.log(response);
+  };
 
   return (
     <>
@@ -90,22 +102,47 @@ const CoursesDetailsForm = () => {
                 <div>
                   <div className="bg-white p-6 dark:text-white dark:bg-gray-700 rounded-md gap-5 shadow-md flex flex-col justify-between">
                     <div className="flex flex-row">
-                      <h1 className="font-bold text-lg w-full">{details?.title}</h1>
+                      <h1 className="font-bold text-lg w-full">
+                        {details?.title}
+                      </h1>
 
                       <div className="flex flex-row-reverse gap-2 lg:gap-4 w-full">
                         <button className="text-gray-500  hover:text-green-500">
-                            <BiLike size={26} onClick={() => addLike(details.courseId)} className={details?.userIsLiked ? "text-green-600" : "text-gray-500"} />
+                          <BiLike
+                            size={26}
+                            onClick={() => addLike(details.courseId)}
+                            className={
+                              details?.userIsLiked
+                                ? "text-green-600"
+                                : "text-gray-500"
+                            }
+                          />
                         </button>
                         <button className="text-gray-500  hover:text-red-500">
-                             <BiDislike size={26} onClick={() => addLike(details.courseId)} className={details?.currentUserDissLike ? "text-green-600" : "text-gray-500"} />
+                          <BiDislike
+                            size={26}
+                            onClick={() => addLike(details.courseId)}
+                            className={
+                              details?.currentUserDissLike
+                                ? "text-green-600"
+                                : "text-gray-500"
+                            }
+                          />
                         </button>
                         <button className="text-gray-500  hover:text-yellow-500">
-                            <FaRegStar size={26} onClick={() => addLike(details.courseId)} className={details?.currentUserSetRate ? "text-green-600" : "text-gray-500"} />
+                          <FaRegStar
+                            size={26}
+                            onClick={() => addLike(details.courseId)}
+                            className={
+                              details?.currentUserSetRate
+                                ? "text-green-600"
+                                : "text-gray-500"
+                            }
+                          />
                         </button>
                       </div>
                     </div>
                     <div className="text-gray-700 dark:text-white text-justify  ">
-
                       {details?.describe}
                       {details?.miniDescribe}
                       {details?.googleSchema}
@@ -155,10 +192,8 @@ const CoursesDetailsForm = () => {
 
                 <div className="bg-white dark:bg-gray-700 p-6 flex-col rounded-md shadow-md">
                   <Formik
-                    initialValues={{ title: "", text: "" }}
-                    onSubmit={(values) => {
-                      console.log(values);
-                    }}
+                    initialValues={{ title: "", Describe: "" }}
+                    onSubmit={addComments}
                   >
                     {() => (
                       <Form className="flex flex-col gap-4 ">
@@ -179,19 +214,18 @@ const CoursesDetailsForm = () => {
 
                         <div className="flex flex-col gap-2">
                           <Field
-                            name="title"
+                            name="Title"
                             placeholder="عنوان"
                             className="p-2 text-black border-2 bg-[#FBF6F6] border-BgGreen rounded-md "
                           />
                           <Field
-                            name="text"
+                            name="Describe"
                             placeholder="متن..."
                             rows="4"
                             as="textarea"
                             className="p-2  text-black border-2 bg-[#FBF6F6] border-BgGreen rounded-md "
                           />
                         </div>
-
 
                         <button
                           type="submit"
@@ -213,30 +247,90 @@ const CoursesDetailsForm = () => {
             <div className="flex flex-col w-full min-w-64 gap-6">
               {" "}
               <div className="flex flex-col transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 ... bg-white  dark:bg-gray-700 dark:text-white p-4 gap-2 rounded-md  text-[#12926C]">
-                <p>مدرس دوره : <span className="text-[#22445D]">{details?.teacherName}</span> </p>
-                <p>هزینه تمام دوره : <span className="text-[#22445D]">{details?.cost}</span> </p>
-                <p>تکنولوژی دوره :  <span className="text-[#22445D]">{details?.techs}</span> </p>
-                <p>سطح دوره : <span className="text-[#22445D]">{details?.courseLevelName}</span></p>
-                <p>ظرفیت دوره : <span className="text-[#22445D]">{details?.capacity}</span> </p>
-                <p>وضعیت دوره : <span className="text-[#22445D]">{details?.courseStatusName}</span></p>
+                <p>
+                  مدرس دوره :{" "}
+                  <span className="text-[#22445D]">{details?.teacherName}</span>{" "}
+                </p>
+                <p>
+                  هزینه تمام دوره :{" "}
+                  <span className="text-[#22445D]">{details?.cost}</span>{" "}
+                </p>
+                <p>
+                  تکنولوژی دوره :{" "}
+                  <span className="text-[#22445D]">{details?.techs}</span>{" "}
+                </p>
+                <p>
+                  سطح دوره :{" "}
+                  <span className="text-[#22445D]">
+                    {details?.courseLevelName}
+                  </span>
+                </p>
+                <p>
+                  ظرفیت دوره :{" "}
+                  <span className="text-[#22445D]">{details?.capacity}</span>{" "}
+                </p>
+                <p>
+                  وضعیت دوره :{" "}
+                  <span className="text-[#22445D]">
+                    {details?.courseStatusName}
+                  </span>
+                </p>
               </div>
               <div className="bg-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 ...  dark:bg-gray-700 dark:text-white p-4 space-y-2 rounded-md  text-[#12926C]">
-                <p>مدت زمان : <span className="text-[#22445D]">{details?.commentCount}</span></p>
-                <p>تعداد ویدیوها : <span className="text-[#22445D]">{details?.capacity}</span></p>
-                <p>تعداد نظرات : <span className="text-[#22445D]">{details?.commentCount}</span></p>
-                <p>امتیاز دوره : <span className="text-[#22445D]">{details?.currentRegistrants}</span></p>
+                <p>
+                  مدت زمان :{" "}
+                  <span className="text-[#22445D]">
+                    {details?.commentCount}
+                  </span>
+                </p>
+                <p>
+                  تعداد ویدیوها :{" "}
+                  <span className="text-[#22445D]">{details?.capacity}</span>
+                </p>
+                <p>
+                  تعداد نظرات :{" "}
+                  <span className="text-[#22445D]">
+                    {details?.commentCount}
+                  </span>
+                </p>
+                <p>
+                  امتیاز دوره :{" "}
+                  <span className="text-[#22445D]">
+                    {details?.currentRegistrants}
+                  </span>
+                </p>
               </div>
               <div className="bg-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 ...  dark:bg-gray-700 dark:text-white p-4 space-y-2 rounded-md  text-[#12926C]">
-                <p>تاریخ بروزرسانی :<span className="text-[#22445D]"> {moment(details?.insertDate).locale('fa').format('YYYY/MM/DD')}</span></p>
-                <p>شروع دوره: <span className="text-[#22445D]"> {moment(details?.startTime).locale('fa').format('YYYY/MM/DD')}</span></p>
-                <p>پایان دوره :  <span className="text-[#22445D]">{moment(details?.endTime).locale('fa').format('YYYY/MM/DD')}</span></p>
+                <p>
+                  تاریخ بروزرسانی :
+                  <span className="text-[#22445D]">
+                    {" "}
+                    {moment(details?.insertDate)
+                      .locale("fa")
+                      .format("YYYY/MM/DD")}
+                  </span>
+                </p>
+                <p>
+                  شروع دوره:{" "}
+                  <span className="text-[#22445D]">
+                    {" "}
+                    {moment(details?.startTime)
+                      .locale("fa")
+                      .format("YYYY/MM/DD")}
+                  </span>
+                </p>
+                <p>
+                  پایان دوره :{" "}
+                  <span className="text-[#22445D]">
+                    {moment(details?.endTime).locale("fa").format("YYYY/MM/DD")}
+                  </span>
+                </p>
               </div>
               <div className="md:col-span-2">
                 <button className="mt-3 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 ... w-full bg-[#5BE1B9] dark:bg-gray-500 dark:text-white text-black text-md py-3 rounded-md shadow-lg text-center">
                   رزرو دوره
                 </button>
               </div>
-
             </div>
           </div>
         </div>
