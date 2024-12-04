@@ -12,19 +12,10 @@ import starRating from "./../../assets/svg/ArticlesDetails/StarRating.svg";
 import courses1 from "./../../assets/svg/ArticlesDetails/courses1.svg";
 import download from "./../../assets/svg/ArticlesDetails/download.svg";
 import favorite from "./../../assets/svg/ArticlesDetails/favorite.svg";
-import mrSmith from "./../../assets/svg/ArticlesDetails/mrSmith.svg";
 import dislike from "./../../assets/svg/ArticlesDetails/dislike.svg";
 import like from "./../../assets/svg/ArticlesDetails/like.svg";
 import line from "./../../assets/svg/ArticlesDetails/line.svg";
-import mrSmith from "./../../assets/svg/ArticlesDetails/mrSmith.svg";
-import profileimg from "./../../assets/svg/ArticlesDetails/profileimg.svg";
-import starRating from "./../../assets/svg/ArticlesDetails/StarRating.svg";
-import { getApi, postApi } from "../../core/api/api";
 import { useParams } from "react-router-dom";
-import moment from "jalali-moment";
-import { FaRegStar } from "react-icons/fa";
-import { BiDislike, BiLike } from "react-icons/bi";
-import { toast } from "react-toastify";
 
 const CoursesDetailsForm = () => {
   const params = useParams();
