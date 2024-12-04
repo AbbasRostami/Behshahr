@@ -10,10 +10,7 @@ import { getApi } from "../../core/api/api";
 import { SliderArticles } from "../common/SliderArticles";
 
 const NewsArticlesForm = () => {
-
-
   const [cards, setCards] = useState([]);
-
 
   const getArticlesTop = async () => {
     const path = `/News`;
@@ -25,29 +22,6 @@ const NewsArticlesForm = () => {
   };
   useEffect(() => {
     getArticlesTop();
-  }, []);
-
-
-  const ArticlesSort = async () => {
-    const response3 = await getArticlesListSort();
-    console.log(response3);
-    if (response3) {
-      setSort(response3);
-    }
-  };
-  useEffect(() => {
-    ArticlesSort();
-  }, []);
-
-  const ArticlesSort2 = async () => {
-    const response4 = await getArticlesListSort2();
-    console.log(response4);
-    if (response4) {
-      setSort2(response4);
-    }
-  };
-  useEffect(() => {
-    ArticlesSort2();
   }, []);
 
   return (
@@ -120,10 +94,8 @@ const NewsArticlesForm = () => {
         <div className="items-center h-[82rem] container mx-auto dark:bg-gray-800 bg-[#FBF6F6] mt-10 rounded-2xl shadow-[9px_9px_12px_3px_rgba(0,1,_0.5,_0.2)] ">
           <div className="grid grid-cols-2 gap-14 lg:gap-0 lg:grid-cols-3 ml-16">
             {cards.map((item, index) => {
-              return (<ArticlesCard item={item} />)
+              return <ArticlesCard item={item} />;
             })}
-
-
           </div>
         </div>
 

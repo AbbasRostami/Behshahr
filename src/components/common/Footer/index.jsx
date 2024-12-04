@@ -8,7 +8,7 @@ import facebook from "./../../../assets/svg/Landing/FacebookF.svg";
 const Footer = () => {
   return (
     <>
-      <div class="bg-[#A4F6DE] mt-16 h-[300px]  dark:bg-slate-900 ">
+      <div class="bg-gradient-to-r from-green-300 to-gray-50 mt-16 h-[300px]  dark:dark:bg-slate-900 dark:bg-none  ">
         <div className="flex justify-around items-start pt-8 text-[#444444E5] dark:text-white">
           <div className="rtl">
             <p>اخبار آموزشگاه</p>
@@ -48,7 +48,7 @@ const Footer = () => {
         <img className="mt-8 pl-40" src={LineFooter} alt="" />
 
         <div className="flex justify-around items-center mt-4">
-          <div className="flex items-center mr-96">
+          <div className="flex justify-center items-center lg:mr-96">
             <img className="dark:fill-slate-200" src={tel} alt="" />
             <img className="dark:fill-slate-200 mx-3" src={skype} alt="" />
             <img className="dark:fill-slate-200" src={facebook} alt="" />
