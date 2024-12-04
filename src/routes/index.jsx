@@ -1,14 +1,16 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Router } from "react-router-dom";
 import App from "../app";
 import { Landing } from "../screens/Landing";
 import { AboutUs } from "../screens/AboutUs";
 import { CoursesDetails } from "../screens/CoursesDetails";
 import { ArticlesDetails } from "../screens/ArticlesDetails";
-import { RegisterForm } from "../components/RegisterForm";
 import { NewsArticles } from "../screens/NewsArticles";
 import { NotFound } from "../components/NotFound";
 import { Login } from "../screens/Login";
 import { ForgetPassword } from "../screens/ForgetPassword";
+import { StepOne } from "../components/RegisterForm/StepOne";
+import { StepTwo } from "../components/RegisterForm/StepTwo";
+import { StepThree } from "../components/RegisterForm/StepThree";
 
 
 const RoutesApp = createBrowserRouter([
@@ -34,9 +36,18 @@ const RoutesApp = createBrowserRouter([
         path:'/articles-details',
         element: <ArticlesDetails />,
       },
+      // Register Routers
       {
         path:'/register',
-        element: <RegisterForm />,
+        element: <StepOne />,
+      },
+      {
+        path:'/register-verify',
+        element: <StepTwo />,
+      },
+      {
+        path:'/register-final',
+        element: <StepThree />,
       },
       {
         path:'/news-articles',
@@ -50,6 +61,7 @@ const RoutesApp = createBrowserRouter([
         path:'/forget-password',
         element: <ForgetPassword />,
       },
+    
     
       ]);
   
