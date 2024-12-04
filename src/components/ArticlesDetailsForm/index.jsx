@@ -44,10 +44,10 @@ const ArticlesDetailsForm = () => {
   const addCommentsArticles = async (values) => {
     const formData = new FormData();
     const data = {
-      // newsId: ,
+      newsId: "2b63aab9-6239-ef11-b6ca-c84ec5106ca4",
       title: values.title,
       describe: values.describe,
-      // userId: ,
+      userId: "40296"
     };
     Object.entries(data).forEach(([key, value]) => formData.append(key, value));
     formData.forEach((value, key) => {

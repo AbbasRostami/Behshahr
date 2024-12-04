@@ -52,9 +52,9 @@ const CoursesDetailsForm = () => {
     const body = formData;
     const response = await postApi({ path, body });
     console.log(response);
-    if (response.data.success) {
-      toast.success(response.data.message);
-    }
+    // if (response.data.success) {
+    //   toast.success(response.data.message);
+    // }
   };
 
   const addLike = async (id) => {

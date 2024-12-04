@@ -34,7 +34,7 @@ const RoutesApp = createBrowserRouter([
     element: <CoursesDetails />,
   },
   {
-    path: '/articles-details',
+    path: '/articles-details/:id',
     element: <ArticlesDetails />,
   },
   // Register Routers
