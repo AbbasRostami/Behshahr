@@ -22,6 +22,8 @@ import line from "./../../assets/svg/ArticlesDetails/line.svg";
 import undo from "./../../assets/svg/ArticlesDetails/undo.svg";
 import eye from "./../../assets/svg/ArticlesDetails/eye.svg";
 import key from "./../../assets/svg/ArticlesDetails/key.svg";
+import { getApi, postApi } from "../../core/api/api";
+import { toast } from "react-toastify";
 
 const ArticlesDetailsForm = () => {
   const [cards, setCards] = useState([]);
@@ -38,6 +40,28 @@ const ArticlesDetailsForm = () => {
   useEffect(() => {
     getArticlesTop();
   }, []);
+
+  const addCommentsArticles = async (values) => {
+    const formData = new FormData();
+    const data = {
+      // newsId: ,
+      title: values.title,
+      describe: values.describe,
+      // userId: ,
+    };
+    Object.entries(data).forEach(([key, value]) => formData.append(key, value));
+    formData.forEach((value, key) => {
+      console.log(key, ":", value);
+    });
+
+    const path = `/News/CreateNewsComment`;
+    const body = formData;
+    const response = await postApi({ path, body });
+    console.log(response);
+    if (response.data.success) {
+      toast.success(response.data.message);
+    }
+  };
 
   return (
     <>
@@ -285,10 +309,8 @@ const ArticlesDetailsForm = () => {
               {show === 1 ? (
                 <>
                   <Formik
-                    initialValues={{ title: "", text: "" }}
-                    onSubmit={(values) => {
-                      console.log(values);
-                    }}
+                    initialValues={{ title: "", describe: "" }}
+                    onSubmit={addCommentsArticles}
                   >
                     {() => (
                       <Form className="flex flex-col gap-4">
@@ -299,7 +321,7 @@ const ArticlesDetailsForm = () => {
                             className="p-2 border-2 rtl bg-[#FBF6F6] dark:bg-slate-700 border-BgGreen rounded-md "
                           />
                           <Field
-                            name="text"
+                            name="describe"
                             placeholder="متن..."
                             rows="4"
                             as="textarea"
