@@ -25,7 +25,6 @@ import { BiDislike, BiLike } from "react-icons/bi";
 import { FaRegStar } from "react-icons/fa";
 
 const CoursesListForm = () => {
-
   const [data, setData] = useState([]);
   const [sort, setSort] = useState({});
   const [pagination, setPagination] = useState({});
@@ -34,7 +33,6 @@ const CoursesListForm = () => {
   const [value, setValue] = React.useState([1, 20000000]);
   const [cost, setCost] = useState([]);
   const [filter, setFilter] = useState();
-
 
   function valuetext(value) {
     return `${value}`;
@@ -46,10 +44,17 @@ const CoursesListForm = () => {
   };
 
   useEffect(() => {
-    const timeOutId = setTimeout(() => filterDataHanlder({ PageNumber: 1, CostDown: value[0], CostUp: value[1] }), 500);
+    const timeOutId = setTimeout(
+      () =>
+        filterDataHanlder({
+          PageNumber: 1,
+          CostDown: value[0],
+          CostUp: value[1],
+        }),
+      500
+    );
     return () => clearTimeout(timeOutId);
   }, [value]);
-
 
   const GetCouresesTop = async (params) => {
     const path = `/Home/GetCoursesWithPagination`;
@@ -66,65 +71,56 @@ const CoursesListForm = () => {
     GetCouresesTop();
   }, [sort]);
 
-
-
   const filterDataHanlder = (newParams) => {
     setFilter({ PageNumber: 1, ...filter, ...newParams });
     const allFilter = {
-      PageNumber: 1, ...filter,
+      PageNumber: 1,
+      ...filter,
       ...newParams,
     };
     console.log("filter", allFilter);
-    GetCouresesTop(allFilter)
-  }
-
-
+    GetCouresesTop(allFilter);
+  };
 
   const addLike = async (id) => {
-    console.log(id)
-    const path = `Course/AddCourseLike?CourseId=${id}`
-    const response = await postApi({ path })
+    console.log(id);
+    const path = `Course/AddCourseLike?CourseId=${id}`;
+    const response = await postApi({ path });
     if (response?.data?.success) {
-      filterDataHanlder({})
+      filterDataHanlder({});
     }
-    console.log(response)
-
-  }
+    console.log(response);
+  };
 
   const addDislike = async (id) => {
-    console.log(id)
-    const path = `/Course/AddCourseDissLike?CourseId=${id}`
-    const response = await postApi({ path })
+    console.log(id);
+    const path = `/Course/AddCourseDissLike?CourseId=${id}`;
+    const response = await postApi({ path });
     if (response?.data?.success) {
-      filterDataHanlder({})
+      filterDataHanlder({});
     }
-    console.log(response)
-  }
+    console.log(response);
+  };
 
   const addStarRatng = async (id) => {
-    console.log(id)
-    const path = `/Course/SetCourseRating?CourseId=${id}&RateNumber=2`
-    const response = await postApi({ path })
+    console.log(id);
+    const path = `/Course/SetCourseRating?CourseId=${id}&RateNumber=2`;
+    const response = await postApi({ path });
     if (response?.data?.success) {
-      filterDataHanlder({})
+      filterDataHanlder({});
     }
-    console.log(response)
-  }
-
-
-
-
-
+    console.log(response);
+  };
 
   const clearFilter = () => {
-    filterDataHanlder({ PageNumber: 1, inde: "", slab: "" })
-  }
+    filterDataHanlder({ PageNumber: 1, inde: "", slab: "" });
+  };
 
   const handleChangePage = (e, i) => {
-    console.log(e)
-    console.log(i)
-    filterDataHanlder({ PageNumber: i })
-  }
+    console.log(e);
+    console.log(i);
+    filterDataHanlder({ PageNumber: i });
+  };
 
   return (
     <>
@@ -140,7 +136,13 @@ const CoursesListForm = () => {
               className="rtl p-4 dark:text-white border-green-800 w-80 text-sm text-gray-900 border dark:bg-gray-800  rounded-2xl bg-gray-50"
               placeholder="جستجو..."
               required
-              onChange={(e) => { if (e.target.value === "") { filterDataHanlder({ PageNumber: 1 }) } else { filterDataHanlder({ PageNumber: 1, Query: e.target.value }) } }}
+              onChange={(e) => {
+                if (e.target.value === "") {
+                  filterDataHanlder({ PageNumber: 1 });
+                } else {
+                  filterDataHanlder({ PageNumber: 1, Query: e.target.value });
+                }
+              }}
             />
 
             <svg
@@ -184,7 +186,7 @@ const CoursesListForm = () => {
                 PageNumber: 1,
                 SortingCol: e.target.value,
                 SortType: "DESC",
-              })
+              });
             }}
           >
             <option value="">مرتب سازی</option>
@@ -213,25 +215,49 @@ const CoursesListForm = () => {
                   <div className="flex justify-center items-center gap-2">
                     <div>
                       {/* <img className="cursor-pointer"  /> */}
-                      <BiLike size={26} onClick={() => addLike(item?.courseId)} className={item?.userIsLiked ? "text-green-600" : "text-gray-500"} />
+                      <BiLike
+                        size={26}
+                        onClick={() => addLike(item?.courseId)}
+                        className={
+                          item?.userIsLiked ? "text-green-600" : "text-gray-500"
+                        }
+                      />
                       <p className="text-slate-700">{item?.likeCount}</p>
                     </div>
 
                     <div>
-                      <BiDislike size={26} onClick={() => addDislike(item?.courseId)} className={item?.currentUserDissLike ? "text-green-600" : "text-gray-500"} />
+                      <BiDislike
+                        size={26}
+                        onClick={() => addDislike(item?.courseId)}
+                        className={
+                          item?.currentUserDissLike
+                            ? "text-green-600"
+                            : "text-gray-500"
+                        }
+                      />
 
                       <p className="text-slate-700"> {item?.dissLikeCount} </p>
                     </div>
 
                     <div>
-                      <FaRegStar size={26} onClick={() => addStarRatng(item?.courseId)} className={item?.currentUserSetRate ? "text-green-600" : "text-gray-500"} />
-                      <p className="text-slate-700"> {item?.currentRegistrants} </p>
+                      <FaRegStar
+                        size={26}
+                        onClick={() => addStarRatng(item?.courseId)}
+                        className={
+                          item?.currentUserSetRate
+                            ? "text-green-600"
+                            : "text-gray-500"
+                        }
+                      />
+                      <p className="text-slate-700">
+                        {" "}
+                        {item?.currentRegistrants}{" "}
+                      </p>
                     </div>
                   </div>
                   <button class="text-TextGreen dark:bg-gray-800 dark:text-white bg-[#BFF4E4] rounded-lg cursor-pointer p-2">
                     {item?.statusName}
                   </button>
-
                 </div>
 
                 <p className="text-right mt-3 dark:text-white text-[#1A1E21] text-xl">
@@ -279,7 +305,13 @@ const CoursesListForm = () => {
                   </button>
 
                   <button className="block bg-[#eeeeee] dark:bg-gray-800 dark:text-white rounded-xl w-[10rem] h-[2.5rem] border-solid border border-green-600">
-                    <Link to={localStorage.getItem('token') ? `/courses-details/${item?.courseId}` : '/login'}>
+                    <Link
+                      to={
+                        localStorage.getItem("token")
+                          ? `/courses-details/${item?.courseId}`
+                          : "/login"
+                      }
+                    >
                       جزِئیات دوره
                     </Link>
                   </button>
@@ -293,7 +325,8 @@ const CoursesListForm = () => {
               page={filter?.PageNumber || 1}
               onChange={handleChangePage}
               size="large"
-              className="dark:bg-gray-700" />
+              className="dark:bg-gray-700"
+            />
           </Stack>
         </div>
 
@@ -377,10 +410,13 @@ const CoursesListForm = () => {
 
               <div className="rtl mx-3 my-5 w-[19rem] border-2 border-[#5BE1B9] rounded-xl">
                 <label class="flex bg-gray-100 text-gray-700 px-3 pt-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
-                  <input value="typeName-DESC"
+                  <input
+                    value="typeName-DESC"
                     className="ml-3 size-4"
                     type="radio"
-                    onClick={() => filterDataHanlder({ PageNumber: 1, typeName: 1 })}
+                    onClick={() =>
+                      filterDataHanlder({ PageNumber: 1, typeName: 1 })
+                    }
                     checked={filter?.typeName === 1 ? true : false}
                   />
                   <i class="pl-2 text-md">حضوری</i>
@@ -391,9 +427,10 @@ const CoursesListForm = () => {
                     value="typeName-DESC"
                     className="ml-3 size-4"
                     type="radio"
-                    onClick={() => filterDataHanlder({ PageNumber: 1, typeName: 2 })}
+                    onClick={() =>
+                      filterDataHanlder({ PageNumber: 1, typeName: 2 })
+                    }
                     checked={filter?.typeName === 2 ? true : false}
-
                   />
                   <i class="pl-2 text-md">آنلاین</i>
                 </label>
@@ -403,7 +440,9 @@ const CoursesListForm = () => {
                     value="typeName-DESC"
                     className="ml-3 size-4"
                     type="radio"
-                    onClick={() => filterDataHanlder({ PageNumber: 1, typeName: 3 })}
+                    onClick={() =>
+                      filterDataHanlder({ PageNumber: 1, typeName: 3 })
+                    }
                     checked={filter?.typeName === 3 ? true : false}
                   />
                   <i class="pl-2 text-md">آنلاین - حضوری</i>
@@ -436,7 +475,9 @@ const CoursesListForm = () => {
                     value="levelName-DESC"
                     className="ml-3 size-4"
                     type="radio"
-                    onClick={() => filterDataHanlder({ PageNumber: 1, levelName: 1 })}
+                    onClick={() =>
+                      filterDataHanlder({ PageNumber: 1, levelName: 1 })
+                    }
                     checked={filter?.levelName == 1 ? true : false}
                     name="Country"
                   />
@@ -448,19 +489,26 @@ const CoursesListForm = () => {
                     value="levelName-DESC"
                     className="ml-3 size-4"
                     type="radio"
-                    onClick={() => filterDataHanlder({ PageNumber: 1, levelName: 2 })}
+                    onClick={() =>
+                      filterDataHanlder({ PageNumber: 1, levelName: 2 })
+                    }
                     checked={filter?.levelName == 2 ? true : false}
-                    name="Country" />
+                    name="Country"
+                  />
                   <i class="pl-2 text-md">متوسط</i>
                 </label>
 
                 <label class="flex bg-gray-100 text-gray-700 pb-1 px-3 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
-                  <input value="levelName-DESC"
+                  <input
+                    value="levelName-DESC"
                     className="ml-3 size-4"
                     type="radio"
-                    onClick={() => filterDataHanlder({ PageNumber: 1, levelName: 3 })}
+                    onClick={() =>
+                      filterDataHanlder({ PageNumber: 1, levelName: 3 })
+                    }
                     defaultChecked={filter?.levelName == 3 ? true : false}
-                    name="Country" />
+                    name="Country"
+                  />
                   <i class="pl-2 text-md">پیشرفته</i>
                 </label>
               </div>

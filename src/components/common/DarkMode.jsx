@@ -1,10 +1,10 @@
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react';
+import { IoMoon } from 'react-icons/io5';
+import { RiSunLine } from 'react-icons/ri';
 // import svg from "./../../../src/assets/arrowUnder.svg"
 
-import { RiSunLine } from "react-icons/ri";
-import { IoMoon } from "react-icons/io5";
 const DarkLightToggle = () => {
 
 

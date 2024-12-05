@@ -34,8 +34,8 @@ const HeaderUserlogin = () => {
     // </div>
 
     <div class="bg-gradient-to-r from-green-300 to-gray-50 dark:dark:bg-slate-900 dark:bg-none">
-      <div class="flex justify-between items-center px-20 h-20">
-        <div class="flex justify-center items-center gap-2">
+      <div class="w-full flex justify-between items-center px-6 lg:px-20 h-20">
+        <div class="flex lg:justify-center items-center gap-2 lg:gap-0 justify-end">
           <img src={topProfile} alt="" />
           <div className="relative">
             <img className="ml-3" src={topIcon} alt="" />
