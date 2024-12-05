@@ -136,14 +136,23 @@ const ArticlesDetailsForm = () => {
                 <button
                   onClick={() => setShow(1)}
                   type="button"
-                  className="w-1/2 py-4 text-center rounded-l-lg  border-[#A4F6DE] dark:bg-gray-800 dark:hover:bg-slate-950 dark:text-white bg-[#FFFFFF] border-2 "
+                  className={
+                    show === 1
+                      ? "w-1/2 py-4 border-[#A4F6DE] dark:bg-gray-800 dark:text-white dark:border-2 dark:hover:bg-slate-950 bg-[#A4F6DE] rounded-r-lg text-center"
+                      : "w-1/2 py-4 text-center rounded-l-lg  border-[#A4F6DE] dark:bg-gray-800 dark:hover:bg-slate-950 dark:text-white bg-[#FFFFFF] border-2"
+                  }
                 >
                   ثبت نظر
                 </button>
+
                 <button
                   onClick={() => setShow(2)}
                   type="button"
-                  className="w-1/2 py-4  border-[#A4F6DE] dark:bg-gray-800 dark:text-white dark:border-2 dark:hover:bg-slate-950 bg-[#A4F6DE] rounded-r-lg text-center "
+                  className={
+                    show === 2
+                      ? "w-1/2 py-4  border-[#A4F6DE] dark:bg-gray-800 dark:text-white dark:border-2 dark:hover:bg-slate-950 bg-[#A4F6DE] rounded-r-lg text-center"
+                      : "w-1/2 py-4 text-center rounded-l-lg  border-[#A4F6DE] dark:bg-gray-800 dark:hover:bg-slate-950 dark:text-white bg-[#FFFFFF] border-2"
+                  }
                 >
                   نظرات کاربران
                 </button>
