@@ -18,7 +18,7 @@ const ArticlesCard = ({ item }) => {
     <>
       <div className="flex  items-center w-[22rem]  ">
         <div className="flex items-center rounded-3xl ">
-          <div className="relative hover:bg-slate-200 h-[598px] w-[320px] lg:w-[430px] text-center rounded-[1.5rem] mt-11 dark:bg-gray-800 bg-[#FBF6F6]  shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen ">
+          <div className="relative hover:bg-slate-200 h-[598px] w-[320px] lg:w-[400px] text-center rounded-[1.5rem] mt-11 dark:bg-gray-800 bg-[#FBF6F6]  shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen ">
             <div>
               <img
                 className="rounded-t-lg p-0 object-cover h-[20rem] w-full"

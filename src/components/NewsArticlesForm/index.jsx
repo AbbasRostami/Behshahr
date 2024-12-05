@@ -8,12 +8,14 @@ import { getArticlesListSort } from "../../core/api/getArticlesList";
 import { getArticlesListSort2 } from "../../core/api/getArticlesList";
 import { getApi } from "../../core/api/api";
 import { SliderArticles } from "../common/SliderArticles";
+import { useParams } from "react-router-dom";
 
 const NewsArticlesForm = () => {
   const [sort, setSort] = useState([]);
   const [sort2, setSort2] = useState([]);
 
   const [cards, setCards] = useState([]);
+  const params = useParams();
 
   const getArticlesTop = async () => {
     const path = `/News`;
@@ -56,7 +58,7 @@ const NewsArticlesForm = () => {
         <h1 className="text-[#22445D] mt-10 text-3xl text-center py-8 dark:text-white">
           لیست اخبار و مقالات
         </h1>
-        <div className=" flex justify-between gap-6 rtl items-center mx-8 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,1,_0.5,_0.2)] py-5 rounded-3xl dark:bg-gray-800 ">
+        <div className=" flex justify-evenly gap-6 rtl items-center mx-8 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,1,_0.5,_0.2)] py-5 rounded-3xl dark:bg-gray-800 ">
           <select className=" dark:bg-gray-800 dark:text-white text-center border-solid border-2 rounded-2xl h-[3.5rem] lg:h-[3.7rem] mr-9 bg-[#ffffff] w-[10rem] lg:w-[15rem] text-[17px] text-[#158B68] ">
             <option value="">دسته بندی</option>
             <option value="">حضوری</option>
@@ -116,9 +118,9 @@ const NewsArticlesForm = () => {
           </Formik>
         </div>
 
-        <div className="items-center h-[207rem] lg:h-[162rem] m-4 lg:m-6 dark:bg-gray-800 bg-[#FBF6F6] mt-10 rounded-2xl shadow-[9px_9px_12px_3px_rgba(0,1,_0.5,_0.2)] ">
-          <div className="grid grid-cols-2 gap-4 lg:gap-0 lg:grid-cols-3 ml-6 lg:ml-16">
-            {cards.map((item, index) => {
+        <div className="items-center h-[207rem] lg:h-[140rem] m-4 lg:m-6 dark:bg-gray-800 bg-[#FBF6F6] mt-10 rounded-2xl shadow-[9px_9px_12px_3px_rgba(0,1,_0.5,_0.2)] ">
+          <div className="grid grid-cols-2 gap-72 lg:gap-0 lg:grid-cols-3 ml-6 lg:ml-16">
+            {cards.slice(1, 10).map((item, index) => {
               return <ArticlesCard item={item} />;
             })}
           </div>
