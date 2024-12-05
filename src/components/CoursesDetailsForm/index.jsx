@@ -4,8 +4,10 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Field, Form, Formik } from "formik";
+import { useParams } from "react-router-dom";
+import { BiDislike, BiLike } from "react-icons/bi";
+import { FaRegStar } from "react-icons/fa";
 
-import articlePic3 from "./../../assets/articlePic33.svg";
 import articlePic2 from "./../../assets/svg/ArticlesDetails/artilclePic2.svg";
 import profileimg from "./../../assets/svg/ArticlesDetails/profileimg.svg";
 import starRating from "./../../assets/svg/ArticlesDetails/StarRating.svg";
@@ -15,7 +17,7 @@ import favorite from "./../../assets/svg/ArticlesDetails/favorite.svg";
 import dislike from "./../../assets/svg/ArticlesDetails/dislike.svg";
 import like from "./../../assets/svg/ArticlesDetails/like.svg";
 import line from "./../../assets/svg/ArticlesDetails/line.svg";
-import { useParams } from "react-router-dom";
+import articlePic3 from "./../../assets/articlePic33.svg";
 
 const CoursesDetailsForm = () => {
   const params = useParams();

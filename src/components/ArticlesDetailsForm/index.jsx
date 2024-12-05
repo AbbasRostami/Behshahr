@@ -5,6 +5,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Field, Form, Formik } from "formik";
 import { Header } from "./../common/Header";
 import { Footer } from "./../common/Footer";
+import { getApi, postApi } from "../../core/api/api";
+import { toast } from "react-toastify";
 import "swiper/css/navigation";
 import "swiper/css";
 
@@ -22,8 +24,6 @@ import line from "./../../assets/svg/ArticlesDetails/line.svg";
 import undo from "./../../assets/svg/ArticlesDetails/undo.svg";
 import eye from "./../../assets/svg/ArticlesDetails/eye.svg";
 import key from "./../../assets/svg/ArticlesDetails/key.svg";
-import { getApi, postApi } from "../../core/api/api";
-import { toast } from "react-toastify";
 
 const ArticlesDetailsForm = () => {
   const [cards, setCards] = useState([]);
@@ -42,13 +42,12 @@ const ArticlesDetailsForm = () => {
   }, []);
 
   const addCommentsArticles = async (inputValues) => {
-  
     const data = {
       describe: inputValues.describe,
       title: inputValues.title,
       newsId: "2b63aab9-6239-ef11-b6ca-c84ec5106ca4",
-      userId: 40296
-    }
+      userId: 40296,
+    };
 
     console.log("data:", data);
 
