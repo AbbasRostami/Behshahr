@@ -41,21 +41,19 @@ const ArticlesDetailsForm = () => {
     getArticlesTop();
   }, []);
 
-  const addCommentsArticles = async (values) => {
-    const formData = new FormData();
+  const addCommentsArticles = async (inputValues) => {
+  
     const data = {
+      describe: inputValues.describe,
+      title: inputValues.title,
       newsId: "2b63aab9-6239-ef11-b6ca-c84ec5106ca4",
-      title: values.title,
-      describe: values.describe,
-      userId: "40296"
-    };
-    Object.entries(data).forEach(([key, value]) => formData.append(key, value));
-    formData.forEach((value, key) => {
-      console.log(key, ":", value);
-    });
+      userId: 40296
+    }
+
+    console.log("data:", data);
 
     const path = `/News/CreateNewsComment`;
-    const body = formData;
+    const body = data;
     const response = await postApi({ path, body });
     console.log(response);
     if (response.data.success) {
