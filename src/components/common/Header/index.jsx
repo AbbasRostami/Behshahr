@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Link } from "react-router-dom";
-import { Button, Menu, MenuItem } from "@mui/material";
+import { Button, Card, cardClasses, Menu, MenuItem } from "@mui/material";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Field, Formik } from "formik";
 
@@ -9,9 +9,40 @@ import DarkLightToggle from "../DarkMode";
 import logoLanding from "./../../../assets/svg/Landing/logosite.svg";
 import seachIcon from "./../../../assets/svg/Landing/searchicon.svg";
 import courses1 from "./../../../assets/courses1.svg";
+import { getApi } from "../../../core/api/api";
 
 const Header = () => {
   const [show, setShow] = useState(false);
+  const [data, setData] = useState([]);
+  const [PageNumber, setPageNumber] = useState(1);
+  const [pagination, setPagination] = useState({});
+  const [filter, setFilter] = useState();
+
+  const GetCouresesTop = async (params) => {
+    const path = `/Home/GetCoursesWithPagination`;
+    const response = await getApi({
+      path,
+      params: { params: { ...params, RowsOfPage: 9 } },
+    });
+    console.log(response.data.courseFilterDtos);
+    setData(response.data.courseFilterDtos);
+    setPagination(response.data);
+  };
+
+  useEffect(() => {
+    GetCouresesTop();
+  }, []);
+
+  const filterDataHanlder = (newParams) => {
+    setFilter({ PageNumber: 1, ...filter, ...newParams });
+    const allFilter = {
+      PageNumber: 1,
+      ...filter,
+      ...newParams,
+    };
+    console.log("filter", allFilter);
+    GetCouresesTop(allFilter);
+  };
 
   return (
     <div class="bg-gradient-to-r from-green-300 to-gray-50 dark:dark:bg-slate-900 dark:bg-none">
@@ -63,7 +94,12 @@ const Header = () => {
                       className="rtl p-4 dark:text-white border-green-800 w-[20rem] lg:w-[40rem] text-sm text-gray-900 border dark:bg-gray-700 rounded-lg shadow-xl bg-gray-100"
                       placeholder="جستجو..."
                       required
-                      onChange={(e) => handleSearch(e.target.value)}
+                      onChange={(e) =>
+                        filterDataHanlder({
+                          PageNumber: 1,
+                          Query: e.target.value,
+                        })
+                      }
                     />
 
                     <svg
@@ -98,13 +134,16 @@ const Header = () => {
                   </div>
                 </Form>
               </Formik>
-
-              <div className="w-[95%] h-20 mx-auto flex flex-nowrap gap-8 rtl justify-center items-center bg-slate-200 dark:bg-slate-700 dark:text-white rounded-lg shadow-sm">
-                <img className="h-12" src={courses1} alt="" />
-                <p>نام دوره: آموزش tailwind css</p>
-                <p>قیمت: 150.000</p>
-                <p>سطح دوره: پیشرفته</p>
-              </div>
+              {/* {data.map((item) => {
+                return (
+                  <div className="w-[95%] h-20 mx-auto flex flex-nowrap gap-8 rtl justify-center items-center bg-slate-200 dark:bg-slate-700 dark:text-white rounded-lg shadow-sm">
+                    <img className="h-12" src={courses1} alt="" />
+                    <p> {item.title}</p>
+                    <p> {item.cost} </p>
+                    <p> {item.levelName} </p>
+                  </div>
+                );
+              })} */}
             </div>
 
             <div className="opacity-40 fixed inset-0 z-40 bg-black"></div>
