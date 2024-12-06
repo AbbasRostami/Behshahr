@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
-import { deleteApi, editApi, postApi } from "../../core/api/api";
+import { deleteApi, editApi, getApi, postApi } from "../../core/api/api";
 import { ProfileContext } from "../../context/ProfileProvider";
 import { toast } from "react-toastify";
 import moment from "jalali-moment";
@@ -12,6 +12,17 @@ import moment from "jalali-moment";
 const EditProfile = () => {
   const [show, setShow] = useState(false);
   const [image, setImage] = useState("");
+  const [datas, setDatas] = useState();
+
+  const getSecurity = async () => {
+    const path = `/SharePanel/GetSecurityInfo`;
+    const response = await getApi({ path });
+    console.log("Security", response.data.twoStepAuth);
+    setDatas(response.data.twoStepAuth);
+  };
+  useEffect(() => {
+    getSecurity();
+  }, []);
 
   const { data, getEditProf } = useContext(ProfileContext);
 
@@ -26,13 +37,12 @@ const EditProfile = () => {
     NationalCode: data.nationalCode || "", //
     email: data.email || "", //
     Gender: true, //
-    BirthDay: data?.birthDay?.slice(0,10) || "", //
+    BirthDay: data?.birthDay?.slice(0, 10) || "", //
     // Latitude: null,
     // Longitude: null,
     // ReceiveMessageEvent: false,
   };
 
-  
   const editProfileInfo = async (values) => {
     const formData = new FormData();
 
@@ -120,6 +130,24 @@ const EditProfile = () => {
       toast.success(response.data.message);
     }
     getEditProf();
+  };
+
+  const editSecurity = async (values) => {
+    const data = {
+      twoStepAuth: values,
+      recoveryEmail: "hasan.kordeli@gmail.com",
+      baseUrl: "http://localhost:5173/editProfile",
+    };
+
+    const path = `/SharePanel/EditSecurity`;
+
+    const response = await editApi({ path, body: data });
+    console.log(response);
+
+    if (response.data.success) {
+      toast.success("movafagh");
+      setDatas(values);
+    }
   };
 
   return (
@@ -268,6 +296,10 @@ const EditProfile = () => {
             <div className="text-nowrap text-[#22445D] dark:text-white text-[8px] text-lg text-center bg-[#A4F6DE] dark:bg-gray-900 h-[3.7rem] rounded-xl border-[1px]">
               <h1 className="mt-[0.5rem]">امنیت</h1>
             </div>
+            <button onClick={() => editSecurity(!datas)}>
+              {" "}
+              {datas ? "غیرفعال" : "فعال"}{" "}
+            </button>
           </div>
         </div>
 

@@ -84,11 +84,12 @@ const Header = () => {
                       </p>
                     </Link>
                     <p
-                     onClick={() => {
-                      localStorage.removeItem("token"); 
-                      window.location.href = "/login"; 
-                    }}
-                    className="cursor-pointer dark:text-white rounded-lg hover:bg-green-200 dark:hover:bg-slate-600">
+                      onClick={() => {
+                        localStorage.removeItem("token");
+                        window.location.href = "/login";
+                      }}
+                      className="cursor-pointer dark:text-white rounded-lg hover:bg-green-200 dark:hover:bg-slate-600"
+                    >
                       خروج
                     </p>
                   </div>
@@ -184,7 +185,7 @@ const Header = () => {
                   </div>
                 </Form>
               </Formik>
-              {datas.slice(0,1).map((item) => {
+              {datas.slice(0, 1).map((item) => {
                 return (
                   <div className="w-[95%] h-20 mx-auto flex flex-nowrap gap-8 rtl px-6 justify-between items-center bg-slate-200 dark:bg-slate-700 dark:text-white rounded-lg shadow-sm">
                     <img className="h-12" src={courses1} alt="" />
