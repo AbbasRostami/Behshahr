@@ -23,38 +23,38 @@ const Statistics = () => {
   }, []);
 
   return (
-    <div className=" bg-BgGreen mx-16 flex justify-around items-center rounded-3xl  h-[230px] dark:bg-gray-800">
-      <div className="py-5 text-center text-TextGreen dark:text-white ">
+    <div className=" bg-BgGreen mx-16 flex justify-around items-center rounded-3xl h-[230px] dark:bg-gray-800">
+      <div className="py-5 text-center text-TextGreen ">
         <img src={iconCarrier1} alt="" />
-        <p className="text-slate-700 text-xl dark:text-white ">مقاله آموزشی</p>
-        <p className="font-medium text-2xl hover:underline dark:text-white text-black">
+        <p className="text-slate-700 dark:text-white text-xl ">مقاله آموزشی</p>
+        <p className="font-medium text-2xl hover:underline text-black dark:text-white">
           {Statistics?.newsCount}
         </p>
       </div>
 
-      <div className="p-5 text-center text-TextGreen dark:text-white">
+      <div className="p-5 text-center text-TextGreen">
         <img src={iconCarrier0} alt="" />
-        <p className="text-slate-700 text-xl dark:text-white ">دوره آموزشی</p>
-        <p className="font-medium text-2xl hover:underline dark:text-white text-black">
+        <p className="text-slate-700 dark:text-white text-xl ">دوره آموزشی</p>
+        <p className="font-medium text-2xl hover:underline text-black dark:text-white">
           {Statistics?.courseCount}
         </p>
       </div>
 
-      <div className="p-5 text-center text-TextGreen dark:text-white">
+      <div className="p-5 text-center text-TextGreen">
         <img src={iconCarrier3} alt="" />
-        <p className="text-slate-700 text-xl dark:text-white ">دانشجو</p>
-        <p className="font-medium text-2xl hover:underline dark:text-white text-black">
+        <p className="text-slate-700 dark:text-white text-xl ">دانشجو</p>
+        <p className="font-medium text-2xl hover:underline text-black dark:text-white">
           {Statistics?.studentCount}
         </p>
       </div>
 
-      <div className="p-5 text-center text-TextGreen dark:text-white">
+      <div className="p-5 text-center text-TextGreen">
         <img src={iconCarrier2} alt="" />
-        <p className="text-slate-700 text-xl dark:text-white ">
+        <p className="text-slate-700 dark:text-white text-xl ">
           {" "}
           اساتید حرفه ای
         </p>
-        <p className="font-medium text-2xl hover:underline dark:text-white text-black">
+        <p className="font-medium text-2xl hover:underline text-black dark:text-white">
           {Statistics?.teacherCount}
         </p>
       </div>

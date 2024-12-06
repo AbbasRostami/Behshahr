@@ -68,22 +68,20 @@ const SliderArticles = () => {
 
                   <div className="flex justify-between items-center mt-[-5rem] lg:mt-5 px-5">
                     <div className="flex justify-center items-center hidden lg:flex gap-1">
+                      <div>
+                        <img src={like} alt="" />
+                        <p className="text-black dark:text-white hover:text-green-400">{item?.currentLikeCount}</p>
+                      </div>
 
                       <div>
-                          <img src={like} alt="" />
-                          <p className="text-black dark:text-white hover:text-green-400">{item?.currentLikeCount}</p>
+                        <img className="mx-2" src={dislike} alt="" />
+                        <p className="text-black dark:text-white hover:text-green-400">{item?.currentDissLikeCount}</p>
                       </div>
 
-                        <div>
-                          <img className="mx-2" src={dislike} alt="" />
-                          <p className="text-black dark:text-white hover:text-green-400">{item?.currentDissLikeCount}</p>
+                      <div>
+                        <img src={favorite} alt="" />
+                        <p className="text-black dark:text-white hover:text-green-400">{item?.currentRate}</p>
                       </div>
-
-                        <div>
-                          <img src={favorite} alt="" />
-                          <p className="text-black dark:text-white hover:text-green-400">{item?.currentRate}</p>
-                      </div>
-
                     </div>
 
                     <button class="text-TextGreen bg-[#BFF4E4] rounded-lg hidden lg:inline-block cursor-pointer p-2 w-auto-[120px]">

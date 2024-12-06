@@ -1,19 +1,18 @@
-import React from 'react'
-import our1 from './../../../assets/svg/Landing/our1.svg'
-import our2 from './../../../assets/svg/Landing/our2.svg'
-import our3 from './../../../assets/svg/Landing/our3.svg'
-import our4 from './../../../assets/svg/Landing/our4.svg'
-import our6 from './../../../assets/svg/Landing/our5.svg'
-import our5 from './../../../assets/svg/Landing/our6.svg'
+import React from "react";
+import our1 from "./../../../assets/svg/Landing/our1.svg";
+import our2 from "./../../../assets/svg/Landing/our2.svg";
+import our3 from "./../../../assets/svg/Landing/our3.svg";
+import our4 from "./../../../assets/svg/Landing/our4.svg";
+import our6 from "./../../../assets/svg/Landing/our5.svg";
+import our5 from "./../../../assets/svg/Landing/our6.svg";
 
 const OurServices = () => {
-    return (
-
-        <>
-            <div class="text-center leading-10 dark:text-white">
-                <p class="text-[35px] font-bold mt-10">خدمات ما</p>
-                <p class="leading-10">ما فرصت آماده شدن برای زندگی را فراهم می کنیم</p>
-            </div>
+  return (
+    <>
+      <div class="text-center leading-10 dark:text-white">
+        <p class="text-[35px] font-bold mt-10">خدمات ما</p>
+        <p class="leading-10">ما فرصت آماده شدن برای زندگی را فراهم می کنیم</p>
+      </div>
 
             <div class="px-16 py-16  text-[#22445D] grid grid-col-2 lg:grid-cols-3 gap-2 rtl">
 
@@ -84,4 +83,4 @@ const OurServices = () => {
     )
 }
 
-export { OurServices }
+export { OurServices };

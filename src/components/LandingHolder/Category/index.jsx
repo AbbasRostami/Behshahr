@@ -13,35 +13,55 @@ const Category = () => {
         <p class="leading-10">ما فرصت آماده شدن برای زندگی را فراهم می کنیم</p>
       </div>
 
-      <div className="mt-16 mx-2 lg:mx-16 flex justify-around items-center rounded-3xl gap-1 h-[230px] ">
-        <div className="p-10 text-center rounded-md dark:bg-gray-800 dark:text-white flex flex-col items-center  bg-[#FBF6F6]  text-TextGreen">
+      <div className="mt-16 mx-2 lg:mx-16 flex justify-around items-center gap-1 h-[230px] ">
+        <div className="p-8 lg:p-10 text-center rounded-md transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:shadow-xl duration-500 ... dark:bg-gray-800 dark:text-white flex flex-col items-center bg-[#FBF6F6]  text-TextGreen">
           <img src={categorty1} alt="" />
-          <p class="mt-4 rtl w-[4rem] text-black lg:w-full dark:text-white">دوره های طراحی UI/UX</p>
-          <p className="font-medium text-2xl mt-5 text-black dark:text-white">28</p>
+          <p class="mt-4 rtl w-[4rem] text-black dark:text-white lg:w-full">
+            دوره های طراحی UI/UX
+          </p>
+          <p className="font-medium text-2xl mt-5 text-black dark:text-white">
+            28
+          </p>
         </div>
 
-        <div className="p-10 text-center rounded-md dark:bg-gray-800 dark:text-white flex flex-col items-center  bg-[#FBF6F6] text-TextGreen">
+        <div className="p-8 lg:p-10 text-center rounded-md transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:shadow-xl duration-500 ... dark:bg-gray-800 dark:text-white flex flex-col items-center bg-[#FBF6F6] text-TextGreen">
           <img src={categorty2} alt="" />
-          <p class="mt-4 rtl w-[4rem] text-black lg:w-full dark:text-white">دوره های طراحی UI/UX</p>
-          <p className="font-medium text-2xl mt-5 text-black" dark:text-white>182</p>
+          <p class="mt-4 rtl w-[4rem] text-black dark:text-white lg:w-full">
+            دوره های طراحی UI/UX
+          </p>
+          <p className="font-medium text-2xl mt-5 text-black dark:text-white">
+            182
+          </p>
         </div>
 
-        <div className="p-10 text-center rounded-md dark:bg-gray-800 dark:text-white flex flex-col items-center  bg-[#FBF6F6] text-TextGreen">
+        <div className="p-8 lg:p-10 text-center rounded-md transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:shadow-xl duration-500 ... dark:bg-gray-800 dark:text-white flex flex-col items-center bg-[#FBF6F6] text-TextGreen">
           <img src={categorty3} alt="" />
-          <p class="mt-4 rtl w-[4rem] text-black lg:w-full dark:text-white">دوره های طراحی UI/UX</p>
-          <p className="font-medium text-2xl mt-5 text-black dark:text-white">81</p>
+          <p class="mt-4 rtl w-[4rem] text-black dark:text-white lg:w-full">
+            دوره های طراحی UI/UX
+          </p>
+          <p className="font-medium text-2xl mt-5 text-black dark:text-white">
+            81
+          </p>
         </div>
 
-        <div className="p-10 text-center rounded-md dark:bg-gray-800 dark:text-white flex flex-col items-center  bg-[#FBF6F6] text-TextGreen">
+        <div className="p-8 lg:p-10 text-center rounded-md transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:shadow-xl duration-500 ... dark:bg-gray-800 dark:text-white flex flex-col items-center bg-[#FBF6F6] text-TextGreen">
           <img src={categorty4} alt="" />
-          <p class="mt-4 rtl w-[4rem] text-black lg:w-full dark:text-white">دوره های طراحی UI/UX</p>
-          <p className="font-medium text-2xl mt-5 text-black dark:text-white">52</p>
+          <p class="mt-4 rtl w-[4rem] text-black dark:text-white lg:w-full">
+            دوره های طراحی UI/UX
+          </p>
+          <p className="font-medium text-2xl mt-5 text-black dark:text-white">
+            52
+          </p>
         </div>
 
-        <div className=" p-10 text-center rounded-md dark:bg-gray-800 dark:text-white flex flex-col items-center  bg-[#FBF6F6] text-TextGreen">
+        <div className="p-8 lg:p-10 text-center rounded-md transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:shadow-xl duration-500 ... dark:bg-gray-800 dark:text-white flex flex-col items-center bg-[#FBF6F6] text-TextGreen">
           <img src={categorty5} alt="" />
-          <p class="mt-4 rtl w-[4rem] text-black lg:w-full dark:text-white">دوره های طراحی UI/UX</p>
-          <p className="font-medium text-2xl mt-5 text-black dark:text-white">52</p>
+          <p class="mt-4 rtl w-[4rem] text-black dark:text-white lg:w-full">
+            دوره های طراحی UI/UX
+          </p>
+          <p className="font-medium text-2xl mt-5 text-black dark:text-white">
+            52
+          </p>
         </div>
       </div>
     </>
