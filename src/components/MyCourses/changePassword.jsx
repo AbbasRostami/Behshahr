@@ -54,6 +54,13 @@ const ChangePassword = () => {
                 className="text-[#ABA7A7] pr-12 text-sm lg:text-lg bg-[#ffff] dark:bg-gray-800 border-[2px] border-[#158B68] rounded-lg w-[24rem] lg:w-[29rem] h-[3.5rem] lg:h-[4rem] absolute top-[25.5rem] lg:top-[25.5rem] right-[15rem] lg:right-[30rem]"
               ></Field>
 
+              <Field
+                type="text"
+                name="repetPass"
+                placeholder="تکرار رمز عبور جدید"
+                className="text-[#ABA7A7] pr-12 text-sm lg:text-lg bg-[#ffff] dark:bg-gray-800 border-[2px] border-[#158B68] rounded-lg w-[24rem] lg:w-[29rem] h-[3.5rem] lg:h-[4rem] absolute top-[30.5rem] lg:top-[30.5rem] right-[15rem] lg:right-[30rem]"
+              ></Field>
+
               <img
                 className="h-[1.5rem] absolute top-[20.3rem] mr-56 lg:mr-20"
                 src={lock}
