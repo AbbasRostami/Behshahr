@@ -23,9 +23,10 @@ import { PiHandHeartBold } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import { BiDislike, BiLike } from "react-icons/bi";
 import { FaFilter, FaRegStar } from "react-icons/fa";
+import { toast } from "react-toastify";
+import person from "./../../assets/download.png";
 
 const CoursesListForm = () => {
-
   const [data, setData] = useState([]);
   const [sort, setSort] = useState({});
   const [pagination, setPagination] = useState({});
@@ -34,7 +35,7 @@ const CoursesListForm = () => {
   const [value, setValue] = React.useState([1, 20000000]);
   const [cost, setCost] = useState([]);
   const [filter, setFilter] = useState();
-const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false);
 
   function valuetext(value) {
     return `${value}`;
@@ -43,8 +44,20 @@ const [show, setShow] = useState(false);
   const handleChange = (event, newValue) => {
     console.log("new value:", newValue);
     setValue(newValue);
-
   };
+
+  useEffect(() => {
+    const timeOutId = setTimeout(
+      () =>
+        filterDataHanlder({
+          PageNumber: 1,
+          CostDown: value[0],
+          CostUp: value[1],
+        }),
+      500
+    );
+    return () => clearTimeout(timeOutId);
+  }, [value]);
 
   const [isOpen, setisOpen] = useState([]);
   // const [filter, setFilter] = useState([]);
@@ -77,12 +90,37 @@ const [show, setShow] = useState(false);
   };
 
   const addLike = async (id) => {
-    console.log(id)
-    const path = `Course/AddCourseLike?CourseId=${id}`
-    const response = await postApi({ path })
-    console.log(response)
+    console.log(id);
+    const path = `Course/AddCourseLike?CourseId=${id}`;
+    const response = await postApi({ path });
+    if (response.data.success) {
+      toast.success("عملیات با موفقیت انجام شد.");
+      GetCouresesTop();
+    }
+    console.log(response);
+  };
 
-  }
+  const addDislike = async (id) => {
+    console.log(id);
+    const path = `/Course/AddCourseDissLike?CourseId=${id}`;
+    const response = await postApi({ path });
+    if (response.data.success) {
+      toast.success("عملیات با موفقیت انجام شد.");
+      GetCouresesTop();
+    }
+    console.log(response);
+  };
+
+  const addfavo = async (id) => {
+    console.log(id);
+    const path = `/Course/SetCourseRating?CourseId=${id}`;
+    const response = await postApi({ path });
+    if (response.data.success) {
+      toast.success("عملیات با موفقیت انجام شد.");
+      GetCouresesTop();
+    }
+    console.log(response);
+  };
 
   const clearFilter = () => {
     filterDataHanlder({ PageNumber: 1, inde: "", slab: "" });
@@ -94,6 +132,18 @@ const [show, setShow] = useState(false);
     filterDataHanlder({ PageNumber: i });
   };
 
+  const addReserve = async (id) => {
+    console.log(id);
+
+    const body = {
+      courseId: id,
+    };
+    const path = `/CourseReserve/ReserveAdd`;
+    const response = await postApi({ path, body });
+    if (response.data.success) {
+      toast.success("دوره شما با موفقیت رزرو شد.");
+    }
+  };
   return (
     <>
       <h1 className="bg-white-500 mt-10 text-center text-3xl mx-14 dark:text-white">
@@ -109,41 +159,50 @@ const [show, setShow] = useState(false);
                 className="rtl p-4 dark:text-white border-green-800 w-80 text-sm text-gray-900 border dark:bg-gray-800  rounded-2xl bg-gray-50"
                 placeholder="جستجو..."
                 required
-                onChange={(e) => handleSearch(e.target.value)}
+                onChange={(e) => {
+                  if (e.target.value === "") {
+                    filterDataHanlder({ PageNumber: 1 });
+                  } else {
+                    filterDataHanlder({
+                      PageNumber: 1,
+                      Query: e.target.value,
+                    });
+                  }
+                }}
               />
 
-            <svg
-              className="absolute  bottom-[6px] left-[12px]"
-              fill="#158B68"
-              height="40px"
-              width="40px"
-              version="1.1"
-              id="Capa_1"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              viewBox="-53.72 -53.72 595.84 595.84"
-              xml:space="preserve"
-            >
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g
-                id="SVGRepo_tracerCarrier"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              ></g>
-              <g id="SVGRepo_iconCarrier">
-                {" "}
-                <g>
+              <svg
+                className="absolute  bottom-[6px] left-[12px]"
+                fill="#158B68"
+                height="40px"
+                width="40px"
+                version="1.1"
+                id="Capa_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="-53.72 -53.72 595.84 595.84"
+                xml:space="preserve"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
                   {" "}
                   <g>
                     {" "}
-                    <path d="M0,203.25c0,112.1,91.2,203.2,203.2,203.2c51.6,0,98.8-19.4,134.7-51.2l129.5,129.5c2.4,2.4,5.5,3.6,8.7,3.6 s6.3-1.2,8.7-3.6c4.8-4.8,4.8-12.5,0-17.3l-129.6-129.5c31.8-35.9,51.2-83,51.2-134.7c0-112.1-91.2-203.2-203.2-203.2 S0,91.15,0,203.25z M381.9,203.25c0,98.5-80.2,178.7-178.7,178.7s-178.7-80.2-178.7-178.7s80.2-178.7,178.7-178.7 S381.9,104.65,381.9,203.25z"></path>{" "}
+                    <g>
+                      {" "}
+                      <path d="M0,203.25c0,112.1,91.2,203.2,203.2,203.2c51.6,0,98.8-19.4,134.7-51.2l129.5,129.5c2.4,2.4,5.5,3.6,8.7,3.6 s6.3-1.2,8.7-3.6c4.8-4.8,4.8-12.5,0-17.3l-129.6-129.5c31.8-35.9,51.2-83,51.2-134.7c0-112.1-91.2-203.2-203.2-203.2 S0,91.15,0,203.25z M381.9,203.25c0,98.5-80.2,178.7-178.7,178.7s-178.7-80.2-178.7-178.7s80.2-178.7,178.7-178.7 S381.9,104.65,381.9,203.25z"></path>{" "}
+                    </g>{" "}
                   </g>{" "}
-                </g>{" "}
-              </g>
-            </svg>
-          </div>
-        </div>
-
+                </g>
+              </svg>
+            </div>
+          </Form>
+        </Formik>
         <div className="relative flex justify-center items-center">
           <select
             className="dark:bg-gray-800 dark:text-white text-lg h-14 rounded-3xl rtl px-2 bg-gray-50 border border-green-800 "
@@ -189,19 +248,48 @@ const [show, setShow] = useState(false);
                   <div className="flex justify-center items-center gap-2">
                     <div>
                       {/* <img className="cursor-pointer"  /> */}
-                      <BiLike size={26} onClick={() => addLike(item.courseId)} src={like} alt="" className={item?.userIsLiked ? "text-green-600" : "text-gray-500"} />
+                      <BiLike
+                        size={26}
+                        onClick={() => addLike(item?.courseId)}
+                        className={
+                          item?.userIsLiked
+                            ? "text-green-600"
+                            : "text-gray-500"
+                        }
+                      />
                       <p className="text-slate-700">{item?.likeCount}</p>
                     </div>
 
                     <div>
-                      <BiDislike size={26} onClick={() => addLike(item.courseId)} src={like} alt="" className={item?.userIsLiked ? "text-green-600" : "text-gray-500"} />
+                      <BiDislike
+                        size={26}
+                        onClick={() => addDislike(item.courseId)}
+                        alt=""
+                        className={
+                          item?.currentUserDissLike
+                            ? "text-green-600"
+                            : "text-gray-500"
+                        }
+                      />
 
                       <p className="text-slate-700"> {item?.dissLikeCount} </p>
                     </div>
 
                     <div>
-                      <FaRegStar size={26} onClick={() => addLike(item.courseId)} src={like} alt="" className={item?.userIsLiked ? "text-green-600" : "text-gray-500"} />
-                      <p className="text-slate-700"> {item?.currentRegistrants} </p>
+                      <FaRegStar
+                        size={26}
+                        onClick={() => addfavo(item.courseId)}
+                        alt=""
+                        className={
+                          item?.userFavorite
+                            ? "text-green-600"
+                            : "text-gray-500"
+                        }
+                      />
+                      <p className="text-slate-700">
+                        {" "}
+                        {item?.currentRegistrants}{" "}
+                      </p>
                     </div>
                   </div>
                   <button class="text-TextGreen dark:bg-gray-800 dark:text-white bg-[#BFF4E4] rounded-lg cursor-pointer p-2">
@@ -220,11 +308,11 @@ const [show, setShow] = useState(false);
                   </div>
 
                   <div className="flex justify-between items-center">
-                    <p className="mr-2 text-nowrap text-xs lg:text-sm">
+                    <p className="mr-1 text-nowrap text-xs lg:text-sm">
                       {" "}
                       {item?.teacherName}
                     </p>
-                    <img className="my-[-1rem]" src={profileimg} alt="" />
+                    <img className=" w-10 h-8" src={person} alt="" />
                   </div>
                 </div>
                 <p className="rtl mt-2 ml-[10rem] text-[#41A789] text-xs text-nowrap">
@@ -242,14 +330,14 @@ const [show, setShow] = useState(false);
                 <img className="mt-1" src={line} alt="" />
 
                 <div className="flex justify-between items-center mt-4">
-                  <p className="text-sm text-PriceRed rtl "> {item?.cost} </p>
+                  <p className="text-sm text-PriceRed rtl "> {item?.cost} تومان </p>
                   <p className="text-sm text-nowrap dark:text-white">
                     : هزینه تمام دوره
                   </p>
                 </div>
 
                 <div className="flex justify-between items-center w-[15rem] h-[2.5rem] mt-6 lg:mt-3 -ml-3 lg:ml-2">
-                  <button className="bg-[#5BE1B9] dark:bg-gray-900 dark:border-green-600 dark:border dark:text-white rounded-xl w-[10rem] h-[2.5rem] mr-4">
+                  <button onClick={() => addReserve(item.courseId)} className="bg-[#5BE1B9] dark:bg-gray-900 dark:border-green-600 dark:border dark:text-white rounded-xl w-[10rem] h-[2.5rem] mr-4">
                     رزرو دوره
                   </button>
 
@@ -273,7 +361,8 @@ const [show, setShow] = useState(false);
               count={Math.ceil(pagination?.totalCount / 9)}
               page={filter?.PageNumber || 1}
               onChange={handleChangePage}
-              size="large" />
+              size="large"
+            />
           </Stack>
         </div>
 
@@ -384,7 +473,9 @@ const [show, setShow] = useState(false);
                     value="typeName-DESC"
                     className="ml-3 size-4"
                     type="radio"
-                    onClick={() => filterDataHanlder({ PageNumber: 1, typeName: 1 })}
+                    onClick={() =>
+                      filterDataHanlder({ PageNumber: 1, typeName: 1 })
+                    }
                     Checked={filter?.typeName == 1 ? true : false}
                   />
                   <i class="pl-2 text-md">حضوری</i>
@@ -395,7 +486,9 @@ const [show, setShow] = useState(false);
                     value="typeName-DESC"
                     className="ml-3 size-4"
                     type="radio"
-                    onClick={() => filterDataHanlder({ PageNumber: 1, typeName: 2 })}
+                    onClick={() =>
+                      filterDataHanlder({ PageNumber: 1, typeName: 2 })
+                    }
                     Checked={filter?.typeName == 2 ? true : false}
                     name="Country"
                   />
@@ -407,7 +500,9 @@ const [show, setShow] = useState(false);
                     value="typeName-DESC"
                     className="ml-3 size-4"
                     type="radio"
-                    onClick={() => filterDataHanlder({ PageNumber: 1, typeName: 3 })}
+                    onClick={() =>
+                      filterDataHanlder({ PageNumber: 1, typeName: 3 })
+                    }
                     Checked={filter?.typeName == 3 ? true : false}
                   />
                   <i class="pl-2 text-md">آنلاین - حضوری</i>
@@ -519,7 +614,10 @@ const [show, setShow] = useState(false);
               </div>
             </details>
 
-            <button className="bg-[#5BE1B9] mt-8 dark:bg-gray-800 dark:text-white ml-3 rounded-xl w-[10rem] h-[2.5rem] border-solid border border-green-600">
+            <button
+              onClick={clearFilter}
+              className="bg-[#5BE1B9] mt-8 dark:bg-gray-800 dark:text-white ml-3 rounded-xl w-[10rem] h-[2.5rem] border-solid border border-green-600"
+            >
               پاک کردن فیلتر ها
             </button>
           </div>

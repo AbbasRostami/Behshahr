@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import socials from "./../../../assets/svg/Landing/Socials.svg";
 import { getApi } from "../../../core/api/api";
-
+import { FaBookReader, FaReact } from "react-icons/fa";
+import { FaBookAtlas } from "react-icons/fa6";
 const Professionals = () => {
   const [Teachers, setTeachers] = useState(null);
 
@@ -35,17 +35,31 @@ const Professionals = () => {
           <div className="flex justify-center items-center w-[300px] h-[380px] mt-36 ">
             <div className="flex flex-col items-center ">
               <img className=" rounded-2xl" src={item?.pictureAddress} alt="" />
-              <p className="text-[#086CB5] text-bold dark:text-white text-sm mt-5">
+              <p className="text-black text-bold dark:text-white text-sm mt-5">
                 {item?.fullName}
               </p>
-              <p className="text-[#21394B] px-14 rtl text-xs mt-6 text-center dark:text-white	">
+              <div className=" mt-5 flex justify-between items-center w-16">
+                <div>
+                <FaBookAtlas className="dark:bg-zinc-300" size={28}/>
+                <p className="ml-2 mt-1 dark:text-white">{item?.newsCount}</p>
+                </div>
+                <div>
+                <FaBookReader className="dark:bg-zinc-300" size={28}/>
+                <p className="ml-2 mt-1 dark:text-white">{item?.courseCounts}</p>
+                </div>
+              
+              
+              </div>
+              
+              <p className="text-[#21394B] px-14 rtl text-md mt-6 text-center dark:text-white	">
                 استاد برنامه نویس
               </p>
-              <img className="m-3" src={socials} alt="" />
+             
             </div>
           </div>
         ))}
       </div>
+     
     </>
   );
 };

@@ -8,13 +8,11 @@ import { Courses } from "../../components/LandingHolder/Courses";
 import { Professionals } from "../../components/LandingHolder/Professionals";
 import { NewsArticles } from "../../components/LandingHolder/News-articles";
 import { Suggestions } from "../../components/LandingHolder/Suggestions";
-import { Footer } from "../../components/common/Footer";
 
 const Landing = () => {
   return (
     <>
       <div className="dark:bg-slate-900">
-        <Header />
         <TopDescription />
         <OurServices />
         <Statistics />
@@ -23,7 +21,6 @@ const Landing = () => {
         <Professionals />
         <NewsArticles />
         <Suggestions />
-        <Footer />
       </div>
     </>
   );

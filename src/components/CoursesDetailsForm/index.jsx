@@ -14,7 +14,9 @@ import dislike from "./../../assets/svg/ArticlesDetails/dislike.svg";
 import like from "./../../assets/svg/ArticlesDetails/like.svg";
 import line from "./../../assets/svg/ArticlesDetails/line.svg";
 import articlePic3 from "./../../assets/articlePic33.svg";
-
+import moment from "jalali-moment";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 const CoursesDetailsForm = () => {
   const params = useParams();
 

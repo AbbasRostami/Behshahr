@@ -1,22 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Form, Link } from "react-router-dom";
 import { Button, Card, cardClasses, Menu, MenuItem } from "@mui/material";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Field, Formik } from "formik";
 
 import DarkLightToggle from "../DarkMode";
-
+import topProfile from "./../../../assets/svg/Landing/topProfile.svg";
 import logoLanding from "./../../../assets/svg/Landing/logosite.svg";
 import seachIcon from "./../../../assets/svg/Landing/searchicon.svg";
+import topIcon from "./../../../assets/svg/Landing/topicon.svg";
+import recycle from "./../../../assets/recycle.svg";
 import courses1 from "./../../../assets/courses1.svg";
 import { getApi } from "../../../core/api/api";
+import { ProfileContext } from "../../../context/ProfileProvider";
 
 const Header = () => {
   const [show, setShow] = useState(false);
-  const [data, setData] = useState([]);
+  const [datas, setDatas] = useState([]);
   const [PageNumber, setPageNumber] = useState(1);
   const [pagination, setPagination] = useState({});
   const [filter, setFilter] = useState();
+  const [modal, setModal] = useState(false);
 
   const GetCouresesTop = async (params) => {
     const path = `/Home/GetCoursesWithPagination`;
@@ -24,9 +28,9 @@ const Header = () => {
       path,
       params: { params: { ...params, RowsOfPage: 9 } },
     });
-    console.log(response.data.courseFilterDtos);
-    setData(response.data.courseFilterDtos);
-    setPagination(response.data);
+    console.log(response.data);
+    setDatas(response.data.courseFilterDtos);
+    setPagination(response.datas);
   };
 
   useEffect(() => {
@@ -44,19 +48,65 @@ const Header = () => {
     GetCouresesTop(allFilter);
   };
 
+  const { data } = useContext(ProfileContext);
+  console.log("ContextData Dashboard: ", data);
+
   return (
-    <div class="bg-gradient-to-r from-green-300 to-gray-50 dark:dark:bg-slate-900 dark:bg-none">
+    <div class=" bg-gradient-to-r from-green-300 to-gray-50 dark:dark:bg-slate-900 dark:bg-none">
       <div class="flex justify-between items-center px-20 h-20">
         <div class="flex justify-center items-center">
-          <Link to="/login">
-            <button class="text-[#22445D] bg-[#00DF9D] dark:bg-gray-800 dark:text-white rounded-lg cursor-pointer p-2">
-              ورود / ثبت نام
-            </button>
-          </Link>
+          {localStorage.getItem("token") ? (
+            <>
+              <button onClick={() => setModal(!modal)}>
+                <img
+                  className="rounded-full w-11 h-11"
+                  src={data?.currentPictureAddress}
+                  alt=""
+                />
+              </button>
 
-          <button onClick={() => setShow(!show)}>
-            <img src={seachIcon} alt="" />
-          </button>
+              <div onClick={() => setShow(!show)} class="">
+                <img src={seachIcon} alt="" />
+              </div>
+              {modal && (
+                <>
+                  <div className="w-[12%] h-32 py-3 px-3 absolute top-16 left-24 bg-white dark:bg-gray-700 rounded-xl shadow-md dark:shadow-slate-500 flex flex-col gap-3 rtl inset-0 z-50 outline-none focus:outline-none">
+                    <Link to="/dashbord">
+                      {" "}
+                      <p className="cursor-pointer dark:text-white rounded-lg hover:bg-green-200 dark:hover:bg-slate-600">
+                        پنل دانشجو
+                      </p>
+                    </Link>
+                    <Link to="/editProfile">
+                      {" "}
+                      <p className="cursor-pointer dark:text-white rounded-lg hover:bg-green-200 dark:hover:bg-slate-600">
+                        ویرایش پروفایل
+                      </p>
+                    </Link>
+                    <p
+                     onClick={() => {
+                      localStorage.removeItem("token"); 
+                      window.location.href = "/login"; 
+                    }}
+                    className="cursor-pointer dark:text-white rounded-lg hover:bg-green-200 dark:hover:bg-slate-600">
+                      خروج
+                    </p>
+                  </div>
+                </>
+              )}
+            </>
+          ) : (
+            <>
+              <Link to="/login">
+                <button class="text-[#22445D] bg-[#00DF9D] dark:bg-gray-800 dark:text-white rounded-lg cursor-pointer p-2">
+                  ورود / ثبت نام
+                </button>
+              </Link>
+              <div class="">
+                <img src={seachIcon} alt="" />
+              </div>
+            </>
+          )}
 
           <DarkLightToggle />
         </div>
@@ -134,65 +184,63 @@ const Header = () => {
                   </div>
                 </Form>
               </Formik>
-              {/* {data.map((item) => {
+              {datas.slice(0,1).map((item) => {
                 return (
-                  <div className="w-[95%] h-20 mx-auto flex flex-nowrap gap-8 rtl justify-center items-center bg-slate-200 dark:bg-slate-700 dark:text-white rounded-lg shadow-sm">
+                  <div className="w-[95%] h-20 mx-auto flex flex-nowrap gap-8 rtl px-6 justify-between items-center bg-slate-200 dark:bg-slate-700 dark:text-white rounded-lg shadow-sm">
                     <img className="h-12" src={courses1} alt="" />
                     <p> {item.title}</p>
                     <p> {item.cost} </p>
                     <p> {item.levelName} </p>
                   </div>
                 );
-              })} */}
+              })}
             </div>
 
             <div className="opacity-40 fixed inset-0 z-40 bg-black"></div>
           </>
         )}
 
-          <div class="flex justify-between items-center dark:text-white hidden lg:flex">
-            <Link to="/about">
-              {" "}
-              <span class="hover:bg-[#9e969657] hover:text-[#158B68] w-24 text-center rounded-lg cursor-pointer items-center p-1">
-                درباره ما
-              </span>
-            </Link>
+        <div class="flex justify-between items-center dark:text-white hidden lg:flex">
+          <Link to="/about">
+            {" "}
+            <span class="hover:bg-[#9e969657] hover:text-[#158B68] w-24 text-center rounded-lg cursor-pointer items-center p-1">
+              درباره ما
+            </span>
+          </Link>
 
-            <Link to="/news-articles">
-              {" "}
-              <span class="hover:bg-[#9e969657] hover:text-[#158B68] mx-4 w-24 text-center rounded-lg cursor-pointer items-center p-1">
-                مقالات
-              </span>
-            </Link>
+          <Link to="/news-articles">
+            {" "}
+            <span class="hover:bg-[#9e969657] hover:text-[#158B68] mx-4 w-24 text-center rounded-lg cursor-pointer items-center p-1">
+              مقالات
+            </span>
+          </Link>
 
-            <Link to="/courses-list">
-              {" "}
-              <span class="hover:bg-[#9e969657] hover:text-[#158B68] mr-4 w-24 text-center rounded-lg cursor-pointer items-center p-1">
-                دوره ها
-              </span>
-            </Link>
+          <Link to="/courses-list">
+            {" "}
+            <span class="hover:bg-[#9e969657] hover:text-[#158B68] mr-4 w-24 text-center rounded-lg cursor-pointer items-center p-1">
+              دوره ها
+            </span>
+          </Link>
 
-            <Link to="/">
-              {" "}
-              <span class="hover:bg-[#9e969657] hover:text-[#158B68] w-24 text-center rounded-lg cursor-pointer items-center p-1">
-                صفحه اصلی{" "}
-              </span>
-            </Link>
-          </div>
-
-          <div class="flex justify-center items-center dark:text-white">
-            <Link to="/">
-              <span class="cursor-pointer">آکادمی اچ وان</span>
-            </Link>
-
-            <Link to="/">
-              <img class="h-10 cursor-pointer" src={logoLanding} alt="" />
-            </Link>
-          </div>
-
-        <div className="dark:bg-slate-400 rounded-sm">
-          <ResponsiveMenu />
+          <Link to="/">
+            {" "}
+            <span class="hover:bg-[#9e969657] hover:text-[#158B68] w-24 text-center rounded-lg cursor-pointer items-center p-1">
+              صفحه اصلی{" "}
+            </span>
+          </Link>
         </div>
+
+        <div class="flex justify-center items-center dark:text-white">
+          <Link to="/">
+            <span class="cursor-pointer">آکادمی اچ وان</span>
+          </Link>
+
+          <Link to="/">
+            <img class="h-10 cursor-pointer" src={logoLanding} alt="" />
+          </Link>
+        </div>
+
+        <ResponsiveMenu />
       </div>
     </div>
   );
