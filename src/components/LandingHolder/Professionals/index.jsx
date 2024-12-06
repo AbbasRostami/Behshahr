@@ -5,7 +5,7 @@ import { getApi } from "../../../core/api/api";
 const Professionals = () => {
   const [Teachers, setTeachers] = useState(null);
 
-  const getTeachers = async () => {
+  const getTeachers = async (cont) => {
     const path = `/Home/GetTeachers`;
     const response = await getApi({ path });
     console.log(response?.data);

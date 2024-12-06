@@ -43,13 +43,6 @@ const ArticlesDetailsForm = () => {
     getArticlesTop();
   }, []);
 
-
-
-
-
-
-
-
   return (
     <>
       <div>
