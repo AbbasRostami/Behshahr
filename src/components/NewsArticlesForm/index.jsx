@@ -6,20 +6,29 @@ import searching from "./../../assets/search.svg";
 import arrowUnder from "./../../assets/arrowUnder.svg";
 import { getArticlesListSort } from "../../core/api/getArticlesList";
 import { getArticlesListSort2 } from "../../core/api/getArticlesList";
-import { getApi } from "../../core/api/api";
+import { getApi, postApi } from "../../core/api/api";
 import { SliderArticles } from "../common/SliderArticles";
 import { useParams } from "react-router-dom";
 
 const NewsArticlesForm = () => {
-  const [sort, setSort] = useState([]);
-  const [sort2, setSort2] = useState([]);
+  // const [sort, setSort] = useState([]);
+  // const [sort2, setSort2] = useState([]);
 
   const [cards, setCards] = useState([]);
+  const [sort, setSort] = useState({});
+  const [pagination, setPagination] = useState({});
+  const [PageNumber, setPageNumber] = useState(1);
+  const [filter, setFilter] = useState();
+
   const params = useParams();
 
-  const getArticlesTop = async () => {
+  const getArticlesTop = async (params) => {
     const path = `/News`;
-    const response = await getApi({ path });
+    const response = await getApi({
+      path,
+      params: { params: { ...params, RowsOfPage: 9 } },
+    });
+
     console.log(response.data?.news);
     if (response) {
       setCards(response.data?.news);
@@ -29,27 +38,56 @@ const NewsArticlesForm = () => {
     getArticlesTop();
   }, []);
 
-  const ArticlesSort = async () => {
-    const response3 = await getArticlesListSort();
-    console.log(response3);
-    if (response3) {
-      setSort(response3);
-    }
+  const filterDataHanlder = (newParams) => {
+    setFilter({ PageNumber: 1, ...filter, ...newParams });
+    const allFilter = {
+      PageNumber: 1,
+      ...filter,
+      ...newParams,
+    };
+    console.log("filter", allFilter);
+    getArticlesTop(allFilter);
   };
-  useEffect(() => {
-    ArticlesSort();
-  }, []);
 
-  const ArticlesSort2 = async () => {
-    const response4 = await getArticlesListSort2();
-    console.log(response4);
-    if (response4) {
-      setSort2(response4);
+  const addLike = async (id) => {
+    console.log(id);
+    const path = `News/NewsLike/${id}`;
+    const response = await postApi({ path });
+    if (response?.data?.success) {
+      filterDataHanlder({});
     }
+    console.log(response);
   };
-  useEffect(() => {
-    ArticlesSort2();
-  }, []);
+
+  const addDislike = async (id) => {
+    console.log(id);
+    const path = `/News/NewsDissLike/${id}`;
+    const response = await postApi({ path });
+    if (response?.data?.success) {
+      filterDataHanlder({});
+    }
+    console.log(response);
+  };
+
+  const addStarRatng = async (id) => {
+    console.log(id);
+    const path = `/News/NewsRate?NewsId=${id}&RateNumber=2`;
+    const response = await postApi({ path });
+    if (response?.data?.success) {
+      filterDataHanlder({});
+    }
+    console.log(response);
+  };
+
+  // const clearFilter = () => {
+  //   filterDataHanlder({ PageNumber: 1, inde: "", slab: "" });
+  // };
+
+  // const handleChangePage = (e, i) => {
+  //   console.log(e);
+  //   console.log(i);
+  //   filterDataHanlder({ PageNumber: i });
+  // };
 
   return (
     <>
@@ -66,7 +104,17 @@ const NewsArticlesForm = () => {
 
             <img className="h-[8px]  ml-5" src={arrowUnder} alt="" />
           </select>
-          <select className=" dark:bg-gray-800 dark:text-white text-center border-solid border-2 rounded-2xl h-[3.5rem] lg:h-[3.7rem] lg:ml-[520px] bg-[#ffffff] w-[10rem] lg:w-[15rem] text-[17px] text-[#158B68] ">
+          <select
+            className=" dark:bg-gray-800 dark:text-white text-center border-solid border-2 rounded-2xl h-[3.5rem] lg:h-[3.7rem] lg:ml-[520px] bg-[#ffffff] w-[10rem] lg:w-[15rem] text-[17px] text-[#158B68] "
+            id=""
+            onChange={(e) => {
+              filterDataHanlder({
+                PageNumber: 1,
+                SortingCol: e.target.value,
+                SortType: "DESC",
+              });
+            }}
+          >
             <option value="">مرتب سازی</option>
             <option value="">متوسط</option>
             <option value="">پیشرفته</option>
@@ -81,7 +129,16 @@ const NewsArticlesForm = () => {
                   className="rtl p-4 dark:border-white dark:text-white border-green-800 w-72 lg:w-80 text-sm text-gray-900 border dark:bg-gray-800 rounded-2xl bg-gray-50"
                   placeholder="جستجو..."
                   required
-                  onChange={(e) => handleSearch(e.target.value)}
+                  onChange={(e) => {
+                    if (e.target.value === "") {
+                      filterDataHanlder({ PageNumber: 1 });
+                    } else {
+                      filterDataHanlder({
+                        PageNumber: 1,
+                        Query: e.target.value,
+                      });
+                    }
+                  }}
                 />
 
                 <svg
@@ -121,7 +178,14 @@ const NewsArticlesForm = () => {
         <div className="items-center h-[207rem] lg:h-[140rem] m-4 lg:m-6 dark:bg-gray-800 bg-[#FBF6F6] mt-10 rounded-2xl shadow-[9px_9px_12px_3px_rgba(0,1,_0.5,_0.2)] ">
           <div className="grid grid-cols-2 gap-72 lg:gap-0 lg:grid-cols-3 ml-6 lg:ml-16">
             {cards.slice(1, 10).map((item, index) => {
-              return <ArticlesCard item={item} />;
+              return (
+                <ArticlesCard
+                  item={item}
+                  addLike={addLike}
+                  addDislike={addDislike}
+                  addStarRatng={addStarRatng}
+                />
+              );
             })}
           </div>
         </div>
