@@ -48,7 +48,7 @@ const MyReserveCourses = () => {
             return (
               <div className="hover:bg-orange-100 mt-2 text-nowrap text-[#22445D] dark:text-white text-[12px] bg-[#ffff] dark:bg-slate-700 max-w-[80rem] lg:w-[64rem] h-[3.5rem] rounded-2xl flex justify-evenly rtl gap-24 lg:gap-28 shadow-sm border-[1px] py-[1.2rem] px-[1rem] mx-auto">
 
-                <h2 className="w-[20rem] truncate mr-16"> {item?.courseName}</h2>
+                <h2 className="w-[20rem] mr-16"> {item?.courseName}</h2>
                 <p className="w-[20rem]">{moment(item?.reserverDate).locale("fa").format("YYYY/MM/DD")}</p>
                 <h2 className="w-[20rem]"> {item?.accept ? "تایید شده" : "تایید نشده"}</h2>
 

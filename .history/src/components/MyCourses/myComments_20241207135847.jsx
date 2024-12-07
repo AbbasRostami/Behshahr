@@ -274,7 +274,7 @@ const MyComments = () => {
               <h1>حذف</h1>
             </div>
             <br></br>
-            {dataNews?.slice(1,7).map((item) => {
+            {dataNews?.slice(1,8).map((item) => {
               return (
                 <div className=" hover:bg-orange-100 mt-2 text-nowrap text-[#22445D] text-[12px] bg-[#ffff] h-[3.5rem] rounded-2xl flex justify-start rtl gap-14 xl:gap-28  shadow-sm border-[1px] py-[1.2rem] px-[1.4rem] mx-[1rem]">
                   <h2 className="mr-2 truncate ... w-[204px]">

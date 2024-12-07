@@ -31,7 +31,7 @@ const Professionals = () => {
           </p>
         </div>
 
-        {Teachers?.slice(6, 10).map((item, index) => (
+        {Teachers?.slice(6, 9).map((item, index) => (
           <div className="flex justify-center items-center w-[300px] h-[380px] mt-36 ">
             <div className="flex flex-col items-center ">
               <img className=" rounded-2xl" src={item?.pictureAddress} alt="" />
