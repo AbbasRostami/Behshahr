@@ -78,36 +78,25 @@ const EditProfile = () => {
   };
 
   const fileImg = (e) => {
-    const selectedFile = e.target.files[0];
-    if (selectedFile) {
-      setImage(selectedFile);
-      console.log("Selected File: ", selectedFile);
-    } else {
-      console.error("No file selected");
-    }
+    setImage(e.target.files[0]);
+    console.log("Image: ", e.target.files);
   };
 
   const uploadImage = async () => {
-    if (!image) {
-      console.error("No image selected");
-      return; // اگر فایل انتخاب نشده باشد، آپلود انجام نمی‌شود.
-    }
-  
     const formData = new FormData();
     formData.append("formFile", image);
-  
-    console.log("Uploading formData: ", formData);
-  
+
+    console.log("up:", formData);
+
     const path = `/SharePanel/AddProfileImage`;
     const body = formData;
-  
     const response = await postApi({ path, body });
-    console.log("Upload Response:", response);
-  
-    if (response.data.success) {
-      toast.success(response.data.message);
-      getEditProf();
-    }
+    console.log("Upload:", response);
+    // if (response.data.success) {
+    //   toast.success(response.data.message);
+    // }
+
+    getEditProf();
   };
 
   const SelectImage = async (id) => {
@@ -193,7 +182,7 @@ const EditProfile = () => {
             <>
               <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
                 <div className="w-[30rem] my-6 mx-auto max-w-3xl">
-                  <div className=" dark:text-white border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white dark:bg-gray-800 outline-none focus:outline-none">
+                  <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white dark:bg-gray-800 outline-none focus:outline-none">
                     <button
                       type="button"
                       class="text-gray-400  bg-transparent ml-2 mt-3 hover:bg-gray-200 hover:text-gray-900 rounded-lg w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -331,20 +320,20 @@ const EditProfile = () => {
               initialValues={initialValues}
             >
               <Form>
-                <div className="grid gap-2 dark:text-white lg:gap-8 mt-8 px-4">
-                  <div className="grid grid-cols-1 dark:text-white lg:grid-cols-2 gap-2">
+                <div className="grid gap-2 lg:gap-8 mt-8 px-4">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
                     <Field
                       name="FName"
                       type="text"
                       placeholder="نام"
-                      className=" h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] dark:text-white bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                      className=" h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                     ></Field>
 
                     <Field
                       name="LName"
                       type="text"
                       placeholder="نام خانوادگی"
-                      className=" h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] dark:text-white bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                      className=" h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                     ></Field>
                   </div>
 
@@ -352,7 +341,7 @@ const EditProfile = () => {
                     name="phoneNumber"
                     type="text"
                     placeholder="شماره همراه"
-                    className="w-full h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] dark:text-white bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                    className="w-full h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                   ></Field>
 
                   <div className="grid grid-cols-2 gap-2">
@@ -360,14 +349,14 @@ const EditProfile = () => {
                       name="NationalCode"
                       type="text"
                       placeholder="شماره ملی"
-                      className=" h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] dark:text-white bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                      className=" h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                     ></Field>
 
                     <Field
                       name="BirthDay"
                       type="date"
                       placeholder="تاریخ تولد"
-                      className=" h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] dark:text-white bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                      className=" h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                     ></Field>
                   </div>
 
@@ -375,7 +364,7 @@ const EditProfile = () => {
                     name="UserAbout"
                     type="text"
                     placeholder="درباره من"
-                    className="w-full h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] dark:text-white bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                    className="w-full h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                   ></Field>
 
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
@@ -383,13 +372,13 @@ const EditProfile = () => {
                       name="email"
                       type="text"
                       placeholder="ایمیل"
-                      className="w-[100%] lg:w-[153%] h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] dark:text-white bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                      className="w-[100%] lg:w-[153%] h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                     ></Field>
 
                     <select
                       name="Gender"
                       id="pet-select"
-                      className="w-[100%] lg:w-[46%] h-[3.8rem] mr-0 lg:mr-52 px-8 text-slate-900 border-[2px] border-[#158B68] dark:text-white bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                      className="w-[100%] lg:w-[46%] h-[3.8rem] mr-0 lg:mr-52 px-8 text-slate-900 border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                     >
                       <option value="مرد">مرد</option>
                       <option value="زن">زن</option>
@@ -400,7 +389,7 @@ const EditProfile = () => {
                     name="HomeAdderess"
                     type="text"
                     placeholder="آدرس محل زندگی"
-                    className="w-full h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] dark:text-white bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                    className="w-full h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                   ></Field>
 
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
@@ -408,21 +397,21 @@ const EditProfile = () => {
                       name="TelegramLink"
                       type="text"
                       placeholder="لینک تلگرام"
-                      className=" h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] dark:text-white bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                      className=" h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                     ></Field>
 
                     <Field
                       name="LinkdinProfile"
                       type="text"
                       placeholder="پروفایل لینکدین"
-                      className=" h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] dark:text-white bg-[#ffff] dark:bg-gray-700 rounded-lg"
+                      className=" h-[3.8rem] px-8 text-slate-900 border-[2px] border-[#158B68] bg-[#ffff] dark:bg-gray-700 rounded-lg"
                     ></Field>
                   </div>
 
-                  <div className="  text-nowrap text-center border-[2px] rounded-lg">
+                  <div className=" text-nowrap text-center border-[2px] rounded-lg">
                     <button
                       type="submit"
-                      className="w-full h-[3.8rem] text-lg text-[#fff]  bg-[#158B68] dark:bg-gray-800"
+                      className="w-full h-[3.8rem] text-lg text-[#fff] bg-[#158B68] dark:bg-gray-800"
                     >
                       ثبت تغییرات
                     </button>

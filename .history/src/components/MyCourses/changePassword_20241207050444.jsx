@@ -60,7 +60,7 @@ const ChangePassword = () => {
                 alt=""
               />
               <img
-                className="h-[1.5rem] absolute top-[26.7rem] mr-56 lg:mr-20"
+                className="h-[1.5rem] absolute top-[27rem] mr-56 lg:mr-20"
                 src={key}
                 alt=""
               />

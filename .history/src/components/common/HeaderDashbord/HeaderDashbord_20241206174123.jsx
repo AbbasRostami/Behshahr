@@ -17,6 +17,7 @@ const HeaderDashbord = ({ showMenu, setShowMenu }) => {
       <div class="flex justify-between items-center container mx-auto gap-5 h-20">
         <div className="flex items-center gap-4">
           <img className="h-[2.3rem] lg:h-[3rem] ml-5 rounded-full" src={data?.currentPictureAddress} alt="" />
+          <img className="h-[1.8rem] lg:h-[2rem] mr-2" src={reserved2} alt="" />
           <DarkLightToggle />
         </div>
 

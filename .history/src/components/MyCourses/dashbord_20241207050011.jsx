@@ -88,7 +88,7 @@ const Dashbord = () => {
               جدیدترین دوره ها
             </h1>
           </div>
-          {datas?.slice(2,3).map((item) => {
+          {datas?.slice(2,1).map((item) => {
             return (
               <div className="w-[25rem] h-[6.5rem] rounded-lg border-[1px] shadow-xl mx-[0.5rem] mt-[0.5rem]">
               <img
@@ -98,15 +98,15 @@ const Dashbord = () => {
               />
   
               <h1 className="text-sm text-[#22445D] dark:text-white mr-[9rem] mt-[-5.5rem]">
-              مدرس:  {item?.fullName}
+                عنوان دوره
               </h1>
   
               <h2 className="text-sm text-[#22445D] dark:text-white mr-[9rem] mt-[0.5rem]">
-              مدرس:  {item?.fullName}
+                مدرس: نام استاد
               </h2>
   
               <h3 className="text-sm  text-[#22445D] dark:text-white mr-[9rem] mt-[0.5rem]">
-              {item?.cost} تومان
+                قیمت: 3.000.000 تومان
               </h3>
             </div>
 );

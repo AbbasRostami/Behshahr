@@ -29,15 +29,15 @@ const MyCourses = () => {
           <br></br>
           {data.map((item) => {
             return (
-              <div className=" mt-2 hover:bg-orange-100 dark:bg-gray-800 dark:text-white text-nowrap text-[#22445D] text-[12px] bg-[#ffff] w-[43rem] xl:w-[64rem] h-[3.5rem] rounded-2xl flex justify-evenly rtl gap-14 xl:gap-4 shadow-sm border-[1px] py-[1.2rem] px-[3rem] mx-[1rem]">
-                <h2 className="w-[10rem] mr-3 truncate"> {item?.courseTitle} </h2>
+              <div className=" mt-2 text-nowrap text-[#22445D] text-[12px] bg-[#ffff] w-[43rem] xl:w-[64rem] h-[3.5rem] rounded-2xl flex justify-evenly rtl gap-14 xl:gap-4 shadow-sm border-[1px] py-[1.2rem] px-[3rem] mx-[1rem]">
+                <h2 className="w-[10rem] mr-3"> {item?.courseTitle} </h2>
                 <h2 className="w-[10rem]"> {item?.fullName} </h2>
                 <h2 className="w-[10rem]">{item?.termName}</h2>
                 <h2 className="w-[10rem]"> {item?.levelName}</h2>
                 <h2 className="w-[10rem]">
                   {moment(item?.lastUpdate).locale("fa").format("YYYY/MM/DD")}
                 </h2>
-                <h2 className="w-[10rem] text-center pl-10"> {item?.paymentStatus}</h2>
+                <h2 className="w-[10rem] text-center pl-2"> {item?.paymentStatus}</h2>
               </div>
             );
           })}

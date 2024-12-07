@@ -11,17 +11,6 @@ const Dashbord = () => {
   const {data} = useContext(ProfileContext)
   console.log("ContextData Dashboard: ", data);
 
-
-   const [datas, setDatas] = useState([]);
-  const getMyCourses = async () => {
-    const path = `/SharePanel/GetMyCourses?PageNumber=1&RowsOfPage=10&SortingCol=DESC&SortType=LastUpdate&Query=s`;
-    const response = await getApi({ path });
-    console.log(response.data.listOfMyCourses);
-    setDatas(response.data.listOfMyCourses);
-  };
-  useEffect(() => {
-    getMyCourses();
-  }, []);
   return (
     <>
       <div className="w-[70rem] h-[43rem] my-[1rem] border-[1px] bg-[#ffff] dark:bg-gray-800 rounded-2xl shadow-2xl grid grid-col-3 grid-rows-3 gap-4">
@@ -88,30 +77,26 @@ const Dashbord = () => {
               جدیدترین دوره ها
             </h1>
           </div>
-          {datas?.slice(2,3).map((item) => {
-            return (
-              <div className="w-[25rem] h-[6.5rem] rounded-lg border-[1px] shadow-xl mx-[0.5rem] mt-[0.5rem]">
-              <img
-                className="h-[5.5rem] mr-[0.5rem] mt-[0.5rem]"
-                src={redDashbordImg}
-                alt=""
-              />
-  
-              <h1 className="text-sm text-[#22445D] dark:text-white mr-[9rem] mt-[-5.5rem]">
-              مدرس:  {item?.fullName}
-              </h1>
-  
-              <h2 className="text-sm text-[#22445D] dark:text-white mr-[9rem] mt-[0.5rem]">
-              مدرس:  {item?.fullName}
-              </h2>
-  
-              <h3 className="text-sm  text-[#22445D] dark:text-white mr-[9rem] mt-[0.5rem]">
-              {item?.cost} تومان
-              </h3>
-            </div>
-);
-          })}
-         
+
+          <div className="w-[25rem] h-[6.5rem] rounded-lg border-[1px] shadow-xl mx-[0.5rem] mt-[0.5rem]">
+            <img
+              className="h-[5.5rem] mr-[0.5rem] mt-[0.5rem]"
+              src={redDashbordImg}
+              alt=""
+            />
+
+            <h1 className="text-sm text-[#22445D] dark:text-white mr-[9rem] mt-[-5.5rem]">
+              عنوان دوره
+            </h1>
+
+            <h2 className="text-sm text-[#22445D] dark:text-white mr-[9rem] mt-[0.5rem]">
+              مدرس: نام استاد
+            </h2>
+
+            <h3 className="text-sm  text-[#22445D] dark:text-white mr-[9rem] mt-[0.5rem]">
+              قیمت: 3.000.000 تومان
+            </h3>
+          </div>
         </div>
 
         <div className="w-[35.5rem] h-[18.5rem] rounded-lg shadow-xl border-[1px] bg-[#FBF6F6] dark:bg-gray-700 row-start-2 col-start-3 row-span-2 mr-[-36.5rem] mt-[-2.5rem]">
@@ -174,9 +159,8 @@ const Dashbord = () => {
 
          
         </div>
-        {datas?.slice(0,1).map((item) => {
-            return (
-              <div className="w-[25rem] h-[10rem] rounded-lg shadow-xl border-[1px] bg-[#FBF6F6] dark:bg-gray-700 row-start-3 mr-[-0.5rem] mt-[2.5rem]">
+
+        <div className="w-[25rem] h-[10rem] rounded-lg shadow-xl border-[1px] bg-[#FBF6F6] dark:bg-gray-700 row-start-3 mr-[-0.5rem] mt-[2.5rem]">
           <div className="h-[2.5rem] text-center bg-[#A4F6DE] dark:bg-gray-900 rounded-lg">
             <h1 className="text-[#22445D] dark:text-white py-[0.5rem]">
               دوره های من
@@ -191,21 +175,18 @@ const Dashbord = () => {
             />
 
             <h1 className="text-sm text-[#22445D] dark:text-white mr-[9rem] mt-[-5.5rem]">
-             {item?.courseTitle}
+              عنوان دوره
             </h1>
 
             <h2 className="text-sm text-[#22445D] dark:text-white mr-[9rem] mt-[0.5rem]">
-              مدرس:  {item?.fullName}
+              مدرس: نام استاد
             </h2>
 
             <h3 className="text-sm  text-[#22445D] dark:text-white mr-[9rem] mt-[0.5rem]">
-            {item?.cost} تومان
+              قیمت: 3.000.000 تومان
             </h3>
           </div>
         </div>
-            );
-          })}
-        
       </div>
     </>
   );

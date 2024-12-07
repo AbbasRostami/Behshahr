@@ -107,7 +107,7 @@ const Favorites = () => {
                     className="w-[204px] h-[2rem] my-[-0.5rem]"
                   >
                     <img
-                      className="dark:bg-green-400 text-[#22445D] mr-14 h-[1.5rem] "
+                      className="text-[#22445D] mr-14 h-[1.5rem] "
                       src={recycle}
                       alt=""
                     />

@@ -98,7 +98,7 @@ const Dashbord = () => {
               />
   
               <h1 className="text-sm text-[#22445D] dark:text-white mr-[9rem] mt-[-5.5rem]">
-              مدرس:  {item?.fullName}
+                عنوان دوره
               </h1>
   
               <h2 className="text-sm text-[#22445D] dark:text-white mr-[9rem] mt-[0.5rem]">

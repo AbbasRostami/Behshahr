@@ -419,10 +419,10 @@ const EditProfile = () => {
                     ></Field>
                   </div>
 
-                  <div className="  text-nowrap text-center border-[2px] rounded-lg">
+                  <div className=" dark:bg-te text-nowrap text-center border-[2px] rounded-lg">
                     <button
                       type="submit"
-                      className="w-full h-[3.8rem] text-lg text-[#fff]  bg-[#158B68] dark:bg-gray-800"
+                      className="w-full h-[3.8rem] text-lg text-[#fff] bg-[#158B68] dark:bg-gray-800"
                     >
                       ثبت تغییرات
                     </button>

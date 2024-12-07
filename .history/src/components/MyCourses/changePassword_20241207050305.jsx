@@ -54,19 +54,19 @@ const ChangePassword = () => {
                 className="text-[#ABA7A7] pr-12 text-sm lg:text-lg bg-[#ffff] dark:bg-gray-800 border-[2px] border-[#158B68] rounded-lg w-[24rem] lg:w-[29rem] h-[3.5rem] lg:h-[4rem] absolute top-[25.5rem] lg:top-[25.5rem] right-[15rem] lg:right-[30rem]"
               ></Field>
 
+             
               <img
-                className="h-[1.5rem] absolute top-[20.3rem] mr-56 lg:mr-20"
-                src={lock}
-                alt=""
-              />
-              <img
-                className="h-[1.5rem] absolute top-[26.7rem] mr-56 lg:mr-20"
+                className="h-[1.5rem] absolute top-[26.3rem] mr-56 lg:mr-20"
                 src={key}
                 alt=""
               />
-             
+              <img
+                className="h-[1.5rem] absolute top-[31.3rem] mr-56 lg:mr-20"
+                src={security}
+                alt=""
+              />
 
-              <button className="text-[#ffff] dark:text-white text-sm bg-[#158B68] dark:bg-gray-900 border-[2px] border-[#158B68] rounded-lg w-[24rem] lg:w-[29rem] h-[3.5rem] lg:h-[4rem] absolute top-[20rem] lg:top-[32rem] right-[15rem] lg:right-[30rem]">
+              <button className="text-[#ffff] dark:text-white text-sm bg-[#158B68] dark:bg-gray-900 border-[2px] border-[#158B68] rounded-lg w-[24rem] lg:w-[29rem] h-[3.5rem] lg:h-[4rem] absolute top-[35rem] lg:top-[37rem] right-[15rem] lg:right-[30rem]">
                 تایید
               </button>
             </Form>
