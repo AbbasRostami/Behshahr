@@ -21,9 +21,13 @@ const LoginForm = () => {
     const response = await postApi({ path, body });
     console.log(response);
     if (response?.data?.success) {
-      localStorage.setItem("token", response?.data?.token);
-      toast.success("شما با موفقیت وارد شدید.");
-      navigate("/");
+      if (response?.data?.token) {
+        localStorage.setItem("token", response?.data?.token);
+        toast.success("شما با موفقیت وارد شدید.");
+        navigate("/");
+      } else {
+        // navigate("/");
+      }
     } else {
       toast.error(response?.data?.message);
     }
@@ -36,7 +40,7 @@ const LoginForm = () => {
       {show ? (
         <div className="flex m-auto h-[32rem] w-[50rem] mt-[5rem] ">
           <div
-            onClick={() => setShow(!show)}
+            // onClick={() => setShow(!show)}
             className="bg-[#A4F6DE] relative left-[1px] w-[25rem] rounded-l-lg"
           >
             <img className="m-auto h-[31rem] " src={login2Pick} alt="" />
@@ -52,8 +56,7 @@ const LoginForm = () => {
             <Formik
               onSubmit={loginHandler}
               initialValues={{
-                phoneOrGmail: "",
-                password: "",
+                VerifyCode: "",
                 rememberMe: true,
               }}
             >
@@ -62,7 +65,7 @@ const LoginForm = () => {
                   placeholder="کد تایید   "
                   className=" ml-7 border-solid border-2 border-[#158B68] text-right rounded-xl  text-[#ABA7A7] w-[22rem] h-[3rem] mt-[1.6rem] "
                   type="text"
-                  name="phoneOrGmail"
+                  name="VerifyCode"
                 />
 
                 <Field
@@ -162,6 +165,7 @@ const LoginForm = () => {
                 </label>
 
                 <button
+                  onClick={() => setShow(!show)}
                   className="w-[22rem] h-[3.4rem] bg-[#158B68] rounded-xl mt-7 ml-7 text-[#ffff]"
                   type="submit"
                 >
