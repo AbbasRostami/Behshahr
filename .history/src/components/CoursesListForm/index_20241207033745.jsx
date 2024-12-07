@@ -356,7 +356,14 @@ const CoursesListForm = () => {
               </div>
             );
           })}
-        
+          <Stack>
+            <Pagination
+              count={Math.ceil(pagination?.totalCount / 9)}
+              page={filter?.PageNumber || 1}
+              onChange={handleChangePage}
+              size="large"
+            />
+          </Stack>
         </div>
 
         <div

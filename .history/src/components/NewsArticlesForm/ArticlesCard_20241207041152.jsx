@@ -107,11 +107,11 @@ const ArticlesCard = ({ item, addLike, addDislike, addStarRatng }) => {
               </div>
             </div>
 
-            <p className="rtl mt-5 px-5 hover:text-green-500 leading-5 text-[#6D6767] truncate ... text-md text-right dark:text-white">
+            <p className="rtl mt-5 px-5 hover:text-green-500 leading-5 text-[#6D6767] truncate ... text-xs text-right dark:text-white">
               {item?.miniDescribe}
             </p>
 
-            <p className="ltr mt-5 px-5 hover:text-green-500 leading-5 text-[#6D6767] truncate ... text-md text-right dark:text-white">
+            <p className="ltr mt-5 px-5 hover:text-green-500 leading-5 text-[#6D6767] truncate ... text-xs text-right dark:text-white">
               تاریخ دوره:{" "}
               <span className="text-black text-md">{moment(item?.insertDate).locale("fa").format("YYYY/MM/DD")}</span>
             </p>

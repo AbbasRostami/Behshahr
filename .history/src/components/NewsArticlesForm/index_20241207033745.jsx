@@ -9,9 +9,6 @@ import { getArticlesListSort2 } from "../../core/api/getArticlesList";
 import { getApi, postApi } from "../../core/api/api";
 import { SliderArticles } from "../common/SliderArticles";
 import { useParams } from "react-router-dom";
-import { toast } from "react-toastify";
-import { Pagination } from "swiper/modules";
-import { Stack } from "@mui/material";
 
 const NewsArticlesForm = () => {
   // const [sort, setSort] = useState([]);
@@ -51,7 +48,6 @@ const NewsArticlesForm = () => {
     };
     console.log("filter", allFilter);
     getArticlesTop(allFilter);
-    getArticlesTop();
   };
 
   const addLike = async (id) => {
@@ -60,8 +56,6 @@ const NewsArticlesForm = () => {
     const response = await postApi({ path });
     if (response?.data?.success) {
       filterDataHanlder({});
-      toast.success("عملیات با موفقیت انجام شد.");
-
     }
     console.log(response);
   };
@@ -72,8 +66,6 @@ const NewsArticlesForm = () => {
     const response = await postApi({ path });
     if (response?.data?.success) {
       filterDataHanlder({});
-      toast.success("عملیات با موفقیت انجام شد.");
-
     }
     console.log(response);
   };
@@ -84,8 +76,6 @@ const NewsArticlesForm = () => {
     const response = await postApi({ path });
     if (response?.data?.success) {
       filterDataHanlder({});
-      toast.success("عملیات با موفقیت انجام شد.");
-
     }
     console.log(response);
   };
@@ -99,14 +89,6 @@ const NewsArticlesForm = () => {
   //   console.log(i);
   //   filterDataHanlder({ PageNumber: i });
   // };
-
-  
-const handleChangePage = (e, i) => {
-    console.log(e);
-    console.log(i);
-    filterDataHanlder({ PageNumber: i });
-  };
-
 
   return (
     <>
@@ -194,27 +176,20 @@ const handleChangePage = (e, i) => {
           </Formik>
         </div>
 
-        <div className="items-center h-[207rem] lg:h-[130rem] m-4 lg:m-6 dark:bg-gray-800 bg-[#FBF6F6] mt-10 rounded-2xl shadow-[9px_9px_12px_3px_rgba(0,1,_0.5,_0.2)] ">
+        <div className="items-center h-[207rem] lg:h-[140rem] m-4 lg:m-6 dark:bg-gray-800 bg-[#FBF6F6] mt-10 rounded-2xl shadow-[9px_9px_12px_3px_rgba(0,1,_0.5,_0.2)] ">
           <div className="grid grid-cols-2 gap-72 lg:gap-0 lg:grid-cols-3 ml-6 lg:ml-16">
-            {cards?.map((item, index) => {
+            {cards.slice(1, 10).map((item, index) => {
               return (
                 <ArticlesCard
                   item={item}
                   addLike={addLike}
                   addDislike={addDislike}
                   addStarRatng={addStarRatng}
-                  filter={filter}
-                  handleChangePage={handleChangePage}
-                  pagination={pagination}
-                  setPagination={setPagination}
                 />
               );
             })}
           </div>
-          
         </div>
-
-        
 
         <SliderArticles />
       </div>

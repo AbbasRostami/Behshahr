@@ -20,7 +20,7 @@ const ArticlesCard = ({ item, addLike, addDislike, addStarRatng }) => {
     <>
       <div className="flex  items-center w-[22rem]  ">
         <div className="flex items-center rounded-3xl ">
-          <div className="relative hover:bg-slate-200 h-[630px] w-[320px] lg:w-[400px] text-center rounded-[1.5rem] mt-11 dark:bg-gray-800 bg-[#FBF6F6]  shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen ">
+          <div className="relative hover:bg-slate-200 h-[598px] w-[320px] lg:w-[400px] text-center rounded-[1.5rem] mt-11 dark:bg-gray-800 bg-[#FBF6F6]  shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen ">
             <div>
               <img
                 className="rounded-t-lg p-0 object-cover h-[20rem] w-full"
@@ -30,7 +30,7 @@ const ArticlesCard = ({ item, addLike, addDislike, addStarRatng }) => {
             </div>
 
             <div className="flex justify-between items-center mt-5 px-5">
-              <div className="flex justify-center gap-2 items-center ">
+              <div className="flex justify-center items-center ">
                 <div>
                   {/* <img src={like} alt="" /> */}
                   <BiLike
@@ -107,13 +107,13 @@ const ArticlesCard = ({ item, addLike, addDislike, addStarRatng }) => {
               </div>
             </div>
 
-            <p className="rtl mt-5 px-5 hover:text-green-500 leading-5 text-[#6D6767] truncate ... text-md text-right dark:text-white">
+            <p className="rtl mt-5 px-5 hover:text-green-500 leading-5 text-[#6D6767] truncate ... text-xs text-right dark:text-white">
               {item?.miniDescribe}
             </p>
 
-            <p className="ltr mt-5 px-5 hover:text-green-500 leading-5 text-[#6D6767] truncate ... text-md text-right dark:text-white">
+            <p className="ltr mt-5 px-5 hover:text-green-500 leading-5 text-[#6D6767] truncate ... text-xs text-right dark:text-white">
               تاریخ دوره:{" "}
-              <span className="text-black text-md">{moment(item?.insertDate).locale("fa").format("YYYY/MM/DD")}</span>
+              {moment(item?.insertDate).locale("fa").format("YYYY/MM/DD")}
             </p>
 
             <img className="mt-5 px-5" src={line} alt="" />

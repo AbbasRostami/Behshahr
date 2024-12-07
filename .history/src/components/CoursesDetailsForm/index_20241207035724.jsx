@@ -77,7 +77,6 @@ const CoursesDetailsForm = () => {
     console.log(response);
     if (response.data.success) {
       toast.success(response.data.message);
-      getCoursesComments();
     }
   };
 
@@ -151,7 +150,7 @@ const CoursesDetailsForm = () => {
                   }
                   top
                   alt="image"
-                  className="h-[21.5rem] w-[90rem] object-fill rounded-md"
+                  className="h-[21.5rem] w-[60rem] object-fill rounded-md"
                 />
               </div>
 
@@ -378,7 +377,7 @@ const CoursesDetailsForm = () => {
           <div className="min-h-screen w-full bg-[#FBF6F6] dark:bg-gray-800 rounded-md flex justify-center p-6 rtl">
             <div className="flex flex-col w-full min-w-64 gap-6">
               {" "}
-              <div className="flex flex-col  ... bg-white  dark:bg-gray-700 dark:text-white p-4 gap-2 rounded-md  text-[#12926C]">
+              <div className="flex flex-col transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 ... bg-white  dark:bg-gray-700 dark:text-white p-4 gap-2 rounded-md  text-[#12926C]">
                 <p>
                   مدرس دوره :{" "}
                   <span className="text-[#22445D]">{details?.teacherName}</span>{" "}
@@ -408,7 +407,7 @@ const CoursesDetailsForm = () => {
                   </span>
                 </p>
               </div>
-              <div className="bg-white  ...  dark:bg-gray-700 dark:text-white p-4 space-y-2 rounded-md  text-[#12926C]">
+              <div className="bg-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 ...  dark:bg-gray-700 dark:text-white p-4 space-y-2 rounded-md  text-[#12926C]">
                 <p>
                   مدت زمان :{" "}
                   <span className="text-[#22445D]">
@@ -432,7 +431,7 @@ const CoursesDetailsForm = () => {
                   </span>
                 </p>
               </div>
-              <div className="bg-white  ...  dark:bg-gray-700 dark:text-white p-4 space-y-2 rounded-md  text-[#12926C]">
+              <div className="bg-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 ...  dark:bg-gray-700 dark:text-white p-4 space-y-2 rounded-md  text-[#12926C]">
                 <p>
                   تاریخ بروزرسانی :
                   <span className="text-[#22445D]">

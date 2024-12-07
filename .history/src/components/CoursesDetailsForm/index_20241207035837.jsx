@@ -77,7 +77,6 @@ const CoursesDetailsForm = () => {
     console.log(response);
     if (response.data.success) {
       toast.success(response.data.message);
-      getCoursesComments();
     }
   };
 
@@ -151,7 +150,7 @@ const CoursesDetailsForm = () => {
                   }
                   top
                   alt="image"
-                  className="h-[21.5rem] w-[90rem] object-fill rounded-md"
+                  className="h-[21.5rem] w-[60rem] object-fill rounded-md"
                 />
               </div>
 

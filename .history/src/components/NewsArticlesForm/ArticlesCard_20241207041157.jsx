@@ -107,7 +107,7 @@ const ArticlesCard = ({ item, addLike, addDislike, addStarRatng }) => {
               </div>
             </div>
 
-            <p className="rtl mt-5 px-5 hover:text-green-500 leading-5 text-[#6D6767] truncate ... text-md text-right dark:text-white">
+            <p className="rtl mt-5 px-5 hover:text-green-500 leading-5 text-[#6D6767] truncate ... text-xs text-right dark:text-white">
               {item?.miniDescribe}
             </p>
 
