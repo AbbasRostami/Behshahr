@@ -14,15 +14,15 @@ const EditProfile = () => {
   const [image, setImage] = useState("");
   const [datas, setDatas] = useState();
 
-  // const getSecurity = async () => {
-  //   const path = `/SharePanel/GetSecurityInfo`;
-  //   const response = await getApi({ path });
-  //   console.log("Security", response.data.twoStepAuth);
-  //   setDatas(response.data.twoStepAuth);
-  // };
-  // useEffect(() => {
-  //   getSecurity();
-  // }, []);
+  const getSecurity = async () => {
+    const path = `/SharePanel/GetSecurityInfo`;
+    const response = await getApi({ path });
+    console.log("Security", response.data.twoStepAuth);
+    setDatas(response.data.twoStepAuth);
+  };
+  useEffect(() => {
+    getSecurity();
+  }, []);
 
   const { data, getEditProf } = useContext(ProfileContext);
 
@@ -148,23 +148,23 @@ const EditProfile = () => {
     getEditProf();
   };
 
-  // const editSecurity = async (values) => {
-  //   const data = {
-  //     twoStepAuth: values,
-  //     recoveryEmail: "hasan.kordeli@gmail.com",
-  //     baseUrl: "http://localhost:5173/editProfile",
-  //   };
+  const editSecurity = async (values) => {
+    const data = {
+      twoStepAuth: values,
+      recoveryEmail: "hasan.kordeli@gmail.com",
+      baseUrl: "http://localhost:5173/editProfile",
+    };
 
-  //   const path = `/SharePanel/EditSecurity`;
+    const path = `/SharePanel/EditSecurity`;
 
-  //   const response = await editApi({ path, body: data });
-  //   console.log(response);
+    const response = await editApi({ path, body: data });
+    console.log(response);
 
-  //   if (response.data.success) {
-  //     toast.success("movafagh");
-  //     setDatas(values);
-  //   }
-  // };
+    if (response.data.success) {
+      toast.success("movafagh");
+      setDatas(values);
+    }
+  };
 
   return (
     <>

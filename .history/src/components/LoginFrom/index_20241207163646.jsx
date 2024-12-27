@@ -24,6 +24,7 @@ const LoginForm = () => {
       localStorage.setItem("token", response?.data?.token);
       toast.success("شما با موفقیت وارد شدید.");
       navigate("/");
+
     } else {
       toast.error(response?.data?.message);
     }

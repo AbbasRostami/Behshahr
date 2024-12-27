@@ -14,15 +14,15 @@ const EditProfile = () => {
   const [image, setImage] = useState("");
   const [datas, setDatas] = useState();
 
-  // const getSecurity = async () => {
-  //   const path = `/SharePanel/GetSecurityInfo`;
-  //   const response = await getApi({ path });
-  //   console.log("Security", response.data.twoStepAuth);
-  //   setDatas(response.data.twoStepAuth);
-  // };
-  // useEffect(() => {
-  //   getSecurity();
-  // }, []);
+  const getSecurity = async () => {
+    const path = `/SharePanel/GetSecurityInfo`;
+    const response = await getApi({ path });
+    console.log("Security", response.data.twoStepAuth);
+    setDatas(response.data.twoStepAuth);
+  };
+  useEffect(() => {
+    getSecurity();
+  }, []);
 
   const { data, getEditProf } = useContext(ProfileContext);
 

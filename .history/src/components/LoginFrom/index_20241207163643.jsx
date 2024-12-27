@@ -21,9 +21,11 @@ const LoginForm = () => {
     const response = await postApi({ path, body });
     console.log(response);
     if (response?.data?.success) {
-      localStorage.setItem("token", response?.data?.token);
-      toast.success("شما با موفقیت وارد شدید.");
-      navigate("/");
+      if (response?.data?.token) {
+        localStorage.setItem("token", response?.data?.token);
+        toast.success("شما با موفقیت وارد شدید.");
+        navigate("/");
+      
     } else {
       toast.error(response?.data?.message);
     }
@@ -160,7 +162,7 @@ const LoginForm = () => {
                   <p className="mr-3"> مرا به خاطر بسپار </p>
                 </label>
 
-                <button
+                <button 
                   className="w-[22rem] h-[3.4rem] bg-[#158B68] rounded-xl mt-7 ml-7 text-[#ffff]"
                   type="submit"
                 >
