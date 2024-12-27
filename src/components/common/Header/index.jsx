@@ -1,15 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Form, Link } from "react-router-dom";
-import { Button, Card, cardClasses, Menu, MenuItem } from "@mui/material";
+import { Button, Menu, MenuItem } from "@mui/material";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Field, Formik } from "formik";
 
 import DarkLightToggle from "../DarkMode";
-import topProfile from "./../../../assets/svg/Landing/topProfile.svg";
 import logoLanding from "./../../../assets/svg/Landing/logosite.svg";
 import seachIcon from "./../../../assets/svg/Landing/searchicon.svg";
-import topIcon from "./../../../assets/svg/Landing/topicon.svg";
-import recycle from "./../../../assets/recycle.svg";
 import courses1 from "./../../../assets/courses1.svg";
 import { getApi } from "../../../core/api/api";
 import { ProfileContext } from "../../../context/ProfileProvider";
@@ -17,8 +14,6 @@ import { ProfileContext } from "../../../context/ProfileProvider";
 const Header = () => {
   const [show, setShow] = useState(false);
   const [datas, setDatas] = useState([]);
-  const [PageNumber, setPageNumber] = useState(1);
-  const [pagination, setPagination] = useState({});
   const [filter, setFilter] = useState();
   const [modal, setModal] = useState(false);
 
