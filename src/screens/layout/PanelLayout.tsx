@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
 import { HeaderDashbord } from "../../components/common/HeaderDashbord/HeaderDashbord";
 import { MainDashbord } from "../../components/common/MainDashbord/mainDashbord";
-import { Outlet } from "react-router-dom";
 
 export const PanelLayout = () => {
   const [showMenu, setShowMenu] = useState(false);
