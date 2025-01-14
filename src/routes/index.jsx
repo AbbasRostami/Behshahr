@@ -1,10 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Landing } from "../screens/Landing";
-import { AboutUs } from "../screens/AboutUs";
 import { CoursesDetails } from "../screens/CoursesDetails";
-import { ArticlesDetails } from "../screens/ArticlesDetails";
 import { NewsArticles } from "../screens/NewsArticles";
-import { NotFound } from "./../components/NotFound/index.jsx";
 import { Login } from "../screens/Login";
 import { MyCourses } from "../components/MyCourses/myCourses";
 import { MyReserveCourses } from "../components/MyCourses/myReserveCourses";
@@ -23,7 +20,10 @@ import PassProvider from "../core/provider/PasswoedProvider";
 import { ForgetPasswordForm } from "../components/ForgetPasswordForm/index.jsx";
 import { CoursesListForm } from "../components/CoursesListForm/index.jsx";
 import { CoursesList } from "../screens/CoursesList/index.jsx";
-import { MainLayout } from "../screens/layout/MainLayout.jsx";
+import { NotFound } from "../components/NotFound";
+import { ArticlesDetails } from "../screens/ArticlesDetails";
+import { AboutUs } from "../screens/AboutUs";
+import { MainLayout } from "../screens/layout/MainLayout";
 
 const RoutesApp = createBrowserRouter([
   {
@@ -52,7 +52,7 @@ const RoutesApp = createBrowserRouter([
       {
         path: "/articles-details/:id",
         element: <ArticlesDetails />,
-      }, // Register Routers
+      }, 
 
       {
         path: "/news-articles",
@@ -118,10 +118,6 @@ const RoutesApp = createBrowserRouter([
       </PassProvider>
     ),
   },
-  // {
-  //   path:'/forget-pass-StepOne',
-  //   element: <ForgetStepOne />,
-  // },
 
   {
     path: "/reset-password/:id",
