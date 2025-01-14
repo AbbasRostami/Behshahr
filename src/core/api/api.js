@@ -1,5 +1,6 @@
 import http from "../interceptor";
-export const getApi = async ({ path, params }) => {
+
+export const getApi = async ({ path, params = {} }) => {
   try {
     const response = await http.get(`${path}`, { params });
     return response;
@@ -7,6 +8,7 @@ export const getApi = async ({ path, params }) => {
     return error;
   }
 };
+
 
 export const postApi = async ({ path, body }) => {
   try {
@@ -16,6 +18,7 @@ export const postApi = async ({ path, body }) => {
     return error;
   }
 };
+
 export const editApi = async ({ path, body }) => {
   try {
     const response = await http.put(`${path}`, body);
