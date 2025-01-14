@@ -3,21 +3,34 @@ import iconCarrier0 from "./../../../assets/svg/Landing/iconCarrier.svg";
 import iconCarrier1 from "./../../../assets/svg/Landing/iconCarrier-1.svg";
 import iconCarrier2 from "./../../../assets/svg/Landing/iconCarrier-2.svg";
 import iconCarrier3 from "./../../../assets/svg/Landing/iconCarrier-3.svg";
-import { getLandingStatistics } from "../../../core/api/landingPage";
 import { useState, useEffect } from "react";
 import { getApi } from "../../../core/api/api";
 
-const Statistics = () => {
-  const [Statistics, setStatistics] = useState(null);
+interface StatisticsType {
+  newsCount: number;
+  courseCount: number;
+  studentCount: number;
+  teacherCount: number;
+}
+
+interface ApiResponse {
+  data: StatisticsType;
+}
+const Statistics: React.FC = () => {
+  const [Statistics, setStatistics] = useState<StatisticsType | null>(null);
 
   const getStatistics = async () => {
-    const path = `/Home/LandingReport`;
-    const response = await getApi({ path });
-    console.log(response?.data);
-    if (response) {
-      setStatistics(response.data);
+    try {
+      const path = `/Home/LandingReport`;
+      const response = (await getApi({ path })) as ApiResponse;
+      if (response) {
+        setStatistics(response.data);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
+
   useEffect(() => {
     getStatistics();
   }, []);
