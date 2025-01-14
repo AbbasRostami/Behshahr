@@ -12,10 +12,8 @@ import star from "./../../assets/star.svg";
 import profileimg from "./../../assets/profileimg.svg";
 import line from "./../../assets/line.svg";
 import filter2 from "./../../assets/Group 242.svg";
-import { CoursesSlider } from "../common/SliderCourses";
 import { getApi, postApi } from "../../core/api/api";
 import arrow from "./../../assets/arrow.svg";
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { Box, Slider } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
@@ -25,6 +23,7 @@ import { BiDislike, BiLike } from "react-icons/bi";
 import { FaFilter, FaRegStar } from "react-icons/fa";
 import { toast } from "react-toastify";
 import person from "./../../assets/download.png";
+import { CoursesSlider } from "../common/SliderCourses";
 
 const CoursesListForm = () => {
   const [data, setData] = useState([]);
@@ -616,58 +615,6 @@ const CoursesListForm = () => {
           </div>
         </div>
       </div>
-      {/* <div className="flex relative ml-20 w-[86rem] ">
-       
-
-       <ul className="text-[#22445D] text-right h-[39rem] flex w-[20rem] mt-16 dark:text-white dark:bg-gray-800 bg-[#FBF6F6] shadow-[10px 10px 3px rgba(0, 0, 0, 0.160784)] rounded-3xl   ">
-         <img
-           className="w-[1.5rem] h-[3rem] absolute right-[5.5rem] top-[5.4rem]"
-           src={filter2}
-           alt=""
-         />
-         <button className="absolute top-[6rem] right-[7.5rem] text-[#22445D] dark:text-white">
-           {" "}
-           فیلترها
-         </button>
-
-         <li className="absolute right-10 top-40 ">
-           تکنولوژی
-           <img className="w-[12rem] h-[1rem]" src={line} alt="" />
-         </li>
-         <li className=" absolute right-8 top-52">
-           نوع برگذاری
-           <div className="border-solid border-[0.1px] rounded-2xl border-[#5BE1b2] h-[7rem] w-[180px] mt-4">
-             <label className=" absolute right-6 top-12" htmlFor="check">
-               حضوری
-             </label>
-             <label className="absolute right-6 top-20" htmlFor="check">
-               ان لاین
-             </label>
-             <label
-               className="text-right absolute right-4 top-28"
-               htmlFor="check"
-             >
-               حضوری-ان لاین
-             </label>
-           </div>
-         </li>
-         <li className="absolute right-[2.5rem] top-[24rem]">
-           سطح دوره
-           <img className="w-[12rem] h-[1rem]" src={line} alt="" />
-         </li>
-         <li className="absolute right-[2.5rem] top-[26.5rem]">
-           قیمت
-           <img className="w-[12rem] h-[1rem]" src={line} alt="" />
-         </li>
-         <button className="bg-[#5BE1b2] dark:bg-gray-700 h-[3rem] w-[8rem] absolute right-[7rem] top-[31rem] rounded-xl">
-           پاک کردن فیلترها{" "}
-         </button>
-       </ul>
-
-       
-     </div>
-     */}
-      {/* Slider */}
       <CoursesSlider />
     </>
   );

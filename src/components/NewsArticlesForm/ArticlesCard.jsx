@@ -3,13 +3,9 @@ import like from "./../../assets/svg/Landing/coursesLike.svg";
 import dislike from "./../../assets/svg/ArticlesDetails/dislike.svg";
 import favorite from "./../../assets/svg/Landing/CoursesFavo.svg";
 import star from "./../../assets/svg/Landing/StarRating.svg";
-import profileimg from "./../../assets/svg/ArticlesDetails/profileimg.svg";
 import line from "./../../assets/svg/ArticlesDetails/line.svg";
 import newsPic from "./../../assets/svg/Landing/newspic.svg"
-import { getArticlesListTop } from "../../core/api/getArticlesList";
 import { useEffect, useState } from "react";
-import { getApi } from "../../core/api/api";
-import { SliderArticles } from "../common/SliderArticles";
 import { BiDislike, BiLike } from "react-icons/bi";
 import { FaRegStar } from "react-icons/fa";
 import moment from "moment";

@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react"
 import notFound from "../../assets/notFound.svg"
 import { Link } from 'react-router-dom'
 
-const NotFound = () => {
+const NotFound: React.FC = () => {
   return (
     <div className='flex flex-col items-center'>
       <img className='w-[72rem] ml-32 h-[35rem] mt-10' src={notFound} alt="" />

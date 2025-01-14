@@ -2,20 +2,13 @@ import React from "react";
 import { ArticlesCard } from "./ArticlesCard";
 import { useState, useEffect } from "react";
 import { Field, Form, Formik } from "formik";
-import searching from "./../../assets/svg/Landing/searchicon.svg";
 import arrowUnder from "./../../assets/arrow.svg";
-import { getArticlesListSort } from "../../core/api/getArticlesList";
-import { getArticlesListSort2 } from "../../core/api/getArticlesList";
 import { getApi, postApi } from "../../core/api/api";
-import { SliderArticles } from "../common/SliderArticles";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { Pagination } from "swiper/modules";
-import { Stack } from "@mui/material";
+import { SliderArticles } from "../common/SliderArticles";
 
 const NewsArticlesForm = () => {
-  // const [sort, setSort] = useState([]);
-  // const [sort2, setSort2] = useState([]);
 
   const [cards, setCards] = useState([]);
   const [sort, setSort] = useState({});
@@ -37,7 +30,7 @@ const NewsArticlesForm = () => {
       setCards(response.data?.news);
     }
   };
-  
+
   useEffect(() => {
     getArticlesTop();
   }, []);
@@ -61,7 +54,6 @@ const NewsArticlesForm = () => {
     if (response?.data?.success) {
       filterDataHanlder({});
       toast.success("عملیات با موفقیت انجام شد.");
-
     }
     console.log(response);
   };
@@ -73,7 +65,6 @@ const NewsArticlesForm = () => {
     if (response?.data?.success) {
       filterDataHanlder({});
       toast.success("عملیات با موفقیت انجام شد.");
-
     }
     console.log(response);
   };
@@ -85,7 +76,6 @@ const NewsArticlesForm = () => {
     if (response?.data?.success) {
       filterDataHanlder({});
       toast.success("عملیات با موفقیت انجام شد.");
-
     }
     console.log(response);
   };
@@ -100,13 +90,11 @@ const NewsArticlesForm = () => {
   //   filterDataHanlder({ PageNumber: i });
   // };
 
-  
-const handleChangePage = (e, i) => {
+  const handleChangePage = (e, i) => {
     console.log(e);
     console.log(i);
     filterDataHanlder({ PageNumber: i });
   };
-
 
   return (
     <>
@@ -211,10 +199,7 @@ const handleChangePage = (e, i) => {
               );
             })}
           </div>
-          
         </div>
-
-        
 
         <SliderArticles />
       </div>
