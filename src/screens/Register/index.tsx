@@ -1,8 +1,7 @@
 import React from 'react'
 import { RegisterForm } from '../../components/RegisterForm'
-import { Footer } from '../../components/common/Footer'
 
-const Register = () => {
+const Register: React.FC = () => {
   return (
     <div>
       <RegisterForm />
