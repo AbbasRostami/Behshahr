@@ -1,16 +1,10 @@
-import React from "react";
 import like from "./../../../assets/svg/Landing/coursesLike.svg";
 import dislike from "./../../../assets/svg/Landing/CoursesDisLike.svg";
 import favorite from "./../../../assets/svg/Landing/CoursesFavo.svg";
-// import newsPic from "./../../../assets/svg/Landing/newspic.svg";
 import line from "./../../../assets/svg/Landing/Line.svg";
-import profileimg from "./../../../assets/svg/Landing/ProfileImage.svg";
 import noimage from "./../../../assets/noimage.png";
-
 import starRating from "./../../../assets/svg/Landing/StarRating.svg";
 import { useEffect, useState } from "react";
-import person from "./../../../assets/svg/download.png";
-// import Swiper core and required modules
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
@@ -18,29 +12,52 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { getApi } from "../../../core/api/api";
 import { Link } from "react-router-dom";
 
+interface DataType {
+  currentImageAddressTumb: string;
+  currentLikeCount: number;
+  currentDissLikeCount: number;
+  currentRate: number;
+  newsCatregoryName: string;
+  title: string;
+  addUserFullName: string;
+  addUserProfileImage: string;
+  miniDescribe: string;
+  id: number;
+}
+
+interface ApiResponse {
+  data: {
+    news: DataType[];
+  };
+}
+
 const SliderArticles = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<DataType[]>([]);
 
   const getArticles = async () => {
-    const path = `/News`;
-    const response = await getApi({ path });
-    console.log("dskjhjh", response.data?.news);
-    if (response) {
-      setData(response.data?.news);
+    try {
+      const path = `/News`;
+      const response = (await getApi({ path })) as ApiResponse;
+      if (response) {
+        setData(response.data.news);
+      }
+    } catch (error) {
+      console.log(error);    
     }
   };
+  
   useEffect(() => {
     getArticles();
   }, []);
 
   return (
     <>
-      <div class="text-center leading-10 mt-14 dark:text-white">
+      <div className="text-center leading-10 mt-14 dark:text-white">
         <br />
         <br />
         <br />
-        <p class="text-[35px] font-bold">اخبار و مقالات</p>
-        <p class="leading-10">ساختن دنیایی بهتر، یک دوره در یک زمان</p>
+        <p className="text-[35px] font-bold">اخبار و مقالات</p>
+        <p className="leading-10">ساختن دنیایی بهتر، یک دوره در یک زمان</p>
       </div>
       <br />
       <br />
@@ -52,17 +69,16 @@ const SliderArticles = () => {
         modules={[Navigation]}
         className="mySwiper h-[40rem]"
         breakpoints={{
-          // حالت LG
           1024: {
-            slidesPerView: 3, // یک اسلاید در حالت LG
+            slidesPerView: 3,
           },
-          // حالت MD
+
           768: {
-            slidesPerView: 2, // دو اسلاید در حالت MD
+            slidesPerView: 2,
           },
-          // حالت پیش‌فرض (SM)
+
           640: {
-            slidesPerView: 1, // سه اسلاید در حالت SM
+            slidesPerView: 1,
           },
         }}
       >
@@ -74,7 +90,11 @@ const SliderArticles = () => {
                   <div className="h-64">
                     <img
                       className="mx-auto"
-                      style={{ width: "100%", maxHeight: "230px", height:"100%" }}
+                      style={{
+                        width: "100%",
+                        maxHeight: "230px",
+                        height: "100%",
+                      }}
                       // src={data.currentImageAddressTumb}
                       src={
                         item?.currentImageAddressTumb &&
@@ -84,12 +104,11 @@ const SliderArticles = () => {
                           ? item?.currentImageAddressTumb
                           : noimage
                       }
-                      top
                     />
                   </div>
 
                   <div className="flex justify-between items-center mt-[-5rem] lg:mt-5 px-5">
-                    <div className="flex justify-center items-center hidden lg:flex gap-1">
+                    <div className="flex justify-center items-center lg:flex gap-1">
                       <div>
                         <img src={like} alt="" />
                         <p className="text-black dark:text-white hover:text-green-400">
@@ -112,7 +131,7 @@ const SliderArticles = () => {
                       </div>
                     </div>
 
-                    <button class="text-TextGreen truncate ... bg-[#BFF4E4] rounded-lg hidden lg:inline-block cursor-pointer p-2 w-auto-[120px]">
+                    <button className="text-TextGreen truncate ... bg-[#BFF4E4] rounded-lg hidden lg:inline-block cursor-pointer p-2 w-auto-[120px]">
                       {item?.newsCatregoryName}
                     </button>
                   </div>
@@ -144,9 +163,18 @@ const SliderArticles = () => {
 
                   <img className="mt-5 px-5" src={line} alt="" />
 
-                <Link to={localStorage.getItem('token') ? `/articles-details/${item?.id}` : '/login'}>  <p className="text-base  text-[#807A7A] mt-3 dark:text-white">
-                    مشاهده جزئیات
-                  </p></Link>
+                  <Link
+                    to={
+                      localStorage.getItem("token")
+                        ? `/articles-details/${item?.id}`
+                        : "/login"
+                    }
+                  >
+                    {" "}
+                    <p className="text-base  text-[#807A7A] mt-3 dark:text-white">
+                      مشاهده جزئیات
+                    </p>
+                  </Link>
                 </div>
               </div>
             </SwiperSlide>
@@ -156,7 +184,7 @@ const SliderArticles = () => {
 
       <div className="flex justify-center items-center my-[-3rem] lg:mt-2 ">
         <Link to="/news-articles">
-          <button class="w-[220px] h-[60px] text-white bg-[#12926C] rounded-full dark:bg-gray-800">
+          <button className="w-[220px] h-[60px] text-white bg-[#12926C] rounded-full dark:bg-gray-800">
             مشاهده مقالات بیشتر
           </button>
         </Link>

@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { useState } from "react";
+import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import person from "./../../../assets/svg/download.png";
-
 import courses1 from "./../../../assets/svg/Landing/courses1.svg";
 import dislike from "./../../../assets/svg/Landing/CoursesDisLike.svg";
 import favorite from "./../../../assets/svg/Landing/CoursesFavo.svg";
@@ -15,64 +14,80 @@ import { useEffect } from "react";
 import { getApi, postApi } from "../../../core/api/api";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { Hidden } from "@mui/material";
+
+interface CoursesType {
+  likeCount: number;
+  dissLikeCount: number;
+  statusName: string;
+  title: string;
+  currentRegistrants: number;
+  teacherName: string;
+  describe: string;
+  cost: number;
+  courseId: number;
+}
+
+interface ApiResponse {
+  data: {
+    courseFilterDtos: CoursesType[];
+    success: boolean;
+  };
+}
 
 const CoursesSlider = () => {
-  const [courses, setcourses] = useState([]);
+  const [courses, setcourses] = useState<CoursesType[]>([]);
 
   const getCourses = async () => {
-    const path = `/Home/GetCoursesWithPagination`;
-    const response = await getApi({ path });
-    // console.log(response.data?.courseFilterDtos);
-    if (response) {
-      setcourses(response.data?.courseFilterDtos);
-    }
+    try {
+      const path = `/Home/GetCoursesWithPagination`;
+      const response = (await getApi({ path })) as ApiResponse;
+      if (response) {
+        setcourses(response.data?.courseFilterDtos);
+      }
+    } catch (error) {}
   };
   useEffect(() => {
     getCourses();
   }, []);
 
-  const addReserve = async (id) => {
-    console.log(id);
-
-    const body = {
-      courseId: id,
-    };
-    const path = `/CourseReserve/ReserveAdd`;
-    const response = await postApi({ path, body });
-    if (response.data.success) {
-      toast.success("دوره شما با موفقیت رزرو شد.");
-    }
+  const addReserve = async (id: number) => {
+    try {
+      const body = {
+        courseId: id,
+      };
+      const path = `/CourseReserve/ReserveAdd`;
+      const response = (await postApi({ path, body })) as ApiResponse;
+      if (response.data.success) {
+        toast.success("دوره شما با موفقیت رزرو شد.");
+      }
+    } catch (error) {}
   };
 
   return (
     <>
-      <div class="text-center leading-10 mt-24 dark:text-white">
-        <p class="text-[35px] font-bold">دوره های ما</p>
-        <p class="leading-10">ساختن دنیایی بهتر، یک دوره در یک زمان</p>
+      <div className="text-center leading-10 mt-24 dark:text-white">
+        <p className="text-[35px] font-bold">دوره های ما</p>
+        <p className="leading-10">ساختن دنیایی بهتر، یک دوره در یک زمان</p>
       </div>
 
       <Swiper
-  slidesPerView={1}
-  spaceBetween={20}
-  navigation={true}
-  modules={[Navigation]}
-  className="mySwiper h-[40rem]"
-  breakpoints={{
-
-    1024: {
-      slidesPerView: 3, 
-    },
-
-    768: {
-      slidesPerView: 3, 
-    },
-
-    640: {
-      slidesPerView: 2, 
-    },
-  }}
->
+        slidesPerView={1}
+        spaceBetween={20}
+        navigation={true}
+        modules={[Navigation]}
+        className="mySwiper h-[40rem]"
+        breakpoints={{
+          1024: {
+            slidesPerView: 3,
+          },
+          768: {
+            slidesPerView: 3,
+          },
+          640: {
+            slidesPerView: 2,
+          },
+        }}
+      >
         {courses?.map((item, index) => {
           return (
             <SwiperSlide>
@@ -83,7 +98,7 @@ const CoursesSlider = () => {
                   </div>
 
                   <div className="flex justify-between gap-20 items-center mt-1 lg:mt-10">
-                    <div className="flex justify-center items-center hidden lg:flex gap-1">
+                    <div className="flex justify-center items-center lg:flex gap-1">
                       <div>
                         <img src={like} alt="" />
                         <p>{item?.likeCount}</p>
@@ -98,7 +113,7 @@ const CoursesSlider = () => {
                       </div>
                     </div>
 
-                    <button class="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer mx-auto p-2">
+                    <button className="text-TextGreen bg-[#BFF4E4] rounded-lg cursor-pointer mx-auto p-2">
                       {item?.statusName}
                     </button>
                   </div>
@@ -108,7 +123,6 @@ const CoursesSlider = () => {
                   </p>
 
                   <div className="flex flex-nowrap  justify-between items-center mt-2 lg:mt-5 dark:text-white">
-
                     <div className="flex justify-center items-center">
                       <img src={starRating} alt="" />
                       <p className="ml-2">{item?.currentRegistrants}</p>
@@ -124,7 +138,6 @@ const CoursesSlider = () => {
                         {item?.teacherName}
                       </p>
                     </div>
-                    
                   </div>
 
                   <p className="rtl mt-3 ml-28 text-right text-nowrap text-[#41A789] text-xs dark:text-white ">
@@ -173,9 +186,12 @@ const CoursesSlider = () => {
       </Swiper>
 
       <div className="flex justify-center items-center ">
-       <Link to="/courses-list"> <button class="w-[220px] h-[60px] text-white bg-[#12926C] dark:bg-gray-800 rounded-full ">
-          مشاهده دوره های بیشتر
-        </button></Link>
+        <Link to="/courses-list">
+          {" "}
+          <button className="w-[220px] h-[60px] text-white bg-[#12926C] dark:bg-gray-800 rounded-full ">
+            مشاهده دوره های بیشتر
+          </button>
+        </Link>
       </div>
     </>
   );

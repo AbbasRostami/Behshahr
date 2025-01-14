@@ -1,20 +1,23 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import DarkLightToggle from "../DarkMode";
-import reserved2 from "../../../assets/reserved2.svg";
 import logoSite from "../../../assets/logoSite.svg";
-import { getApi } from "../../../core/api/api";
 import { ProfileContext } from "../../../context/ProfileProvider";
 
-const HeaderDashbord = ({ showMenu, setShowMenu }) => {
+interface HeaderDashbordProps {
+  showMenu: boolean;
+  setShowMenu: (value: boolean) => void;
+}
+
+const HeaderDashbord: React.FC<HeaderDashbordProps> = ({ showMenu, setShowMenu }) => {
 
   const {data} = useContext(ProfileContext);
 
   console.log("ContextData: ", data);
   
   return (
-    <div class="bg-[#A4F6DE] dark:bg-gray-700 w-[46rem] lg:w-[74.2rem]">
-      <div class="flex justify-between items-center container mx-auto gap-5 h-20">
+    <div className="bg-[#A4F6DE] dark:bg-gray-700 w-[46rem] lg:w-[74.2rem]">
+      <div className="flex justify-between items-center container mx-auto gap-5 h-20">
         <div className="flex items-center gap-4">
           <img className="h-[2.3rem] lg:h-[3rem] ml-5 rounded-full" src={data?.currentPictureAddress} alt="" />
           <DarkLightToggle />
@@ -28,12 +31,12 @@ const HeaderDashbord = ({ showMenu, setShowMenu }) => {
             <GiHamburgerMenu size={28} />
           </button>
 
-          <span class="cursor-pointer mt-2 text-lg dark:text-white">
+          <span className="cursor-pointer mt-2 text-lg dark:text-white">
             آکادمی اچ وان
           </span>
 
           <div>
-            <img class="h-10" src={logoSite} alt="" />
+            <img className="h-10" src={logoSite} alt="" />
           </div>
         </div>
       </div>
