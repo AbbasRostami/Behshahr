@@ -1,31 +1,24 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const ProgressBar = () => {
   const [scrollPercent, setscrollPercent] = useState(1);
 
   useEffect(() => {
-
-
     const handleScroll = () => {
-
       const winHeight = window.innerHeight;
       const docuHeight = document.documentElement.scrollHeight;
       const scrollY = window.scrollY;
 
-      const scrollPercent = (scrollY / (docuHeight - winHeight)) * 100
-      setscrollPercent(scrollPercent)
-      // console.log(scrollPercent);
+      const scrollPercent = (scrollY / (docuHeight - winHeight)) * 100;
+      setscrollPercent(scrollPercent);
+    };
 
-    }
-
-
-    window.addEventListener("scroll", handleScroll)
-    window.removeEventListener
+    window.addEventListener("scroll", handleScroll);
+    window.removeEventListener;
     return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-
-  }, [])
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <>
@@ -35,7 +28,7 @@ const ProgressBar = () => {
       >
         <div
           className="progress-fill max-w-full h-full bg-[#097969]"
-          style={{width: `${scrollPercent}%` }}
+          style={{ width: `${scrollPercent}%` }}
         ></div>
       </div>
     </>
