@@ -1,23 +1,12 @@
-import React, { useEffect, useState, useTransition } from "react";
-import arrowUnder from "./../../assets/arrowUnder.svg";
-import filter from "./../../assets/filter.svg";
+import React, { useEffect, useState } from "react";
 import { Field, Form, Formik } from "formik";
-import searching from "./../../assets/search.svg";
-
 import courses1 from "./../../assets/courses1.svg";
-import like from "./../../assets/coursesLike.svg";
-import dislike from "./../../assets/dislike.svg";
-import favorites from "./../../assets/favo.svg";
 import star from "./../../assets/star.svg";
-import profileimg from "./../../assets/profileimg.svg";
 import line from "./../../assets/line.svg";
 import filter2 from "./../../assets/Group 242.svg";
+import filterIcon from "./../../assets/filter.svg";
 import { getApi, postApi } from "../../core/api/api";
-import arrow from "./../../assets/arrow.svg";
 import { Box, Slider } from "@mui/material";
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
-import { PiHandHeartBold } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import { BiDislike, BiLike } from "react-icons/bi";
 import { FaFilter, FaRegStar } from "react-icons/fa";
@@ -25,24 +14,48 @@ import { toast } from "react-toastify";
 import person from "./../../assets/download.png";
 import { CoursesSlider } from "../common/SliderCourses";
 
+interface DataCoursesType {
+  courseId: number;
+  userIsLiked: number;
+  likeCount: number;
+  currentUserDissLike: number;
+  dissLikeCount: number;
+  userFavorite: number;
+  currentRegistrants: number;
+  statusName: string;
+  title: string;
+  teacherName: string;
+  levelName: string;
+  describe: string;
+  cost: number;
+}
+
+type FilterType = Record<string, string | number>;
+
+interface ApiResponse {
+  data: {
+    courseFilterDtos: DataCoursesType[];
+    success: boolean
+  }
+}
+
 const CoursesListForm = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<DataCoursesType[]>([]);
   const [sort, setSort] = useState({});
   const [pagination, setPagination] = useState({});
   const [PageNumber, setPageNumber] = useState(1);
   const [level, setLevel] = useState(1);
   const [value, setValue] = React.useState([1, 20000000]);
   const [cost, setCost] = useState([]);
-  const [filter, setFilter] = useState();
+  const [filter, setFilter] = useState<FilterType>();
   const [show, setShow] = useState(false);
 
-  function valuetext(value) {
+  function valuetext(value: number) {
     return `${value}`;
   }
 
-  const handleChange = (event, newValue) => {
-    console.log("new value:", newValue);
-    setValue(newValue);
+  const handleChange = (event: Event, newValue: number | number[]) => {
+    setValue(newValue as number[]);
   };
 
   useEffect(() => {
@@ -59,25 +72,23 @@ const CoursesListForm = () => {
   }, [value]);
 
   const [isOpen, setisOpen] = useState([]);
-  // const [filter, setFilter] = useState([]);
-  // const [] =  useState()
 
-  const GetCouresesTop = async (params) => {
+  const GetCouresesTop = async (params: object | number = 1) => {
     const path = `/Home/GetCoursesWithPagination`;
-    const response = await getApi(
-      { path, params: { params: { ...params, RowsOfPage: 9 } } }
-      // { PageNumber, RowsOfPage: 9, ...sort, ...filter, ...level, TechCount: 0 }
-    );
-    console.log(response.data.courseFilterDtos);
-    setData(response.data.courseFilterDtos);
-    setPagination(response.data);
+    const response = await (getApi({
+      path,
+      params: { params: typeof params === 'object' ? { ...params, RowsOfPage: 9 } : { PageNumber: params, RowsOfPage: 9 } },
+    })) as ApiResponse;
+    console.log("courses all: ", response.data.courseFilterDtos);
+    setData(response?.data.courseFilterDtos);
+    setPagination(response?.data);
   };
 
   useEffect(() => {
     GetCouresesTop();
   }, [sort]);
 
-  const filterDataHanlder = (newParams) => {
+  const filterDataHanlder = (newParams: {}) => {
     setFilter({ PageNumber: 1, ...filter, ...newParams });
     const allFilter = {
       PageNumber: 1,
@@ -88,33 +99,33 @@ const CoursesListForm = () => {
     GetCouresesTop(allFilter);
   };
 
-  const addLike = async (id) => {
+  const addLike = async (id: number) => {
     console.log(id);
     const path = `Course/AddCourseLike?CourseId=${id}`;
-    const response = await postApi({ path });
-    if (response.data.success) {
+    const response = await (postApi({ path })) as ApiResponse;
+    if (response?.data.success) {
       toast.success("عملیات با موفقیت انجام شد.");
       GetCouresesTop();
     }
     console.log(response);
   };
 
-  const addDislike = async (id) => {
+  const addDislike = async (id: number) => {
     console.log(id);
     const path = `/Course/AddCourseDissLike?CourseId=${id}`;
-    const response = await postApi({ path });
-    if (response.data.success) {
+    const response = await (postApi({ path })) as ApiResponse;
+    if (response?.data.success) {
       toast.success("عملیات با موفقیت انجام شد.");
       GetCouresesTop();
     }
     console.log(response);
   };
 
-  const addfavo = async (id) => {
+  const addfavo = async (id: number) => {
     console.log(id);
     const path = `/Course/SetCourseRating?CourseId=${id}`;
-    const response = await postApi({ path });
-    if (response.data.success) {
+    const response = await (postApi({ path })) as ApiResponse;
+    if (response?.data.success) {
       toast.success("عملیات با موفقیت انجام شد.");
       GetCouresesTop();
     }
@@ -125,21 +136,21 @@ const CoursesListForm = () => {
     filterDataHanlder({ PageNumber: 1, inde: "", slab: "" });
   };
 
-  const handleChangePage = (e, i) => {
+  const handleChangePage = (e: number, i: number) => {
     console.log(e);
     console.log(i);
     filterDataHanlder({ PageNumber: i });
   };
 
-  const addReserve = async (id) => {
+  const addReserve = async (id: number) => {
     console.log(id);
 
     const body = {
       courseId: id,
     };
     const path = `/CourseReserve/ReserveAdd`;
-    const response = await postApi({ path, body });
-    if (response.data.success) {
+    const response = await (postApi({ path, body })) as ApiResponse;
+    if (response?.data.success) {
       toast.success("دوره شما با موفقیت رزرو شد.");
     }
   };
@@ -150,10 +161,15 @@ const CoursesListForm = () => {
       </h1>
       {/* Top */}
       <div className=" flex justify-between gap-4 lg:gap-0 items-center mt-8 shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)]  bg-[#FBF6F6] dark:bg-gray-800 p-5 rounded-3xl mx-8">
-        <Formik>
+        <Formik
+          initialValues={{}}
+          onSubmit={(values) => {
+            console.log(values);
+          }}
+        >
           <Form className="ml-10">
             <div className="relative">
-              <Field
+              <input
                 type="text"
                 className="rtl p-4 dark:text-white border-green-800 w-80 text-sm text-gray-900 border dark:bg-gray-800  rounded-2xl bg-gray-50"
                 placeholder="جستجو..."
@@ -178,9 +194,9 @@ const CoursesListForm = () => {
                 version="1.1"
                 id="Capa_1"
                 xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
                 viewBox="-53.72 -53.72 595.84 595.84"
-                xml:space="preserve"
+                xmlSpace="preserve"
               >
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                 <g
@@ -219,9 +235,6 @@ const CoursesListForm = () => {
             <option value="likeCount">پسندیده ترین ها</option>
             <option value="currentRegistrants">محبوب ترین ها</option>
           </select>
-          <button>
-            <img className="w-[7rem] border-green-800" src={filter} alt="" />
-          </button>
         </div>
 
         <button
@@ -231,10 +244,8 @@ const CoursesListForm = () => {
           <FaFilter size={26} />
         </button>
       </div>
-      {/* Middle */}
 
       <div className="flex  justify-center items-start mx-8">
-        {/* <div className=" bg-[#FBF6F6] mt-12 px-6 grid grid-cols-2 lg:grid-cols-3 grid-rows-6 lg:grid-rows-3 gap-y-440 items-center rounded-3xl flx h-[140rem] lg:h-[108rem] w-[45rem] lg:w-[70rem] dark:bg-gray-800 shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)]"> */}
         <div className="w-full h-[170rem] lg:h-full py-4 flex flex-wrap justify-evenly  mt-20 px-5 lg:gap-10 bg-[#FBF6F6] rounded-3xl dark:bg-gray-800 shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)]">
           {data.map((item, index) => {
             return (
@@ -246,14 +257,11 @@ const CoursesListForm = () => {
                 <div className="flex justify-between items-center mt-14">
                   <div className="flex justify-center items-center gap-2">
                     <div>
-                      {/* <img className="cursor-pointer"  /> */}
                       <BiLike
                         size={26}
                         onClick={() => addLike(item?.courseId)}
                         className={
-                          item?.userIsLiked
-                            ? "text-green-600"
-                            : "text-gray-500"
+                          item?.userIsLiked ? "text-green-600" : "text-gray-500"
                         }
                       />
                       <p className="text-slate-700">{item?.likeCount}</p>
@@ -263,7 +271,6 @@ const CoursesListForm = () => {
                       <BiDislike
                         size={26}
                         onClick={() => addDislike(item.courseId)}
-                        alt=""
                         className={
                           item?.currentUserDissLike
                             ? "text-green-600"
@@ -278,7 +285,6 @@ const CoursesListForm = () => {
                       <FaRegStar
                         size={26}
                         onClick={() => addfavo(item.courseId)}
-                        alt=""
                         className={
                           item?.userFavorite
                             ? "text-green-600"
@@ -291,7 +297,7 @@ const CoursesListForm = () => {
                       </p>
                     </div>
                   </div>
-                  <button class="text-TextGreen dark:bg-gray-800 dark:text-white bg-[#BFF4E4] rounded-lg cursor-pointer p-2">
+                  <button className="text-TextGreen dark:bg-gray-800 dark:text-white bg-[#BFF4E4] rounded-lg cursor-pointer p-2">
                     {item?.statusName}
                   </button>
                 </div>
@@ -329,14 +335,20 @@ const CoursesListForm = () => {
                 <img className="mt-1" src={line} alt="" />
 
                 <div className="flex justify-between items-center mt-4">
-                  <p className="text-sm text-PriceRed rtl "> {item?.cost} تومان </p>
+                  <p className="text-sm text-PriceRed rtl ">
+                    {" "}
+                    {item?.cost} تومان{" "}
+                  </p>
                   <p className="text-sm text-nowrap dark:text-white">
                     : هزینه تمام دوره
                   </p>
                 </div>
 
                 <div className="flex justify-between items-center w-[15rem] h-[2.5rem] mt-6 lg:mt-3 -ml-3 lg:ml-2">
-                  <button onClick={() => addReserve(item.courseId)} className="bg-[#5BE1B9] dark:bg-gray-900 dark:border-green-600 dark:border dark:text-white rounded-xl w-[10rem] h-[2.5rem] mr-4">
+                  <button
+                    onClick={() => addReserve(item.courseId)}
+                    className="bg-[#5BE1B9] dark:bg-gray-900 dark:border-green-600 dark:border dark:text-white rounded-xl w-[10rem] h-[2.5rem] mr-4"
+                  >
                     رزرو دوره
                   </button>
 
@@ -355,7 +367,6 @@ const CoursesListForm = () => {
               </div>
             );
           })}
-        
         </div>
 
         <div
@@ -368,7 +379,7 @@ const CoursesListForm = () => {
             onClick={() => setShow(false)}
           >
             <svg
-              class="w-4 h-4"
+              className="w-4 h-4"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -406,34 +417,34 @@ const CoursesListForm = () => {
                 تکنولوژِی
               </summary>
 
-              <hr class="border-2 mx-2 border-[#5BE1B9] mt-2" />
+              <hr className="border-2 mx-2 border-[#5BE1B9] mt-2" />
 
               <div className="rtl mx-3 mt-5 w-[19rem] border-2 border-[#5BE1B9] rounded-xl">
-                <label class="flex bg-gray-100 text-gray-700 px-3 pt-1 dark:bg-gray-700 dark:text-white cursor-pointer ">
+                <label className="flex bg-gray-100 text-gray-700 px-3 pt-1 dark:bg-gray-700 dark:text-white cursor-pointer ">
                   <input
                     className="ml-3 size-4"
                     type="checkbox"
                     name="Country"
                   />
-                  <i class="pl-2 text-md">بــک اند</i>
+                  <i className="pl-2 text-md">بــک اند</i>
                 </label>
 
-                <label class="flex bg-gray-100 text-gray-700 px-3 py-1 dark:bg-gray-700 dark:text-white cursor-pointer ">
+                <label className="flex bg-gray-100 text-gray-700 px-3 py-1 dark:bg-gray-700 dark:text-white cursor-pointer ">
                   <input
                     className="ml-3 size-4"
                     type="checkbox"
                     name="Country"
                   />
-                  <i class="pl-2 text-md">فــرانت اند</i>
+                  <i className="pl-2 text-md">فــرانت اند</i>
                 </label>
 
-                <label class="flex bg-gray-100 text-gray-700 pb-1 px-3 dark:bg-gray-700 dark:text-white cursor-pointer ">
+                <label className="flex bg-gray-100 text-gray-700 pb-1 px-3 dark:bg-gray-700 dark:text-white cursor-pointer ">
                   <input
                     className="ml-3 size-4"
                     type="checkbox"
                     name="Country"
                   />
-                  <i class="pl-2 text-md">React Js</i>
+                  <i className="pl-2 text-md">React Js</i>
                 </label>
               </div>
             </details>
@@ -457,10 +468,10 @@ const CoursesListForm = () => {
                 نوع دوره
               </summary>
 
-              <hr class="border-2 mx-3 border-[#5BE1B9] mt-2" />
+              <hr className="border-2 mx-3 border-[#5BE1B9] mt-2" />
 
               <div className="rtl mx-3 my-5 w-[19rem] border-2 border-[#5BE1B9] rounded-xl">
-                <label class="flex bg-gray-100 text-gray-700 px-3 pt-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
+                <label className="flex bg-gray-100 text-gray-700 px-3 pt-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
                   <input
                     value="typeName-DESC"
                     className="ml-3 size-4"
@@ -468,12 +479,12 @@ const CoursesListForm = () => {
                     onClick={() =>
                       filterDataHanlder({ PageNumber: 1, typeName: 1 })
                     }
-                    Checked={filter?.typeName == 1 ? true : false}
+                    checked={filter?.typeName == 1 ? true : false}
                   />
-                  <i class="pl-2 text-md">حضوری</i>
+                  <i className="pl-2 text-md">حضوری</i>
                 </label>
 
-                <label class="flex bg-gray-100 text-gray-700 px-3 py-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
+                <label className="flex bg-gray-100 text-gray-700 px-3 py-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
                   <input
                     value="typeName-DESC"
                     className="ml-3 size-4"
@@ -481,13 +492,13 @@ const CoursesListForm = () => {
                     onClick={() =>
                       filterDataHanlder({ PageNumber: 1, typeName: 2 })
                     }
-                    Checked={filter?.typeName == 2 ? true : false}
+                    checked={filter?.typeName == 2 ? true : false}
                     name="Country"
                   />
-                  <i class="pl-2 text-md">آنلاین</i>
+                  <i className="pl-2 text-md">آنلاین</i>
                 </label>
 
-                <label class="flex bg-gray-100 text-gray-700 pb-1 px-3 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
+                <label className="flex bg-gray-100 text-gray-700 pb-1 px-3 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
                   <input
                     value="typeName-DESC"
                     className="ml-3 size-4"
@@ -495,9 +506,9 @@ const CoursesListForm = () => {
                     onClick={() =>
                       filterDataHanlder({ PageNumber: 1, typeName: 3 })
                     }
-                    Checked={filter?.typeName == 3 ? true : false}
+                    checked={filter?.typeName == 3 ? true : false}
                   />
-                  <i class="pl-2 text-md">آنلاین - حضوری</i>
+                  <i className="pl-2 text-md">آنلاین - حضوری</i>
                 </label>
               </div>
             </details>
@@ -520,9 +531,9 @@ const CoursesListForm = () => {
                 </svg>
                 سطح دوره
               </summary>
-              <hr class="border-2 mx-3 border-[#5BE1B9] mt-2" />
+              <hr className="border-2 mx-3 border-[#5BE1B9] mt-2" />
               <div className="rtl mx-3 mt-5 w-[19rem] border-2 border-[#5BE1B9] rounded-xl">
-                <label class="flex bg-gray-100 text-gray-700 px-3 pt-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
+                <label className="flex bg-gray-100 text-gray-700 px-3 pt-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
                   <input
                     value="levelName-DESC"
                     className="ml-3 size-4"
@@ -533,10 +544,10 @@ const CoursesListForm = () => {
                     checked={filter?.levelName == 1 ? true : false}
                     name="Country"
                   />
-                  <i class="pl-2 text-md">مبتدی</i>
+                  <i className="pl-2 text-md">مبتدی</i>
                 </label>
 
-                <label class="flex bg-gray-100 text-gray-700 px-3 py-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
+                <label className="flex bg-gray-100 text-gray-700 px-3 py-1 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
                   <input
                     value="levelName-DESC"
                     className="ml-3 size-4"
@@ -547,10 +558,10 @@ const CoursesListForm = () => {
                     checked={filter?.levelName == 2 ? true : false}
                     name="Country"
                   />
-                  <i class="pl-2 text-md">متوسط</i>
+                  <i className="pl-2 text-md">متوسط</i>
                 </label>
 
-                <label class="flex bg-gray-100 text-gray-700 pb-1 px-3 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
+                <label className="flex bg-gray-100 text-gray-700 pb-1 px-3 dark:bg-gray-700 dark:text-white  hover:bg-green-200 cursor-pointer ">
                   <input
                     value="levelName-DESC"
                     className="ml-3 size-4"
@@ -561,7 +572,7 @@ const CoursesListForm = () => {
                     defaultChecked={filter?.levelName == 3 ? true : false}
                     name="Country"
                   />
-                  <i class="pl-2 text-md">پیشرفته</i>
+                  <i className="pl-2 text-md">پیشرفته</i>
                 </label>
               </div>
             </details>
@@ -585,14 +596,12 @@ const CoursesListForm = () => {
                 قیمت
               </summary>
 
-              <hr class="border-2 mx-3 border-[#5BE1B9] mt-2" />
+              <hr className="border-2 mx-3 border-[#5BE1B9] mt-2" />
               <div className="rtl mx-3 mt-5 w-[19rem] border-2 border-[#5BE1B9] rounded-xl">
                 <Box className="px-8 my-4" sx={{ width: 300 }}>
                   <Slider
-                    // getAriaLabel={() => "Temperature range"}
                     value={value}
                     onChange={handleChange}
-                    // valueLabelDisplay="auto"
                     min={1}
                     max={2000000}
                     step={5000}

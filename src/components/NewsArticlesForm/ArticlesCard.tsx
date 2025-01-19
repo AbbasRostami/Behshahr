@@ -1,17 +1,18 @@
-import courses1 from "./../../assets/svg/Landing/courses1.svg";
-import like from "./../../assets/svg/Landing/coursesLike.svg";
-import dislike from "./../../assets/svg/ArticlesDetails/dislike.svg";
-import favorite from "./../../assets/svg/Landing/CoursesFavo.svg";
 import star from "./../../assets/svg/Landing/StarRating.svg";
 import line from "./../../assets/svg/ArticlesDetails/line.svg";
-import newsPic from "./../../assets/svg/Landing/newspic.svg"
-import { useEffect, useState } from "react";
 import { BiDislike, BiLike } from "react-icons/bi";
 import { FaRegStar } from "react-icons/fa";
 import moment from "moment";
 import { Link } from "react-router-dom";
+import { NewsType } from ".";
 
-const ArticlesCard = ({ item, addLike, addDislike, addStarRatng }) => {
+interface ArticlesCardProps {
+  item: NewsType;
+  addLike: (id: number) => Promise<void>;
+  addDislike: (id: number) => Promise<void>;
+  addStarRatng: (id: number) => Promise<void>;
+}
+const ArticlesCard: React.FC<ArticlesCardProps> = ({ item, addLike, addDislike, addStarRatng }) => {
   return (
     <>
       <div className="flex  items-center w-[22rem]  ">
@@ -28,7 +29,6 @@ const ArticlesCard = ({ item, addLike, addDislike, addStarRatng }) => {
             <div className="flex justify-between items-center mt-5 px-5">
               <div className="flex justify-center gap-2 items-center ">
                 <div>
-                  {/* <img src={like} alt="" /> */}
                   <BiLike
                     size={26}
                     onClick={() => addLike(item?.id)}
@@ -44,7 +44,6 @@ const ArticlesCard = ({ item, addLike, addDislike, addStarRatng }) => {
                   </p>
                 </div>
                 <div>
-                  {/* <img className="mx-8" src={dislike} alt="" /> */}
                   <BiDislike
                     size={26}
                     onClick={() => addDislike(item?.id)}
@@ -61,7 +60,6 @@ const ArticlesCard = ({ item, addLike, addDislike, addStarRatng }) => {
                   </p>
                 </div>
                 <div>
-                  {/* <img src={favorite} alt="" /> */}
                   <FaRegStar
                     size={26}
                     onClick={() => addStarRatng(item?.id)}
@@ -75,9 +73,7 @@ const ArticlesCard = ({ item, addLike, addDislike, addStarRatng }) => {
                 </div>
               </div>
 
-              <button class=" text-TextGreen dark:bg-gray-700 dark:text-white bg-[#BFF4E4] rounded-lg cursor-pointer p-2 w-auto-[120px]">
-                {/* تاریخ دوره:{" "}
-                {moment(item?.insertDate).locale("fa").format("YYYY/MM/DD")} */}
+              <button className=" text-TextGreen dark:bg-gray-700 dark:text-white bg-[#BFF4E4] rounded-lg cursor-pointer p-2 w-auto-[120px]">
                 {item.newsCatregoryName}
               </button>
             </div>

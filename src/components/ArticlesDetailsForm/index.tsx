@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Field, Form, Formik } from "formik";
 import { deleteApi, getApi, postApi } from "../../core/api/api";
 import { toast } from "react-toastify";
@@ -57,7 +57,7 @@ interface ApiResponse {
   };
 }
 
-const ArticlesDetailsForm = () => {
+const ArticlesDetailsForm: React.FC = () => {
   const [cards, setCards] = useState<NewsDetails | null>(null);
   const [show, setShow] = useState(1);
   const { id } = useParams();

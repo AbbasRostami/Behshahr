@@ -5,9 +5,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { deleteApi, editApi, getApi, postApi } from "../../core/api/api";
-import { ProfileContext } from "../../context/ProfileProvider";
 import { toast } from "react-toastify";
 import moment from "jalali-moment";
+import { ProfileContext } from "../../context/ProfileProvider";
 
 const EditProfile = () => {
   const [show, setShow] = useState(false);
