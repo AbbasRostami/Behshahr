@@ -9,26 +9,23 @@ import { toast } from "react-toastify";
 
 const ForgetStepThree = ({ id }) => {
   const { passId, setPassId } = usePass();
-  const navigate = useNavigate()
-  
-
-
+  const navigate = useNavigate();
 
   console.log(passId);
   const forgetHandler = async (values) => {
     const path = "/Sign/Reset";
 
-    const data = {
+    const body = {
       userId: passId?.id,
       newPassword: values.newPassword,
       resetValue: passId?.message,
     };
 
-    const response = await postApi({ path, body: data });
+    const response = await postApi({ path, body });
     console.log(response);
     if (response.success) {
-      toast.success("عملیات با موفقیت انجام شد.")
-      navigate("/login")
+      toast.success("عملیات با موفقیت انجام شد.");
+      navigate("/login");
     } else {
       response?.response?.data?.ErrorMessage?.map((item) => {
         toast.error(item);
@@ -108,7 +105,6 @@ const ForgetStepThree = ({ id }) => {
             >
               تایید
             </button>
-            
           </Form>
         </Formik>
       </div>
