@@ -10,7 +10,7 @@ export const getApi = async ({ path, params = {} }) => {
 };
 
 
-export const postApi = async ({ path, body }) => {
+export const postApi = async ({ path, body = {} }) => {
   try {
     const response = await http.post(`${path}`, body);
     return response;
