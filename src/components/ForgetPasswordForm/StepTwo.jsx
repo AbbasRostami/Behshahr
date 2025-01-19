@@ -1,18 +1,16 @@
 import { useEffect, useState } from "react";
-import { useNavigation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getApi } from "../../core/api/api";
-import { ForgetStepThree } from "./StepThree";
 import { usePass } from "../../core/provider/PasswoedProvider";
+import { ForgetStepThree } from "./StepThree";
 
-//
 const ForgetStepTwo = () => {
   const { passId, setPassId } = usePass();
 
-  const Navigation = useNavigation();
   const { id } = useParams();
 
   const path = `/Sign/Reset/${id}`;
-  const [checkData, setCheckData] = useState(null);
+  const [checkData, setCheckData] = useState<unknown | null>(null);
   const getResetPasss = async () => {
     const response = await getApi({ path });
     setPassId(response);
@@ -23,7 +21,9 @@ const ForgetStepTwo = () => {
     getResetPasss();
   }, []);
 
-  return <> {!checkData ? "داده در حال برسی " : <ForgetStepThree />}</>;
+  
+
+  return <> {!checkData ? "داده در حال برسی " : <ForgetStepThree id={id} />}</>;
 };
 
 export { ForgetStepTwo };
