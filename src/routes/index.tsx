@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import { Landing } from "../screens/Landing";
 import { CoursesDetails } from "../screens/CoursesDetails";
 import { NewsArticles } from "../screens/NewsArticles";
-import { Login } from "../screens/Login";
 import { MyCourses } from "../components/MyCourses/myCourses";
 import { MyReserveCourses } from "../components/MyCourses/myReserveCourses";
 import { Favorites } from "../components/MyCourses/favorites";
@@ -17,13 +16,13 @@ import { StepThree } from "../components/RegisterForm/StepThree";
 import { ForgetStepOne } from "../components/ForgetPasswordForm/StepOne";
 import { ForgetStepTwo } from "../components/ForgetPasswordForm/StepTwo";
 import PassProvider from "../core/provider/PasswoedProvider";
-import { ForgetPasswordForm } from "../components/ForgetPasswordForm/index.jsx";
-import { CoursesListForm } from "../components/CoursesListForm/index.jsx";
 import { CoursesList } from "../screens/CoursesList/index.jsx";
 import { NotFound } from "../components/NotFound";
 import { ArticlesDetails } from "../screens/ArticlesDetails";
 import { AboutUs } from "../screens/AboutUs";
 import { MainLayout } from "../screens/layout/MainLayout";
+import { Login } from "../screens/Login";
+import { ForgetPasswordForm } from "../components/ForgetPasswordForm";
 
 const RoutesApp = createBrowserRouter([
   {
