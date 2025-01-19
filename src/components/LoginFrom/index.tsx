@@ -1,27 +1,31 @@
-import React from "react";
 import { Field, Formik, Form } from "formik";
 import { Link, useNavigate } from "react-router-dom";
-// import { loginAPI } from "../../core/services/api/auth";
 import login2Pick from "../../assets/loginPick2.svg";
 import home from "../../assets/home.svg";
 import loginPick from "../../assets/loginPick.svg";
 import { useState } from "react";
 import { postApi } from "../../core/api/api";
 import { toast } from "react-toastify";
-import phoneIcon from "../../assets/phoneIcon.svg";
-import keyIcon from "../../assets/keyIcon.svg";
 
+interface ApiResponse {
+  data: {
+    success: boolean;
+    token: string;
+    message: string;
+  };
+}
+    
 const LoginForm = () => {
   const navigate = useNavigate();
-  const loginHandler = async (values) => {
+  const loginHandler = async (values: {phoneOrGmail:string; password:string; rememberMe: boolean}) => {
     console.log(values);
     const path = "/Sign/Login";
     const body = values;
 
-    const response = await postApi({ path, body });
+    const response = await (postApi({ path, body })) as ApiResponse;
     console.log(response);
-    if (response?.data?.success) {
-      localStorage.setItem("token", response?.data?.token);
+    if (response?.data?.success && response?.data?.token) {
+      localStorage.setItem("token", response.data.token);
       toast.success("شما با موفقیت وارد شدید.");
       navigate("/");
     } else {
@@ -36,7 +40,6 @@ const LoginForm = () => {
       {show ? (
         <div className="flex m-auto h-[32rem] w-[50rem] mt-[5rem] ">
           <div
-            // onClick={() => setShow(!show)}
             className="bg-[#A4F6DE] relative left-[1px] w-[25rem] rounded-l-lg"
           >
             <img className="m-auto h-[31rem] " src={login2Pick} alt="" />
@@ -52,6 +55,8 @@ const LoginForm = () => {
             <Formik
               onSubmit={loginHandler}
               initialValues={{
+                phoneOrGmail: "",
+                password: "",
                 VerifyCode: "",
                 rememberMe: true,
               }}
