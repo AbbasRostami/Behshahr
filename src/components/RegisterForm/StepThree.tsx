@@ -1,7 +1,5 @@
-import React from "react";
 import registerStepThree from "../../assets/registerStepThree.svg";
 import home from "../../assets/home.svg";
-import { useState } from "react";
 import { finalregister } from "../../core/api/register";
 
 import { Field, Formik, Form } from "formik";
@@ -13,7 +11,11 @@ const StepThree = () => {
 
   console.log(location?.state);
 
-  const registerHandler3 = async (values) => {
+  const registerHandler3 = async (values: {
+    phoneNumber: string;
+    gmail: string;
+    password: string;
+  }) => {
     console.log(values);
     const body = values;
 

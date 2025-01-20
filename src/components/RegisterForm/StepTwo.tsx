@@ -1,16 +1,16 @@
-import React from "react";
 import registerStepTwo from "../../assets/registerStepTwo.svg";
 import home from "../../assets/home2.svg";
 import { Field, Formik, Form } from "formik";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { verifyMessage } from "../../core/api/register";
+import { toast } from "react-toastify";
 
 const StepTwo = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location.state);
+  console.log("asjjkhdmn",location.state);
 
-  const registerHandler2 = async (values) => {
+  const registerHandler2 = async (values: {phoneNumber: string; verifyCode: string;}) => {
     console.log("ارسال: ", values);
 
     const body = { ...values, phoneNumber: location.state.phoneNumber };
@@ -34,7 +34,7 @@ const StepTwo = () => {
         <h2 className="text-right mr-6 text-[#22445D] mt-[2.8rem] text-[23px]">
           ثبت نام
         </h2>
-        <Formik onSubmit={registerHandler2} initialValues={{ verifyCode: "" }}>
+        <Formik onSubmit={registerHandler2} initialValues={{ verifyCode: "", phoneNumber: location.state.phoneNumber }}>
           <Form>
             <svg
               className=" absolute top-[9.5rem] right-8"
