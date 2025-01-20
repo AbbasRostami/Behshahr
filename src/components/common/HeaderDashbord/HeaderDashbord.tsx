@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
-import DarkLightToggle from "../DarkMode";
 import logoSite from "../../../assets/logoSite.svg";
 import { ProfileContext } from "../../../context/ProfileProvider";
+import DarkLightToggle from "../DarkMode";
 
 interface HeaderDashbordProps {
   showMenu: boolean;
@@ -13,7 +13,6 @@ const HeaderDashbord: React.FC<HeaderDashbordProps> = ({ showMenu, setShowMenu }
 
   const {data} = useContext(ProfileContext);
 
-  console.log("ContextData: ", data);
   
   return (
     <div className="bg-[#A4F6DE] dark:bg-gray-700 w-[46rem] lg:w-[74.2rem]">

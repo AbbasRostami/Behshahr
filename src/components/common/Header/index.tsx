@@ -4,12 +4,12 @@ import { Button, Menu, MenuItem } from "@mui/material";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Field, Formik } from "formik";
 
-import DarkLightToggle from "../DarkMode";
 import logoLanding from "./../../../assets/svg/Landing/logosite.svg";
 import seachIcon from "./../../../assets/svg/Landing/searchicon.svg";
 import courses1 from "./../../../assets/courses1.svg";
 import { getApi } from "../../../core/api/api";
 import { ProfileContext } from "../../../context/ProfileProvider";
+import DarkLightToggle from "../DarkMode";
 
 interface CoursesData {
   title: string;
