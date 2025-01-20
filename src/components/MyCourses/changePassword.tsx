@@ -1,23 +1,16 @@
-import React from "react";
 import { Field, Form, Formik } from "formik";
 import changePassword from "../../assets/changePassword.svg";
 import lock from "../../assets/lock.svg";
 import key from "../../assets/key.svg";
-import security from "./../../assets/security.svg";
-// import { postChengePassword } from "../../core/api/chengePassword";
 import { postApi } from "../../core/api/api";
 import { toast } from "react-toastify";
 
 const ChangePassword = () => {
-  const handlerPass = async (values) => {
-    console.log(values);
 
+  const handlerPass = async (values: { oldPassword: string; newPassword: string }) => {
     const path = `/SharePanel/ChangePassword`;
     const body = values;
-
     const response = await postApi({ path, body });
-    console.log(response);
-
     toast.success("تغییر رمز با موفقیت انجام شد.");
   };
 

@@ -1,38 +1,50 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import recycle from "../../assets/recycle.svg";
-import nest from "../../assets/nest.svg";
 import { deleteApi, getApi } from "../../core/api/api";
 import moment from "jalali-moment";
 import { toast } from "react-toastify";
 
+interface MyCoursesType {
+  courseName: string;
+  reserverDate: string;
+  accept: boolean;
+  reserveId: number;
+}
+
+interface ApiResponse {
+  data: MyCoursesType[] & {
+    success: boolean;
+    message: string;
+  };
+}
+
 const MyReserveCourses = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<MyCoursesType[] | null>([]);
   const getMyCourses = async () => {
     const path = `/SharePanel/GetMyCoursesReserve`;
-    const response = await getApi({ path });
-    console.log(response.data);
+    const response = (await getApi({ path })) as ApiResponse;
+    console.log(response?.data);
     setData(response?.data);
   };
   useEffect(() => {
     getMyCourses();
   }, []);
 
-
-  const deleteCoursesReserve = async (reserveId) => {
-
+  const deleteCoursesReserve = async (reserveId: number) => {
     console.log(reserveId);
-    
-    const body = {id:reserveId};
+
+    const body = { id: reserveId };
 
     const path = `/CourseReserve/`;
-    const response = await deleteApi({ path , body});
+    const response = (await deleteApi({ path, body })) as ApiResponse;
 
     console.log("Delete:", response);
-    if(response.data.success){
-      toast.success(response.data.message)
+    if (response?.data.success) {
+      toast.success(response?.data.message);
     }
     getMyCourses();
   };
+
   return (
     <>
       <div className="w-[45rem] lg:w-[70rem] h-[43rem] my-[1rem] border-[1px] bg-[#ffff] dark:bg-slate-800 rounded-2xl shadow-2xl">
@@ -47,12 +59,22 @@ const MyReserveCourses = () => {
           {data?.map((item) => {
             return (
               <div className="hover:bg-orange-100 mt-2 text-nowrap text-[#22445D] dark:text-white text-[12px] bg-[#ffff] dark:bg-slate-700 max-w-[80rem] lg:w-[64rem] h-[3.5rem] rounded-2xl flex justify-evenly rtl gap-24 lg:gap-28 shadow-sm border-[1px] py-[1.2rem] px-[1rem] mx-auto">
+                <h2 className="w-[20rem] truncate mr-16">
+                  {" "}
+                  {item?.courseName}
+                </h2>
+                <p className="w-[20rem]">
+                  {moment(item?.reserverDate).locale("fa").format("YYYY/MM/DD")}
+                </p>
+                <h2 className="w-[20rem]">
+                  {" "}
+                  {item?.accept ? "تایید شده" : "تایید نشده"}
+                </h2>
 
-                <h2 className="w-[20rem] truncate mr-16"> {item?.courseName}</h2>
-                <p className="w-[20rem]">{moment(item?.reserverDate).locale("fa").format("YYYY/MM/DD")}</p>
-                <h2 className="w-[20rem]"> {item?.accept ? "تایید شده" : "تایید نشده"}</h2>
-
-                <button onClick={() => deleteCoursesReserve(item.reserveId)} className="rounded-2xl w-[10rem] h-[2rem] mt-[-0.5rem]">
+                <button
+                  onClick={() => deleteCoursesReserve(item.reserveId)}
+                  className="rounded-2xl w-[10rem] h-[2rem] mt-[-0.5rem]"
+                >
                   <img
                     className="text-[#22445D]  h-[1.5rem] lg:mr-[0.2rem]"
                     src={recycle}
@@ -69,30 +91,3 @@ const MyReserveCourses = () => {
 };
 
 export { MyReserveCourses };
-
-
-// <TableContainer >
-// <Table sx={{ minWidth: 650 }} aria-label="simple table" className="">
-//   <TableHead className="bg-[#A4F6DE]  ">
-//     <TableRow className="rounded-2xl">
-//       <TableCell align="center">نام دوره</TableCell>
-//       <TableCell align="center">تاریخ شروع</TableCell>
-//       <TableCell align="center">وضعیت دوره</TableCell>
-//       <TableCell align="center">حذف دوره</TableCell>
-//     </TableRow>
-//   </TableHead>
-//   <TableBody>
-//     {data?.map((row) => (
-//       <TableRow
-//         key={row.name}
-//         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-//       >
-//         <TableCell align="center">{row.courseName}</TableCell>
-//         <TableCell align="center">{row.courseName}</TableCell>
-//         <TableCell align="center">{row.courseName}</TableCell>
-//         <TableCell align="center">{row.courseName}</TableCell>
-//       </TableRow>
-//     ))}
-//   </TableBody>
-// </Table>
-// </TableContainer>

@@ -1,17 +1,42 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import recycle from "../../assets/recycle.svg";
 import { deleteApi, getApi } from "../../core/api/api";
 import moment from "jalali-moment";
 import { toast } from "react-toastify";
 
+interface FavoritesCoureses {
+  courseTitle: string;
+  typeName: string;
+  levelName: string;
+  lastUpdate: string;
+  favoriteId: number;
+}
+
+interface FavoritesNews {
+  title: string;
+  currentView: number;
+  currentRate: number;
+  updateDate: string;
+  favoriteId: number;
+}
+
+interface ApiResponse {
+  data: {
+    favoriteCourseDto: FavoritesCoureses[];
+    myFavoriteNews: FavoritesNews[];
+    success: boolean;
+    message: string;
+  };
+}
 const Favorites = () => {
-  const [data, setData] = useState([]);
+
+  const [data, setData] = useState<FavoritesCoureses[]>([]);
   const [show, setShow] = useState(1);
-  const [news, setNews] = useState([]);
+  const [news, setNews] = useState<FavoritesNews[]>([]);
 
   const getFavoritesCoureses = async () => {
     const path = `/SharePanel/GetMyFavoriteCourses`;
-    const response = await getApi({ path });
+    const response = (await getApi({ path })) as ApiResponse;
     console.log("Favorite Courses: ", response?.data?.favoriteCourseDto);
     setData(response?.data?.favoriteCourseDto);
   };
@@ -19,9 +44,10 @@ const Favorites = () => {
     getFavoritesCoureses();
   }, []);
 
+
   const getFavoritesNews = async () => {
     const path = `/SharePanel/GetMyFavoriteNews`;
-    const response = await getApi({ path });
+    const response = (await getApi({ path })) as ApiResponse;
     console.log("Favorite News: ", response?.data);
     setNews(response?.data?.myFavoriteNews);
   };
@@ -29,37 +55,38 @@ const Favorites = () => {
     getFavoritesNews();
   }, []);
 
-  const deleteFavoriteCourses = async (favoriteId) => {
+
+  const deleteFavoriteCourses = async (favoriteId: number) => {
     const formData = new FormData();
 
-    formData.append("CourseFavoriteId", favoriteId);
+    formData.append("CourseFavoriteId", favoriteId.toString());
 
     console.log("CourseFavoriteId:", favoriteId);
 
     const path = `/Course/DeleteCourseFavorite`;
     const body = formData;
-    const response = await deleteApi({ path, body });
+    const response = (await deleteApi({ path, body })) as ApiResponse;
 
     console.log("DeleteCourses:", response);
 
-    if (response.data.success) {
-      toast.success(response.data.message);
+    if (response?.data.success) {
+      toast.success(response?.data.message);
     }
     getFavoritesCoureses();
   };
 
-  const deleteFavoriteNews = async (favoriteId) => {
+  const deleteFavoriteNews = async (favoriteId: number) => {
     console.log("NewsFavoriteId:", favoriteId);
 
     const body = { deleteEntityId: favoriteId };
 
     const path = `/News/DeleteFavoriteNews/`;
-    const response = await deleteApi({ path, body });
+    const response = (await deleteApi({ path, body })) as ApiResponse;
 
     console.log("DeleteNews:", response);
 
-    if (response.data.success === false) {
-      toast.success(response.data.message);
+    if (response?.data.success === false) {
+      toast.success(response?.data.message);
     }
     getFavoritesNews();
   };
