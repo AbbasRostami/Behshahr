@@ -66,12 +66,18 @@ const CoursesDetailsForm = () => {
 
   const [comment, setComment] = useState<CommentType[]>([]);
 
+  console.log("lksdfjaiohaisopkfalz", comment);
+
   const getCoursesDetails = async () => {
-    const path = `/Home/GetCourseDetails?CourseId=${params?.id}`;
-    const response = (await getApi({ path })) as ApiResponse;
-    console.log(response?.data);
-    if (response) {
-      setDeatils(response?.data);
+    try {
+      const path = `/Home/GetCourseDetails?CourseId=${params?.id}`;
+      const response = (await getApi({ path })) as ApiResponse;
+      console.log(response?.data);
+      if (response) {
+        setDeatils(response?.data);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
   useEffect(() => {
@@ -85,7 +91,7 @@ const CoursesDetailsForm = () => {
       console.log("comments: ", response?.data);
 
       if (response.data.success) {
-        setComment(response.data);
+        setComment(response?.data);
       }
     } catch (error) {
       console.log(error);
@@ -96,37 +102,51 @@ const CoursesDetailsForm = () => {
   }, []);
 
   const addComments = async (values: { title: string; Describe: string }) => {
-    const formData = new FormData();
-    const data = {
-      CourseId: params.id,
-      Title: values.title,
-      Describe: values.Describe,
-    };
-    Object.entries(data).forEach(([key, value]) => {
-      if (value !== undefined) {
-        formData.append(key, String(value));
-      }
-    });
-    formData.forEach((value, key) => {
-      console.log(key, ":", value);
-    });
+    try {
+      const formData = new FormData();
+      const data = {
+        CourseId: params.id,
+        Title: values.title,
+        Describe: values.Describe,
+      };
 
-    const path = `/Course/AddCommentCourse`;
-    const body = formData;
-    const response = (await postApi({ path, body })) as ApiResponse;
-    console.log(response);
-    if (response.data.success) {
-      toast.success(response.data.message);
-      getCoursesComments();
+      Object.entries(data).forEach(([key, value]) => {
+        if (value !== undefined) {
+          formData.append(key, String(value));
+        }
+      });
+
+      formData.forEach((value, key) => {
+        console.log(key, ":", value);
+      });
+
+      const path = `/Course/AddCommentCourse`;
+      const body = formData;
+      const response = (await postApi({ path, body })) as ApiResponse;
+
+      if (response.data.success) {
+        toast.success(response.data.message);
+        getCoursesComments();
+      } else {
+        toast.error(response.data.message || "خطایی رخ داده است.");
+      }
+    } catch (error) {
+      console.error("خطا در ارسال نظر:", error);
+      toast.error("خطایی در ارسال نظر رخ داده است. لطفاً دوباره تلاش کنید.");
     }
   };
 
   const addStarRatng = async (id: number) => {
-    console.log(id);
-    const path = `/Course/SetCourseRating?CourseId=<uuid>${id}`;
-    const body = {};
-    const response = (await postApi({ path, body })) as ApiResponse;
-    console.log(response);
+    try {
+      console.log(id);
+      const path = `/Course/SetCourseRating?CourseId=<uuid>${id}`;
+      const body = {};
+      const response = (await postApi({ path, body })) as ApiResponse;
+      console.log(response);
+    } catch (error) {
+      console.error("خطا در ارسال نظر:", error);
+      toast.error("خطایی در ارسال نظر رخ داده است. لطفاً دوباره تلاش کنید.");
+    }
   };
 
   const addReserve = async (id: number) => {
