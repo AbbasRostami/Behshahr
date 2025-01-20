@@ -1,20 +1,26 @@
-import React from "react";
 import registerStepOne from "../../assets/registerStepOne.svg";
 import home from "../../assets/home.svg";
 import { Field, Formik, Form } from "formik";
 import { Link, useNavigate } from "react-router-dom";
-import { SendVerifyMessage } from "../../core/api/register";
 import { toast } from "react-toastify";
 import { postApi } from "../../core/api/api";
+interface ApiResponse {
+  status: number;
 
+  response: {
+    data: {
+      ErrorMessage: string[];
+    };
+  };
+}
 const StepOne = () => {
   const navigate = useNavigate();
 
-  const registerHandler = async (values) => {
+  const registerHandler = async (values: { phoneNumber: string }) => {
     console.log("ارسال: ", values);
     const path = "/Sign/SendVerifyMessage";
     const body = values;
-    const response = await postApi({ path, body });
+    const response = (await postApi({ path, body })) as ApiResponse;
     console.log(response);
 
     if (response.status === 200) {
