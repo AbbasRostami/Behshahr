@@ -1,14 +1,31 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getApi } from "../../core/api/api";
 import moment from "jalali-moment";
 
+interface MyCoursesType {
+  courseTitle: string;
+  fullName: string;
+  termName: string;
+  levelName: string;
+  lastUpdate: string;
+  paymentStatus: string;
+}
+
+interface ApiResponse {
+  data: {
+    listOfMyCourses: MyCoursesType[];
+  };
+}
+
 const MyCourses = () => {
-  const [data, setData] = useState([]);
+
+  const [data, setData] = useState<MyCoursesType[]>([]);
+  
   const getMyCourses = async () => {
     const path = `/SharePanel/GetMyCourses?PageNumber=1&RowsOfPage=10&SortingCol=DESC&SortType=LastUpdate&Query=s`;
-    const response = await getApi({ path });
-    console.log(response.data.listOfMyCourses);
-    setData(response.data.listOfMyCourses);
+    const response = (await getApi({ path })) as ApiResponse;
+    console.log(response?.data.listOfMyCourses);
+    setData(response?.data.listOfMyCourses);
   };
   useEffect(() => {
     getMyCourses();
@@ -30,14 +47,20 @@ const MyCourses = () => {
           {data.map((item) => {
             return (
               <div className=" mt-2 hover:bg-orange-100 dark:bg-gray-800 dark:text-white text-nowrap text-[#22445D] text-[12px] bg-[#ffff] w-[43rem] xl:w-[64rem] h-[3.5rem] rounded-2xl flex justify-evenly rtl gap-14 xl:gap-4 shadow-sm border-[1px] py-[1.2rem] px-[3rem] mx-[1rem]">
-                <h2 className="w-[10rem] mr-3 truncate"> {item?.courseTitle} </h2>
+                <h2 className="w-[10rem] mr-3 truncate">
+                  {" "}
+                  {item?.courseTitle}{" "}
+                </h2>
                 <h2 className="w-[10rem]"> {item?.fullName} </h2>
                 <h2 className="w-[10rem]">{item?.termName}</h2>
                 <h2 className="w-[10rem]"> {item?.levelName}</h2>
                 <h2 className="w-[10rem]">
                   {moment(item?.lastUpdate).locale("fa").format("YYYY/MM/DD")}
                 </h2>
-                <h2 className="w-[10rem] text-center pl-10"> {item?.paymentStatus}</h2>
+                <h2 className="w-[10rem] text-center pl-10">
+                  {" "}
+                  {item?.paymentStatus}
+                </h2>
               </div>
             );
           })}
