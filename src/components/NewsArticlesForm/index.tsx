@@ -6,8 +6,7 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { SliderArticles } from "../common/SliderArticles";
 
-
- export interface NewsType {
+export interface NewsType {
   addUserProfileImage: string;
   currentUserIsLike: number;
   currentLikeCount: number;
@@ -33,18 +32,21 @@ const NewsArticlesForm = () => {
   const [cards, setCards] = useState<NewsType[]>();
   const [filter, setFilter] = useState<Record<string, string | number>>({});
 
-  console.log("cards:",cards);
-  
   const params = useParams();
 
   const getArticlesTop = async (params?: Record<string, string | number>) => {
-    const path = `/News`;
-    const response = await (getApi({
+    const path = "/News";
+
+   
+    const response = (await getApi({
       path,
-      params: { params: { ...(params || {}), RowsOfPage: 1 } },
+      params: {
+        ...params,
+        RowsOfPage: 9,
+      },
     })) as ApiResponse;
 
-    console.log("skj",response?.data?.news);
+    console.log("News: ", response?.data?.news);
     if (response) {
       setCards(response?.data?.news);
     }
@@ -56,11 +58,13 @@ const NewsArticlesForm = () => {
 
   const filterDataHanlder = (newParams: Record<string, string | number>) => {
     setFilter({ PageNumber: 1, ...filter, ...newParams });
+
     const allFilter = {
       PageNumber: 1,
       ...filter,
       ...newParams,
     };
+
     console.log("filter", allFilter);
     getArticlesTop(allFilter);
   };
@@ -97,7 +101,6 @@ const NewsArticlesForm = () => {
     }
     console.log(response);
   };
-
 
   return (
     <>
@@ -142,7 +145,7 @@ const NewsArticlesForm = () => {
                 } else {
                   filterDataHanlder({
                     PageNumber: 1,
-                    Query: e.target.value,
+                    Query: e.target.value, 
                   });
                 }
               }}
@@ -190,6 +193,7 @@ const NewsArticlesForm = () => {
                   addLike={addLike}
                   addDislike={addDislike}
                   addStarRatng={addStarRatng}
+                  filter={filter}
                 />
               );
             })}

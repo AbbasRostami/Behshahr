@@ -11,6 +11,7 @@ interface ArticlesCardProps {
   addLike: (id: number) => Promise<void>;
   addDislike: (id: number) => Promise<void>;
   addStarRatng: (id: number) => Promise<void>;
+  filter: Record<string, string | number>;
 }
 const ArticlesCard: React.FC<ArticlesCardProps> = ({ item, addLike, addDislike, addStarRatng }) => {
   return (
