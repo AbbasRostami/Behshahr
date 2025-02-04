@@ -1,24 +1,36 @@
 import React, { useContext } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import logoSite from "../../../assets/logoSite.svg";
-import { ProfileContext } from "../../../context/ProfileProvider";
+// import { ProfileContext } from "../../../context/ProfileProvider";
 import DarkLightToggle from "../DarkMode";
+import { getEditProfAtom, profileAtom } from "../../../context/ProfileProvider";
+import { useAtomValue, useSetAtom } from "jotai";
 
 interface HeaderDashbordProps {
   showMenu: boolean;
   setShowMenu: (value: boolean) => void;
 }
 
-const HeaderDashbord: React.FC<HeaderDashbordProps> = ({ showMenu, setShowMenu }) => {
+const HeaderDashbord: React.FC<HeaderDashbordProps> = ({
+  showMenu,
+  setShowMenu,
+}) => {
+  // const {data} = useContext(ProfileContext);
 
-  const {data} = useContext(ProfileContext);
+  const data = useAtomValue(profileAtom);
+  const getEditProf = useSetAtom(getEditProfAtom);
 
-  
+  console.log("data atom:", data);
+
   return (
     <div className="bg-[#A4F6DE] dark:bg-gray-700 w-[46rem] lg:w-[74.2rem]">
       <div className="flex justify-between items-center container mx-auto gap-5 h-20">
         <div className="flex items-center gap-4">
-          <img className="h-[2.3rem] lg:h-[3rem] ml-5 rounded-full" src={data?.currentPictureAddress} alt="" />
+          <img
+            className="h-[2.3rem] lg:h-[3rem] ml-5 rounded-full"
+            src={data?.currentPictureAddress}
+            alt=""
+          />
           <DarkLightToggle />
         </div>
 

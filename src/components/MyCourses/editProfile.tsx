@@ -6,7 +6,9 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { deleteApi, editApi, postApi } from "../../core/api/api";
 import { toast } from "react-toastify";
-import { ProfileContext } from "../../context/ProfileProvider";
+import { useAtomValue, useSetAtom } from "jotai";
+import { getEditProfAtom, profileAtom } from "../../context/ProfileProvider";
+// import { ProfileContext } from "../../context/ProfileProvider";
 
 interface ProfileFormValues {
   FName: string;
@@ -33,8 +35,14 @@ const EditProfile = () => {
   const [show, setShow] = useState(false);
   const [image, setImage] = useState<File | null>(null);
 
-  const { data, getEditProf } = useContext(ProfileContext);
+  // const { data, getEditProf } = useContext(ProfileContext);
+const data = useAtomValue(profileAtom); 
+const getEditProf = useSetAtom(getEditProfAtom); 
+console.log("data atom:", data);
 
+useEffect(() => {
+  getEditProf();
+}, []);
   const initialValues = {
     FName: data?.fName || "", //
     LName: data?.lName || "", //

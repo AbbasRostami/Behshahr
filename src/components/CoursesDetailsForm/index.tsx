@@ -57,17 +57,18 @@ interface ApiResponse {
 }
 
 const CoursesDetailsForm = () => {
-  const params = useParams();
   const [show, setShow] = useState(1);
-
-  console.log(params?.id);
-
+  
+  
   const [details, setDeatils] = useState<CourseDetailsType>();
-
+  
   const [comment, setComment] = useState<CommentType[]>([]);
-
-  console.log("lksdfjaiohaisopkfalz", comment);
-
+  
+  
+  
+  const params = useParams();
+  console.log(params?.id);
+  
   const getCoursesDetails = async () => {
     try {
       const path = `/Home/GetCourseDetails?CourseId=${params?.id}`;
@@ -80,6 +81,7 @@ const CoursesDetailsForm = () => {
       console.log(error);
     }
   };
+
   useEffect(() => {
     getCoursesDetails();
   }, []);
