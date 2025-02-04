@@ -1,23 +1,13 @@
-import { createContext, PropsWithChildren, useEffect, useState } from "react";
+import { atom } from "jotai";
 import { getApi } from "../core/api/api";
-
-interface ProfileContextType {
-  data: UserProfile | null | undefined;
-  getEditProf: () => Promise<void>;
-}
-
-export const ProfileContext = createContext<ProfileContextType>({
-  data: null,
-  getEditProf: async () => {},
-});
 
 interface UserProfile {
   birthDay: string;
   currentPictureAddress: string;
   email: string;
-  fName: string; 
-  gender: boolean; 
-  homeAdderess: string; 
+  fName: string;
+  gender: boolean;
+  homeAdderess: string;
   lName: string;
   latitude: string;
   linkdinProfile: string;
@@ -28,15 +18,8 @@ interface UserProfile {
   receiveMessageEvent: boolean;
   telegramLink: string;
   userAbout: string;
-  userImage: UserImage[]
+  userImage: UserImage[];
 }
-
-// userImage: Array<{ // inline Type
-//   inserDate: string;
-//   pictureName: string;
-//   puctureAddress: string;
-//   userProfileId: number;
-// }>;
 
 interface UserImage {
   id: string;
@@ -47,31 +30,16 @@ interface UserImage {
 }
 
 interface ApiResponse {
-    data: UserProfile
+  data: UserProfile;
 }
 
-const ProfileProvider = ({ children }: PropsWithChildren<{}>) => {
+export const profileAtom = atom<UserProfile | null>(null);
 
-  const [data, setData] = useState<UserProfile | null>();
-
-  const getEditProf = async () => {
+export const getEditProfAtom = atom(
+  null,
+  async (get, set) => {
     const path = `/SharePanel/GetProfileInfo`;
-    const response = await (getApi({ path })) as ApiResponse;
-
-  console.log("ContextData: ", data);
-
-    setData(response?.data);
-  };
-
-  useEffect(() => {
-    getEditProf();
-  }, []);
-
-  return (
-    <ProfileContext.Provider value={{ data, getEditProf }}>
-      {children}
-    </ProfileContext.Provider>
-  );
-};
-
-export default ProfileProvider;
+    const response = (await getApi({ path })) as ApiResponse;
+    set(profileAtom, response?.data);
+  }
+);

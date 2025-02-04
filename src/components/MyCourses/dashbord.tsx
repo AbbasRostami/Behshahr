@@ -4,7 +4,8 @@ import textDashbord from "../../assets/textDashbord.svg";
 import introImg from "../../assets/introImg.svg";
 import { getApi } from "../../core/api/api";
 import { Link } from "react-router-dom";
-import { ProfileContext } from "../../context/ProfileProvider";
+import { getEditProfAtom, profileAtom } from "../../context/ProfileProvider";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
 
 interface MyCoursesType {
   courseTitle: string;
@@ -18,7 +19,6 @@ interface ApiResponse {
   };
 }
 const Dashbord = () => {
-  const { data } = useContext(ProfileContext);
   const [datas, setDatas] = useState<MyCoursesType[]>([]);
 
   const getMyCourses = async () => {
@@ -31,6 +31,16 @@ const Dashbord = () => {
   useEffect(() => {
     getMyCourses();
   }, []);
+
+
+const data = useAtomValue(profileAtom); 
+const getEditProf = useSetAtom(getEditProfAtom); 
+
+console.log("data atom:", data);
+
+useEffect(() => {
+  getEditProf();
+}, []);
 
   return (
     <>

@@ -8,8 +8,9 @@ import logoLanding from "./../../../assets/svg/Landing/logosite.svg";
 import seachIcon from "./../../../assets/svg/Landing/searchicon.svg";
 import courses1 from "./../../../assets/courses1.svg";
 import { getApi } from "../../../core/api/api";
-import { ProfileContext } from "../../../context/ProfileProvider";
 import DarkLightToggle from "../DarkMode";
+import { getEditProfAtom, profileAtom } from "../../../context/ProfileProvider";
+import { useAtomValue, useSetAtom } from "jotai";
 
 interface CoursesData {
   title: string;
@@ -25,12 +26,19 @@ interface ApiResponse {
 const Header: React.FC = () => {
   const [show, setShow] = useState(false);
   const [datas, setDatas] = useState<CoursesData[]>([]);
-  const [filter, setFilter] = useState<{ PageNumber?: number; Query?: string; filter?: string; }>({});
+  const [filter, setFilter] = useState<{
+    PageNumber?: number;
+    Query?: string;
+    filter?: string;
+  }>({});
   const [modal, setModal] = useState(false);
 
-  const GetCouresesTop = async (params: { PageNumber?: number; Query: string }) => {
+  const GetCouresesTop = async (params: {
+    PageNumber?: number;
+    Query: string;
+  }) => {
     const path = `/Home/GetCoursesWithPagination`;
-    const response = await (getApi({
+    const response = (await getApi({
       path,
       params: { params: { ...params, RowsOfPage: 9 } },
     })) as ApiResponse;
@@ -39,10 +47,14 @@ const Header: React.FC = () => {
   };
 
   useEffect(() => {
-    GetCouresesTop({ Query: '' });
+    GetCouresesTop({ Query: "" });
   }, []);
 
-  const filterDataHanlder = (newParams: { PageNumber?: number; Query?: string; filter?: string; }) => {
+  const filterDataHanlder = (newParams: {
+    PageNumber?: number;
+    Query?: string;
+    filter?: string;
+  }) => {
     setFilter({ PageNumber: 1, ...filter, ...newParams });
     const allFilter = {
       PageNumber: 1,
@@ -50,10 +62,15 @@ const Header: React.FC = () => {
       ...newParams,
     };
     console.log("filter", allFilter);
-    GetCouresesTop({ ...allFilter, Query: allFilter.Query || '' });
+    GetCouresesTop({ ...allFilter, Query: allFilter.Query || "" });
   };
 
-  const { data } = useContext(ProfileContext);
+  // const { data } = useContext(ProfileContext);
+
+  const data = useAtomValue(profileAtom);
+  const getEditProf = useSetAtom(getEditProfAtom);
+
+  console.log("data atom:", data);
 
   return (
     <div className=" bg-gradient-to-r from-green-300 to-gray-50 dark:dark:bg-slate-900 dark:bg-none">
