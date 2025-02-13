@@ -159,7 +159,6 @@ const StepThree = () => {
               />
             </label>
 
-            <Link to="/login">
               {" "}
               <button
                 className=" ml-7 w-[37rem] lg:w-[22rem] h-[3.4rem] bg-[#158B68] rounded-xl mt-[3rem] text-[#ffff]"
@@ -167,7 +166,6 @@ const StepThree = () => {
               >
                 ادامه
               </button>{" "}
-            </Link>
           </Form>
         </Formik>
       </div>
