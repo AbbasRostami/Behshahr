@@ -18,7 +18,7 @@ const StepTwo = () => {
     const response = await verifyMessage(body);
     console.log(response);
     if (response) {
-      toast.success("کد با موفقیت برای شما ارسال شد");
+      toast.success("عملیات با موفقیت انجام شد.");
       navigate("/register-final", { state: body });
     }
   };
