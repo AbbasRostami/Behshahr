@@ -3,7 +3,7 @@ import { Field, Form, Formik } from "formik";
 import { useParams } from "react-router-dom";
 import { BiDislike, BiLike } from "react-icons/bi";
 import { FaRegStar } from "react-icons/fa";
-import disLike from "./../../assets/svg/ArticlesDetails/disLike.svg";
+import disLike from "./../../assets/svg/ArticlesDetails/dislike.svg";
 import dummy from "./../../assets/svg/ArticlesDetails/dummy.svg";
 import like from "./../../assets/svg/ArticlesDetails/like.svg";
 import undo from "./../../assets/svg/ArticlesDetails/undo.svg";
