@@ -1,4 +1,4 @@
-import like from "./../../../assets/svg/Landing/coursesLike.svg";
+import like from "./../../../assets/svg/Landing/CoursesLike.svg";
 import dislike from "./../../../assets/svg/Landing/CoursesDisLike.svg";
 import favorite from "./../../../assets/svg/Landing/CoursesFavo.svg";
 import line from "./../../../assets/svg/Landing/Line.svg";
