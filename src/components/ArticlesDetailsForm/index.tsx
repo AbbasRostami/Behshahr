@@ -7,12 +7,12 @@ import "swiper/css";
 import starRating from "./../../assets/svg/ArticlesDetails/starRating.svg";
 import articlePic from "./../../assets/svg/ArticlesDetails/articlePic.svg";
 import calendar from "./../../assets/svg/ArticlesDetails/calendar.svg";
-import disLike from "./../../assets/svg/ArticlesDetails/disLike.svg";
 import dummy from "./../../assets/svg/ArticlesDetails/dummy.svg";
 import like from "./../../assets/svg/ArticlesDetails/like.svg";
 import undo from "./../../assets/svg/ArticlesDetails/undo.svg";
 import eye from "./../../assets/svg/ArticlesDetails/eye.svg";
 import key from "./../../assets/svg/ArticlesDetails/key.svg";
+import disLikee from "./../../assets/svg/ArticlesDetails/dislike.svg";
 import { useParams } from "react-router-dom";
 import { MdTitle } from "react-icons/md";
 import {
@@ -26,7 +26,7 @@ import { CoursesSlider } from "../common/SliderCourses";
 interface Comment {
   id: number;
   title: string;
-  describe: string; 
+  describe: string;
   likeCount: number;
   dissLikeCount: number;
   replyCount: number;
@@ -66,7 +66,7 @@ const ArticlesDetailsForm: React.FC = () => {
     if (!id) return;
     try {
       const path = `/News/${id}`;
-      const response = await (getApi({ path })) as ApiResponse;
+      const response = (await getApi({ path })) as ApiResponse;
       if (response?.data) {
         setCards(response.data);
         console.log("NeWS Deatils: ", response.data);
@@ -80,26 +80,29 @@ const ArticlesDetailsForm: React.FC = () => {
     getArticlesTop();
   }, [id]);
 
-
-
-  const addCommentsArticles = async (inputValues: { describe: string; title: string; newsId: number; userId: number; }) => {
+  const addCommentsArticles = async (inputValues: {
+    describe: string;
+    title: string;
+    newsId: number;
+    userId: number;
+  }) => {
     try {
       const data = {
         describe: inputValues.describe,
         title: inputValues.title,
-        newsId: id, 
+        newsId: id,
         userId: 40296,
       };
-  
+
       const path = `/News/CreateNewsComment`;
       const body = data;
-  
-      const response = await postApi({ path, body }) as ApiResponse;
+
+      const response = (await postApi({ path, body })) as ApiResponse;
       console.log("API Response:", response);
-  
+
       if (response?.data?.success) {
         toast.success("عملیات با موفقیت انجام شد.");
-        getArticlesTop(); 
+        getArticlesTop();
       } else {
         toast.error("عملیات با خطا مواجه شد.");
       }
@@ -109,11 +112,10 @@ const ArticlesDetailsForm: React.FC = () => {
     }
   };
 
-  
   const addLike = async (id: number) => {
     console.log(id);
     const path = `/News/CommentLike/${id}`;
-    const response = await (getApi({ path })) as ApiResponse;
+    const response = (await getApi({ path })) as ApiResponse;
     if (response?.data?.success) {
       toast.success("عملیات با موفقیت انجام شد.");
       getArticlesTop();
@@ -129,7 +131,7 @@ const ArticlesDetailsForm: React.FC = () => {
     const path = `/News/DeleteCommentLikeNews`;
 
     try {
-      const response = await deleteApi({ path, body }) as ApiResponse;
+      const response = (await deleteApi({ path, body })) as ApiResponse;
       console.log("API Response:", response);
       if (response?.data?.success) {
         toast.success("عملیات با موفقیت انجام شد.");
@@ -188,7 +190,7 @@ const ArticlesDetailsForm: React.FC = () => {
                       </p>
                     </div>
                     <div className="flex flex-col items-center">
-                      <img src={disLike} />
+                      <img src={disLikee} />
                       <p className="">
                         {cards?.detailsNewsDto?.currentDissLikeCount}
                       </p>
@@ -284,7 +286,7 @@ const ArticlesDetailsForm: React.FC = () => {
                               <div className="flex flex-col items-center">
                                 <img
                                   onClick={() => addDislike(comment.id)}
-                                  src={disLike}
+                                  src={disLikee}
                                 />
                                 <p className="">{comment?.dissLikeCount}</p>
                               </div>
@@ -321,7 +323,12 @@ const ArticlesDetailsForm: React.FC = () => {
               {show === 1 ? (
                 <>
                   <Formik
-                    initialValues={{ title: "", describe: "", newsId: Number(id), userId: 40296 }}
+                    initialValues={{
+                      title: "",
+                      describe: "",
+                      newsId: Number(id),
+                      userId: 40296,
+                    }}
                     onSubmit={addCommentsArticles}
                   >
                     {() => (
