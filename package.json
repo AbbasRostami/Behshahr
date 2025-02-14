@@ -16,6 +16,7 @@
     "@types/axios": "^0.14.4",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.7.7",
+    "daisyui": "^4.12.23",
     "formik": "^2.4.6",
     "jalali-moment": "^3.3.11",
     "jotai": "^2.11.1",
