@@ -1,5 +1,5 @@
 import { atom } from "jotai";
-import { getApi } from "../core/api/api";
+import { getApi } from "../../core/api/api";
 
 interface UserProfile {
   birthDay: string;
@@ -42,4 +42,4 @@ export const getEditProfAtom = atom(
     const response = (await getApi({ path })) as ApiResponse;
     set(profileAtom, response?.data);
   }
-);
+)
