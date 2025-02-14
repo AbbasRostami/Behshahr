@@ -1,11 +1,11 @@
-import { ArticlesDetailsForm } from "../../components/ArticlesDetailsForm"
+import { ArticlesDetailsForm } from "../../components/ArticlesDetailsForm";
 
 const ArticlesDetails = () => {
   return (
     <>
       <ArticlesDetailsForm />
     </>
-  )
-}
+  );
+};
 
-export { ArticlesDetails }
+export default ArticlesDetails;

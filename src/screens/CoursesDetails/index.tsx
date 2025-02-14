@@ -8,4 +8,4 @@ const CoursesDetails = () => {
   );
 };
 
-export { CoursesDetails };
+export default CoursesDetails ;
