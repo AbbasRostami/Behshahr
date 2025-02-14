@@ -1,128 +1,117 @@
-import { createBrowserRouter } from "react-router-dom";
-import { CoursesDetails } from "../screens/CoursesDetails";
-import { NewsArticles } from "../screens/NewsArticles";
-import { PanelLayout } from "../screens/layout/PanelLayout";
-import { ForgetStepTwo } from "../components/ForgetPasswordForm/StepTwo";
+import { createBrowserRouter, Navigate } from "react-router-dom";
+import { lazy, Suspense } from "react";
 import PassProvider from "../core/provider/PasswoedProvider";
-import { NotFound } from "../components/NotFound";
-import { ArticlesDetails } from "../screens/ArticlesDetails";
-import { AboutUs } from "../screens/AboutUs";
-import { MainLayout } from "../screens/layout/MainLayout";
-import { Login } from "../screens/Login";
-import { ForgetPasswordForm } from "../components/ForgetPasswordForm";
-import { MyReserveCourses } from "../components/MyCourses/myReserveCourses";
-import { Favorites } from "../components/MyCourses/favorites";
-import { MyCourses } from "../components/MyCourses/myCourses";
-import { MyComments } from "../components/MyCourses/myComments";
-import { ChangePassword } from "../components/MyCourses/changePassword";
-import { EditProfile } from "../components/MyCourses/editProfile";
-import { Dashbord } from "../components/MyCourses/dashbord";
-import { Landing } from "../screens/Landing";
-import { CoursesList } from "../screens/CoursesList";
-import { StepOne } from "../components/RegisterForm/StepOne";
-import { StepTwo } from "../components/RegisterForm/StepTwo";
-import { StepThree } from "../components/RegisterForm/StepThree";
+import PageSkeleton from "../components/common/Skeleton";
+
+// Lazy Loading Components
+const CoursesDetails = lazy(() => import("../screens/CoursesDetails"));
+const NewsArticles = lazy(() => import("../screens/NewsArticles"));
+const PanelLayout = lazy(() => import("../screens/layout/PanelLayout"));
+const ForgetStepTwo = lazy(() => import("../components/ForgetPasswordForm/StepTwo"));
+const NotFound = lazy(() => import("../components/NotFound"));
+const ArticlesDetails = lazy(() => import("../screens/ArticlesDetails"));
+const AboutUs = lazy(() => import("../screens/AboutUs"));
+const MainLayout = lazy(() => import("../screens/layout/MainLayout"));
+const Login = lazy(() => import("../screens/Login"));
+const ForgetPasswordForm = lazy(() => import("../components/ForgetPasswordForm"));
+const MyReserveCourses = lazy(() => import("../components/MyCourses/myReserveCourses"));
+const Favorites = lazy(() => import("../components/MyCourses/favorites"));
+const MyCourses = lazy(() => import("../components/MyCourses/myCourses"));
+const MyComments = lazy(() => import("../components/MyCourses/myComments"));
+const ChangePassword = lazy(() => import("../components/MyCourses/changePassword"));
+const EditProfile = lazy(() => import("../components/MyCourses/editProfile"));
+const Dashbord = lazy(() => import("../components/MyCourses/dashbord"));
+const Landing = lazy(() => import("../screens/Landing"));
+const CoursesList = lazy(() => import("../screens/CoursesList"));
+const StepOne = lazy(() => import("../components/RegisterForm/StepOne"));
+const StepTwo = lazy(() => import("../components/RegisterForm/StepTwo"));
+const StepThree = lazy(() => import("../components/RegisterForm/StepThree"));
 
 const RoutesApp = createBrowserRouter([
   {
-    element: <MainLayout />,
+    element: (
+      <Suspense fallback={<PageSkeleton />}>
+        <MainLayout />
+      </Suspense>
+    ),
     children: [
-      {
-        path: "/",
-        element: <Landing />,
-      },
-      {
-        path: "*",
-        element: <NotFound />,
-      },
-      {
-        path: "/about",
-        element: <AboutUs />,
-      },
-      {
-        path: "/courses-details/:id",
-        element: <CoursesDetails />,
-      },
-      {
-        path: "/courses-list",
-        element: <CoursesList />,
-      },
-      {
-        path: "/articles-details/:id",
-        element: <ArticlesDetails />,
-      }, 
-
-      {
-        path: "/news-articles",
-        element: <NewsArticles />,
-      },
+      { path: "/", element: <Landing /> },
+      { path: "*", element: <NotFound /> },
+      { path: "/about", element: <AboutUs /> },
+      { path: "/courses-details/:id", element: <CoursesDetails /> },
+      { path: "/courses-list", element: <CoursesList /> },
+      { path: "/articles-details/:id", element: <ArticlesDetails /> },
+      { path: "/news-articles", element: <NewsArticles /> },
     ],
   },
   {
     path: "/register",
-    element: <StepOne />,
+    element: (
+      <Suspense fallback={<PageSkeleton />}>
+        <StepOne />
+      </Suspense>
+    ),
   },
   {
     path: "/register-verify",
-    element: <StepTwo />,
+    element: (
+      <Suspense fallback={<PageSkeleton />}>
+        <StepTwo />
+      </Suspense>
+    ),
   },
   {
     path: "/register-final",
-    element: <StepThree />,
+    element: (
+      <Suspense fallback={<PageSkeleton />}>
+        <StepThree />
+      </Suspense>
+    ),
   },
   {
     path: "/login",
-    element: <Login />,
+    element: (
+      <Suspense fallback={<PageSkeleton />}>
+        <Login />
+      </Suspense>
+    ),
   },
   {
-    element: <PanelLayout />,
+    element: localStorage.getItem("token") ? (
+      <Suspense fallback={<PageSkeleton />}>
+        <PanelLayout />
+      </Suspense>
+    ) : (
+      <Navigate to="/login" replace />
+    ),
     children: [
-      {
-        path: "/myCourses",
-        element: <MyCourses />,
-      },
-      {
-        path: "/myReserveCourses",
-        element: <MyReserveCourses />,
-      },
-      {
-        path: "/favorites",
-        element: <Favorites />,
-      },
-      {
-        path: "/myComments",
-        element: <MyComments />,
-      },
-      {
-        path: "/changePassword",
-        element: <ChangePassword />,
-      },
-      {
-        path: "/editProfile",
-        element: <EditProfile />,
-      },
-      {
-        path: "/dashbord",
-        element: <Dashbord />,
-      },
+      { path: "/myCourses", element: <MyCourses /> },
+      { path: "/myReserveCourses", element: <MyReserveCourses /> },
+      { path: "/favorites", element: <Favorites /> },
+      { path: "/myComments", element: <MyComments /> },
+      { path: "/changePassword", element: <ChangePassword /> },
+      { path: "/editProfile", element: <EditProfile /> },
+      { path: "/dashbord", element: <Dashbord /> },
     ],
   },
   {
     path: "/forget-password",
     element: (
-      <PassProvider>
-        {" "}
-        <ForgetPasswordForm />{" "}
-      </PassProvider>
+      <Suspense fallback={<PageSkeleton />}>
+        <PassProvider>
+          <ForgetPasswordForm />
+        </PassProvider>
+      </Suspense>
     ),
   },
-
   {
     path: "/reset-password/:id",
     element: (
-      <PassProvider>
-        <ForgetStepTwo />
-      </PassProvider>
+      <Suspense fallback={<PageSkeleton />}>
+        <PassProvider>
+          <ForgetStepTwo />
+        </PassProvider>
+      </Suspense>
     ),
   },
 ]);
