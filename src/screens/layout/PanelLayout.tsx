@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import { HeaderDashbord } from "../../components/common/HeaderDashbord/HeaderDashbord";
 import { MainDashbord } from "../../components/common/MainDashbord/mainDashbord";
 
-export const PanelLayout = () => {
+const PanelLayout = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
@@ -18,3 +18,5 @@ export const PanelLayout = () => {
     </>
   );
 };
+
+export default PanelLayout;

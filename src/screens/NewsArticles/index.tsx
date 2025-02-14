@@ -8,4 +8,4 @@ const NewsArticles: React.FC = () => {
   );
 };
 
-export { NewsArticles };
+export default NewsArticles ;
