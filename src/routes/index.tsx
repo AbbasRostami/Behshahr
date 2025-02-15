@@ -3,29 +3,31 @@ import { lazy, Suspense } from "react";
 import PassProvider from "../core/provider/PasswoedProvider";
 import PageSkeleton from "../components/common/Skeleton";
 
+import Login from "../screens/Login";
+import StepOne from "../components/RegisterForm/StepOne";
+import StepTwo from "../components/RegisterForm/StepTwo";
+import StepThree from "../components/RegisterForm/StepThree";
+import ForgetPasswordForm from "../components/ForgetPasswordForm";
+import ForgetStepTwo from "../components/ForgetPasswordForm/StepTwo";
+
+
 // Lazy Loading Components
 const CoursesDetails = lazy(() => import("../screens/CoursesDetails"));
 const NewsArticles = lazy(() => import("../screens/NewsArticles"));
 const PanelLayout = lazy(() => import("../screens/layout/PanelLayout"));
-const ForgetStepTwo = lazy(() => import("../components/ForgetPasswordForm/StepTwo"));
 const NotFound = lazy(() => import("../components/NotFound"));
 const ArticlesDetails = lazy(() => import("../screens/ArticlesDetails"));
 const AboutUs = lazy(() => import("../screens/AboutUs"));
 const MainLayout = lazy(() => import("../screens/layout/MainLayout"));
-const Login = lazy(() => import("../screens/Login"));
-const ForgetPasswordForm = lazy(() => import("../components/ForgetPasswordForm"));
-const MyReserveCourses = lazy(() => import("../components/MyCourses/myReserveCourses"));
-const Favorites = lazy(() => import("../components/MyCourses/favorites"));
-const MyCourses = lazy(() => import("../components/MyCourses/myCourses"));
-const MyComments = lazy(() => import("../components/MyCourses/myComments"));
-const ChangePassword = lazy(() => import("../components/MyCourses/changePassword"));
-const EditProfile = lazy(() => import("../components/MyCourses/editProfile"));
-const Dashbord = lazy(() => import("../components/MyCourses/dashbord"));
+const MyReserveCourses = lazy(() => import("../components/UserPanel/myReserveCourses"));
+const Favorites = lazy(() => import("../components/UserPanel/favorites"));
+const MyCourses = lazy(() => import("../components/UserPanel/myCourses"));
+const MyComments = lazy(() => import("../components/UserPanel/myComments"));
+const ChangePassword = lazy(() => import("../components/UserPanel/changePassword"));
+const EditProfile = lazy(() => import("../components/UserPanel/editProfile"));
+const Dashbord = lazy(() => import("../components/UserPanel/dashbord"));
 const Landing = lazy(() => import("../screens/Landing"));
 const CoursesList = lazy(() => import("../screens/CoursesList"));
-const StepOne = lazy(() => import("../components/RegisterForm/StepOne"));
-const StepTwo = lazy(() => import("../components/RegisterForm/StepTwo"));
-const StepThree = lazy(() => import("../components/RegisterForm/StepThree"));
 
 const RoutesApp = createBrowserRouter([
   {
@@ -47,33 +49,25 @@ const RoutesApp = createBrowserRouter([
   {
     path: "/register",
     element: (
-      <Suspense fallback={<PageSkeleton />}>
         <StepOne />
-      </Suspense>
     ),
   },
   {
     path: "/register-verify",
     element: (
-      <Suspense fallback={<PageSkeleton />}>
         <StepTwo />
-      </Suspense>
     ),
   },
   {
     path: "/register-final",
     element: (
-      <Suspense fallback={<PageSkeleton />}>
         <StepThree />
-      </Suspense>
     ),
   },
   {
     path: "/login",
     element: (
-      <Suspense fallback={<PageSkeleton />}>
         <Login />
-      </Suspense>
     ),
   },
   {
@@ -97,21 +91,17 @@ const RoutesApp = createBrowserRouter([
   {
     path: "/forget-password",
     element: (
-      <Suspense fallback={<PageSkeleton />}>
         <PassProvider>
           <ForgetPasswordForm />
         </PassProvider>
-      </Suspense>
     ),
   },
   {
     path: "/reset-password/:id",
     element: (
-      <Suspense fallback={<PageSkeleton />}>
         <PassProvider>
           <ForgetStepTwo />
         </PassProvider>
-      </Suspense>
     ),
   },
 ]);
