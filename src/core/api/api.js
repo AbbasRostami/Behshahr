@@ -19,7 +19,7 @@ export const postApi = async ({ path, body = {} }) => {
   }
 };
 
-export const editApi = async ({ path, body }) => {
+export const editApi = async ({ path, body: {} }) => {
   try {
     const response = await http.put(`${path}`, body);
     return response;
@@ -27,7 +27,7 @@ export const editApi = async ({ path, body }) => {
     return error;
   }
 };
-export const deleteApi = async ({ path, body }) => {
+export const deleteApi = async ({ path, body: {} }) => {
   try {
     const response = await http.delete(`${path}`, {data:body});
     return response;
