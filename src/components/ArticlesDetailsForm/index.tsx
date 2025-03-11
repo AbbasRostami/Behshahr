@@ -22,6 +22,8 @@ import {
 } from "react-icons/ai";
 import moment from "jalali-moment";
 import { CoursesSlider } from "../common/SliderCourses";
+import { useAtomValue } from "jotai";
+import { profileAtom } from "../../context/jotai/ProfileProvider";
 
 interface Comment {
   id: number;
@@ -61,6 +63,8 @@ const ArticlesDetailsForm: React.FC = () => {
   const [cards, setCards] = useState<NewsDetails | null>(null);
   const [show, setShow] = useState(1);
   const { id } = useParams();
+console.log("fjsdkhgjdsjhdsfd",id);
+
 
   const getArticlesTop = async () => {
     if (!id) return;
@@ -79,6 +83,10 @@ const ArticlesDetailsForm: React.FC = () => {
   useEffect(() => {
     getArticlesTop();
   }, [id]);
+
+  const data = useAtomValue(profileAtom)
+  console.log("atom:", data);
+  
 
   const addCommentsArticles = async (inputValues: {
     describe: string;
@@ -164,7 +172,7 @@ const ArticlesDetailsForm: React.FC = () => {
                 </h1>
                 <div className="text-gray-700 dark:text-white pt-8 rtl text-justify">
                   <div className="flex items-center">
-                    <MdTitle size={37} />
+                    <MdTitle size={50} />
                     توضیحات: {cards?.detailsNewsDto?.describe}
                   </div>
                   <div className="flex items-center mt-8">
