@@ -11,56 +11,47 @@ import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { getApi } from "../../../core/api/api";
 import { Link } from "react-router-dom";
+import { useNewsStore } from "../../../context/zustand/NewsProvider";
 
-interface DataType {
-  currentImageAddressTumb: string;
-  currentLikeCount: number;
-  currentDissLikeCount: number;
-  currentRate: number;
-  newsCatregoryName: string;
-  title: string;
-  addUserFullName: string;
-  addUserProfileImage: string;
-  miniDescribe: string;
-  id: number;
-}
-
-interface ApiResponse {
-  data: {
-    news: DataType[];
-  };
-}
 
 const SliderArticles = () => {
-  const [data, setData] = useState<DataType[]>([]);
 
-  const getArticles = async () => {
-    try {
-      const path = `/News`;
-      const response = (await getApi({ path })) as ApiResponse;
-      if (response) {
-        setData(response.data.news);
-      }
-    } catch (error) {
-      console.log(error);    
-    }
-  };
-  
+  const { fetchNews, News, loading  } = useNewsStore(); 
+
   useEffect(() => {
-    getArticles();
+    fetchNews();
   }, []);
+  
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center flex-wrap mt-10">
+        {Array.from({ length: 3 }).map((_, index) => (
+          <div
+            key={index}
+            className="w-[300px] lg:w-[370px] h-[300px] rounded-3xl bg-gray-200 dark:bg-gray-700 m-4 skeleton animate-pulse"
+          >
+            <div className="h-[230px] w-full" />
+            <div className="p-5">
+              <div className="h-6 w-2/3 mb-4" />
+              <div className="h-4 w-full mb-2" />
+              <div className="h-4 w-5/6" />
+              <div className="flex justify-between items-center mt-5">
+                <div className="h-10 w-10 rounded-full" />
+                <div className="h-6 w-20" />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <>
       <div className="text-center leading-10 mt-14 dark:text-white">
-        <br />
-        <br />
-        <br />
         <p className="text-[35px] font-bold">اخبار و مقالات</p>
         <p className="leading-10">ساختن دنیایی بهتر، یک دوره در یک زمان</p>
       </div>
-      <br />
-      <br />
 
       <Swiper
         slidesPerView={3}
@@ -82,10 +73,13 @@ const SliderArticles = () => {
           },
         }}
       >
-        {data?.map((item, index) => {
+        {News?.map((item) => {
           return (
             <SwiperSlide>
-              <div className="flex justify-around items-center rounded-3xl ">
+              <div
+                key={item.id}
+                className="flex justify-around items-center rounded-3xl "
+              >
                 <div className="relative hover:bg-amber-100 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 ... h-[420px] lg:h-[540px] w-[300px] lg:w-[370px] text-center rounded-[1.5rem] mt-11 dark:bg-gray-800 bg-[#FBF6F6] shadow-[9px_9px_12px_3px_rgba(0,_0,_0,_0.1)] text-TextGreen ">
                   <div className="h-64">
                     <img
@@ -95,7 +89,6 @@ const SliderArticles = () => {
                         maxHeight: "230px",
                         height: "100%",
                       }}
-                      // src={data.currentImageAddressTumb}
                       src={
                         item?.currentImageAddressTumb &&
                         /\.(jpg|jpeg|png|gif|webp)$/i.test(
