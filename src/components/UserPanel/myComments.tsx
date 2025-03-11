@@ -328,4 +328,4 @@ const MyComments = () => {
   );
 };
 
-export { MyComments };
+export default MyComments;

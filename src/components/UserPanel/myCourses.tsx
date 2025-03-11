@@ -18,9 +18,8 @@ interface ApiResponse {
 }
 
 const MyCourses = () => {
-
   const [data, setData] = useState<MyCoursesType[]>([]);
-  
+
   const getMyCourses = async () => {
     const path = `/SharePanel/GetMyCourses?PageNumber=1&RowsOfPage=10&SortingCol=DESC&SortType=LastUpdate&Query=s`;
     const response = (await getApi({ path })) as ApiResponse;
@@ -70,4 +69,4 @@ const MyCourses = () => {
   );
 };
 
-export { MyCourses };
+export default MyCourses;

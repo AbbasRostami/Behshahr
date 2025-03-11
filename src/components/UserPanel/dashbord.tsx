@@ -4,8 +4,8 @@ import textDashbord from "../../assets/textDashbord.svg";
 import introImg from "../../assets/introImg.svg";
 import { getApi } from "../../core/api/api";
 import { Link } from "react-router-dom";
-import { getEditProfAtom, profileAtom } from "../../context/ProfileProvider";
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import { getEditProfAtom, profileAtom } from "../../context/jotai/ProfileProvider";
 
 interface MyCoursesType {
   courseTitle: string;
@@ -32,15 +32,15 @@ const Dashbord = () => {
     getMyCourses();
   }, []);
 
+  const data = useAtomValue(profileAtom);
+  
+  const getEditProf = useSetAtom(getEditProfAtom);
 
-const data = useAtomValue(profileAtom); 
-const getEditProf = useSetAtom(getEditProfAtom); 
+  console.log("data atom:", data);
 
-console.log("data atom:", data);
-
-useEffect(() => {
-  getEditProf();
-}, []);
+  useEffect(() => {
+    getEditProf();
+  }, []);
 
   return (
     <>
@@ -223,4 +223,4 @@ useEffect(() => {
   );
 };
 
-export { Dashbord };
+export default Dashbord;

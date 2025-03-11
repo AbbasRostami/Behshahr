@@ -36,13 +36,13 @@ const EditProfile = () => {
   const [image, setImage] = useState<File | null>(null);
 
   // const { data, getEditProf } = useContext(ProfileContext);
-const data = useAtomValue(profileAtom); 
-const getEditProf = useSetAtom(getEditProfAtom); 
-console.log("data atom:", data);
+  const data = useAtomValue(profileAtom);
+  const getEditProf = useSetAtom(getEditProfAtom);
+  console.log("data atom:", data);
 
-useEffect(() => {
-  getEditProf();
-}, []);
+  useEffect(() => {
+    getEditProf();
+  }, []);
   const initialValues = {
     FName: data?.fName || "", //
     LName: data?.lName || "", //
@@ -431,4 +431,4 @@ useEffect(() => {
   );
 };
 
-export { EditProfile };
+export default EditProfile;
