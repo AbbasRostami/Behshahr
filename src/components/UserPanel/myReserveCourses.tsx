@@ -90,4 +90,4 @@ const MyReserveCourses = () => {
   );
 };
 
-export { MyReserveCourses };
+export default MyReserveCourses;

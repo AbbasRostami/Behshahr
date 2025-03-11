@@ -6,8 +6,10 @@ import { postApi } from "../../core/api/api";
 import { toast } from "react-toastify";
 
 const ChangePassword = () => {
-
-  const handlerPass = async (values: { oldPassword: string; newPassword: string }) => {
+  const handlerPass = async (values: {
+    oldPassword: string;
+    newPassword: string;
+  }) => {
     const path = `/SharePanel/ChangePassword`;
     const body = values;
     const response = await postApi({ path, body });
@@ -57,7 +59,6 @@ const ChangePassword = () => {
                 src={key}
                 alt=""
               />
-             
 
               <button className="text-[#ffff] dark:text-white text-sm bg-[#158B68] dark:bg-gray-900 border-[2px] border-[#158B68] rounded-lg w-[24rem] lg:w-[29rem] h-[3.5rem] lg:h-[4rem] absolute top-[20rem] lg:top-[32rem] right-[15rem] lg:right-[30rem]">
                 تایید
@@ -70,4 +71,4 @@ const ChangePassword = () => {
   );
 };
 
-export { ChangePassword };
+export default ChangePassword;

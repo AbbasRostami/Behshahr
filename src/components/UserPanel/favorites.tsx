@@ -29,7 +29,6 @@ interface ApiResponse {
   };
 }
 const Favorites = () => {
-
   const [data, setData] = useState<FavoritesCoureses[]>([]);
   const [show, setShow] = useState(1);
   const [news, setNews] = useState<FavoritesNews[]>([]);
@@ -44,7 +43,6 @@ const Favorites = () => {
     getFavoritesCoureses();
   }, []);
 
-
   const getFavoritesNews = async () => {
     const path = `/SharePanel/GetMyFavoriteNews`;
     const response = (await getApi({ path })) as ApiResponse;
@@ -54,7 +52,6 @@ const Favorites = () => {
   useEffect(() => {
     getFavoritesNews();
   }, []);
-
 
   const deleteFavoriteCourses = async (favoriteId: number) => {
     const formData = new FormData();
@@ -185,4 +182,4 @@ const Favorites = () => {
   );
 };
 
-export { Favorites };
+export default Favorites;
