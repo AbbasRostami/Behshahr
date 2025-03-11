@@ -1,17 +1,22 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Link } from "react-router-dom";
 import { Button, Menu, MenuItem } from "@mui/material";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Field, Formik } from "formik";
-
 import logoLanding from "./../../../assets/svg/Landing/logosite.svg";
 import seachIcon from "./../../../assets/svg/Landing/searchicon.svg";
 import courses1 from "./../../../assets/courses1.svg";
 import { getApi } from "../../../core/api/api";
 import DarkLightToggle from "../DarkMode";
-import { getEditProfAtom, profileAtom } from "../../../context/ProfileProvider";
 import { useAtomValue, useSetAtom } from "jotai";
-
+import { BsPersonCircle } from "react-icons/bs";
+import { BiSearch } from "react-icons/bi";
+import { IoSearch } from "react-icons/io5";
+import {
+  getEditProfAtom,
+  profileAtom,
+} from "../../../context/jotai/ProfileProvider";
+import { NavLink } from "react-router-dom";
 interface CoursesData {
   title: string;
   cost: number;
@@ -26,11 +31,7 @@ interface ApiResponse {
 const Header: React.FC = () => {
   const [show, setShow] = useState(false);
   const [datas, setDatas] = useState<CoursesData[]>([]);
-  const [filter, setFilter] = useState<{
-    PageNumber?: number;
-    Query?: string;
-    filter?: string;
-  }>({});
+
   const [modal, setModal] = useState(false);
 
   const GetCouresesTop = async (params: {
@@ -43,63 +44,88 @@ const Header: React.FC = () => {
       params: { params: { ...params, RowsOfPage: 9 } },
     })) as ApiResponse;
     console.log(response?.data);
-    setDatas(response?.data.courseFilterDtos);
+    setDatas(response?.data?.courseFilterDtos);
   };
 
   useEffect(() => {
     GetCouresesTop({ Query: "" });
   }, []);
 
-  const filterDataHanlder = (newParams: {
-    PageNumber?: number;
-    Query?: string;
-    filter?: string;
-  }) => {
-    setFilter({ PageNumber: 1, ...filter, ...newParams });
-    const allFilter = {
-      PageNumber: 1,
-      ...filter,
-      ...newParams,
-    };
-    console.log("filter", allFilter);
-    GetCouresesTop({ ...allFilter, Query: allFilter.Query || "" });
-  };
-
-  // const { data } = useContext(ProfileContext);
-
   const data = useAtomValue(profileAtom);
   const getEditProf = useSetAtom(getEditProfAtom);
 
   console.log("data atom:", data);
 
+  useEffect(() => {
+    getEditProf();
+  }, []);
+
   return (
     <div className=" bg-gradient-to-r from-green-300 to-gray-50 dark:dark:bg-slate-900 dark:bg-none">
       <div className="flex justify-between items-center px-20 h-20">
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center gap-2">
           {localStorage.getItem("token") ? (
             <>
-              <button onClick={() => setModal(!modal)}>
-                <img
-                  className="rounded-full w-11 h-11"
-                  src={data?.currentPictureAddress}
-                  alt=""
-                />
-              </button>
+              <div className="dropdown">
+                <button onClick={() => setModal(!modal)}>
+                  {data?.currentPictureAddress &&
+                  data.currentPictureAddress !== "Not-set" ? (
+                    <img
+                      src={data.currentPictureAddress}
+                      className="rounded-full w-11 h-11 border-2"
+                      alt="Profile Picture"
+                    />
+                  ) : (
+                    <BsPersonCircle color="#6c6f6d" size={40} />
+                  )}
+                </button>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content text-right z-50 dark:bg-slate-700 dark:text-white rtl menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+                >
+                  <li>
+                  <Link to="/dashbord">
+                      <p className="cursor-pointer text-right  rounded-lg  dark:hover:bg-slate-600">
+                        پنل دانشجو
+                      </p>
+                    </Link>
+                  </li>
+                  <li>
+                  <Link to="/editProfile">
+                      <p className="cursor-pointer text-right rounded-lg  dark:hover:bg-slate-600">
+                        ویرایش پروفایل
+                      </p>
+                    </Link>
+                  </li>
+                  <li>
+                  <p
+                      onClick={() => {
+                        localStorage.removeItem("token");
+                        window.location.href = "/login";
+                      }}
+                      className="cursor-pointer text-right rounded-lg dark:hover:bg-slate-600"
+                    >
+                      خروج
+                    </p>
+                  </li>
+                </ul>
+              </div>
 
               <div onClick={() => setShow(!show)} className="">
-                <img src={seachIcon} alt="" />
+                <IoSearch
+                  size={40}
+                  color="#21cd8f"
+                  className="cursor-pointer"
+                />
               </div>
-              {modal && (
-                <>
-                  <div className="w-[12%] h-32 py-3 px-3 absolute top-16 left-24 bg-white dark:bg-gray-700 rounded-xl shadow-md dark:shadow-slate-500 flex flex-col gap-3 rtl inset-0 z-50 outline-none focus:outline-none">
+
+              {/* <div className="w-[12%] h-32 py-3 px-3 absolute top-16 left-24 bg-white dark:bg-gray-700 rounded-xl shadow-md dark:shadow-slate-500 flex flex-col gap-3 rtl inset-0 z-50 outline-none focus:outline-none">
                     <Link to="/dashbord">
-                      {" "}
                       <p className="cursor-pointer dark:text-white rounded-lg hover:bg-green-200 dark:hover:bg-slate-600">
                         پنل دانشجو
                       </p>
                     </Link>
                     <Link to="/editProfile">
-                      {" "}
                       <p className="cursor-pointer dark:text-white rounded-lg hover:bg-green-200 dark:hover:bg-slate-600">
                         ویرایش پروفایل
                       </p>
@@ -113,9 +139,7 @@ const Header: React.FC = () => {
                     >
                       خروج
                     </p>
-                  </div>
-                </>
-              )}
+                  </div> */}
             </>
           ) : (
             <>
@@ -174,12 +198,12 @@ const Header: React.FC = () => {
                       className="rtl p-4 dark:text-white border-green-800 w-[20rem] lg:w-[40rem] text-sm text-gray-900 border dark:bg-gray-700 rounded-lg shadow-xl bg-gray-100"
                       placeholder="جستجو..."
                       required
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                        filterDataHanlder({
-                          PageNumber: 1,
-                          Query: e.target.value,
-                        })
-                      }
+                      // onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      //   filterDataHanlder({
+                      //     PageNumber: 1,
+                      //     Query: e.target.value,
+                      //   })
+                      // }
                     />
 
                     <svg
@@ -201,14 +225,11 @@ const Header: React.FC = () => {
                         stroke-linejoin="round"
                       ></g>
                       <g id="SVGRepo_iconCarrier">
-                        {" "}
                         <g>
-                          {" "}
                           <g>
-                            {" "}
-                            <path d="M0,203.25c0,112.1,91.2,203.2,203.2,203.2c51.6,0,98.8-19.4,134.7-51.2l129.5,129.5c2.4,2.4,5.5,3.6,8.7,3.6 s6.3-1.2,8.7-3.6c4.8-4.8,4.8-12.5,0-17.3l-129.6-129.5c31.8-35.9,51.2-83,51.2-134.7c0-112.1-91.2-203.2-203.2-203.2 S0,91.15,0,203.25z M381.9,203.25c0,98.5-80.2,178.7-178.7,178.7s-178.7-80.2-178.7-178.7s80.2-178.7,178.7-178.7 S381.9,104.65,381.9,203.25z"></path>{" "}
-                          </g>{" "}
-                        </g>{" "}
+                            <path d="M0,203.25c0,112.1,91.2,203.2,203.2,203.2c51.6,0,98.8-19.4,134.7-51.2l129.5,129.5c2.4,2.4,5.5,3.6,8.7,3.6 s6.3-1.2,8.7-3.6c4.8-4.8,4.8-12.5,0-17.3l-129.6-129.5c31.8-35.9,51.2-83,51.2-134.7c0-112.1-91.2-203.2-203.2-203.2 S0,91.15,0,203.25z M381.9,203.25c0,98.5-80.2,178.7-178.7,178.7s-178.7-80.2-178.7-178.7s80.2-178.7,178.7-178.7 S381.9,104.65,381.9,203.25z"></path>
+                          </g>
+                        </g>
                       </g>
                     </svg>
                   </div>
@@ -230,34 +251,54 @@ const Header: React.FC = () => {
           </>
         )}
 
-        <div className="justify-between items-center dark:text-white hidden lg:flex">
-          <Link to="/about">
-            {" "}
-            <span className="hover:bg-[#9e969657] hover:text-[#158B68] w-24 text-center rounded-lg cursor-pointer items-center p-1">
-              درباره ما
-            </span>
-          </Link>
+        <div className="justify-between items-center gap-2 dark:text-white hidden lg:flex">
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              `w-24 text-center rounded-lg cursor-pointer p-1 
+         hover:bg-[#9e969657] hover:text-[#158B68] 
+         transition-all duration-500 ease-in-out
+         ${isActive ? "bg-[#9e969657] text-[#158B68] scale-105" : "scale-100"}`
+            }
+          >
+            درباره ما
+          </NavLink>
 
-          <Link to="/news-articles">
-            {" "}
-            <span className="hover:bg-[#9e969657] hover:text-[#158B68] mx-4 w-24 text-center rounded-lg cursor-pointer items-center p-1">
-              مقالات
-            </span>
-          </Link>
+          <NavLink
+            to="/news-articles"
+            className={({ isActive }) =>
+              `w-24 text-center rounded-lg cursor-pointer p-1 
+         hover:bg-[#9e969657] hover:text-[#158B68] 
+         transition-all duration-500 ease-in-out
+         ${isActive ? "bg-[#9e969657] text-[#158B68] scale-105" : "scale-100"}`
+            }
+          >
+            مقالات
+          </NavLink>
 
-          <Link to="/courses-list">
-            {" "}
-            <span className="hover:bg-[#9e969657] hover:text-[#158B68] mr-4 w-24 text-center rounded-lg cursor-pointer items-center p-1">
-              دوره ها
-            </span>
-          </Link>
+          <NavLink
+            to="/courses-list"
+            className={({ isActive }) =>
+              `w-24 text-center rounded-lg cursor-pointer p-1 
+         hover:bg-[#9e969657] hover:text-[#158B68] 
+         transition-all duration-500 ease-in-out
+         ${isActive ? "bg-[#9e969657] text-[#158B68] scale-105" : "scale-100"}`
+            }
+          >
+            دوره‌ها
+          </NavLink>
 
-          <Link to="/">
-            {" "}
-            <span className="hover:bg-[#9e969657] hover:text-[#158B68] w-24 text-center rounded-lg cursor-pointer items-center p-1">
-              صفحه اصلی{" "}
-            </span>
-          </Link>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `w-24 text-center rounded-lg cursor-pointer p-1 
+         hover:bg-[#9e969657] hover:text-[#158B68] 
+         transition-all duration-500 ease-in-out
+         ${isActive ? "bg-[#9e969657] text-[#158B68] scale-105" : "scale-100"}`
+            }
+          >
+            صفحه اصلی
+          </NavLink>
         </div>
 
         <div className="flex justify-center items-center dark:text-white">
@@ -310,23 +351,19 @@ export function ResponsiveMenu() {
         }}
       >
         <Link to="/">
-          {" "}
-          <MenuItem onClick={handleClose}>صفحه اصلی</MenuItem>{" "}
+          <MenuItem onClick={handleClose}>صفحه اصلی</MenuItem>
         </Link>
 
         <Link to="/courses-list">
-          {" "}
-          <MenuItem onClick={handleClose}>دوره ها</MenuItem>{" "}
+          <MenuItem onClick={handleClose}>دوره ها</MenuItem>
         </Link>
 
         <Link to="/news-articles">
-          {" "}
-          <MenuItem onClick={handleClose}>مقالات</MenuItem>{" "}
+          <MenuItem onClick={handleClose}>مقالات</MenuItem>
         </Link>
 
         <Link to="/about">
-          {" "}
-          <MenuItem onClick={handleClose}>درباره ما</MenuItem>{" "}
+          <MenuItem onClick={handleClose}>درباره ما</MenuItem>
         </Link>
       </Menu>
     </>

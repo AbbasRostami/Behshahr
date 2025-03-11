@@ -1,8 +1,6 @@
 import LineFooter from "./../../../assets/svg/Landing/LineFooter.svg";
 import logoLanding from "./../../../assets/svg/Landing/logosite.svg";
-import tel from "./../../../assets/svg/Landing/TelegramF.svg";
-import skype from "./../../../assets/svg/Landing/SkypeF.svg";
-import facebook from "./../../../assets/svg/Landing/FacebookF.svg";
+import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const Footer: React.FC = () => {
   return (
@@ -16,9 +14,9 @@ const Footer: React.FC = () => {
             </p>
             <div className="pt-14">
               <input
-                className="w-[200px] h-[40px] rounded-r-lg"
+                className="w-[200px] pr-2 h-[40px] rounded-r-lg"
                 type="text"
-                placeholder="    example@gmail.com"
+                placeholder="example@gmail.com"
               />
               <button
                 className="w-[60px] h-[40px] rounded-l-lg
@@ -29,33 +27,33 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          <div className="rtl">
-            <p>آموزشگاه</p>
-            <p className="mt-5">درباره ما</p>
-            <p>ارتباط با ما</p>
-            <p>قوانین آموزشگاه</p>
-          </div>
+          <ul className="rtl space-y-3">
+            <li>آموزشگاه</li>
+            <li className="mt-5">درباره ما</li>
+            <li>ارتباط با ما</li>
+            <li>قوانین آموزشگاه</li>
+          </ul>
 
-          <div className="rtl">
-            <p>خدمات</p>
-            <p className="mt-5">آموزش حرفه ای</p>
-            <p>مشاوره رایگان</p>
-            <p>فرصت های شغلی</p>
-          </div>
+          <ul className="rtl space-y-3">
+            <li>خدمات</li>
+            <li className="mt-5">آموزش حرفه ای</li>
+            <li>مشاوره رایگان</li>
+            <li>فرصت های شغلی</li>
+          </ul>
         </div>
 
         <img className="mt-8 pl-40" src={LineFooter} alt="" />
 
         <div className="flex justify-around items-center mt-4">
-          <div className="flex justify-around lg:justify-center items-center mr-96">
-            <img className="dark:fill-slate-200" src={tel} alt="" />
-            <img className="dark:fill-slate-200 mx-3" src={skype} alt="" />
-            <img className="dark:fill-slate-200" src={facebook} alt="" />
+          <div className="flex justify-around lg:justify-center gap-4 items-center mr-96">
+            <FaFacebook size={25} className=" cursor-pointer" href="#" />
+            <FaTwitter size={25} className=" cursor-pointer" href="#" />
+            <FaInstagram size={25} className=" cursor-pointer" href="#" />
           </div>
 
           <div className="flex justify-center text-justify items-center dark:text-white">
             <p className="">
-              کلیه حقوق این وب سایت برای آکادمی اچ وان محفوظ است.©
+              © .کلیه حقوق این وب سایت برای آکادمی اچ وان محفوظ است
             </p>
             <img className="dark:fill-[#ff0000]" src={logoLanding} alt="" />
           </div>
