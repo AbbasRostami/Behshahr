@@ -40,7 +40,7 @@ const Statistics: React.FC = () => {
       <div className="py-5 text-center text-TextGreen ">
         <img src={iconCarrier1} alt="" />
         <p className="text-slate-700 dark:text-white text-xl ">مقاله آموزشی</p>
-        <p className="font-medium text-2xl hover:underline text-black dark:text-white">
+        <p className="font-medium text-2xl text-slate-700 dark:text-white">
           {Statistics?.newsCount}
         </p>
       </div>
@@ -48,7 +48,7 @@ const Statistics: React.FC = () => {
       <div className="p-5 text-center text-TextGreen">
         <img src={iconCarrier0} alt="" />
         <p className="text-slate-700 dark:text-white text-xl ">دوره آموزشی</p>
-        <p className="font-medium text-2xl hover:underline text-black dark:text-white">
+        <p className="font-medium text-2xl text-slate-700 dark:text-white">
           {Statistics?.courseCount}
         </p>
       </div>
@@ -56,7 +56,7 @@ const Statistics: React.FC = () => {
       <div className="p-5 text-center text-TextGreen">
         <img src={iconCarrier3} alt="" />
         <p className="text-slate-700 dark:text-white text-xl ">دانشجو</p>
-        <p className="font-medium text-2xl hover:underline text-black dark:text-white">
+        <p className="font-medium text-2xl text-slate-700 dark:text-white">
           {Statistics?.studentCount}
         </p>
       </div>
@@ -67,7 +67,7 @@ const Statistics: React.FC = () => {
           {" "}
           اساتید حرفه ای
         </p>
-        <p className="font-medium text-2xl hover:underline text-black dark:text-white">
+        <p className="font-medium text-2xl text-slate-700 dark:text-white">
           {Statistics?.teacherCount}
         </p>
       </div>
