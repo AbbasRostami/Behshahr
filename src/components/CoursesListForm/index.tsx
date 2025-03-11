@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Field, Form, Formik } from "formik";
+import { Form, Formik } from "formik";
 import courses1 from "./../../assets/courses1.svg";
 import star from "./../../assets/star.svg";
 import line from "./../../assets/line.svg";
 import filter2 from "./../../assets/Group 242.svg";
-import filterIcon from "./../../assets/filter.svg";
 import { getApi, postApi } from "../../core/api/api";
 import { Box, Slider } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -35,18 +34,16 @@ type FilterType = Record<string, string | number>;
 interface ApiResponse {
   data: {
     courseFilterDtos: DataCoursesType[];
-    success: boolean
-  }
+    success: boolean;
+  };
 }
 
 const CoursesListForm = () => {
   const [data, setData] = useState<DataCoursesType[]>([]);
   const [sort, setSort] = useState({});
   const [pagination, setPagination] = useState({});
-  const [PageNumber, setPageNumber] = useState(1);
   const [level, setLevel] = useState(1);
   const [value, setValue] = React.useState([1, 20000000]);
-  const [cost, setCost] = useState([]);
   const [filter, setFilter] = useState<FilterType>();
   const [show, setShow] = useState(false);
 
@@ -75,9 +72,14 @@ const CoursesListForm = () => {
 
   const GetCouresesTop = async (params: object | number = 1) => {
     const path = `/Home/GetCoursesWithPagination`;
-    const response = await (getApi({
+    const response = (await getApi({
       path,
-      params: { params: typeof params === 'object' ? { ...params, RowsOfPage: 9 } : { PageNumber: params, RowsOfPage: 9 } },
+      params: {
+        params:
+          typeof params === "object"
+            ? { ...params, RowsOfPage: 9 }
+            : { PageNumber: params, RowsOfPage: 9 },
+      },
     })) as ApiResponse;
     console.log("courses all: ", response.data.courseFilterDtos);
     setData(response?.data.courseFilterDtos);
@@ -102,7 +104,7 @@ const CoursesListForm = () => {
   const addLike = async (id: number) => {
     console.log(id);
     const path = `Course/AddCourseLike?CourseId=${id}`;
-    const response = await (postApi({ path })) as ApiResponse;
+    const response = (await postApi({ path })) as ApiResponse;
     if (response?.data.success) {
       toast.success("عملیات با موفقیت انجام شد.");
       GetCouresesTop();
@@ -113,7 +115,7 @@ const CoursesListForm = () => {
   const addDislike = async (id: number) => {
     console.log(id);
     const path = `/Course/AddCourseDissLike?CourseId=${id}`;
-    const response = await (postApi({ path })) as ApiResponse;
+    const response = (await postApi({ path })) as ApiResponse;
     if (response?.data.success) {
       toast.success("عملیات با موفقیت انجام شد.");
       GetCouresesTop();
@@ -124,7 +126,7 @@ const CoursesListForm = () => {
   const addfavo = async (id: number) => {
     console.log(id);
     const path = `/Course/SetCourseRating?CourseId=${id}`;
-    const response = await (postApi({ path })) as ApiResponse;
+    const response = (await postApi({ path })) as ApiResponse;
     if (response?.data.success) {
       toast.success("عملیات با موفقیت انجام شد.");
       GetCouresesTop();
@@ -149,7 +151,7 @@ const CoursesListForm = () => {
       courseId: id,
     };
     const path = `/CourseReserve/ReserveAdd`;
-    const response = await (postApi({ path, body })) as ApiResponse;
+    const response = (await postApi({ path, body })) as ApiResponse;
     if (response?.data.success) {
       toast.success("دوره شما با موفقیت رزرو شد.");
     }
@@ -205,14 +207,11 @@ const CoursesListForm = () => {
                   stroke-linejoin="round"
                 ></g>
                 <g id="SVGRepo_iconCarrier">
-                  {" "}
                   <g>
-                    {" "}
                     <g>
-                      {" "}
-                      <path d="M0,203.25c0,112.1,91.2,203.2,203.2,203.2c51.6,0,98.8-19.4,134.7-51.2l129.5,129.5c2.4,2.4,5.5,3.6,8.7,3.6 s6.3-1.2,8.7-3.6c4.8-4.8,4.8-12.5,0-17.3l-129.6-129.5c31.8-35.9,51.2-83,51.2-134.7c0-112.1-91.2-203.2-203.2-203.2 S0,91.15,0,203.25z M381.9,203.25c0,98.5-80.2,178.7-178.7,178.7s-178.7-80.2-178.7-178.7s80.2-178.7,178.7-178.7 S381.9,104.65,381.9,203.25z"></path>{" "}
-                    </g>{" "}
-                  </g>{" "}
+                      <path d="M0,203.25c0,112.1,91.2,203.2,203.2,203.2c51.6,0,98.8-19.4,134.7-51.2l129.5,129.5c2.4,2.4,5.5,3.6,8.7,3.6 s6.3-1.2,8.7-3.6c4.8-4.8,4.8-12.5,0-17.3l-129.6-129.5c31.8-35.9,51.2-83,51.2-134.7c0-112.1-91.2-203.2-203.2-203.2 S0,91.15,0,203.25z M381.9,203.25c0,98.5-80.2,178.7-178.7,178.7s-178.7-80.2-178.7-178.7s80.2-178.7,178.7-178.7 S381.9,104.65,381.9,203.25z"></path>
+                    </g>
+                  </g>
                 </g>
               </svg>
             </div>
@@ -292,8 +291,7 @@ const CoursesListForm = () => {
                         }
                       />
                       <p className="text-slate-700">
-                        {" "}
-                        {item?.currentRegistrants}{" "}
+                        {item?.currentRegistrants}
                       </p>
                     </div>
                   </div>
@@ -314,15 +312,13 @@ const CoursesListForm = () => {
 
                   <div className="flex justify-between items-center">
                     <p className="mr-1 text-nowrap text-xs lg:text-sm">
-                      {" "}
                       {item?.teacherName}
                     </p>
                     <img className=" w-10 h-8" src={person} alt="" />
                   </div>
                 </div>
                 <p className="rtl mt-2 ml-[10rem] text-[#41A789] text-xs text-nowrap">
-                  {" "}
-                  {item?.currentRegistrants} ساعت سخنرانی{" "}
+                  {item?.currentRegistrants} ساعت سخنرانی
                 </p>
                 <p className="rtl mt-2 ml-[10.5rem] text-[#41A789] text-md text-nowrap">
                   سطح دوره: {item?.levelName}
@@ -336,8 +332,7 @@ const CoursesListForm = () => {
 
                 <div className="flex justify-between items-center mt-4">
                   <p className="text-sm text-PriceRed rtl ">
-                    {" "}
-                    {item?.cost} تومان{" "}
+                    {item?.cost} تومان
                   </p>
                   <p className="text-sm text-nowrap dark:text-white">
                     : هزینه تمام دوره
