@@ -8,4 +8,4 @@ const ForgetPasswordForm = () => {
   );
 };
 
-export { ForgetPasswordForm };
+export default ForgetPasswordForm;

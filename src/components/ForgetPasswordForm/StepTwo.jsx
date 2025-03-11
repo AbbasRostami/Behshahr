@@ -26,4 +26,4 @@ const ForgetStepTwo = () => {
   return <> {!checkData ? "داده در حال برسی " : <ForgetStepThree id={id} />}</>;
 };
 
-export { ForgetStepTwo };
+export default ForgetStepTwo ;

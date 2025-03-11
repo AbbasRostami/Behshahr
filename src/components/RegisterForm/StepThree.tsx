@@ -55,7 +55,6 @@ const StepThree = () => {
               type="text"
               name="phoneNumber"
             />
-
             <svg
               className=" absolute top-[109px] right-8"
               width="15"
@@ -72,14 +71,12 @@ const StepThree = () => {
                 stroke-linejoin="round"
               />
             </svg>
-
             <Field
               placeholder="ایمیل کاربر"
               className=" ml-7 pr-9 border-solid border-2 border-[#158B68] text-right rounded-xl  text-black w-[37rem] lg:w-[22rem] h-[3rem] mt-[1rem] "
               type="text"
               name="gmail"
             />
-
             <svg
               className="absolute top-[173px] right-8"
               width="20"
@@ -96,14 +93,12 @@ const StepThree = () => {
                 stroke-linejoin="round"
               />
             </svg>
-
             <Field
               placeholder="رمز عبور"
               className=" ml-7 pr-9 border-solid border-2 border-[#158B68] text-right rounded-xl  text-black w-[37rem] lg:w-[22rem] h-[3rem] mt-[1rem] "
               type="text"
               name="password"
             />
-
             <svg
               className="absolute top-[238px] right-8"
               width="22"
@@ -120,14 +115,12 @@ const StepThree = () => {
                 stroke-linejoin="round"
               />
             </svg>
-
             <Field
               placeholder="تکرار رمز عبور"
               className=" ml-7 pr-9 border-solid border-2 border-[#158B68] text-right rounded-xl  text-black w-[37rem] lg:w-[22rem] h-[3rem] mt-[1rem] "
               type="text"
               name="confirmPass"
             />
-
             <svg
               className="absolute top-[304px] right-8"
               width="20"
@@ -144,7 +137,6 @@ const StepThree = () => {
                 stroke-linejoin="round"
               />
             </svg>
-
             <label>
               <h2 className="text-right mr-16 mb-[-1.2rem] mt-4 ">
                 {" "}
@@ -157,15 +149,13 @@ const StepThree = () => {
                 type="checkbox"
                 name="phoneOrGmail"
               />
-            </label>
-
-              {" "}
-              <button
-                className=" ml-7 w-[37rem] lg:w-[22rem] h-[3.4rem] bg-[#158B68] rounded-xl mt-[3rem] text-[#ffff]"
-                type="submit"
-              >
-                ادامه
-              </button>{" "}
+            </label>{" "}
+            <button
+              className=" ml-7 w-[37rem] lg:w-[22rem] h-[3.4rem] bg-[#158B68] rounded-xl mt-[3rem] text-[#ffff]"
+              type="submit"
+            >
+              ادامه
+            </button>{" "}
           </Form>
         </Formik>
       </div>
@@ -173,4 +163,4 @@ const StepThree = () => {
   );
 };
 
-export { StepThree };
+export default StepThree;

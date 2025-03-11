@@ -8,9 +8,12 @@ import { toast } from "react-toastify";
 const StepTwo = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  console.log("asjjkhdmn",location.state);
+  console.log("asjjkhdmn", location.state);
 
-  const registerHandler2 = async (values: {phoneNumber: string; verifyCode: string;}) => {
+  const registerHandler2 = async (values: {
+    phoneNumber: string;
+    verifyCode: string;
+  }) => {
     console.log("ارسال: ", values);
 
     const body = { ...values, phoneNumber: location.state.phoneNumber };
@@ -34,7 +37,13 @@ const StepTwo = () => {
         <h2 className="text-right mr-6 text-[#22445D] mt-[2.8rem] text-[23px]">
           ثبت نام
         </h2>
-        <Formik onSubmit={registerHandler2} initialValues={{ verifyCode: "", phoneNumber: location.state.phoneNumber }}>
+        <Formik
+          onSubmit={registerHandler2}
+          initialValues={{
+            verifyCode: "",
+            phoneNumber: location.state.phoneNumber,
+          }}
+        >
           <Form>
             <svg
               className=" absolute top-[9.5rem] right-8"
@@ -78,4 +87,4 @@ const StepTwo = () => {
   );
 };
 
-export { StepTwo };
+export default StepTwo;
