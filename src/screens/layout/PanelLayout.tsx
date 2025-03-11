@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 import { HeaderDashbord } from "../../components/common/HeaderDashbord/HeaderDashbord";
 import { MainDashbord } from "../../components/common/MainDashbord/mainDashbord";
 
@@ -12,6 +12,7 @@ const PanelLayout = () => {
         <HeaderDashbord setShowMenu={setShowMenu} showMenu={showMenu} />
         <div className="flex mx-[1rem] rtl gap-11">
           <MainDashbord setShowMenu={setShowMenu} showMenu={showMenu} />
+          <ScrollRestoration />
           <Outlet />
         </div>
       </div>

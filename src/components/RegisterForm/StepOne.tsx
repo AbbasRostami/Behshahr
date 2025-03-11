@@ -96,4 +96,4 @@ const StepOne = () => {
   );
 };
 
-export { StepOne };
+export default StepOne;

@@ -111,7 +111,7 @@ const ArticlesCard: React.FC<ArticlesCardProps> = ({ item, addLike, addDislike, 
 
             <img className="mt-5 px-5" src={line} alt="" />
 
-            <Link to={localStorage.getItem('token') ? `/articles-details/${item?.id}` : '/login'}><p className="text-base  text-[#807A7A] mt-3 cursor-pointer hover:text-green-500 dark:text-white">
+            <Link to={localStorage.getItem('token') ? `/articles-details/${item?.id}` : "/login"}><p className="text-base  text-[#807A7A] mt-3 cursor-pointer hover:text-green-500 dark:text-white">
               مشاهده جزئیات
             </p></Link> 
           </div>
