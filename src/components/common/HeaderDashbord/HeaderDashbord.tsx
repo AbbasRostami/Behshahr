@@ -1,10 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import logoSite from "../../../assets/logoSite.svg";
-// import { ProfileContext } from "../../../context/ProfileProvider";
 import DarkLightToggle from "../DarkMode";
-import { getEditProfAtom, profileAtom } from "../../../context/ProfileProvider";
 import { useAtomValue, useSetAtom } from "jotai";
+import { getEditProfAtom, profileAtom } from "../../../context/jotai/ProfileProvider";
 
 interface HeaderDashbordProps {
   showMenu: boolean;
@@ -15,7 +14,6 @@ const HeaderDashbord: React.FC<HeaderDashbordProps> = ({
   showMenu,
   setShowMenu,
 }) => {
-  // const {data} = useContext(ProfileContext);
 
   const data = useAtomValue(profileAtom);
   const getEditProf = useSetAtom(getEditProfAtom);

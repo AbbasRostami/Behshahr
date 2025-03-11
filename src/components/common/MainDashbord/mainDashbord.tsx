@@ -17,6 +17,7 @@ interface MainDashbordProps {
   setShowMenu: (value: boolean) => void;
 }
 const MainDashbord: React.FC<MainDashbordProps> = ({ showMenu, setShowMenu }) => {
+  
   return (
     <div
       className={`w-[15rem] transition-all duration-500 fixed top-0 opacity-0 invisible right-[-300px] lg:opacity-100 lg:right-0 lg:visible lg:relative h-[45rem] bg-[#A4F6DE] dark:bg-gray-700 lg:w-[20rem] ${
