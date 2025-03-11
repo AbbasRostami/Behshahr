@@ -35,26 +35,52 @@ interface ApiResponse {
 }
 
 const CoursesSlider = () => {
-  const [courses, setcourses] = useState<CoursesType[]>([]);
+  const [courses, setCourses] = useState<CoursesType[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const getCourses = async () => {
     try {
+      setLoading(true);
       const path = `/Home/GetCoursesWithPagination`;
       const response = (await getApi({ path })) as ApiResponse;
       if (response) {
-        setcourses(response.data?.courseFilterDtos);
+        setCourses(response.data?.courseFilterDtos);
       }
-    } catch (error) {}
+    } catch (error) {
+      toast.error("خطا در دریافت اطلاعات دوره‌ها.");
+    } finally {
+      setLoading(false);
+    }
   };
+
   useEffect(() => {
     getCourses();
   }, []);
 
+  if (loading) {
+    return (
+      <div className="flex justify-center gap-10 flex-wrap mt-24">
+        {Array(3)
+          .fill(null)
+          .map((_, index) => (
+            <div
+              key={index}
+              className="bg-gray-200 dark:bg-gray-700 rounded-xl p-5 w-[215px] lg:w-[380px] h-[390px] lg:h-[480px] skeleton animate-pulse"
+            >
+              <div className="w-full h-32 bg-gray-300 rounded"></div>
+              <div className="mt-4 h-6 w-3/4 bg-gray-300 rounded"></div>
+              <div className="mt-2 h-4 w-1/2 bg-gray-300 rounded"></div>
+              <div className="mt-6 h-8 w-full bg-gray-300 rounded"></div>
+            </div>
+          ))}
+      </div>
+    );
+  }
+
+
   const addReserve = async (id: number) => {
     try {
-      const body = {
-        courseId: id,
-      };
+      const body = { courseId: id };
       const path = `/CourseReserve/ReserveAdd`;
       const response = (await postApi({ path, body })) as ApiResponse;
       if (response.data.success) {
@@ -88,7 +114,7 @@ const CoursesSlider = () => {
           },
         }}
       >
-        {courses?.map((item, index) => {
+        {courses?.map((item) => {
           return (
             <SwiperSlide>
               <div className="mt-16 mx-auto lg:mx-16 flex justify-around items-center rounded-3xl ">
@@ -141,12 +167,11 @@ const CoursesSlider = () => {
                   </div>
 
                   <p className="rtl mt-3 ml-28 text-right text-nowrap text-[#41A789] text-xs dark:text-white ">
-                    {" "}
-                    {item?.currentRegistrants} ساعت سخنرانی{" "}
+                    {item?.currentRegistrants} ساعت سخنرانی
                   </p>
 
                   <p className="rtl mt-5 truncate ... leading-5 text-[#6D6767] text-xs text-right dark:text-white">
-                    {item?.describe}{" "}
+                    {item?.describe}
                   </p>
 
                   <img className="mt-5 " src={line} alt="" />
@@ -187,7 +212,6 @@ const CoursesSlider = () => {
 
       <div className="flex justify-center items-center ">
         <Link to="/courses-list">
-          {" "}
           <button className="w-[220px] h-[60px] text-white bg-[#12926C] dark:bg-gray-800 rounded-full ">
             مشاهده دوره های بیشتر
           </button>
