@@ -6,7 +6,6 @@ import our6 from "./../../../assets/svg/Landing/our5.svg";
 import our5 from "./../../../assets/svg/Landing/our6.svg";
 
 const OurServices: React.FC = () => {
-
   const OurServicesData = [
     {
       icon: our1,
@@ -39,7 +38,7 @@ const OurServices: React.FC = () => {
       desc: "لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود .",
     },
   ];
-  
+
   return (
     <>
       <div className="text-center leading-10 dark:text-white">
