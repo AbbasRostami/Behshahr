@@ -3,9 +3,9 @@ import { SliderArticles } from "../../common/SliderArticles";
 const NewsArticles = () => {
   return (
     <>
-    <SliderArticles />
+      <SliderArticles />
     </>
-  )
+  );
 };
 
 export { NewsArticles };

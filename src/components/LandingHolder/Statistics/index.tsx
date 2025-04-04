@@ -64,7 +64,6 @@ const Statistics: React.FC = () => {
       <div className="p-5 text-center text-TextGreen">
         <img src={iconCarrier2} alt="" />
         <p className="text-slate-700 dark:text-white text-xl ">
-          {" "}
           اساتید حرفه ای
         </p>
         <p className="font-medium text-2xl text-slate-700 dark:text-white">
