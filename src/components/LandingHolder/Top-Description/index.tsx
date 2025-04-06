@@ -6,13 +6,11 @@ const TopDescription: React.FC = () => {
   return (
     <div className="bg-gradient-to-r from-green-300 to-gray-50 dark:dark:bg-slate-900 dark:bg-none ">
       <div className=" mx-auto flex items-center">
-        <div className="mb-5">
           <img
-            className="w-80 lg:w-[42rem] mx-auto ml-8"
+            className="w-80 mb-5 lg:w-[42rem] mx-auto ml-8"
             src={topLogo}
             alt=""
           />
-        </div>
 
         <div className="w-1/3 mx-auto rtl dark:text-white">
           <h1 className="text-lg lg:text-2xl my-[2rem] lg:mb-10">
