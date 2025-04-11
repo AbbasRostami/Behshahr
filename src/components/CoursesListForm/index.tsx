@@ -145,17 +145,22 @@ const CoursesListForm = () => {
   };
 
   const addReserve = async (id: number) => {
-    console.log(id);
-
-    const body = {
-      courseId: id,
-    };
-    const path = `/CourseReserve/ReserveAdd`;
-    const response = (await postApi({ path, body })) as ApiResponse;
-    if (response?.data.success) {
-      toast.success("دوره شما با موفقیت رزرو شد.");
+    try {
+      const path = `/CourseReserve/ReserveAdd`;
+      const body = { courseId: id };
+      const response = (await postApi({ path, body })) as ApiResponse;
+  
+      if (response?.data?.success) {
+        toast.success("دوره شما با موفقیت رزرو شد.");
+      } else {
+        toast.error("رزرو انجام نشد. لطفاً دوباره تلاش کنید.");
+      }
+    } catch (error) {
+      console.error("Reservation error:", error);
+      toast.error("خطایی در ارتباط با سرور رخ داد.");
     }
   };
+  
   return (
     <>
       <h1 className="bg-white-500 mt-10 text-center text-3xl mx-14 dark:text-white">
