@@ -7,7 +7,6 @@ const instance = axios.create({
 });
 
 const logout = () => {
-  console.log("⛔ توکن منقضی شده است. حذف می‌شود...");
   localStorage.removeItem("token");
   window.location.replace("/login");
 };
