@@ -18,3 +18,7 @@ declare module "*.svg?react" {
   const src: string;
   export default src;
 }
+declare module 'react-element-popper/animations/transition' {
+  const transition: (options: { duration?: number, from?: number }) => any;
+  export default transition;
+}
