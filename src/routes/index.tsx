@@ -9,23 +9,19 @@ import StepTwo from "../components/RegisterForm/StepTwo";
 import StepThree from "../components/RegisterForm/StepThree";
 import ForgetPasswordForm from "../components/ForgetPasswordForm";
 import ForgetStepTwo from "../components/ForgetPasswordForm/StepTwo";
-
+import AppLayout from "../layout/AppLayout";
+import Home from "../layout/pages/Home";
+import UserProfiles from "../layout/pages/UserProfiles";
+import FormElements from "../layout/pages/FormElements";
+import BasicTables from "../layout/pages/BasicTables";
 
 // Lazy Loading Components
 const CoursesDetails = lazy(() => import("../screens/CoursesDetails"));
 const NewsArticles = lazy(() => import("../screens/NewsArticles"));
-const PanelLayout = lazy(() => import("../screens/layout/PanelLayout"));
 const NotFound = lazy(() => import("../components/NotFound"));
 const ArticlesDetails = lazy(() => import("../screens/ArticlesDetails"));
 const AboutUs = lazy(() => import("../screens/AboutUs"));
 const MainLayout = lazy(() => import("../screens/layout/MainLayout"));
-const MyReserveCourses = lazy(() => import("../components/UserPanel/myReserveCourses"));
-const Favorites = lazy(() => import("../components/UserPanel/favorites"));
-const MyCourses = lazy(() => import("../components/UserPanel/myCourses"));
-const MyComments = lazy(() => import("../components/UserPanel/myComments"));
-const ChangePassword = lazy(() => import("../components/UserPanel/changePassword"));
-const EditProfile = lazy(() => import("../components/UserPanel/editProfile"));
-const Dashbord = lazy(() => import("../components/UserPanel/dashbord"));
 const Landing = lazy(() => import("../screens/Landing"));
 const CoursesList = lazy(() => import("../screens/CoursesList"));
 
@@ -48,60 +44,53 @@ const RoutesApp = createBrowserRouter([
   },
   {
     path: "/register",
-    element: (
-        <StepOne />
-    ),
+    element: <StepOne />,
   },
   {
     path: "/register-verify",
-    element: (
-        <StepTwo />
-    ),
+    element: <StepTwo />,
   },
   {
     path: "/register-final",
-    element: (
-        <StepThree />
-    ),
+    element: <StepThree />,
   },
   {
     path: "/login",
-    element: (
-        <Login />
-    ),
+    element: <Login />,
   },
   {
     element: localStorage.getItem("token") ? (
       <Suspense fallback={<PageSkeleton />}>
-        <PanelLayout />
+        <AppLayout />
       </Suspense>
     ) : (
       <Navigate to="/login" replace />
     ),
+
     children: [
-      { path: "/myCourses", element: <MyCourses /> },
-      { path: "/myReserveCourses", element: <MyReserveCourses /> },
-      { path: "/favorites", element: <Favorites /> },
-      { path: "/myComments", element: <MyComments /> },
-      { path: "/changePassword", element: <ChangePassword /> },
-      { path: "/editProfile", element: <EditProfile /> },
-      { path: "/dashbord", element: <Dashbord /> },
+      { index: true, path: "/dashbord", element: <Home /> },
+
+      { path: "/profile", element: <UserProfiles /> },
+
+      { path: "/form-elements", element: <FormElements /> },
+
+      { path: "/basic-tables", element: <BasicTables /> },
     ],
   },
   {
     path: "/forget-password",
     element: (
-        <PassProvider>
-          <ForgetPasswordForm />
-        </PassProvider>
+      <PassProvider>
+        <ForgetPasswordForm />
+      </PassProvider>
     ),
   },
   {
     path: "/reset-password/:id",
     element: (
-        <PassProvider>
-          <ForgetStepTwo />
-        </PassProvider>
+      <PassProvider>
+        <ForgetStepTwo />
+      </PassProvider>
     ),
   },
 ]);
