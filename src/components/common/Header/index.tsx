@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Form, Link } from "react-router-dom";
 import { Button, Menu, MenuItem } from "@mui/material";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -7,7 +7,6 @@ import logoLanding from "./../../../assets/svg/Landing/logosite.svg";
 import seachIcon from "./../../../assets/svg/Landing/searchicon.svg";
 import courses1 from "./../../../assets/courses1.svg";
 import { getApi } from "../../../core/api/api";
-import DarkLightToggle from "../DarkMode";
 import { useAtomValue, useSetAtom } from "jotai";
 import { BsPersonCircle } from "react-icons/bs";
 import { BiSearch } from "react-icons/bi";
@@ -17,6 +16,7 @@ import {
   profileAtom,
 } from "../../../context/jotai/ProfileProvider";
 import { NavLink } from "react-router-dom";
+import ThemeToggleButton from "../../../context/ThemeContext";
 interface CoursesData {
   title: string;
   cost: number;
@@ -59,7 +59,8 @@ const Header: React.FC = () => {
   useEffect(() => {
     getEditProf();
   }, []);
-
+  const imgRef = useRef<HTMLImageElement | null>(null);
+  const fallbackRef = useRef<HTMLDivElement | null>(null);
   return (
     <div className=" bg-gradient-to-r from-green-300 to-gray-50 dark:dark:bg-slate-900 dark:bg-none">
       <div className="flex justify-between items-center px-20 h-20">
@@ -70,35 +71,45 @@ const Header: React.FC = () => {
                 <button onClick={() => setModal(!modal)}>
                   {data?.currentPictureAddress &&
                   data.currentPictureAddress !== "Not-set" ? (
-                    <img
-                      src={data.currentPictureAddress}
-                      className="rounded-full w-11 h-11 border-2"
-                      alt="Profile Picture"
-                    />
+                    <>
+                      <img
+                        ref={imgRef}
+                        src={data.currentPictureAddress}
+                        alt="Profile Picture"
+                        className="rounded-full w-9 h-9 border-2 object-cover"
+                        onError={() => {
+                          imgRef.current?.classList.add("hidden");
+                          fallbackRef.current?.classList.remove("hidden");
+                        }}
+                      />
+                      <div ref={fallbackRef} className="hidden">
+                        <BsPersonCircle color="#6d6dc3" size={33} />
+                      </div>
+                    </>
                   ) : (
-                    <BsPersonCircle color="#6c6f6d" size={40} />
+                    <BsPersonCircle color="#6d6dc3" size={44} />
                   )}
                 </button>
                 <ul
                   tabIndex={0}
-                  className="dropdown-content text-right z-50 dark:bg-slate-700 dark:text-white rtl menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+                  className="dropdown-content text-right z-50 dark:bg-slate-700 dark:text-white rtl menu bg-base-100 rounded-box  w-52 p-2 shadow-sm"
                 >
                   <li>
-                  <Link to="/dashbord">
+                    <Link to="/dashbord">
                       <p className="cursor-pointer text-right  rounded-lg  dark:hover:bg-slate-600">
                         پنل دانشجو
                       </p>
                     </Link>
                   </li>
                   <li>
-                  <Link to="/editProfile">
+                    <Link to="/editProfile">
                       <p className="cursor-pointer text-right rounded-lg  dark:hover:bg-slate-600">
                         ویرایش پروفایل
                       </p>
                     </Link>
                   </li>
                   <li>
-                  <p
+                    <p
                       onClick={() => {
                         localStorage.removeItem("token");
                         window.location.href = "/login";
@@ -154,7 +165,7 @@ const Header: React.FC = () => {
             </>
           )}
 
-          <DarkLightToggle />
+          <ThemeToggleButton />
         </div>
 
         {show && (
