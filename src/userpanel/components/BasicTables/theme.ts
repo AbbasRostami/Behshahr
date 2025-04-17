@@ -1,4 +1,3 @@
-// theme.ts
 import { createTheme } from 'react-data-table-component';
 
 // Light Theme
