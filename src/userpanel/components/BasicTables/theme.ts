@@ -1,6 +1,6 @@
 import { createTheme } from 'react-data-table-component';
 
-// Light Theme
+// Light Theme /
 createTheme('customLight', {
   text: { primary: '#000', secondary: '#333' },
   background: { default: '#fff' },
