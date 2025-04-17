@@ -55,6 +55,7 @@
   width: var(--toastify-toast-width);
   box-sizing: border-box;
   color: #fff;
+  z-index: 99999 !important;
 }
 .Toastify__toast-container--top-left {
   top: var(--toastify-toast-top);
