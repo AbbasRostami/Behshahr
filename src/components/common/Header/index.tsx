@@ -16,7 +16,7 @@ import {
   profileAtom,
 } from "../../../context/jotai/ProfileProvider";
 import { NavLink } from "react-router-dom";
-import ThemeToggleButton from "../../../context/ThemeContext";
+import ThemeToggleButton from "../../../context/context/ThemeContext";
 interface CoursesData {
   title: string;
   cost: number;
