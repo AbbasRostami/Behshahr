@@ -1,19 +1,41 @@
 import "./App.css";
 import { RouterProvider } from "react-router-dom";
-import "./App.css";
-// import { ProgressBar } from "../components/common/ProgressBar";
 import RoutesApp from "../routes";
-import { ThemeProvider } from "../context/ThemeContext";
+import { ThemeProvider } from "../context/context/ThemeContext";
+import { ProgressBar } from "../components/common/ProgressBar";
 
-function App() {
+function AppContent() {
+  const hiddenProgressRoutes = [
+    "/login",
+    "/register",
+    "/register-verify",
+    "/register-final",
+    "/forget-password",
+    "/reset-password",
+    "/dashboard",
+    "/profile",
+    "/my-courses",
+    "/my-courses-reserve",
+    "/my-courses-favorite",
+    "/my-commets",
+  ];
+
+  const showProgressBar = !hiddenProgressRoutes.some((route) =>
+    window.location.pathname.startsWith(route)
+  );
+
   return (
     <>
-        {/* <ProgressBar /> */}
-      <ThemeProvider>
-        <RouterProvider router={RoutesApp} />
-      </ThemeProvider>
+      {showProgressBar && <ProgressBar />}
+      <RouterProvider router={RoutesApp} />
     </>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
+  );
+}
