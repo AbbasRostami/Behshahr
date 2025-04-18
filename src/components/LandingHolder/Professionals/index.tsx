@@ -14,7 +14,7 @@ interface Teachers {
 interface ApiRes {
   data: Teachers[];
 }
-
+//
 const Professionals: React.FC = () => {
   const [Teachers, setTeachers] = useState<Teachers[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
