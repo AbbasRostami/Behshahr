@@ -3,6 +3,7 @@ import { RouterProvider } from "react-router-dom";
 import RoutesApp from "../routes";
 import { ThemeProvider } from "../context/context/ThemeContext";
 import { ProgressBar } from "../components/common/ProgressBar";
+import { Suspense } from "react";
 
 function AppContent() {
   const hiddenProgressRoutes = [
@@ -35,7 +36,9 @@ function AppContent() {
 export default function App() {
   return (
     <ThemeProvider>
-      <AppContent />
+      <Suspense fallback={null}>
+        <AppContent />
+      </Suspense>
     </ThemeProvider>
   );
 }
