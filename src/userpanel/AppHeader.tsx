@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
-import { useSidebar } from "../context/context/SidebarContext";
 import { Link } from "react-router-dom";
-import ThemeToggleButton from "../context/context/ThemeContext";
+import { useSidebar } from "../context/context/SidebarContext";
+import { ThemeToggleButton } from "../context/context/ThemeContext";
 import UserDropdown from "./components/header/UserDropdown";
 
 const AppHeader: React.FC = () => {
