@@ -23,7 +23,10 @@ const ProfileEditImage = ({
   const getEditProf = useSetAtom(getEditProfAtom);
 
   useEffect(() => {
-    getEditProf();
+    const token = localStorage.getItem("token");
+    if (token) {
+      getEditProf();
+    }
   }, []);
   const deleteIamge = async (id: string) => {
     const formData = new FormData();

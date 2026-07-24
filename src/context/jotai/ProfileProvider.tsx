@@ -38,6 +38,9 @@ interface ApiResponse {
 export const profileAtom = atom<UserProfile | null>(null);
 
 export const getEditProfAtom = atom(null, async (_get, set) => {
+  const token = localStorage.getItem("token");
+  if (!token) return;
+
   try {
     const path = "/SharePanel/GetProfileInfo";
     const response = (await getApi({ path })) as ApiResponse;

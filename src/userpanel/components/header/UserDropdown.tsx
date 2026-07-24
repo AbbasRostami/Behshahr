@@ -1,13 +1,13 @@
-import { useEffect, useRef, useState } from "react";
-import { Dropdown } from "../dropdown/Dropdown";
-import { DropdownItem } from "../dropdown/DropdownItem";
-import { Link } from "react-router-dom";
 import { useAtomValue, useSetAtom } from "jotai";
+import { useEffect, useRef, useState } from "react";
+import { BsPersonCircle } from "react-icons/bs";
+import { Link } from "react-router-dom";
 import {
   getEditProfAtom,
   profileAtom,
 } from "../../../context/jotai/ProfileProvider";
-import { BsPersonCircle } from "react-icons/bs";
+import { Dropdown } from "../dropdown/Dropdown";
+import { DropdownItem } from "../dropdown/DropdownItem";
 export default function UserDropdown() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -22,11 +22,13 @@ export default function UserDropdown() {
 
   const getEditProf = useSetAtom(getEditProfAtom);
 
-
   useEffect(() => {
-    getEditProf();
+    const token = localStorage.getItem("token");
+    if (token) {
+      getEditProf();
+    }
   }, []);
-
+  
   const imgRef = useRef<HTMLImageElement | null>(null);
   const fallbackRef = useRef<HTMLDivElement | null>(null);
   return (

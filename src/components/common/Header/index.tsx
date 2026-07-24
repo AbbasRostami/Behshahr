@@ -59,7 +59,9 @@ const Header: React.FC = () => {
   };
 
   useEffect(() => {
-    getProfile();
+    if (isLoggedIn) {
+      getProfile();
+    }
   }, []);
 
   useEffect(() => {
@@ -68,7 +70,7 @@ const Header: React.FC = () => {
         const path = "/Home/GetCoursesWithPagination";
         const response = (await getApi({
           path,
-          params: { params: { Query: "", RowsOfPage: 9 } },
+          params: { Query: "", RowsOfPage: 9 },
         })) as CoursesApiResponse;
 
         setCourses(response?.data?.courseFilterDtos || []);
@@ -77,7 +79,6 @@ const Header: React.FC = () => {
 
     getCourses();
   }, []);
-
   const filteredCourses = searchQuery.trim()
     ? courses.filter((c) =>
         c.title.toLowerCase().includes(searchQuery.toLowerCase()),

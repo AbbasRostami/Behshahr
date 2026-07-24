@@ -1,17 +1,20 @@
+import moment from "jalali-moment";
 import { useAtomValue, useSetAtom } from "jotai";
 import { useEffect } from "react";
 import {
   getEditProfAtom,
   profileAtom,
 } from "../../../context/jotai/ProfileProvider";
-import moment from "jalali-moment";
 
 const ProfileInfo = () => {
   const data = useAtomValue(profileAtom);
   const getEditProf = useSetAtom(getEditProfAtom);
 
   useEffect(() => {
-    getEditProf();
+    const token = localStorage.getItem("token");
+    if (token) {
+      getEditProf();
+    }
   }, []);
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:gap-5">
@@ -34,8 +37,8 @@ const ProfileInfo = () => {
             data?.gender === true
               ? "مرد"
               : data?.gender === false
-              ? "زن"
-              : "---",
+                ? "زن"
+                : "---",
           icon: "🚻",
         },
         { label: "آدرس خانه", value: data?.homeAdderess, icon: "🏘️" },
