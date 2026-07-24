@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter, Navigate, Outlet } from "react-router-dom";
 import PassProvider from "../core/provider/PasswoedProvider";
 
 import StepOne from "../components/Auth/StepOne";
@@ -40,7 +40,19 @@ const Fallback = () => (
   </div>
 );
 
-const isAuthenticated = () => Boolean(localStorage.getItem("token"));
+const ProtectedRoute = () => {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return (
+    <Suspense fallback={<Fallback />}>
+      <Outlet />
+    </Suspense>
+  );
+};
 
 const RoutesApp = createBrowserRouter([
   {
@@ -83,20 +95,23 @@ const RoutesApp = createBrowserRouter([
   },
 
   {
-    element: isAuthenticated() ? (
-      <Suspense fallback={<Fallback />}>
-        <AppLayout />
-      </Suspense>
-    ) : (
-      <Navigate to="/login" replace />
-    ),
+    element: <ProtectedRoute />,
     children: [
-      { path: "/dashboard", index: true, element: <Home /> },
-      { path: "/profile", element: <UserProfiles /> },
-      { path: "/my-courses", element: <MyCourses /> },
-      { path: "/my-courses-reserve", element: <MyCoursesReserve /> },
-      { path: "/my-courses-favorite", element: <MyCoursesFavorite /> },
-      { path: "/my-commets", element: <MyCommets /> },
+      {
+        element: (
+          <Suspense fallback={<Fallback />}>
+            <AppLayout />
+          </Suspense>
+        ),
+        children: [
+          { path: "/dashboard", element: <Home /> },
+          { path: "/profile", element: <UserProfiles /> },
+          { path: "/my-courses", element: <MyCourses /> },
+          { path: "/my-courses-reserve", element: <MyCoursesReserve /> },
+          { path: "/my-courses-favorite", element: <MyCoursesFavorite /> },
+          { path: "/my-commets", element: <MyCommets /> },
+        ],
+      },
     ],
   },
 ]);

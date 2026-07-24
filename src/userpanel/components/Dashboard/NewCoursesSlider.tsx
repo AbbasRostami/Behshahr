@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { getApi } from "../../../core/api/api";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { CiImageOff } from "react-icons/ci";
 import "swiper/css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { getApi } from "../../../core/api/api";
 // import "./styles.css";
 import { Autoplay } from "swiper/modules";
 interface CourseType {
@@ -48,23 +48,20 @@ export default function NewCoursesSlider() {
         </p>
       </div>
 
-      {/* اسلایدر */}
       <Swiper
         className="mySwiper"
         spaceBetween={20}
         slidesPerView={1}
         autoplay={{
-          delay: 3000, // هر ۳ ثانیه اسلاید بعدی
-          disableOnInteraction: false, // بعد از تعامل کاربر، ادامه بده
+          delay: 3000,
+          disableOnInteraction: false,
         }}
-        modules={[Autoplay]} // فعال‌سازی ماژول
+        modules={[Autoplay]}
       >
         {datas?.map((item) => (
           <SwiperSlide key={item.courseId}>
             <div className="flex flex-row-reverse items-center gap-6 rtl bg-blue-100/50 dark:bg-gray-800 rounded-2xl overflow-hidden shadow hover:shadow-xl transition-all duration-300 p-4 hover:scale-[1.01]">
-              {/* تصویر کورس */}
-              {item?.tumbImageAddress &&
-              item.tumbImageAddress !== "Not-set" ? (
+              {item?.tumbImageAddress && item.tumbImageAddress !== "Not-set" ? (
                 <>
                   <img
                     ref={imgRef}
@@ -84,7 +81,6 @@ export default function NewCoursesSlider() {
                 <CiImageOff className="rounded-full w-32 h-32 text-gray-400 dark:text-gray-600" />
               )}
 
-              {/* اطلاعات کورس */}
               <div className="flex flex-col justify-center space-y-1 w-full">
                 <h3 className="text-lg font-bold text-gray-800 dark:text-white truncate">
                   {item.title}
@@ -107,13 +103,11 @@ export default function NewCoursesSlider() {
                   قیمت: {Number(item.cost).toLocaleString()} تومان
                 </div>
 
-                {/* تعداد لایک‌ها */}
                 <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
                   <span>❤️</span>
                   لایک‌ها: {item.likeCount}
                 </div>
 
-                {/* نوع دوره */}
                 <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
                   <span>📚</span>
                   نوع: {item.typeName}

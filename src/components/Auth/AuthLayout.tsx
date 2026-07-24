@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 
-// AuthLayout.tsx - اضافه کن
 interface AuthLayoutProps {
   children: React.ReactNode;
   imageSrc: string;
   title: string;
-  subtitle?: string; // ← اضافه کن
+  subtitle?: string;
   backTo?: { label: string; path: string };
   bottomLinks?: { label: string; path: string }[];
 }
@@ -14,7 +13,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({
   children,
   imageSrc,
   title,
-  subtitle, // ← اضافه کن
+  subtitle,
   backTo,
   bottomLinks,
 }) => {
@@ -34,7 +33,6 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({
             {title}
           </h2>
 
-          {/* ← اضافه کن */}
           {subtitle && (
             <p className="mt-2 text-right text-sm text-gray-500 dark:text-gray-400">
               {subtitle}

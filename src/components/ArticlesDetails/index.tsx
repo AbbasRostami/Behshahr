@@ -88,8 +88,6 @@ const TabButton = ({
   </button>
 );
 
-// ─── کامپوننت کامنت ────────────────────────────
-
 interface CommentCardProps {
   comment: CommentDto;
   onLike: (id: string) => void;
@@ -154,8 +152,6 @@ const CommentCard = ({
   );
 };
 
-// ─── فرم ثبت نظر ────────────────────────────
-
 interface CommentFormProps {
   newsId: string;
   userId: number;
@@ -214,8 +210,6 @@ const CommentForm = ({
   </Formik>
 );
 
-// ─── کامپوننت اصلی ────────────────────────────
-
 const ArticlesDetailsForm: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const profile = useAtomValue(profileAtom);
@@ -246,7 +240,6 @@ const ArticlesDetailsForm: React.FC = () => {
     fetchDetails();
   }, [fetchDetails]);
 
-  // ثبت نظر
   const handleAddComment = async (values: {
     title: string;
     describe: string;
@@ -279,7 +272,6 @@ const ArticlesDetailsForm: React.FC = () => {
     }
   };
 
-  // لایک کامنت
   const handleCommentLike = async (commentId: string) => {
     try {
       setActionLoading(commentId);

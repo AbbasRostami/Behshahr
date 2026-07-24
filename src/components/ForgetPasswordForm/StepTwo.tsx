@@ -1,4 +1,3 @@
-// ForgetPasswordForm/StepTwo.tsx
 import { Form, Formik } from "formik";
 import { useEffect, useState } from "react";
 import { FiEye, FiEyeOff, FiLock, FiShield } from "react-icons/fi";

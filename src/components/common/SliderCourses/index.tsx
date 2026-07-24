@@ -84,9 +84,7 @@ const getCourseDescription = (value?: string) => {
         .trim();
       return cleanedText || fallbackDescription;
     }
-  } catch {
-    // intentionally ignored
-  }
+  } catch {}
 
   const cleanedText = value
     .replace(/<[^>]*>/g, " ")

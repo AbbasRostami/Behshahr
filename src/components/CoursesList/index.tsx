@@ -80,7 +80,6 @@ const CoursesListForm: React.FC = () => {
     setFilter((prev) => ({ ...prev, PageNumber: page }));
   };
 
-  // اکشن‌ها
   const handleAction = async (path: string, id: string, msg: string) => {
     if (!localStorage.getItem("token")) {
       toast.info("ابتدا وارد حساب کاربری شوید.");

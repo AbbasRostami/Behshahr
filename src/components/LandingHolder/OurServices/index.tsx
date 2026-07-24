@@ -3,10 +3,9 @@ import our1 from "./../../../assets/svg/Landing/our1.svg";
 import our2 from "./../../../assets/svg/Landing/our2.svg";
 import our3 from "./../../../assets/svg/Landing/our3.svg";
 import our4 from "./../../../assets/svg/Landing/our4.svg";
-import our5 from "./../../../assets/svg/Landing/our5.svg"; // اصلاح شد
-import our6 from "./../../../assets/svg/Landing/our6.svg"; // اصلاح شد
+import our5 from "./../../../assets/svg/Landing/our5.svg";
+import our6 from "./../../../assets/svg/Landing/our6.svg";
 
-// دیتا رو آوردیم بیرون که تو هر رندر دوباره ساخته نشه (سرعت بهتر)
 const OurServicesData = [
   {
     icon: our1,
@@ -52,15 +51,10 @@ const OurServices: React.FC = () => {
         </p>
       </div>
 
-      {/* 
-        تو موبایل 1 ستون، تبلت 2 ستون، دسکتاپ 3 ستون 
-        پدینگ موبایل px-4 شد که جا باز بشه
-      */}
       <div className="px-4 md:px-8 lg:px-16 py-12 text-[#22445D] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 rtl">
         {OurServicesData.map((item, index) => (
           <div
             key={index}
-            /* افکت‌های هاور رو یکپارچه کردم که صفحه پرش نداشته باشه */
             className="group flex items-start gap-4 rounded-2xl p-5 transition-all duration-300 ease-in-out hover:-translate-y-2 hover:scale-105 hover:bg-slate-50 hover:shadow-xl dark:hover:bg-gray-800"
           >
             <img

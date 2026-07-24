@@ -1,4 +1,3 @@
-// Auth/types.ts
 export interface LoginValues {
   phoneOrGmail: string;
   password: string;

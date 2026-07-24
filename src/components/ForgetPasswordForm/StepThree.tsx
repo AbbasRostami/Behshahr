@@ -39,7 +39,6 @@ const ForgetStepThree = ({ id }: { id: string }) => {
         resetValue: passId?.message,
       };
 
-      // ← اینجا cast می‌کنیم که TypeScript بدونه چه شکلیه
       const response = (await postApi({
         path: "/Sign/Reset",
         body,

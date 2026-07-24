@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 type SidebarContextType = {
   isExpanded: boolean;
@@ -22,8 +22,6 @@ export const useSidebar = () => {
   }
   return context;
 };
-//
-//
 export const SidebarProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {

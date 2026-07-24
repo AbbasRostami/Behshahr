@@ -215,7 +215,6 @@ const NewsArticlesForm = () => {
             const page = i + 1;
             const isActive = page === filter.PageNumber;
 
-            // نمایش حداکثر 5 صفحه + ...
             const showPage =
               page === 1 ||
               page === totalPages ||

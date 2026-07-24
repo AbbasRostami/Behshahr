@@ -1,4 +1,3 @@
-// types/courseDetails.ts
 export interface CourseDetailsType {
   courseId: string;
   title: string;

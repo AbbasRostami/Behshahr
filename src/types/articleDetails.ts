@@ -1,4 +1,3 @@
-// types/articleDetails.ts
 export interface CommentDto {
   id: string;
   title: string;
