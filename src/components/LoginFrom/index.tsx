@@ -23,7 +23,6 @@ const LoginForm = () => {
     const body = values;
 
     const response = await (postApi({ path, body })) as ApiResponse;
-    console.log(response);
     if (response?.data?.success && response?.data?.token) {
       localStorage.setItem("token", response.data.token);
       toast.success("شما با موفقیت وارد شدید.");

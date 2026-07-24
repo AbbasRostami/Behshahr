@@ -1,7 +1,6 @@
 import { useAtomValue, useSetAtom } from "jotai";
 import { toast } from "react-toastify";
 import { Navigation } from "swiper/modules";
-import { ApiResponse } from "../../../components/CoursesDetails";
 import {
   getEditProfAtom,
   profileAtom,
@@ -33,9 +32,7 @@ const ProfileEditImage = ({
 
     const path = `/SharePanel/DeleteProfileImage`;
     const body = formData;
-    const response = (await deleteApi({ path, body })) as ApiResponse;
-
-    console.log("Delete:", response);
+    const response = (await deleteApi({ path, body })) as any;
 
     if (response?.data.success) {
       toast.success(response?.data.message);
@@ -48,13 +45,9 @@ const ProfileEditImage = ({
 
     formData.append("ImageId", id.toString());
 
-    console.log("image id:", id);
-
     const path = `/SharePanel/SelectProfileImage`;
     const body = formData;
-    const response = (await postApi({ path, body })) as ApiResponse;
-
-    console.log("Select:", response);
+    const response = (await postApi({ path, body })) as any;
 
     if (response?.data.success) {
       toast.success(response?.data.message);
@@ -67,7 +60,6 @@ const ProfileEditImage = ({
     if (files && files.length > 0) {
       const selectedFile = files[0];
       setImage(selectedFile);
-      console.log("Selected File: ", selectedFile);
     } else {
       console.error("No file selected");
     }
@@ -85,8 +77,7 @@ const ProfileEditImage = ({
     const path = `/SharePanel/AddProfileImage`;
     const body = formData;
 
-    const response = (await postApi({ path, body })) as ApiResponse;
-    console.log("Upload Response:", response);
+    const response = (await postApi({ path, body })) as any;
 
     if (response?.data.success) {
       toast.success(response?.data.message);

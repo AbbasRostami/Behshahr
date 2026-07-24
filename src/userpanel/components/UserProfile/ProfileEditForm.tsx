@@ -5,7 +5,6 @@ import persian_fa from "react-date-object/locales/persian_fa";
 import transition from "react-element-popper/animations/transition";
 import DatePicker, { DateObject } from "react-multi-date-picker";
 import { toast } from "react-toastify";
-import { ApiResponse } from "../../../components/CoursesDetails";
 import { profileAtom } from "../../../context/jotai/ProfileProvider";
 import { editApi } from "../../../core/api/api";
 interface ProfileEditFormProps {
@@ -56,15 +55,11 @@ const ProfileEditForm = ({ isEditing, setIsEditing }: ProfileEditFormProps) => {
 
     Object.entries(data).forEach(([key, value]) => formData.append(key, value));
 
-    formData.forEach((value, key) => {
-      console.log(key, ":", value);
-    });
+    formData.forEach((value, key) => {});
 
     const path = `/SharePanel/UpdateProfileInfo`;
     const body = formData;
-    console.log(body);
-    const response = (await editApi({ path, body })) as ApiResponse;
-    console.log(response);
+    const response = (await editApi({ path, body })) as any;
 
     if (response?.data.success) {
       toast.success(response?.data.message);

@@ -1,10 +1,10 @@
-import { useState } from "react";
-import forgetPassword from "./../../assets/forgetPassword.svg";
 import { Field, Form, Formik } from "formik";
-import home from "./../../assets/home.svg";
-import { postApi } from "../../core/api/api";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { postApi } from "../../core/api/api";
+import forgetPassword from "./../../assets/forgetPassword.svg";
+import home from "./../../assets/home.svg";
 
 interface SuccessData {
   success: boolean;
@@ -29,9 +29,7 @@ const ForgetStepOne = () => {
     const path = "/Sign/ForgetPassword";
 
     const body = { ...values, baseUrl: "http://localhost:5173/reset-password" };
-
-    const response = await postApi({ path, body }) as ApiResponse;
-    console.log(response);
+    const response = (await postApi({ path, body })) as ApiResponse;
     if (response?.data?.success) {
       const myJSON = JSON.stringify(response);
       localStorage.setItem("pass", myJSON);

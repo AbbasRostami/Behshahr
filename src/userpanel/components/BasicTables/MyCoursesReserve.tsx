@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
-import { MdCheckCircle, MdCancel, MdDelete } from "react-icons/md";
 import DataTable, { TableColumn } from "react-data-table-component";
 import { BiSearch } from "react-icons/bi";
-import { deleteApi, getApi } from "../../../core/api/api";
+import { MdCancel, MdCheckCircle, MdDelete } from "react-icons/md";
 import { toast } from "react-toastify";
 import { useTheme } from "../../../context/context/ThemeContext";
+import { deleteApi, getApi } from "../../../core/api/api";
 
 interface MyReserveCourseType {
   reserveId: string;
@@ -30,7 +30,6 @@ export default function MyCoursesReserve() {
   const getMyCourses = async () => {
     const path = `/SharePanel/GetMyCoursesReserve`;
     const response = (await getApi({ path })) as ApiResponse;
-    console.log("Courses:", response?.data);
     setData(response?.data || []);
   };
 
@@ -39,8 +38,6 @@ export default function MyCoursesReserve() {
   }, []);
 
   const deleteCoursesReserve = async (reserveId: string) => {
-    console.log(reserveId);
-
     const body = { id: reserveId };
 
     const path = `/CourseReserve/`;
@@ -125,12 +122,12 @@ export default function MyCoursesReserve() {
         allowOverflow: true,
       },
     ],
-    []
+    [],
   );
 
   const filteredData = useMemo(() => {
     return data.filter((item) =>
-      item.courseName.toLowerCase().includes(filterText.toLowerCase())
+      item.courseName.toLowerCase().includes(filterText.toLowerCase()),
     );
   }, [data, filterText]);
 

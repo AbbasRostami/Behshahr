@@ -1,9 +1,11 @@
+import { useAtomValue, useSetAtom } from "jotai";
 import React from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import logoSite from "../../../assets/logoSite.svg";
-import DarkLightToggle from "../DarkMode";
-import { useAtomValue, useSetAtom } from "jotai";
-import { getEditProfAtom, profileAtom } from "../../../context/jotai/ProfileProvider";
+import {
+  getEditProfAtom,
+  profileAtom,
+} from "../../../context/jotai/ProfileProvider";
 
 interface HeaderDashbordProps {
   showMenu: boolean;
@@ -14,11 +16,8 @@ const HeaderDashbord: React.FC<HeaderDashbordProps> = ({
   showMenu,
   setShowMenu,
 }) => {
-
   const data = useAtomValue(profileAtom);
   const getEditProf = useSetAtom(getEditProfAtom);
-
-  console.log("data atom:", data);
 
   return (
     <div className="bg-[#A4F6DE] dark:bg-gray-700 w-[46rem] lg:w-[74.2rem]">
@@ -26,10 +25,10 @@ const HeaderDashbord: React.FC<HeaderDashbordProps> = ({
         <div className="flex items-center gap-4">
           <img
             className="h-[2.3rem] lg:h-[3rem] ml-5 rounded-full"
-            src={data?.currentPictureAddress}
+            // src={data?.currentPictureAddress}
             alt=""
           />
-          <DarkLightToggle />
+          {/* <DarkLightToggle /> */}
         </div>
 
         <div className="flex items-center text-[#22445D] text-nowrap">
