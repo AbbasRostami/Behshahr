@@ -1,17 +1,21 @@
 import React from "react";
-import notFound from "../../assets/notFound.svg";
 import { Link } from "react-router-dom";
+import notFound from "../../assets/notFound.svg";
 
 const NotFound: React.FC = () => {
   return (
-    <div className="flex flex-col items-center">
-      <img className="w-[72rem] ml-32 h-[35rem] mt-10" src={notFound} alt="" />
-      <Link to="/">
-        {" "}
-        <button className="bg-[#158B68] mt-5 w-[13rem] h-[3.6rem] my-[-3rem] rounded-xl text-[#E8F2F8] text-2xl text-bold">
-          {" "}
-          بازگشت به خانه
-        </button>
+    <div className="flex min-h-screen flex-col items-center justify-center px-4 py-10">
+      <img
+        src={notFound}
+        alt="صفحه یافت نشد"
+        className="w-full max-w-lg sm:max-w-xl lg:max-w-2xl"
+      />
+
+      <Link
+        to="/"
+        className="mt-8 flex h-14 w-full max-w-[200px] items-center justify-center rounded-xl bg-[#158B68] text-lg font-bold text-white transition hover:bg-[#12926C]"
+      >
+        بازگشت به خانه
       </Link>
     </div>
   );

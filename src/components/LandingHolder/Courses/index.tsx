@@ -1,11 +1,7 @@
 import { CoursesSlider } from "../../common/SliderCourses";
 
 const Courses = () => {
-  return (
-    <>
-      <CoursesSlider />
-    </>
-  );
+  return <CoursesSlider />;
 };
 
 export { Courses };

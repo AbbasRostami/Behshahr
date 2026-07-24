@@ -1,4 +1,4 @@
-import { NewsArticlesForm } from "../../components/NewsArticlesForm";
+import { NewsArticlesForm } from "../../components/NewsArticles";
 
 const NewsArticles: React.FC = () => {
   return (

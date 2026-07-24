@@ -1,4 +1,4 @@
-import { CoursesDetailsForm } from "../../components/CoursesDetailsForm";
+import { CoursesDetailsForm } from "../../components/CoursesDetails";
 
 const CoursesDetails = () => {
   return (
@@ -8,4 +8,4 @@ const CoursesDetails = () => {
   );
 };
 
-export default CoursesDetails ;
+export default CoursesDetails;

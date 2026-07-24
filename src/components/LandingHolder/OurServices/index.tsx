@@ -1,70 +1,87 @@
+import React from "react";
 import our1 from "./../../../assets/svg/Landing/our1.svg";
 import our2 from "./../../../assets/svg/Landing/our2.svg";
 import our3 from "./../../../assets/svg/Landing/our3.svg";
 import our4 from "./../../../assets/svg/Landing/our4.svg";
-import our6 from "./../../../assets/svg/Landing/our5.svg";
-import our5 from "./../../../assets/svg/Landing/our6.svg";
+import our5 from "./../../../assets/svg/Landing/our5.svg"; // اصلاح شد
+import our6 from "./../../../assets/svg/Landing/our6.svg"; // اصلاح شد
+
+// دیتا رو آوردیم بیرون که تو هر رندر دوباره ساخته نشه (سرعت بهتر)
+const OurServicesData = [
+  {
+    icon: our1,
+    title: "اساتید مجرب",
+    desc: "لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.",
+  },
+  {
+    icon: our2,
+    title: "مشاوره رایگان",
+    desc: "لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.",
+  },
+  {
+    icon: our3,
+    title: "فرصت های شغلی",
+    desc: "لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.",
+  },
+  {
+    icon: our4,
+    title: "ارائه مدرک معتبر",
+    desc: "لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.",
+  },
+  {
+    icon: our5,
+    title: "دوره های جامع و متنوع",
+    desc: "لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.",
+  },
+  {
+    icon: our6,
+    title: "آموزش پروژه محور",
+    desc: "لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود.",
+  },
+];
 
 const OurServices: React.FC = () => {
-  const OurServicesData = [
-    {
-      icon: our1,
-      title: "اساتید مجرب",
-      desc: "لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود .",
-    },
-    {
-      icon: our2,
-      title: "مشاوره رایگان",
-      desc: "لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود .",
-    },
-    {
-      icon: our3,
-      title: "فرصت های شغلی",
-      desc: "لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود .",
-    },
-    {
-      icon: our4,
-      title: "ارائه مدرک معتبر",
-      desc: "لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود .",
-    },
-    {
-      icon: our5,
-      title: "دوره های جامع و متنوع",
-      desc: "لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود .",
-    },
-    {
-      icon: our6,
-      title: "آموزش پروژه محور",
-      desc: "لورم ایپسوم محبوب ترین و استانداردترین متن ساختگی است که توسط توسعه دهندگان وب، تایپوگراف ها و طراحان استفاده می شود .",
-    },
-  ];
-
   return (
-    <>
-      <div className="text-center leading-10 dark:text-white">
-        <p className="text-[35px] font-bold mt-10">خدمات ما</p>
-        <p className="leading-10">
+    <section className="mx-auto max-w-7xl">
+      <div className="text-center dark:text-white px-4">
+        <h2 className="text-[28px] lg:text-[35px] font-bold mt-10 mb-2">
+          خدمات ما
+        </h2>
+        <p className="leading-8 text-gray-600 dark:text-gray-300">
           ما فرصت آماده شدن برای زندگی را فراهم می کنیم
         </p>
       </div>
 
-      <div className="px-16 py-16  text-[#22445D] grid grid-col-2 lg:grid-cols-3 gap-2 rtl">
+      {/* 
+        تو موبایل 1 ستون، تبلت 2 ستون، دسکتاپ 3 ستون 
+        پدینگ موبایل px-4 شد که جا باز بشه
+      */}
+      <div className="px-4 md:px-8 lg:px-16 py-12 text-[#22445D] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 rtl">
         {OurServicesData.map((item, index) => (
           <div
             key={index}
-            className="rounded p-5 bg-rd transition ease-in-out delay-150 hover:text-yellow-950 hover:text-lg hover:-translate-y-1 hover:scale-110  duration-300 ... "
+            /* افکت‌های هاور رو یکپارچه کردم که صفحه پرش نداشته باشه */
+            className="group flex items-start gap-4 rounded-2xl p-5 transition-all duration-300 ease-in-out hover:-translate-y-2 hover:scale-105 hover:bg-slate-50 hover:shadow-xl dark:hover:bg-gray-800"
           >
-            <div className="flex justify-center items-center hover:border hover:bg-slate-100 hover:shadow-2xl dark:hover:bg-gray-800">
-              <img src={item.icon} alt="" loading="lazy" />
-              <div className="mr-5 dark:text-white ">
-                <p className="leading-10">{item.title}</p>
-                <p className="text-sm dark:text-white">{item.desc}</p>
-              </div>
+            <img
+              src={item.icon}
+              alt={item.title}
+              loading="lazy"
+              className="w-16 h-16 shrink-0"
+            />
+
+            <div className="dark:text-white">
+              <p className="text-lg font-bold mb-2 group-hover:text-yellow-700 dark:group-hover:text-yellow-500 transition-colors">
+                {item.title}
+              </p>
+              <p className="text-sm leading-7 text-gray-600 dark:text-gray-300">
+                {item.desc}
+              </p>
             </div>
           </div>
         ))}
       </div>
-    </>
+    </section>
   );
 };
 

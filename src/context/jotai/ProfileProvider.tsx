@@ -1,26 +1,6 @@
 import { atom } from "jotai";
 import { getApi } from "../../core/api/api";
 
-interface UserProfile {
-  birthDay: string;
-  currentPictureAddress: string;
-  email: string;
-  fName: string;
-  gender: boolean;
-  homeAdderess: string;
-  lName: string;
-  latitude: string;
-  linkdinProfile: string;
-  longitude: string;
-  nationalCode: string;
-  phoneNumber: string;
-  profileCompletionPercentage: number;
-  receiveMessageEvent: boolean;
-  telegramLink: string;
-  userAbout: string;
-  userImage: UserImage[];
-}
-
 interface UserImage {
   id: string;
   inserDate: string;
@@ -29,17 +9,41 @@ interface UserImage {
   userProfileId: number;
 }
 
+export interface UserProfile {
+  id: number;
+  fName: string | null;
+  lName: string | null;
+  userName: string;
+  email: string;
+  phoneNumber: string | null;
+  birthDay: string | null;
+  gender: boolean;
+  homeAdderess: string | null;
+  latitude: string | null;
+  longitude: string | null;
+  nationalCode: string | null;
+  linkdinProfile: string | null;
+  telegramLink: string | null;
+  userAbout: string | null;
+  currentPictureAddress: string | null;
+  profileCompletionPercentage: number;
+  receiveMessageEvent: boolean;
+  userImage: UserImage[];
+}
+
 interface ApiResponse {
   data: UserProfile;
 }
 
 export const profileAtom = atom<UserProfile | null>(null);
 
-export const getEditProfAtom = atom(
-  null,
-  async (get, set) => {
-    const path = `/SharePanel/GetProfileInfo`;
+export const getEditProfAtom = atom(null, async (_get, set) => {
+  try {
+    const path = "/SharePanel/GetProfileInfo";
     const response = (await getApi({ path })) as ApiResponse;
-    set(profileAtom, response?.data);
-  }
-)
+
+    if (response?.data) {
+      set(profileAtom, response.data);
+    }
+  } catch {}
+});

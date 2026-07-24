@@ -1,14 +1,13 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useAtomValue } from "jotai";
-import { profileAtom } from "../../../context/jotai/ProfileProvider";
-import { DateObject } from "react-multi-date-picker";
-import persian_fa from "react-date-object/locales/persian_fa";
-import DatePicker from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
-import { editApi } from "../../../core/api/api";
-import { ApiResponse } from "../../../components/CoursesDetailsForm";
-import { toast } from "react-toastify";
+import persian_fa from "react-date-object/locales/persian_fa";
 import transition from "react-element-popper/animations/transition";
+import DatePicker, { DateObject } from "react-multi-date-picker";
+import { toast } from "react-toastify";
+import { ApiResponse } from "../../../components/CoursesDetails";
+import { profileAtom } from "../../../context/jotai/ProfileProvider";
+import { editApi } from "../../../core/api/api";
 interface ProfileEditFormProps {
   isEditing: boolean;
   setIsEditing: (value: boolean) => void;

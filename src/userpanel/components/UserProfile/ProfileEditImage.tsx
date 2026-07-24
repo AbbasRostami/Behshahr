@@ -1,15 +1,15 @@
 import { useAtomValue, useSetAtom } from "jotai";
+import { toast } from "react-toastify";
+import { Navigation } from "swiper/modules";
+import { ApiResponse } from "../../../components/CoursesDetails";
 import {
   getEditProfAtom,
   profileAtom,
 } from "../../../context/jotai/ProfileProvider";
 import { deleteApi, postApi } from "../../../core/api/api";
-import { ApiResponse } from "../../../components/CoursesDetailsForm";
-import { toast } from "react-toastify";
-import { Navigation } from "swiper/modules";
 
-import { Swiper, SwiperSlide } from "swiper/react";
 import { ChangeEvent, useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 interface PropsEditImage {
   isEditingAvatar: boolean;
   setIsEditingAvatar: (value: boolean) => void;
@@ -93,8 +93,6 @@ const ProfileEditImage = ({
       getEditProf();
     }
   };
-
-   
 
   return (
     <div
